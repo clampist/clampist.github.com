@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Count IP Address Appears Most in Log File | 记录点滴</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="1.Problem之前做运维的笔试题，有一道很经典的统计日志文件中出现最多的 IP 地址及次数的题。其日志格式为 122.224.6.43 - - [30/Oct/2012:21:29:42 +0800] &amp;quot;GET /phpMyAdmin/scripts/setup.php HTTP/1.1&amp;quot; 404 162 &amp;quot;-&amp;quot; &amp;quot;ZmEu&amp;quot; 122">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Count IP Address Appears Most in Log File">
+<meta property="og:url" content="https://clampist.github.io/2012/11/09/count-ip-address-appears-most-in-log-file/index.html">
+<meta property="og:site_name" content="记录点滴">
+<meta property="og:description" content="1.Problem之前做运维的笔试题，有一道很经典的统计日志文件中出现最多的 IP 地址及次数的题。其日志格式为 122.224.6.43 - - [30/Oct/2012:21:29:42 +0800] &amp;quot;GET /phpMyAdmin/scripts/setup.php HTTP/1.1&amp;quot; 404 162 &amp;quot;-&amp;quot; &amp;quot;ZmEu&amp;quot; 122">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2014-05-21T13:24:37.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Count IP Address Appears Most in Log File">
+<meta name="twitter:description" content="1.Problem之前做运维的笔试题，有一道很经典的统计日志文件中出现最多的 IP 地址及次数的题。其日志格式为 122.224.6.43 - - [30/Oct/2012:21:29:42 +0800] &amp;quot;GET /phpMyAdmin/scripts/setup.php HTTP/1.1&amp;quot; 404 162 &amp;quot;-&amp;quot; &amp;quot;ZmEu&amp;quot; 122">
+  
+    <link rel="alternate" href="/atom.xml" title="记录点滴" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">记录点滴</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://clampist.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-count-ip-address-appears-most-in-log-file" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2012/11/09/count-ip-address-appears-most-in-log-file/" class="article-date">
+  <time datetime="2012-11-09T02:32:00.000Z" itemprop="datePublished">2012-11-09</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/linux/">linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Count IP Address Appears Most in Log File
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-Problem"><a href="#1-Problem" class="headerlink" title="1.Problem"></a>1.Problem</h2><p>之前做运维的笔试题，有一道很经典的统计日志文件中出现最多的 IP 地址及次数的题。其日志格式为</p>
+<pre><code>122.224.6.43 - - [30/Oct/2012:21:29:42 +0800] &quot;GET /phpMyAdmin/scripts/setup.php HTTP/1.1&quot; 404 162 &quot;-&quot; &quot;ZmEu&quot;
+122.224.6.43 - - [30/Oct/2012:21:29:42 +0800] &quot;GET /MyAdmin/scripts/setup.php HTTP/1.1&quot; 404 162 &quot;-&quot; &quot;ZmEu&quot;
+122.224.6.43 - - [30/Oct/2012:21:29:42 +0800] &quot;GET /pma/scripts/setup.php HTTP/1.1&quot; 404 162 &quot;-&quot; &quot;ZmEu&quot;
+122.224.6.43 - - [30/Oct/2012:21:29:42 +0800] &quot;GET /myadmin/scripts/setup.php HTTP/1.1&quot; 404 162 &quot;-&quot; &quot;ZmEu&quot;
+58.251.60.248 - - [30/Oct/2012:23:05:46 +0800] &quot;GET http://www.baidu.com/ HTTP/1.1&quot; 200 612 &quot;-&quot; &quot;Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; QQDownload 551; .NET CLR 2.0.50727; CIBA)&quot;
+58.251.60.248 - - [30/Oct/2012:23:06:37 +0800] &quot;&quot; 400 0 &quot;-&quot; &quot;-&quot;
+</code></pre><p>这是 <code>nginx</code> 日志 <code>/var/log/nginx/access.log</code> 中的一个片段。</p>
+<h2 id="2-用-Shell-解决"><a href="#2-用-Shell-解决" class="headerlink" title="2.用 Shell 解决"></a>2.用 Shell 解决</h2><p>#####思路一： awk 取出第一列，然后利用 sort -u 将 IP unique 化输出到文件，再从文件按行读入再计数显示出来</p>
+<p>具体如下：</p>
+<pre><code>cd /var/log/nginx
+
+sudo zcat access.log.1.gz | awk &apos;{print $1}&apos; | sort -u &gt; /tmp/ip
+
+while read line; do
+    let a++
+    echo `sudo zcat access.log.1.gz | awk &apos;{print $1}&apos; | grep $line -c` $line
+done &lt; /tmp/ip
+
+rm /tmp/ip
+</code></pre><p>其中用的是 <code>grep</code> 计数的，而且会产生临时文件又需要手动删除，致命点是只能显示出各 IP 次数，但不能列出最大次数及 IP.其中为 access.log.1.gz 文件则用 <code>zcat</code>, 如果是普通 access.log 文件则用 <code>cat</code>.</p>
+<p>#####思路一（改进）：利用 <code>here document</code> 则可避免使用临时文件</p>
+<pre><code>cd /var/log/nginx
+
+while read line; do
+    let a++
+    echo `sudo zcat access.log.1.gz | awk &apos;{print $1}&apos; | grep $line -c` $line
+done &lt;&lt; EOF
+
+`sudo zcat access.log.1.gz | awk &apos;{print $1}&apos; | sort -u`
+
+EOF
+</code></pre><p>这里用到 here document, here document 往往用于需要输出一大段文本的地方，例如脚本的 help 函数。两个 EOF 之间产生的内容用于上面循环的输入。</p>
+<p>#####思路二：上面所用的 unique 化和 count 方法太拙劣，寻求其他的便捷方法，果然找到了</p>
+<p>之前用了循环将问题复杂化了，用 <code>uniq</code> 这个命令会很 cool.</p>
+<pre><code>cd /var/log/nginx
+
+sudo cat access.log | awk &apos;{print $1}&apos; | sort | uniq -c | sort -nr | head -1
+</code></pre><p>其中 <code>uniq -c</code> 就是 unique 化 AND count, <code>sort -n</code> 表示把字符串中的数字当做数字比较，<code>-r</code> 意为倒序。</p>
+<p>注意：这个方法可能只能显示那些相同次数的 IP 的最前面的一个，所以适当加大为 <code>head -3</code> 或 <code>head -5</code> 等适可而止，无需再去判断那些相同次数来增加复杂性，这样很好记的。</p>
+<h2 id="3-用-Python-来做"><a href="#3-用-Python-来做" class="headerlink" title="3.用 Python 来做"></a>3.用 Python 来做</h2><p>先将日志文件中所有 IP 读入一个 list, 然后将 IP 和次数统计入一个 dict, 最后输出次数最大的 IP 及次数。</p>
+<pre><code>li = []
+
+with open(&apos;/var/log/nginx/access.log&apos;) as f:
+    for line in f:
+        li.append(line.split(&apos; &apos;)[0])
+
+dic = {}
+
+for element in li: 
+    dic[element] = dic.get(element, 0) + 1 
+#print(map.items())
+print [(k, v) for k, v in dic.iteritems() if v == max(dic.values())]
+</code></pre><p>会将所有次数最大的 IP 和次数输出，避免了思路二的问题。</p>
+<h2 id="4-SEE-ALSO"><a href="#4-SEE-ALSO" class="headerlink" title="4.SEE ALSO"></a>4.SEE ALSO</h2><ul>
+<li><a href="http://kodango.me/simple-bash-programming-skills" target="_blank" rel="external">简洁的bash编程技巧</a></li>
+<li><a href="http://cyr520.blog.51cto.com/714067/768707" target="_blank" rel="external">找出apache日志中访问量最大的IP</a></li>
+<li><a href="http://hi.baidu.com/jimmy1029/item/2cebc59f7f8498b4cd80e530" target="_blank" rel="external">找出list中重复最多的N个元素（Python v2.6）</a></li>
+<li><a href="http://www.stackenqueue.com/questions/761/python-%E5%BE%97%E5%88%B0%E4%B8%80%E4%B8%AAlist%E4%B8%AD%E5%85%83%E7%B4%A0%E9%87%8D%E5%A4%8D%E5%87%BA%E7%8E%B0%E7%9A%84%E6%AC%A1%E6%95%B0" target="_blank" rel="external">python 得到一个list中元素重复出现的次数</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2012/11/09/count-ip-address-appears-most-in-log-file/" data-id="cj7vn5o2h0006dkswdjysayr9" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/09/07/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Hello World
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2012/10/20/python-virtualenv-wrapper-and-pip/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Python Virtualenv Wrapper and Pip</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/cpp/">cpp</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/">note</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/opencv/">opencv</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">十一月 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/10/">十月 2012</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/09/22/boost-lexical-cast-cpp/">boost::lexical_cast</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/22/acquire-array-length-in-cpp/">acquire array length in c++</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/22/shell-last-param/">shell last param</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/22/linux-dos-to-unix/">linux dos to unix</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/22/python-two-or-three-continuous-items-in-list/">python two or three continuous items in list</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Krevy Li<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
