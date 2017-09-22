@@ -5,18 +5,18 @@
   
   <title>git and gerrit | 记录点滴</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="##git常用 ###master开发 123git add    # add后如果再修改，需要再add一次，否则提交add时版本git commit -m &quot;adshow-3-6-1 feed support&quot;git push origin master:refs/for/master ###branch开发 123git add git commit -m &quot;sth&quot; git push ori">
+  <meta name="description" content="git常用master开发123git add    # add后如果再修改，需要再add一次，否则提交add时版本git commit -m &quot;adshow-3-6-1 feed support&quot;git push origin master:refs/for/master branch开发123git add git commit -m &quot;sth&quot; git push origin master:">
 <meta property="og:type" content="article">
 <meta property="og:title" content="git and gerrit">
 <meta property="og:url" content="https://clampist.github.io/2017/09/22/git-usage/index.html">
 <meta property="og:site_name" content="记录点滴">
-<meta property="og:description" content="##git常用 ###master开发 123git add    # add后如果再修改，需要再add一次，否则提交add时版本git commit -m &quot;adshow-3-6-1 feed support&quot;git push origin master:refs/for/master ###branch开发 123git add git commit -m &quot;sth&quot; git push ori">
+<meta property="og:description" content="git常用master开发123git add    # add后如果再修改，需要再add一次，否则提交add时版本git commit -m &quot;adshow-3-6-1 feed support&quot;git push origin master:refs/for/master branch开发123git add git commit -m &quot;sth&quot; git push origin master:">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://gerrit-review.googlesource.com/Documentation/images/intro-quick-central-gerrit.png">
-<meta property="og:updated_time" content="2017-09-22T07:02:31.000Z">
+<meta property="og:updated_time" content="2017-09-22T09:55:32.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git and gerrit">
-<meta name="twitter:description" content="##git常用 ###master开发 123git add    # add后如果再修改，需要再add一次，否则提交add时版本git commit -m &quot;adshow-3-6-1 feed support&quot;git push origin master:refs/for/master ###branch开发 123git add git commit -m &quot;sth&quot; git push ori">
+<meta name="twitter:description" content="git常用master开发123git add    # add后如果再修改，需要再add一次，否则提交add时版本git commit -m &quot;adshow-3-6-1 feed support&quot;git push origin master:refs/for/master branch开发123git add git commit -m &quot;sth&quot; git push origin master:">
 <meta name="twitter:image" content="https://gerrit-review.googlesource.com/Documentation/images/intro-quick-central-gerrit.png">
   
     <link rel="alternate" href="/atom.xml" title="记录点滴" type="application/atom+xml">
@@ -94,21 +94,17 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>##git常用</p>
-<p>###<code>master</code>开发</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git add    <span class="comment"># add后如果再修改，需要再add一次，否则提交add时版本</span></div><div class="line">git commit -m <span class="string">"adshow-3-6-1 feed support"</span></div><div class="line">git push origin master:refs/<span class="keyword">for</span>/master</div></pre></td></tr></table></figure>
-<p>###<code>branch</code>开发</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git add </div><div class="line">git commit -m <span class="string">"sth"</span> </div><div class="line">git push origin master:refs/<span class="keyword">for</span>/patserver_1-0-23_BRANCH</div></pre></td></tr></table></figure>
-<p>###遇到<code>stash</code>冲突</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git stash    <span class="comment"># 将本地冲突改动 存入栈中</span></div><div class="line">git pull     <span class="comment"># 更新</span></div><div class="line">git stash pop    <span class="comment">#从栈中将改动拉出</span></div></pre></td></tr></table></figure>
-<p>##gerrit</p>
-<p><a href="https://gerrit-review.googlesource.com/Documentation/intro-how-gerrit-works.html" target="_blank" rel="external">how gerrit works</a></p>
+        <h2 id="git常用"><a href="#git常用" class="headerlink" title="git常用"></a>git常用</h2><h3 id="master开发"><a href="#master开发" class="headerlink" title="master开发"></a><code>master</code>开发</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git add    <span class="comment"># add后如果再修改，需要再add一次，否则提交add时版本</span></div><div class="line">git commit -m <span class="string">"adshow-3-6-1 feed support"</span></div><div class="line">git push origin master:refs/<span class="keyword">for</span>/master</div></pre></td></tr></table></figure>
+<h3 id="branch开发"><a href="#branch开发" class="headerlink" title="branch开发"></a><code>branch</code>开发</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git add </div><div class="line">git commit -m <span class="string">"sth"</span> </div><div class="line">git push origin master:refs/<span class="keyword">for</span>/patserver_1-0-23_BRANCH</div></pre></td></tr></table></figure>
+<h3 id="遇到stash冲突"><a href="#遇到stash冲突" class="headerlink" title="遇到stash冲突"></a>遇到<code>stash</code>冲突</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git stash    <span class="comment"># 将本地冲突改动 存入栈中</span></div><div class="line">git pull     <span class="comment"># 更新</span></div><div class="line">git stash pop    <span class="comment">#从栈中将改动拉出</span></div></pre></td></tr></table></figure>
+<a id="more"></a>
+<h2 id="gerrit"><a href="#gerrit" class="headerlink" title="gerrit"></a>gerrit</h2><p><a href="https://gerrit-review.googlesource.com/Documentation/intro-how-gerrit-works.html" target="_blank" rel="external">how gerrit works</a></p>
 <p><img src="https://gerrit-review.googlesource.com/Documentation/images/intro-quick-central-gerrit.png" alt="gerrit原理"></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/09/22/git-usage/" data-id="cj7vn5o2f0005dkswv0p0mr24" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/09/22/git-usage/" data-id="cj7voo37000048oswi1wl8z1d" class="article-share-link">Share</a>
       
       
     </footer>
@@ -117,11 +113,11 @@
     
 <nav id="article-nav">
   
-    <a href="/2017/09/22/python-two-or-three-continuous-items-in-list/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/09/22/linux-dos-to-unix/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          python two or three continuous items in list
+          linux dos to unix
         
       </div>
     </a>
@@ -173,11 +169,11 @@
       <ul>
         
           <li>
-            <a href="/2017/09/22/boost-lexical-cast-cpp/">boost::lexical_cast</a>
+            <a href="/2017/09/22/acquire-array-length-in-cpp/">acquire array length in cpp</a>
           </li>
         
           <li>
-            <a href="/2017/09/22/acquire-array-length-in-cpp/">acquire array length in c++</a>
+            <a href="/2017/09/22/boost-lexical-cast-cpp/">boost::lexical_cast</a>
           </li>
         
           <li>
@@ -185,11 +181,11 @@
           </li>
         
           <li>
-            <a href="/2017/09/22/linux-dos-to-unix/">linux dos to unix</a>
+            <a href="/2017/09/22/python-two-or-three-continuous-items-in-list/">python two or three continuous items in list</a>
           </li>
         
           <li>
-            <a href="/2017/09/22/python-two-or-three-continuous-items-in-list/">python two or three continuous items in list</a>
+            <a href="/2017/09/22/linux-dos-to-unix/">linux dos to unix</a>
           </li>
         
       </ul>

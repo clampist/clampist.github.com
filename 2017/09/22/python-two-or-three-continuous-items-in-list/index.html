@@ -5,17 +5,17 @@
   
   <title>python two or three continuous items in list | 记录点滴</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="##Python list 中连续2-3个对象 1.前后连续两天 12for date in [eval_obj.date_range[i:i+2] for i in range(len(eval_obj.date_range) - 1)]:    print date[0], date[1] 2.时间间隔1-3天 123for t in [time_list[i:i + 3] for i in">
+  <meta name="description" content="Python list 中连续2-3个对象1.前后连续两天12for date in [eval_obj.date_range[i:i+2] for i in range(len(eval_obj.date_range) - 1)]:    print date[0], date[1] 2.时间间隔1-3天123for t in [time_list[i:i + 3] for i in range">
 <meta property="og:type" content="article">
 <meta property="og:title" content="python two or three continuous items in list">
 <meta property="og:url" content="https://clampist.github.io/2017/09/22/python-two-or-three-continuous-items-in-list/index.html">
 <meta property="og:site_name" content="记录点滴">
-<meta property="og:description" content="##Python list 中连续2-3个对象 1.前后连续两天 12for date in [eval_obj.date_range[i:i+2] for i in range(len(eval_obj.date_range) - 1)]:    print date[0], date[1] 2.时间间隔1-3天 123for t in [time_list[i:i + 3] for i in">
+<meta property="og:description" content="Python list 中连续2-3个对象1.前后连续两天12for date in [eval_obj.date_range[i:i+2] for i in range(len(eval_obj.date_range) - 1)]:    print date[0], date[1] 2.时间间隔1-3天123for t in [time_list[i:i + 3] for i in range">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-09-22T06:59:28.000Z">
+<meta property="og:updated_time" content="2017-09-22T09:56:56.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python two or three continuous items in list">
-<meta name="twitter:description" content="##Python list 中连续2-3个对象 1.前后连续两天 12for date in [eval_obj.date_range[i:i+2] for i in range(len(eval_obj.date_range) - 1)]:    print date[0], date[1] 2.时间间隔1-3天 123for t in [time_list[i:i + 3] for i in">
+<meta name="twitter:description" content="Python list 中连续2-3个对象1.前后连续两天12for date in [eval_obj.date_range[i:i+2] for i in range(len(eval_obj.date_range) - 1)]:    print date[0], date[1] 2.时间间隔1-3天123for t in [time_list[i:i + 3] for i in range">
   
     <link rel="alternate" href="/atom.xml" title="记录点滴" type="application/atom+xml">
   
@@ -92,16 +92,13 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>##Python list 中连续2-3个对象</p>
-<p>1.前后连续两天</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> date <span class="keyword">in</span> [eval_obj.date_range[i:i+<span class="number">2</span>] <span class="keyword">for</span> i <span class="keyword">in</span> range(len(eval_obj.date_range) - <span class="number">1</span>)]:</div><div class="line">    <span class="keyword">print</span> date[<span class="number">0</span>], date[<span class="number">1</span>]</div></pre></td></tr></table></figure>
-<p>2.时间间隔1-3天</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> t <span class="keyword">in</span> [time_list[i:i + <span class="number">3</span>] <span class="keyword">for</span> i <span class="keyword">in</span> range(len(time_list) - <span class="number">1</span>)]:</div><div class="line">    <span class="keyword">if</span> len(t) == <span class="number">3</span>:</div><div class="line">        print(t[<span class="number">0</span>], t[<span class="number">2</span>])</div></pre></td></tr></table></figure>
+        <h2 id="Python-list-中连续2-3个对象"><a href="#Python-list-中连续2-3个对象" class="headerlink" title="Python list 中连续2-3个对象"></a>Python list 中连续2-3个对象</h2><h3 id="1-前后连续两天"><a href="#1-前后连续两天" class="headerlink" title="1.前后连续两天"></a>1.前后连续两天</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> date <span class="keyword">in</span> [eval_obj.date_range[i:i+<span class="number">2</span>] <span class="keyword">for</span> i <span class="keyword">in</span> range(len(eval_obj.date_range) - <span class="number">1</span>)]:</div><div class="line">    <span class="keyword">print</span> date[<span class="number">0</span>], date[<span class="number">1</span>]</div></pre></td></tr></table></figure>
+<h3 id="2-时间间隔1-3天"><a href="#2-时间间隔1-3天" class="headerlink" title="2.时间间隔1-3天"></a>2.时间间隔1-3天</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> t <span class="keyword">in</span> [time_list[i:i + <span class="number">3</span>] <span class="keyword">for</span> i <span class="keyword">in</span> range(len(time_list) - <span class="number">1</span>)]:</div><div class="line">    <span class="keyword">if</span> len(t) == <span class="number">3</span>:</div><div class="line">        print(t[<span class="number">0</span>], t[<span class="number">2</span>])</div></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/09/22/python-two-or-three-continuous-items-in-list/" data-id="cj7vn5o2x000hdkswnys7g0fa" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/09/22/python-two-or-three-continuous-items-in-list/" data-id="cj7voo37f000c8osw5u1d6qt5" class="article-share-link">Share</a>
       
       
     </footer>
@@ -110,19 +107,19 @@
     
 <nav id="article-nav">
   
-    <a href="/2017/09/22/linux-dos-to-unix/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/09/22/shell-last-param/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          linux dos to unix
+          shell last param
         
       </div>
     </a>
   
   
-    <a href="/2017/09/22/git-usage/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2017/09/22/linux-dos-to-unix/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">git and gerrit</div>
+      <div class="article-nav-title">linux dos to unix</div>
     </a>
   
 </nav>
@@ -166,11 +163,11 @@
       <ul>
         
           <li>
-            <a href="/2017/09/22/boost-lexical-cast-cpp/">boost::lexical_cast</a>
+            <a href="/2017/09/22/acquire-array-length-in-cpp/">acquire array length in cpp</a>
           </li>
         
           <li>
-            <a href="/2017/09/22/acquire-array-length-in-cpp/">acquire array length in c++</a>
+            <a href="/2017/09/22/boost-lexical-cast-cpp/">boost::lexical_cast</a>
           </li>
         
           <li>
@@ -178,11 +175,11 @@
           </li>
         
           <li>
-            <a href="/2017/09/22/linux-dos-to-unix/">linux dos to unix</a>
+            <a href="/2017/09/22/python-two-or-three-continuous-items-in-list/">python two or three continuous items in list</a>
           </li>
         
           <li>
-            <a href="/2017/09/22/python-two-or-three-continuous-items-in-list/">python two or three continuous items in list</a>
+            <a href="/2017/09/22/linux-dos-to-unix/">linux dos to unix</a>
           </li>
         
       </ul>

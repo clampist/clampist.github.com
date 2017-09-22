@@ -3,21 +3,15 @@
 <head>
   <meta charset="utf-8">
   
-  <title>OpenCV Basis | 记录点滴</title>
+  <title>记录点滴</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1.Load an imageIn [1]: import cv  In [2]: im1 = cv.LoadImageM(&amp;apos;foo.jpg&amp;apos;)  In [3]: print type(im1) &amp;lt;type &amp;apos;cv2.cv.cvmat&amp;apos;&amp;gt;  In [4]: im2 = cv.LoadImage(&amp;apos;foo.jpg&amp;apos;)  In [">
-<meta property="og:type" content="article">
-<meta property="og:title" content="OpenCV Basis">
-<meta property="og:url" content="https://clampist.github.io/2012/10/13/opencv-basis/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="记录点滴">
+<meta property="og:url" content="https://clampist.github.io/page/3/index.html">
 <meta property="og:site_name" content="记录点滴">
-<meta property="og:description" content="1.Load an imageIn [1]: import cv  In [2]: im1 = cv.LoadImageM(&amp;apos;foo.jpg&amp;apos;)  In [3]: print type(im1) &amp;lt;type &amp;apos;cv2.cv.cvmat&amp;apos;&amp;gt;  In [4]: im2 = cv.LoadImage(&amp;apos;foo.jpg&amp;apos;)  In [">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://upload.wikimedia.org/wikipedia/commons/3/3d/DPI_and_PPI.png">
-<meta property="og:updated_time" content="2017-09-22T09:50:30.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="OpenCV Basis">
-<meta name="twitter:description" content="1.Load an imageIn [1]: import cv  In [2]: im1 = cv.LoadImageM(&amp;apos;foo.jpg&amp;apos;)  In [3]: print type(im1) &amp;lt;type &amp;apos;cv2.cv.cvmat&amp;apos;&amp;gt;  In [4]: im2 = cv.LoadImage(&amp;apos;foo.jpg&amp;apos;)  In [">
-<meta name="twitter:image" content="http://upload.wikimedia.org/wikipedia/commons/3/3d/DPI_and_PPI.png">
+<meta name="twitter:title" content="记录点滴">
   
     <link rel="alternate" href="/atom.xml" title="记录点滴" type="application/atom+xml">
   
@@ -68,7 +62,9 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-opencv-basis" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main">
+  
+    <article id="post-opencv-basis" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2012/10/13/opencv-basis/" class="article-date">
   <time datetime="2012-10-13T10:30:00.000Z" itemprop="datePublished">2012-10-13</time>
@@ -85,8 +81,8 @@
       <header class="article-header">
         
   
-    <h1 class="article-title" itemprop="name">
-      OpenCV Basis
+    <h1 itemprop="name">
+      <a class="article-title" href="/2012/10/13/opencv-basis/">OpenCV Basis</a>
     </h1>
   
 
@@ -110,39 +106,11 @@ In [6]: cv.SaveImage(&apos;foo1.png&apos;, im1)
 
 In [7]: cv.SaveImage(&apos;foo2.png&apos;, im2)
 </code></pre><p>可以看到<code>LoadImageM</code>得到的是一个<code>cvmat</code>图像，而<code>LoadImage</code>得到的是一个<code>iplimage</code>图像，两者均可以输出为图像</p>
-<a id="more"></a>
-<h2 id="2-About-DPI-PPI-and-Resolution-分辨率"><a href="#2-About-DPI-PPI-and-Resolution-分辨率" class="headerlink" title="2.About DPI PPI and Resolution(分辨率)"></a>2.About DPI PPI and Resolution(分辨率)</h2><ul>
-<li>DPI 是指每一英吋长度中，取样或可显示或输出点的数目，英文为 Dots Per Inch（点每英寸）。主要说的是打印机。</li>
-<li>PPI 是指每英寸的长度中所具有的像素，英文为 Pixels Per Inch（像素每英寸）。主要说的是显示器。</li>
-</ul>
-<img src="http://upload.wikimedia.org/wikipedia/commons/3/3d/DPI_and_PPI.png" class="left">
-<ul>
-<li>分辨率(resolution)则泛指量测或显示系统对细节的分辨能力。</li>
-<li>由分辨率中X或Y轴的数字除以该轴的长度(英寸)，可得该轴的像素每英寸密度。一般的像素是方形或接近方形，X与Y轴像素密度相同，但也有不相同的显示器。</li>
-<li>同样分辨率的一张图像，在越小的屏幕上显示或者在越小的尺寸上打印出来，PPI或者DPI就越高。看起来就越清晰，越细腻。</li>
-<li>也就是说，如果想要把一张大小为 800X600 且 PPI/DPI 为 200 图像，降低到 100 PPI/DPI ，在显示或打印<strong>尺寸不变</strong>的情况下，只需把大小变为原来的一半 400X300（假设X与Y轴像素密度相同）。</li>
-<li>同时也可以说，单纯的高分辨率与 DPI/PPI 是扯不上关系的，只有高分辨率的图像体现在具体尺寸上，才能说它的 DPI/PPI。一张 2880x1800 图像在 15.4 英寸的显示器上会有很高的 PPI， 但在 42 英寸的显示器上 PPI 则很低。</li>
-</ul>
-<p>以下<code>halvedimage.py</code>是将图像大小变为一半</p>
-<pre><code>#!/usr/bin/env python2
-# -*- coding: utf-8 -*-
-
-import cv
-import sys
-
-def main(img):
-    im = cv.LoadImageM(img)
-    halved = cv.CreateMat(im.rows / 2, im.cols / 2, cv.CV_8UC3)
-    cv.Resize(im, halved)
-    cv.SaveImage(&apos;halved_&apos;+img, halved)
-
-if __name__==&apos;__main__&apos;:
-    try:
-        main(sys.argv[1])
-    except IndexError:
-        print &apos;&apos;&apos;Usage:
-        halvedimage.py image.file&apos;&apos;&apos;
-</code></pre>
+        
+          <p class="article-more-link">
+            <a href="/2012/10/13/opencv-basis/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
@@ -152,28 +120,125 @@ if __name__==&apos;__main__&apos;:
     </footer>
   </div>
   
-    
-<nav id="article-nav">
-  
-    <a href="/2012/10/20/python-virtualenv-wrapper-and-pip/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          Python Virtualenv Wrapper and Pip
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2012/10/11/install-openexr-for-python/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Install OpenEXR for Python</div>
-    </a>
-  
-</nav>
+</article>
+
 
   
+    <article id="post-install-openexr-for-python" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2012/10/11/install-openexr-for-python/" class="article-date">
+  <time datetime="2012-10-11T04:50:00.000Z" itemprop="datePublished">2012-10-11</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/opencv/">opencv</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2012/10/11/install-openexr-for-python/">Install OpenEXR for Python</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Using OpenEXR’s Python bindings we can make a simple image viewer.<br>So, we should install OpenEXR first, following <a href="http://www.excamera.com/sphinx/articles-openexr.html" target="_blank" rel="external">OpenEXR bindings for Python</a><br>Make sure you have already installed OpenEXR’s Prerequisite: Python 2.5+ and the OpenEXR C++ library(openexr).</p>
+<pre><code>wget http://excamera.com/files/OpenEXR-1.2.0.tar.gz
+
+tar zxvf OpenEXR-1.2.0.tar.gz
+
+cd OpenEXR-1.2.0
+
+(sudo python2 setup.py build)
+
+sudo python2 setup.py install
+</code></pre><p>Then, we can follow <a href="http://opencv.willowgarage.com/documentation/python/cookbook.html#opencv-and-openexr" target="_blank" rel="external">OpenCV and OpenEXR</a></p>
+<p>References: <a href="http://blog.csdn.net/ponder008/article/details/6592719" target="_blank" rel="external">Python how to install setup.py</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2012/10/11/install-openexr-for-python/" data-id="cj7voo37d00098oswyv3pl7qr" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
 </article>
+
+
+  
+    <article id="post-wonderful-octopress" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2012/10/09/wonderful-octopress/" class="article-date">
+  <time datetime="2012-10-09T06:37:00.000Z" itemprop="datePublished">2012-10-09</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/note/">note</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2012/10/09/wonderful-octopress/">Wonderful Octopress</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Today, I install Octopress, it is wonderful.<br>I follow the official docs<br><a href="http://octopress.org/docs/setup/" target="_blank" rel="external">setup</a><br><a href="http://octopress.org/docs/deploying/github/" target="_blank" rel="external">deploy</a><br><a href="http://octopress.org/docs/configuring/" target="_blank" rel="external">config</a><br><a href="http://octopress.org/docs/blogging/" target="_blank" rel="external">blogging</a><br>and the other two blogs:<br><a href="http://jokry.com/2012/03/08/octopress/" target="_blank" rel="external">Octopress介绍与安装</a><br><a href="http://blog.javachen.com/2012/06/migrate-blog-form-wordpress-to-github-with-octopress/" target="_blank" rel="external">使用Octopress将博客从wordpress迁移到GitHub上</a></p>
+<p>The following command is in common use(in the project root directory):</p>
+<pre><code>rake new_post[&quot;title&quot;]
+rake new_page[super-awesome]
+rake new_page[super-awesome/page.html]
+
+rake preview
+rake generate
+rake deploy
+
+git add .
+git commit -m &apos;your message&apos;
+git push origin source
+</code></pre>
+        
+          <p class="article-more-link">
+            <a href="/2012/10/09/wonderful-octopress/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2012/10/09/wonderful-octopress/" data-id="cj7voo37o000l8oswcf5say8u" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    <a class="extend prev" rel="prev" href="/page/2/">&laquo; 上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+  </nav>
 
 </section>
         

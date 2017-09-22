@@ -12,7 +12,7 @@
 <meta property="og:site_name" content="记录点滴">
 <meta property="og:description" content="1.Problem之前做运维的笔试题，有一道很经典的统计日志文件中出现最多的 IP 地址及次数的题。其日志格式为 122.224.6.43 - - [30/Oct/2012:21:29:42 +0800] &amp;quot;GET /phpMyAdmin/scripts/setup.php HTTP/1.1&amp;quot; 404 162 &amp;quot;-&amp;quot; &amp;quot;ZmEu&amp;quot; 122">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2014-05-21T13:24:37.000Z">
+<meta property="og:updated_time" content="2017-09-22T09:52:39.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Count IP Address Appears Most in Log File">
 <meta name="twitter:description" content="1.Problem之前做运维的笔试题，有一道很经典的统计日志文件中出现最多的 IP 地址及次数的题。其日志格式为 122.224.6.43 - - [30/Oct/2012:21:29:42 +0800] &amp;quot;GET /phpMyAdmin/scripts/setup.php HTTP/1.1&amp;quot; 404 162 &amp;quot;-&amp;quot; &amp;quot;ZmEu&amp;quot; 122">
@@ -100,6 +100,7 @@
 58.251.60.248 - - [30/Oct/2012:23:05:46 +0800] &quot;GET http://www.baidu.com/ HTTP/1.1&quot; 200 612 &quot;-&quot; &quot;Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; QQDownload 551; .NET CLR 2.0.50727; CIBA)&quot;
 58.251.60.248 - - [30/Oct/2012:23:06:37 +0800] &quot;&quot; 400 0 &quot;-&quot; &quot;-&quot;
 </code></pre><p>这是 <code>nginx</code> 日志 <code>/var/log/nginx/access.log</code> 中的一个片段。</p>
+<a id="more"></a>
 <h2 id="2-用-Shell-解决"><a href="#2-用-Shell-解决" class="headerlink" title="2.用 Shell 解决"></a>2.用 Shell 解决</h2><p>#####思路一： awk 取出第一列，然后利用 sort -u 将 IP unique 化输出到文件，再从文件按行读入再计数显示出来</p>
 <p>具体如下：</p>
 <pre><code>cd /var/log/nginx
@@ -156,7 +157,7 @@ print [(k, v) for k, v in dic.iteritems() if v == max(dic.values())]
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2012/11/09/count-ip-address-appears-most-in-log-file/" data-id="cj7vn5o2h0006dkswdjysayr9" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2012/11/09/count-ip-address-appears-most-in-log-file/" data-id="cj7voo37300058osw421rzi1d" class="article-share-link">Share</a>
       
       
     </footer>
@@ -221,11 +222,11 @@ print [(k, v) for k, v in dic.iteritems() if v == max(dic.values())]
       <ul>
         
           <li>
-            <a href="/2017/09/22/boost-lexical-cast-cpp/">boost::lexical_cast</a>
+            <a href="/2017/09/22/acquire-array-length-in-cpp/">acquire array length in cpp</a>
           </li>
         
           <li>
-            <a href="/2017/09/22/acquire-array-length-in-cpp/">acquire array length in c++</a>
+            <a href="/2017/09/22/boost-lexical-cast-cpp/">boost::lexical_cast</a>
           </li>
         
           <li>
@@ -233,11 +234,11 @@ print [(k, v) for k, v in dic.iteritems() if v == max(dic.values())]
           </li>
         
           <li>
-            <a href="/2017/09/22/linux-dos-to-unix/">linux dos to unix</a>
+            <a href="/2017/09/22/python-two-or-three-continuous-items-in-list/">python two or three continuous items in list</a>
           </li>
         
           <li>
-            <a href="/2017/09/22/python-two-or-three-continuous-items-in-list/">python two or three continuous items in list</a>
+            <a href="/2017/09/22/linux-dos-to-unix/">linux dos to unix</a>
           </li>
         
       </ul>

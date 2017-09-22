@@ -5,17 +5,17 @@
   
   <title>boost::lexical_cast | 记录点滴</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="##boost::lexical_cast  c++ 使用 boost::lexical_cast 数据类型转换 参考链接 123456789101112131415161718192021222324252627282930313233#include &amp;lt;boost/lexical_cast.hpp&amp;gt;#include &amp;lt;iostream&amp;gt;#include &amp;lt;stri">
+  <meta name="description" content="boost::lexical_castc++ 使用 boost::lexical_cast 数据类型转换 参考链接 123456789101112131415161718192021222324252627282930313233#include &amp;lt;boost/lexical_cast.hpp&amp;gt;#include &amp;lt;iostream&amp;gt;#include &amp;lt;string&amp;g">
 <meta property="og:type" content="article">
 <meta property="og:title" content="boost::lexical_cast">
 <meta property="og:url" content="https://clampist.github.io/2017/09/22/boost-lexical-cast-cpp/index.html">
 <meta property="og:site_name" content="记录点滴">
-<meta property="og:description" content="##boost::lexical_cast  c++ 使用 boost::lexical_cast 数据类型转换 参考链接 123456789101112131415161718192021222324252627282930313233#include &amp;lt;boost/lexical_cast.hpp&amp;gt;#include &amp;lt;iostream&amp;gt;#include &amp;lt;stri">
+<meta property="og:description" content="boost::lexical_castc++ 使用 boost::lexical_cast 数据类型转换 参考链接 123456789101112131415161718192021222324252627282930313233#include &amp;lt;boost/lexical_cast.hpp&amp;gt;#include &amp;lt;iostream&amp;gt;#include &amp;lt;string&amp;g">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-09-22T08:11:14.000Z">
+<meta property="og:updated_time" content="2017-09-22T09:56:24.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="boost::lexical_cast">
-<meta name="twitter:description" content="##boost::lexical_cast  c++ 使用 boost::lexical_cast 数据类型转换 参考链接 123456789101112131415161718192021222324252627282930313233#include &amp;lt;boost/lexical_cast.hpp&amp;gt;#include &amp;lt;iostream&amp;gt;#include &amp;lt;stri">
+<meta name="twitter:description" content="boost::lexical_castc++ 使用 boost::lexical_cast 数据类型转换 参考链接 123456789101112131415161718192021222324252627282930313233#include &amp;lt;boost/lexical_cast.hpp&amp;gt;#include &amp;lt;iostream&amp;gt;#include &amp;lt;string&amp;g">
   
     <link rel="alternate" href="/atom.xml" title="记录点滴" type="application/atom+xml">
   
@@ -92,15 +92,14 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>##boost::lexical_cast </p>
-<p><code>c++</code> 使用 <code>boost::lexical_cast</code> 数据类型转换</p>
+        <h2 id="boost-lexical-cast"><a href="#boost-lexical-cast" class="headerlink" title="boost::lexical_cast"></a>boost::lexical_cast</h2><p><code>c++</code> 使用 <code>boost::lexical_cast</code> 数据类型转换</p>
 <p><a href="http://www.cnblogs.com/mx113/articles/1603985.html" target="_blank" rel="external">参考链接</a></p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;boost/lexical_cast.hpp&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt; </span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> ERROR_LEXICAL_CAST     1 </span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    <span class="keyword">using</span> boost::lexical_cast;</div><div class="line">    <span class="keyword">int</span>         a = <span class="number">0</span>;</div><div class="line">    <span class="keyword">double</span>        b = <span class="number">0.0</span>;</div><div class="line">    <span class="built_in">std</span>::<span class="built_in">string</span> s = <span class="string">""</span>; </div><div class="line">    <span class="keyword">int</span>            e = <span class="number">0</span>;    </div><div class="line">    <span class="keyword">try</span></div><div class="line">    &#123; </div><div class="line">        <span class="comment">// ----- 字符串 --&gt; 数值 </span></div><div class="line">        a = lexical_cast&lt;<span class="keyword">int</span>&gt;(<span class="string">"123"</span>);</div><div class="line">        b = lexical_cast&lt;<span class="keyword">double</span>&gt;(<span class="string">"123.12"</span>);</div><div class="line">        <span class="comment">// ----- 数值 --&gt; 字符串</span></div><div class="line">        s = lexical_cast&lt;<span class="built_in">std</span>::<span class="built_in">string</span>&gt;(<span class="string">"123456.7"</span>); </div><div class="line">        <span class="comment">// ----- 异常处理演示</span></div><div class="line">        e = lexical_cast&lt;<span class="keyword">int</span>&gt;(<span class="string">"abc"</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">catch</span>(boost::bad_lexical_cast&amp; e)</div><div class="line">    &#123;</div><div class="line">        <span class="comment">// bad lexical cast: source type value could not be interpreted as target</span></div><div class="line">        <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; e.what() &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</div><div class="line">        <span class="keyword">return</span> ERROR_LEXICAL_CAST;</div><div class="line">    &#125; </div><div class="line">    </div><div class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; a &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;    <span class="comment">// 输出：123 </span></div><div class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; b &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;    <span class="comment">// 输出：123.12 </span></div><div class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; s &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;     <span class="comment">// 输出：123456.7 </span></div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/09/22/boost-lexical-cast-cpp/" data-id="cj7vn5o270002dksw48nh2ufv" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/09/22/boost-lexical-cast-cpp/" data-id="cj7voo36p00008oswqwwgv3k7" class="article-share-link">Share</a>
       
       
     </footer>
@@ -109,10 +108,19 @@
     
 <nav id="article-nav">
   
+    <a href="/2017/09/22/acquire-array-length-in-cpp/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          acquire array length in cpp
+        
+      </div>
+    </a>
   
-    <a href="/2017/09/22/acquire-array-length-in-cpp/" id="article-nav-older" class="article-nav-link-wrap">
+  
+    <a href="/2017/09/22/shell-last-param/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">acquire array length in c++</div>
+      <div class="article-nav-title">shell last param</div>
     </a>
   
 </nav>
@@ -156,11 +164,11 @@
       <ul>
         
           <li>
-            <a href="/2017/09/22/boost-lexical-cast-cpp/">boost::lexical_cast</a>
+            <a href="/2017/09/22/acquire-array-length-in-cpp/">acquire array length in cpp</a>
           </li>
         
           <li>
-            <a href="/2017/09/22/acquire-array-length-in-cpp/">acquire array length in c++</a>
+            <a href="/2017/09/22/boost-lexical-cast-cpp/">boost::lexical_cast</a>
           </li>
         
           <li>
@@ -168,11 +176,11 @@
           </li>
         
           <li>
-            <a href="/2017/09/22/linux-dos-to-unix/">linux dos to unix</a>
+            <a href="/2017/09/22/python-two-or-three-continuous-items-in-list/">python two or three continuous items in list</a>
           </li>
         
           <li>
-            <a href="/2017/09/22/python-two-or-three-continuous-items-in-list/">python two or three continuous items in list</a>
+            <a href="/2017/09/22/linux-dos-to-unix/">linux dos to unix</a>
           </li>
         
       </ul>

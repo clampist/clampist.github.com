@@ -3,19 +3,19 @@
 <head>
   <meta charset="utf-8">
   
-  <title>acquire array length in c++ | 记录点滴</title>
+  <title>acquire array length in cpp | 记录点滴</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="##C++获取数组长度 一、静态数组。 比如 int int_ary[5] ,静态数组在编译的时候就知道了数组长度，这对编译器来说挺好实现的。 用得最多的大概就是sizeof了吧： #define countof_macro(x) (sizeof((x)) / sizeof(x)[0]) 对于C++，可以用模板。 如果将数组作为函数形参的话，它会退化成一个指针，但是引用则不会。使用引用带来的另外一">
+  <meta name="description" content="C++获取数组长度一、静态数组。 比如 int int_ary[5] ,静态数组在编译的时候就知道了数组长度，这对编译器来说挺好实现的。 用得最多的大概就是sizeof了吧： #define countof_macro(x) (sizeof((x)) / sizeof(x)[0]) 对于C++，可以用模板。 如果将数组作为函数形参的话，它会退化成一个指针，但是引用则不会。使用引用带来的另外一个问题">
 <meta property="og:type" content="article">
-<meta property="og:title" content="acquire array length in c++">
+<meta property="og:title" content="acquire array length in cpp">
 <meta property="og:url" content="https://clampist.github.io/2017/09/22/acquire-array-length-in-cpp/index.html">
 <meta property="og:site_name" content="记录点滴">
-<meta property="og:description" content="##C++获取数组长度 一、静态数组。 比如 int int_ary[5] ,静态数组在编译的时候就知道了数组长度，这对编译器来说挺好实现的。 用得最多的大概就是sizeof了吧： #define countof_macro(x) (sizeof((x)) / sizeof(x)[0]) 对于C++，可以用模板。 如果将数组作为函数形参的话，它会退化成一个指针，但是引用则不会。使用引用带来的另外一">
+<meta property="og:description" content="C++获取数组长度一、静态数组。 比如 int int_ary[5] ,静态数组在编译的时候就知道了数组长度，这对编译器来说挺好实现的。 用得最多的大概就是sizeof了吧： #define countof_macro(x) (sizeof((x)) / sizeof(x)[0]) 对于C++，可以用模板。 如果将数组作为函数形参的话，它会退化成一个指针，但是引用则不会。使用引用带来的另外一个问题">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-09-22T08:11:19.000Z">
+<meta property="og:updated_time" content="2017-09-22T09:56:04.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="acquire array length in c++">
-<meta name="twitter:description" content="##C++获取数组长度 一、静态数组。 比如 int int_ary[5] ,静态数组在编译的时候就知道了数组长度，这对编译器来说挺好实现的。 用得最多的大概就是sizeof了吧： #define countof_macro(x) (sizeof((x)) / sizeof(x)[0]) 对于C++，可以用模板。 如果将数组作为函数形参的话，它会退化成一个指针，但是引用则不会。使用引用带来的另外一">
+<meta name="twitter:title" content="acquire array length in cpp">
+<meta name="twitter:description" content="C++获取数组长度一、静态数组。 比如 int int_ary[5] ,静态数组在编译的时候就知道了数组长度，这对编译器来说挺好实现的。 用得最多的大概就是sizeof了吧： #define countof_macro(x) (sizeof((x)) / sizeof(x)[0]) 对于C++，可以用模板。 如果将数组作为函数形参的话，它会退化成一个指针，但是引用则不会。使用引用带来的另外一个问题">
   
     <link rel="alternate" href="/atom.xml" title="记录点滴" type="application/atom+xml">
   
@@ -84,7 +84,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      acquire array length in c++
+      acquire array length in cpp
     </h1>
   
 
@@ -92,8 +92,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>##C++获取数组长度</p>
-<p>一、静态数组。</p>
+        <h2 id="C-获取数组长度"><a href="#C-获取数组长度" class="headerlink" title="C++获取数组长度"></a>C++获取数组长度</h2><p>一、静态数组。</p>
 <p>比如 int int_ary[5] ,静态数组在编译的时候就知道了数组长度，这对编译器来说挺好实现的。</p>
 <p>用得最多的大概就是sizeof了吧：</p>
 <p><code>#define countof_macro(x) (sizeof((x)) / sizeof(x)[0])</code></p>
@@ -105,7 +104,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/09/22/acquire-array-length-in-cpp/" data-id="cj7vn5o210000dkswyf2k7g0m" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/09/22/acquire-array-length-in-cpp/" data-id="cj7voo36v00028oswhzdxzblj" class="article-share-link">Share</a>
       
       
     </footer>
@@ -114,19 +113,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2017/09/22/boost-lexical-cast-cpp/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          boost::lexical_cast
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/09/22/shell-last-param/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2017/09/22/boost-lexical-cast-cpp/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">shell last param</div>
+      <div class="article-nav-title">boost::lexical_cast</div>
     </a>
   
 </nav>
@@ -170,11 +160,11 @@
       <ul>
         
           <li>
-            <a href="/2017/09/22/boost-lexical-cast-cpp/">boost::lexical_cast</a>
+            <a href="/2017/09/22/acquire-array-length-in-cpp/">acquire array length in cpp</a>
           </li>
         
           <li>
-            <a href="/2017/09/22/acquire-array-length-in-cpp/">acquire array length in c++</a>
+            <a href="/2017/09/22/boost-lexical-cast-cpp/">boost::lexical_cast</a>
           </li>
         
           <li>
@@ -182,11 +172,11 @@
           </li>
         
           <li>
-            <a href="/2017/09/22/linux-dos-to-unix/">linux dos to unix</a>
+            <a href="/2017/09/22/python-two-or-three-continuous-items-in-list/">python two or three continuous items in list</a>
           </li>
         
           <li>
-            <a href="/2017/09/22/python-two-or-three-continuous-items-in-list/">python two or three continuous items in list</a>
+            <a href="/2017/09/22/linux-dos-to-unix/">linux dos to unix</a>
           </li>
         
       </ul>
