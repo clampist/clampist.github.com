@@ -64,14 +64,14 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-opencv-basis" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-shell-sed-certain-lines" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2012/10/13/opencv-basis/" class="article-date">
-  <time datetime="2012-10-13T10:30:00.000Z" itemprop="datePublished">2012-10-13</time>
+    <a href="/2017/10/24/shell-sed-certain-lines/" class="article-date">
+  <time datetime="2017-10-24T10:37:00.000Z" itemprop="datePublished">2017-10-24</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/opencv/">opencv</a>
+    <a class="article-category-link" href="/categories/linux/">linux</a>
   </div>
 
   </div>
@@ -82,7 +82,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2012/10/13/opencv-basis/">OpenCV Basis</a>
+      <a class="article-title" href="/2017/10/24/shell-sed-certain-lines/">use sed print certain lines</a>
     </h1>
   
 
@@ -90,31 +90,13 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="1-Load-an-image"><a href="#1-Load-an-image" class="headerlink" title="1.Load an image"></a>1.Load an image</h2><pre><code>In [1]: import cv
+        <h2 id="用sed命令"><a href="#用sed命令" class="headerlink" title="用sed命令"></a>用sed命令</h2><p>sed -n ‘5,10p’ filename 这样你就可以只查看文件的第5行到第10行。</p>
+<p><a href="http://www.cnblogs.com/xianghang123/archive/2011/08/03/2125977.html" target="_blank" rel="external">linux 如何显示一个文件的某几行(中间几行)</a> </p>
 
-In [2]: im1 = cv.LoadImageM(&apos;foo.jpg&apos;)
-
-In [3]: print type(im1)
-&lt;type &apos;cv2.cv.cvmat&apos;&gt;
-
-In [4]: im2 = cv.LoadImage(&apos;foo.jpg&apos;)
-
-In [5]: print type(im2)
-&lt;type &apos;cv2.cv.iplimage&apos;&gt;
-
-In [6]: cv.SaveImage(&apos;foo1.png&apos;, im1)
-
-In [7]: cv.SaveImage(&apos;foo2.png&apos;, im2)
-</code></pre><p>可以看到<code>LoadImageM</code>得到的是一个<code>cvmat</code>图像，而<code>LoadImage</code>得到的是一个<code>iplimage</code>图像，两者均可以输出为图像</p>
-        
-          <p class="article-more-link">
-            <a href="/2012/10/13/opencv-basis/#more">Read More</a>
-          </p>
-        
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2012/10/13/opencv-basis/" data-id="cj7voo37k000h8oswgizmgfce" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/10/24/shell-sed-certain-lines/" data-id="cj96btlu10017odswerqzy4k7" class="article-share-link">Share</a>
       
       
     </footer>
@@ -124,14 +106,14 @@ In [7]: cv.SaveImage(&apos;foo2.png&apos;, im2)
 
 
   
-    <article id="post-install-openexr-for-python" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-linux-dos-to-unix" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2012/10/11/install-openexr-for-python/" class="article-date">
-  <time datetime="2012-10-11T04:50:00.000Z" itemprop="datePublished">2012-10-11</time>
+    <a href="/2017/09/22/linux-dos-to-unix/" class="article-date">
+  <time datetime="2017-09-22T06:37:00.000Z" itemprop="datePublished">2017-09-22</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/opencv/">opencv</a>
+    <a class="article-category-link" href="/categories/linux/">linux</a>
   </div>
 
   </div>
@@ -142,7 +124,7 @@ In [7]: cv.SaveImage(&apos;foo2.png&apos;, im2)
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2012/10/11/install-openexr-for-python/">Install OpenEXR for Python</a>
+      <a class="article-title" href="/2017/09/22/linux-dos-to-unix/">linux dos to unix</a>
     </h1>
   
 
@@ -150,23 +132,14 @@ In [7]: cv.SaveImage(&apos;foo2.png&apos;, im2)
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Using OpenEXR’s Python bindings we can make a simple image viewer.<br>So, we should install OpenEXR first, following <a href="http://www.excamera.com/sphinx/articles-openexr.html" target="_blank" rel="external">OpenEXR bindings for Python</a><br>Make sure you have already installed OpenEXR’s Prerequisite: Python 2.5+ and the OpenEXR C++ library(openexr).</p>
-<pre><code>wget http://excamera.com/files/OpenEXR-1.2.0.tar.gz
-
-tar zxvf OpenEXR-1.2.0.tar.gz
-
-cd OpenEXR-1.2.0
-
-(sudo python2 setup.py build)
-
-sudo python2 setup.py install
-</code></pre><p>Then, we can follow <a href="http://opencv.willowgarage.com/documentation/python/cookbook.html#opencv-and-openexr" target="_blank" rel="external">OpenCV and OpenEXR</a></p>
-<p>References: <a href="http://blog.csdn.net/ponder008/article/details/6592719" target="_blank" rel="external">Python how to install setup.py</a></p>
+        <h1 id="linux下文本处理"><a href="#linux下文本处理" class="headerlink" title="linux下文本处理"></a>linux下文本处理</h1><h2 id="dos2unix-直接修改原文件"><a href="#dos2unix-直接修改原文件" class="headerlink" title="dos2unix:直接修改原文件"></a>dos2unix:直接修改原文件</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">dos2unix file</div></pre></td></tr></table></figure>
+<p><a href="https://www.cyberciti.biz/faq/howto-unix-linux-convert-dos-newlines-cr-lf-unix-text-format/" target="_blank" rel="external">wiki</a></p>
+<h2 id="replace-t-with-4-blanks"><a href="#replace-t-with-4-blanks" class="headerlink" title="replace \t with 4 blanks"></a>replace \t with 4 blanks</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">expand -t 4 input &gt; output</div></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2012/10/11/install-openexr-for-python/" data-id="cj7voo37d00098oswyv3pl7qr" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/09/22/linux-dos-to-unix/" data-id="cj96btltc000modsw61rnmdaz" class="article-share-link">Share</a>
       
       
     </footer>
@@ -176,14 +149,14 @@ sudo python2 setup.py install
 
 
   
-    <article id="post-wonderful-octopress" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-boost-lexical-cast-cpp" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2012/10/09/wonderful-octopress/" class="article-date">
-  <time datetime="2012-10-09T06:37:00.000Z" itemprop="datePublished">2012-10-09</time>
+    <a href="/2017/09/22/boost-lexical-cast-cpp/" class="article-date">
+  <time datetime="2017-09-22T06:37:00.000Z" itemprop="datePublished">2017-09-22</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/note/">note</a>
+    <a class="article-category-link" href="/categories/cpp/">cpp</a>
   </div>
 
   </div>
@@ -194,7 +167,7 @@ sudo python2 setup.py install
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2012/10/09/wonderful-octopress/">Wonderful Octopress</a>
+      <a class="article-title" href="/2017/09/22/boost-lexical-cast-cpp/">boost::lexical_cast</a>
     </h1>
   
 
@@ -202,29 +175,98 @@ sudo python2 setup.py install
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Today, I install Octopress, it is wonderful.<br>I follow the official docs<br><a href="http://octopress.org/docs/setup/" target="_blank" rel="external">setup</a><br><a href="http://octopress.org/docs/deploying/github/" target="_blank" rel="external">deploy</a><br><a href="http://octopress.org/docs/configuring/" target="_blank" rel="external">config</a><br><a href="http://octopress.org/docs/blogging/" target="_blank" rel="external">blogging</a><br>and the other two blogs:<br><a href="http://jokry.com/2012/03/08/octopress/" target="_blank" rel="external">Octopress介绍与安装</a><br><a href="http://blog.javachen.com/2012/06/migrate-blog-form-wordpress-to-github-with-octopress/" target="_blank" rel="external">使用Octopress将博客从wordpress迁移到GitHub上</a></p>
-<p>The following command is in common use(in the project root directory):</p>
-<pre><code>rake new_post[&quot;title&quot;]
-rake new_page[super-awesome]
-rake new_page[super-awesome/page.html]
+        <h2 id="boost-lexical-cast"><a href="#boost-lexical-cast" class="headerlink" title="boost::lexical_cast"></a>boost::lexical_cast</h2><p><code>c++</code> 使用 <code>boost::lexical_cast</code> 数据类型转换</p>
+<p><a href="http://www.cnblogs.com/mx113/articles/1603985.html" target="_blank" rel="external">参考链接</a></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;boost/lexical_cast.hpp&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt; </span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> ERROR_LEXICAL_CAST     1 </span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    <span class="keyword">using</span> boost::lexical_cast;</div><div class="line">    <span class="keyword">int</span>         a = <span class="number">0</span>;</div><div class="line">    <span class="keyword">double</span>        b = <span class="number">0.0</span>;</div><div class="line">    <span class="built_in">std</span>::<span class="built_in">string</span> s = <span class="string">""</span>; </div><div class="line">    <span class="keyword">int</span>            e = <span class="number">0</span>;    </div><div class="line">    <span class="keyword">try</span></div><div class="line">    &#123; </div><div class="line">        <span class="comment">// ----- 字符串 --&gt; 数值 </span></div><div class="line">        a = lexical_cast&lt;<span class="keyword">int</span>&gt;(<span class="string">"123"</span>);</div><div class="line">        b = lexical_cast&lt;<span class="keyword">double</span>&gt;(<span class="string">"123.12"</span>);</div><div class="line">        <span class="comment">// ----- 数值 --&gt; 字符串</span></div><div class="line">        s = lexical_cast&lt;<span class="built_in">std</span>::<span class="built_in">string</span>&gt;(<span class="string">"123456.7"</span>); </div><div class="line">        <span class="comment">// ----- 异常处理演示</span></div><div class="line">        e = lexical_cast&lt;<span class="keyword">int</span>&gt;(<span class="string">"abc"</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">catch</span>(boost::bad_lexical_cast&amp; e)</div><div class="line">    &#123;</div><div class="line">        <span class="comment">// bad lexical cast: source type value could not be interpreted as target</span></div><div class="line">        <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; e.what() &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</div><div class="line">        <span class="keyword">return</span> ERROR_LEXICAL_CAST;</div><div class="line">    &#125; </div><div class="line">    </div><div class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; a &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;    <span class="comment">// 输出：123 </span></div><div class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; b &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;    <span class="comment">// 输出：123.12 </span></div><div class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; s &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;     <span class="comment">// 输出：123456.7 </span></div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
-rake preview
-rake generate
-rake deploy
-
-git add .
-git commit -m &apos;your message&apos;
-git push origin source
-</code></pre>
-        
-          <p class="article-more-link">
-            <a href="/2012/10/09/wonderful-octopress/#more">Read More</a>
-          </p>
-        
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2012/10/09/wonderful-octopress/" data-id="cj7voo37o000l8oswcf5say8u" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/09/22/boost-lexical-cast-cpp/" data-id="cj96btlse0002odsw8d2nse9f" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-shell-last-param" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/09/22/shell-last-param/" class="article-date">
+  <time datetime="2017-09-22T06:37:00.000Z" itemprop="datePublished">2017-09-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/linux/">linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/09/22/shell-last-param/">shell last param</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Shell-最后一个参数"><a href="#Shell-最后一个参数" class="headerlink" title="Shell 最后一个参数"></a>Shell 最后一个参数</h1><p><a href="http://www.letuknowit.com/post/81.html" target="_blank" rel="external">参考链接</a></p>
+<p><code>$_</code> 会直接执行</p>
+<p><code>!$</code> 会展示命令，等用户按Enter</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2017/09/22/shell-last-param/" data-id="cj96btlty0014odsw6ekor0my" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-shell-uniq-count" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/09/22/shell-uniq-count/" class="article-date">
+  <time datetime="2017-09-22T06:37:00.000Z" itemprop="datePublished">2017-09-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/linux/">linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/09/22/shell-uniq-count/">shell uniq count</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Shell中uniq去重并统计"><a href="#Shell中uniq去重并统计" class="headerlink" title="Shell中uniq去重并统计"></a>Shell中uniq去重并统计</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cat text | uniq -c</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2017/09/22/shell-uniq-count/" data-id="cj96btlu20019odswcdu5x30y" class="article-share-link">Share</a>
       
       
     </footer>
@@ -237,7 +279,7 @@ git push origin source
 
 
   <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/page/2/">&laquo; 上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+    <a class="extend prev" rel="prev" href="/page/2/">&laquo; 上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/">下一页&raquo;</a>
   </nav>
 
 </section>
@@ -248,7 +290,7 @@ git push origin source
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/cpp/">cpp</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/">note</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/opencv/">opencv</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/cpp/">cpp</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/">note</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/opencv/">opencv</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python-django/">python,django</a></li></ul>
     </div>
   </div>
 
@@ -263,7 +305,7 @@ git push origin source
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">十一月 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/10/">十月 2012</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">十一月 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/10/">十月 2012</a></li></ul>
     </div>
   </div>
 
@@ -276,23 +318,23 @@ git push origin source
       <ul>
         
           <li>
-            <a href="/2017/09/22/acquire-array-length-in-cpp/">acquire array length in cpp</a>
+            <a href="/2017/10/25/django-transform-queryset-to-dict/">django transform queryset to dict</a>
           </li>
         
           <li>
-            <a href="/2017/09/22/boost-lexical-cast-cpp/">boost::lexical_cast</a>
+            <a href="/2017/10/25/django-redis-cache-delete-pattern/">django redis cache delete pattern</a>
           </li>
         
           <li>
-            <a href="/2017/09/22/shell-last-param/">shell last param</a>
+            <a href="/2017/10/25/django-pagination-demo/">django pagination demo</a>
           </li>
         
           <li>
-            <a href="/2017/09/22/python-two-or-three-continuous-items-in-list/">python two or three continuous items in list</a>
+            <a href="/2017/10/25/django-multi-database/">django multi database</a>
           </li>
         
           <li>
-            <a href="/2017/09/22/linux-dos-to-unix/">linux dos to unix</a>
+            <a href="/2017/10/25/django-models-objects-filter-by-dict-kwargs/">django models objects filter by dict kwargs</a>
           </li>
         
       </ul>
