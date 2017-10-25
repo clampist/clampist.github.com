@@ -1,2 +1,0 @@
-# clampist.github.io
-hexo
