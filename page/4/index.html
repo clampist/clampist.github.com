@@ -99,52 +99,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/10/25/django-pagination-demo/" data-id="cjeofxp2x000cdmqbvcqpkz36" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-django-multi-database" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/10/25/django-multi-database/" class="article-date">
-  <time datetime="2017-10-25T00:49:00.000Z" itemprop="datePublished">2017-10-25</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/django/">django</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/25/django-multi-database/">django multi database</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>1. 在<code>setting.py</code>中定义</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">DATABASES = &#123;</div><div class="line">    <span class="string">'default'</span>: &#123;</div><div class="line">        <span class="string">'NAME'</span>: <span class="string">'app_data'</span>,</div><div class="line">        <span class="string">'ENGINE'</span>: <span class="string">'django.db.backends.postgresql_psycopg2'</span>,</div><div class="line">        <span class="string">'USER'</span>: <span class="string">'postgres_user'</span>,</div><div class="line">        <span class="string">'PASSWORD'</span>: <span class="string">'s3krit'</span></div><div class="line">    &#125;,</div><div class="line">    <span class="string">'users'</span>: &#123;</div><div class="line">        <span class="string">'NAME'</span>: <span class="string">'user_data'</span>,</div><div class="line">        <span class="string">'ENGINE'</span>: <span class="string">'django.db.backends.mysql'</span>,</div><div class="line">        <span class="string">'USER'</span>: <span class="string">'mysql_user'</span>,</div><div class="line">        <span class="string">'PASSWORD'</span>: <span class="string">'priv4te'</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><strong>2. 使用<code>using</code>手动选择一个数据库</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>u = User.objects.using(<span class="string">'legacy_users'</span>).get(username=<span class="string">'fred'</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>u.delete() <span class="comment"># will delete from the `legacy_users` database</span></div></pre></td></tr></table></figure>
-<p><a href="http://python.usyiyi.cn/translate/django_182/topics/db/multi-db.html" target="_blank" rel="external">django_182</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/10/25/django-multi-database/" data-id="cjeofxp2w0009dmqb7h4qkjqg" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/10/25/django-pagination-demo/" data-id="cjeog2ekn000cfxqbpmr7jm2d" class="article-share-link">Share</a>
       
       
     </footer>
@@ -189,7 +144,52 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/10/25/django-delete-multi-object/" data-id="cjeofxp2r0004dmqbnff3zfy1" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/10/25/django-delete-multi-object/" data-id="cjeog2ekj0005fxqbhn9c6ks5" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-django-multi-database" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/10/25/django-multi-database/" class="article-date">
+  <time datetime="2017-10-25T00:49:00.000Z" itemprop="datePublished">2017-10-25</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/django/">django</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/25/django-multi-database/">django multi database</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>1. 在<code>setting.py</code>中定义</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">DATABASES = &#123;</div><div class="line">    <span class="string">'default'</span>: &#123;</div><div class="line">        <span class="string">'NAME'</span>: <span class="string">'app_data'</span>,</div><div class="line">        <span class="string">'ENGINE'</span>: <span class="string">'django.db.backends.postgresql_psycopg2'</span>,</div><div class="line">        <span class="string">'USER'</span>: <span class="string">'postgres_user'</span>,</div><div class="line">        <span class="string">'PASSWORD'</span>: <span class="string">'s3krit'</span></div><div class="line">    &#125;,</div><div class="line">    <span class="string">'users'</span>: &#123;</div><div class="line">        <span class="string">'NAME'</span>: <span class="string">'user_data'</span>,</div><div class="line">        <span class="string">'ENGINE'</span>: <span class="string">'django.db.backends.mysql'</span>,</div><div class="line">        <span class="string">'USER'</span>: <span class="string">'mysql_user'</span>,</div><div class="line">        <span class="string">'PASSWORD'</span>: <span class="string">'priv4te'</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>2. 使用<code>using</code>手动选择一个数据库</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>u = User.objects.using(<span class="string">'legacy_users'</span>).get(username=<span class="string">'fred'</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>u.delete() <span class="comment"># will delete from the `legacy_users` database</span></div></pre></td></tr></table></figure>
+<p><a href="http://python.usyiyi.cn/translate/django_182/topics/db/multi-db.html" target="_blank" rel="external">django_182</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2017/10/25/django-multi-database/" data-id="cjeog2ekm000bfxqbmex4115o" class="article-share-link">Share</a>
       
       
     </footer>
@@ -234,7 +234,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/10/25/django-models-objects-filter-by-dict-kwargs/" data-id="cjeofxp2z000ddmqb1deg5j1o" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/10/25/django-models-objects-filter-by-dict-kwargs/" data-id="cjeog2ekh0003fxqbwna7d4my" class="article-share-link">Share</a>
       
       
     </footer>
@@ -279,7 +279,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/10/25/django-models-not-equal-exclude-filter/" data-id="cjeofxp2t0006dmqbq051p1uo" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/10/25/django-models-not-equal-exclude-filter/" data-id="cjeog2ekl0008fxqb1p7qbfnu" class="article-share-link">Share</a>
       
       
     </footer>
