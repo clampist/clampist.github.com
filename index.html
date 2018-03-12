@@ -64,43 +64,62 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-django-transform-queryset-to-dict" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-adshow-refactoring" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/10/25/django-transform-queryset-to-dict/" class="article-date">
-  <time datetime="2017-10-25T00:51:00.000Z" itemprop="datePublished">2017-10-25</time>
+    <a href="/2017/12/03/adshow-refactoring/" class="article-date">
+  <time datetime="2017-12-03T03:01:20.236Z" itemprop="datePublished">2017-12-03</time>
 </a>
     
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/python-django/">python,django</a>
-  </div>
-
   </div>
   <div class="article-inner">
     
     
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/25/django-transform-queryset-to-dict/">django transform queryset to dict</a>
-    </h1>
-  
-
-      </header>
-    
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="model-to-dict方法"><a href="#model-to-dict方法" class="headerlink" title="model_to_dict方法"></a><code>model_to_dict</code>方法</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> django.forms.models <span class="keyword">import</span> model_to_dict</div><div class="line">model_to_dict(instance)</div></pre></td></tr></table></figure>
-<p><a href="https://codeday.me/bug/20170722/43534.html" target="_blank" rel="external">参考链接</a></p>
-<h2 id="toDict方法"><a href="#toDict方法" class="headerlink" title="toDict方法"></a><code>toDict</code>方法</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Category</span><span class="params">(models.Model)</span>:</span></div><div class="line">    autoid = models.AutoField(primary_key=<span class="keyword">True</span>)</div><div class="line">    email=models.CharField(max_length=<span class="number">150</span>,blank=<span class="keyword">False</span>)</div><div class="line">    comtype=models.CharField(max_length=<span class="number">20</span>,blank=<span class="keyword">False</span>)</div><div class="line">    catname=models.CharField(max_length=<span class="number">150</span>,blank=<span class="keyword">False</span>)  </div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__unicode__</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">return</span> <span class="string">'%s'</span> % (self.catname)</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">toJSON</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">import</span> json</div><div class="line">        <span class="keyword">return</span> json.dumps(dict([(attr, getattr(self, attr)) <span class="keyword">for</span> attr <span class="keyword">in</span> [f.name <span class="keyword">for</span> f <span class="keyword">in</span> self._meta.fields]]))</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">toDict</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">return</span> dict([(attr, getattr(self, attr)) <span class="keyword">for</span> attr <span class="keyword">in</span> [f.name <span class="keyword">for</span> f <span class="keyword">in</span> self._meta.fields]])</div></pre></td></tr></table></figure>
-<p>可读性更强的版本</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">toJSON</span><span class="params">(self)</span>:</span></div><div class="line">    fields = []</div><div class="line">    <span class="keyword">for</span> field <span class="keyword">in</span> self._meta.fields:</div><div class="line">        fields.append(field.name)</div><div class="line"></div><div class="line">    d = &#123;&#125;</div><div class="line">    <span class="keyword">for</span> attr <span class="keyword">in</span> fields:</div><div class="line">        d[attr] = getattr(self, attr)</div><div class="line"></div><div class="line">    <span class="keyword">import</span> json</div><div class="line">    <span class="keyword">return</span> json.dumps(d)</div><div class="line">    </div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">toDict</span><span class="params">(self)</span>:</span></div><div class="line">    fields = []</div><div class="line">    <span class="keyword">for</span> field <span class="keyword">in</span> self._meta.fields:</div><div class="line">        fields.append(field.name)</div><div class="line"></div><div class="line">    d = &#123;&#125;</div><div class="line">    <span class="keyword">for</span> attr <span class="keyword">in</span> fields:</div><div class="line">        d[attr] = getattr(self, attr)</div><div class="line"></div><div class="line">    <span class="keyword">return</span> d</div></pre></td></tr></table></figure>
-<p><a href="http://www.yihaomen.com/article/python/279.htm" target="_blank" rel="external">参考链接</a></p>
+        <h1 id="Adshow重构"><a href="#Adshow重构" class="headerlink" title="Adshow重构"></a>Adshow重构</h1><h2 id="Adshow现状"><a href="#Adshow现状" class="headerlink" title="Adshow现状"></a>Adshow现状</h2><blockquote>
+<p>1.业务</p>
+</blockquote>
+<pre><code>抽样/还原/机器评测 进度及状态：不明确；
 
+抽样/还原/机器评测等异步任务与Adshow本身耦合，Adshow更新重启受异步任务影响太大；
+
+出错日志暴露：手动加；
+
+例行还原调用脚本：每次升级都要通知用户；
+</code></pre><blockquote>
+<p>2.工程</p>
+</blockquote>
+<pre><code>性能：
+1.评估页面：缓存10s/未缓存18s; 
+2.报告页面：缓存1s/未缓存18s;
+一条广告本身：20k+11个字段
+总量：22w, 5G, 平均每条20k+
+</code></pre><h2 id="重构方案"><a href="#重构方案" class="headerlink" title="重构方案"></a>重构方案</h2><blockquote>
+<p>1.性能</p>
+</blockquote>
+<pre><code>方案一：
+1.将MySQL中的广告本身转移到MongoDB
+2.广告本身单独存入缓存
+线下实验：最耗时的count：0.45s -&gt; 0.03s
+
+方案二：发送部分json + 前端组装固定部分
+方案三：发送html url，前端iframe展现
+</code></pre><blockquote>
+<p>2.业务</p>
+</blockquote>
+<pre><code>使用Celery，将异步任务和例行任务拆出，与Adshow解耦
+异步任务：抽样(launch抽样)、还原、机器评测(极耗性能) -&gt; worker
+例行任务：监控、api例行还原、清理、邮件 -&gt; worker
+</code></pre><blockquote>
+<p>3.移动端</p>
+</blockquote>
+<pre><code>网页版/移动版？
+与PC同一个接口？
+</code></pre>
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/10/25/django-transform-queryset-to-dict/" data-id="cj96btlt5000godswhgowgrvj" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/12/03/adshow-refactoring/" data-id="cjdzdzaqy0002dbqbcq5feonx" class="article-share-link">Share</a>
       
       
     </footer>
@@ -110,42 +129,29 @@
 
 
   
-    <article id="post-django-redis-cache-delete-pattern" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-shell-shuffle-file-lines" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/10/25/django-redis-cache-delete-pattern/" class="article-date">
-  <time datetime="2017-10-25T00:50:00.000Z" itemprop="datePublished">2017-10-25</time>
+    <a href="/2017/11/30/shell-shuffle-file-lines/" class="article-date">
+  <time datetime="2017-11-30T12:54:31.270Z" itemprop="datePublished">2017-11-30</time>
 </a>
     
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/python-django/">python,django</a>
-  </div>
-
   </div>
   <div class="article-inner">
     
     
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/25/django-redis-cache-delete-pattern/">django redis cache delete pattern</a>
-    </h1>
-  
-
-      </header>
-    
     <div class="article-entry" itemprop="articleBody">
       
-        <p><strong>Example use of delete_pattern</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> django.core.cache <span class="keyword">import</span> cache</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>cache.delete_pattern(<span class="string">"foo_*"</span>)</div></pre></td></tr></table></figure>
-<p><strong>Simple search keys by pattern</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> django.core.cache <span class="keyword">import</span> cache</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>cache.keys(<span class="string">"foo_*"</span>)</div><div class="line">[<span class="string">"foo_1"</span>, <span class="string">"foo_2"</span>]</div></pre></td></tr></table></figure>
-<p><a href="http://niwinz.github.io/django-redis/latest/#_scan_delete_keys_in_bulk" target="_blank" rel="external">django-redis</a></p>
+        <h2 id="高版本CentOS自带sort-R-shuf"><a href="#高版本CentOS自带sort-R-shuf" class="headerlink" title="高版本CentOS自带sort -R/ shuf"></a>高版本CentOS自带sort -R/ shuf</h2><p>用awk实现文件：行乱序</p>
+<blockquote>
+<p>1.awk</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">awk ‘BEGIN&#123;srand()&#125;&#123;b[rand()NR]=<span class="variable">$0</span>&#125;END&#123;<span class="keyword">for</span>(x <span class="keyword">in</span> b)<span class="built_in">print</span> b[x]&#125;’ data</div></pre></td></tr></table></figure>
+<p><a href="http://ju.outofmemory.cn/entry/118502" target="_blank" rel="external">Linux下实现文件洗牌效果 行乱序</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/10/25/django-redis-cache-delete-pattern/" data-id="cj96btlt0000codsw0pggtfex" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/11/30/shell-shuffle-file-lines/" data-id="cjdzdzas10022dbqbiiqw0x0s" class="article-share-link">Share</a>
       
       
     </footer>
@@ -155,14 +161,14 @@
 
 
   
-    <article id="post-django-pagination-demo" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-python-absolute-import" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/10/25/django-pagination-demo/" class="article-date">
-  <time datetime="2017-10-25T00:49:00.000Z" itemprop="datePublished">2017-10-25</time>
+    <a href="/2017/11/29/python-absolute-import/" class="article-date">
+  <time datetime="2017-11-29T02:35:00.000Z" itemprop="datePublished">2017-11-29</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/python-django/">python,django</a>
+    <a class="article-category-link" href="/categories/python/">python</a>
   </div>
 
   </div>
@@ -173,7 +179,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/25/django-pagination-demo/">django pagination demo</a>
+      <a class="article-title" href="/2017/11/29/python-absolute-import/">python from __future__ import absolute_import</a>
     </h1>
   
 
@@ -181,16 +187,20 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><strong>1. a demo for using pagination</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> django.core.paginator <span class="keyword">import</span> Paginator, EmptyPage, PageNotAnInteger</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">listing</span><span class="params">(request)</span>:</span></div><div class="line">    contact_list = Contacts.objects.all()</div><div class="line">    paginator = Paginator(contact_list, <span class="number">25</span>) <span class="comment"># Show 25 contacts per page</span></div><div class="line"></div><div class="line">    page = request.GET.get(<span class="string">'page'</span>)</div><div class="line">    <span class="keyword">try</span>:</div><div class="line">        contacts = paginator.page(page)</div><div class="line">    <span class="keyword">except</span> PageNotAnInteger:</div><div class="line">        <span class="comment"># If page is not an integer, deliver first page.</span></div><div class="line">        contacts = paginator.page(<span class="number">1</span>)</div><div class="line">    <span class="keyword">except</span> EmptyPage:</div><div class="line">        <span class="comment"># If page is out of range (e.g. 9999), deliver last page of results.</span></div><div class="line">        contacts = paginator.page(paginator.num_pages)</div><div class="line"></div><div class="line">    <span class="keyword">return</span> render_to_response(<span class="string">'list.html'</span>, &#123;<span class="string">"contacts"</span>: contacts&#125;)</div></pre></td></tr></table></figure>
-<p><a href="http://python.usyiyi.cn/translate/django_182/topics/pagination.html" target="_blank" rel="external">django_182</a></p>
-<p><strong>2. get objects length</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cnt = contact_list.count()</div><div class="line">cnt = Contacts.objects.all().count()</div></pre></td></tr></table></figure>
+        <h2 id="from-future-import-absolute-import"><a href="#from-future-import-absolute-import" class="headerlink" title="from __future__ import absolute_import"></a>from __future__ import absolute_import</h2><h3 id="1-使用以上语句则启动绝对导入"><a href="#1-使用以上语句则启动绝对导入" class="headerlink" title="1.使用以上语句则启动绝对导入"></a>1.使用以上语句则启动绝对导入</h3><p>会从 <code>sys.path</code> 里寻找所有名为 <code>x</code> 的顶层模块</p>
+<h3 id="2-而相应的相对导入则采用"><a href="#2-而相应的相对导入则采用" class="headerlink" title="2.而相应的相对导入则采用."></a>2.而相应的相对导入则采用<code>.</code></h3><p>比如一个 package 下有 a.py 和 b.py 两个文件，在 a.py 里 <code>from . import b</code> 即是相对导入 b.py。</p>
+<p><a href="https://segmentfault.com/q/1010000000458562" target="_blank" rel="external">区别</a></p>
+<p><a href="http://legacy.python.org/dev/peps/pep-0328/" target="_blank" rel="external"><code>PEP 328</code></a>中：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">package/</div><div class="line">    __init__.py</div><div class="line">    subpackage1/</div><div class="line">        __init__.py</div><div class="line">        moduleX.py</div><div class="line">        moduleY.py</div><div class="line">    subpackage2/</div><div class="line">        __init__.py</div><div class="line">        moduleZ.py</div><div class="line">    moduleA.py</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">from .moduleY import spam</div><div class="line">from .moduleY import spam as ham</div><div class="line">from . import moduleY</div><div class="line">from ..subpackage1 import moduleY</div><div class="line">from ..subpackage2.moduleZ import eggs</div><div class="line">from ..moduleA import foo</div><div class="line">from ...package import bar</div><div class="line">from ...sys import path</div></pre></td></tr></table></figure>
+<p>一个<code>.</code>表示从当前目录寻找</p>
+<p>两个<code>.</code>表示从父目录寻找</p>
+<p>更多的<code>.</code>则从更高层级的目录寻找</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/10/25/django-pagination-demo/" data-id="cj96btlst0008odswh17rbgwq" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/11/29/python-absolute-import/" data-id="cjdzdzaro001ddbqb157snqld" class="article-share-link">Share</a>
       
       
     </footer>
@@ -200,14 +210,14 @@
 
 
   
-    <article id="post-django-multi-database" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-django-mongoengine-query-operators" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/10/25/django-multi-database/" class="article-date">
-  <time datetime="2017-10-25T00:49:00.000Z" itemprop="datePublished">2017-10-25</time>
+    <a href="/2017/11/27/django-mongoengine-query-operators/" class="article-date">
+  <time datetime="2017-11-27T03:37:00.000Z" itemprop="datePublished">2017-11-27</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/python-django/">python,django</a>
+    <a class="article-category-link" href="/categories/python-django-mongodb/">python,django,mongodb</a>
   </div>
 
   </div>
@@ -218,7 +228,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/25/django-multi-database/">django multi database</a>
+      <a class="article-title" href="/2017/11/27/django-mongoengine-query-operators/">django models mongoengine not in filter</a>
     </h1>
   
 
@@ -226,16 +236,14 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><strong>1. 在<code>setting.py</code>中定义</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">DATABASES = &#123;</div><div class="line">    <span class="string">'default'</span>: &#123;</div><div class="line">        <span class="string">'NAME'</span>: <span class="string">'app_data'</span>,</div><div class="line">        <span class="string">'ENGINE'</span>: <span class="string">'django.db.backends.postgresql_psycopg2'</span>,</div><div class="line">        <span class="string">'USER'</span>: <span class="string">'postgres_user'</span>,</div><div class="line">        <span class="string">'PASSWORD'</span>: <span class="string">'s3krit'</span></div><div class="line">    &#125;,</div><div class="line">    <span class="string">'users'</span>: &#123;</div><div class="line">        <span class="string">'NAME'</span>: <span class="string">'user_data'</span>,</div><div class="line">        <span class="string">'ENGINE'</span>: <span class="string">'django.db.backends.mysql'</span>,</div><div class="line">        <span class="string">'USER'</span>: <span class="string">'mysql_user'</span>,</div><div class="line">        <span class="string">'PASSWORD'</span>: <span class="string">'priv4te'</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><strong>2. 使用<code>using</code>手动选择一个数据库</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>u = User.objects.using(<span class="string">'legacy_users'</span>).get(username=<span class="string">'fred'</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>u.delete() <span class="comment"># will delete from the `legacy_users` database</span></div></pre></td></tr></table></figure>
-<p><a href="http://python.usyiyi.cn/translate/django_182/topics/db/multi-db.html" target="_blank" rel="external">django_182</a></p>
+        <h2 id="Django-NOT-IN-gt-exclude-a-in-b-list"><a href="#Django-NOT-IN-gt-exclude-a-in-b-list" class="headerlink" title="Django: NOT IN -&gt; exclude(a__in=b_list)"></a>Django: NOT IN -&gt; exclude(a__in=b_list)</h2><p>NOT IN: <code>nin</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">ne – <span class="keyword">not</span> equal to</div><div class="line">lt – less than</div><div class="line">lte – less than <span class="keyword">or</span> equal to</div><div class="line">gt – greater than</div><div class="line">gte – greater than <span class="keyword">or</span> equal to</div><div class="line"><span class="keyword">not</span> – negate a standard check, may be used before other operators (e.g. Q(age__not__mod=<span class="number">5</span>))</div><div class="line"><span class="keyword">in</span> – value <span class="keyword">is</span> <span class="keyword">in</span> list (a list of values should be provided)</div><div class="line">nin – value <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">in</span> list (a list of values should be provided)</div><div class="line">mod – value % x == y, where x <span class="keyword">and</span> y are two provided values</div><div class="line">all – every item <span class="keyword">in</span> list of values provided <span class="keyword">is</span> <span class="keyword">in</span> array</div><div class="line">size – the size of the array <span class="keyword">is</span></div><div class="line">exists – value <span class="keyword">for</span> field exists</div></pre></td></tr></table></figure>
+<p><a href="http://docs.mongoengine.org/guide/querying.html" target="_blank" rel="external">Offical Docs: Querying the database</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/10/25/django-multi-database/" data-id="cj96btlsy0009odswoh2ur3h5" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/11/27/django-mongoengine-query-operators/" data-id="cjdzdzar9000ddbqb01vdsmuz" class="article-share-link">Share</a>
       
       
     </footer>
@@ -245,42 +253,30 @@
 
 
   
-    <article id="post-django-models-objects-filter-by-dict-kwargs" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-mongodb-compact-disk-space" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/10/25/django-models-objects-filter-by-dict-kwargs/" class="article-date">
-  <time datetime="2017-10-25T00:48:00.000Z" itemprop="datePublished">2017-10-25</time>
+    <a href="/2017/11/27/mongodb-compact-disk-space/" class="article-date">
+  <time datetime="2017-11-27T03:09:34.972Z" itemprop="datePublished">2017-11-27</time>
 </a>
     
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/python-django/">python,django</a>
-  </div>
-
   </div>
   <div class="article-inner">
     
     
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/25/django-models-objects-filter-by-dict-kwargs/">django models objects filter by dict kwargs</a>
-    </h1>
-  
-
-      </header>
-    
     <div class="article-entry" itemprop="articleBody">
       
-        <p><strong>1. 大于等于、小于等于</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Model.objects.filter(price__gte=<span class="number">10</span>, price__lte=<span class="number">15</span>)</div><div class="line"><span class="comment"># or</span></div><div class="line">kwargs = &#123;<span class="string">'price__gte'</span>: <span class="number">10</span>,</div><div class="line">          <span class="string">'price__lte'</span>: <span class="number">15</span>&#125;      </div><div class="line">Model.objects.filter(**kwargs)</div></pre></td></tr></table></figure>
-<p><strong>2. LIKE、包含</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">kwargs = &#123;filter_field + <span class="string">'__icontains'</span>: filter_content&#125;</div><div class="line">edu_mtrl_list = edu_mtrl_list.filter(**kwargs)</div></pre></td></tr></table></figure>
-<p><a href="https://stackoverflow.com/questions/1763495/adding-extra-parameters-to-a-objects-filter-via-dict" target="_blank" rel="external">https://stackoverflow.com/questions/1763495/adding-extra-parameters-to-a-objects-filter-via-dict</a></p>
+        <p>##Disk空间回收</p>
+<p>当从MongoDB中删除文档（Documents）或集合（Collections）后，MongoDB不会将Disk空间释放给OS，MongoDB在数据文件（Data Files）中维护Empty Records的列表。当重新插入数据后，MongoDB从Empty Records列表中分配存储空间给新的Document，因此，不需要重新开辟空间。为了更新有效的重用Disk空间，必须重新整理数据碎片。</p>
+<p>WiredTiger使用compact 命令，移除集合（Collection）中数据和索引的碎片，并将unused的空间释放，调用语法：</p>
+<p><code>db.runCommand ( { compact: &#39;&lt;collection&gt;&#39; } )</code></p>
+<p>在执行compact命令时，MongoDB会对当前的database加锁，阻塞其他操作。在compact命令执行完成之后，mongod会重建集合的所有索引。</p>
+<p>On WiredTiger, <strong>compact</strong> will rewrite the collection and indexes to minimize disk space by releasing unused disk space to the operating system. This is useful if you have removed a large amount of data from the collection, and do not plan to replace it.</p>
+<p><a href="http://www.cnblogs.com/ljhdo/p/4947357.html" target="_blank" rel="external">MongoDB 存储引擎：WiredTiger和In-Memory</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/10/25/django-models-objects-filter-by-dict-kwargs/" data-id="cj96btlsq0006odsw3lfsrfpn" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/11/27/mongodb-compact-disk-space/" data-id="cjdzdzari0010dbqb8r8k9jw9" class="article-share-link">Share</a>
       
       
     </footer>
@@ -293,7 +289,7 @@
 
 
   <nav id="page-nav">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/">下一页&raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/2/">下一页&raquo;</a>
   </nav>
 
 </section>
@@ -304,7 +300,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/cpp/">cpp</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/">note</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/opencv/">opencv</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python-django/">python,django</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/cpp/">cpp</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/mysql/">mysql</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/">note</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/opencv/">opencv</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python-json/">python, json</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python-django/">python,django</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python-django-mongodb/">python,django,mongodb</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/redis/">redis</a></li></ul>
     </div>
   </div>
 
@@ -319,7 +315,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">十一月 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/10/">十月 2012</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">十一月 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/10/">十月 2012</a></li></ul>
     </div>
   </div>
 
@@ -332,23 +328,23 @@
       <ul>
         
           <li>
-            <a href="/2017/10/25/django-transform-queryset-to-dict/">django transform queryset to dict</a>
+            <a href="/2017/12/03/adshow-refactoring/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2017/10/25/django-redis-cache-delete-pattern/">django redis cache delete pattern</a>
+            <a href="/2017/11/30/shell-shuffle-file-lines/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2017/10/25/django-pagination-demo/">django pagination demo</a>
+            <a href="/2017/11/29/python-absolute-import/">python from __future__ import absolute_import</a>
           </li>
         
           <li>
-            <a href="/2017/10/25/django-multi-database/">django multi database</a>
+            <a href="/2017/11/27/django-mongoengine-query-operators/">django models mongoengine not in filter</a>
           </li>
         
           <li>
-            <a href="/2017/10/25/django-models-objects-filter-by-dict-kwargs/">django models objects filter by dict kwargs</a>
+            <a href="/2017/11/27/mongodb-compact-disk-space/">(no title)</a>
           </li>
         
       </ul>
@@ -363,7 +359,7 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2017 Krevy Li<br>
+      &copy; 2018 Krevy Li<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>

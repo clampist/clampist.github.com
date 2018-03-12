@@ -64,10 +64,142 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-python-virtualenv-wrapper-and-pip" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-django-models-objects-filter-by-dict-kwargs" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2012/10/20/python-virtualenv-wrapper-and-pip/" class="article-date">
-  <time datetime="2012-10-20T06:33:00.000Z" itemprop="datePublished">2012-10-20</time>
+    <a href="/2017/10/25/django-models-objects-filter-by-dict-kwargs/" class="article-date">
+  <time datetime="2017-10-25T00:48:00.000Z" itemprop="datePublished">2017-10-25</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/python-django/">python,django</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/25/django-models-objects-filter-by-dict-kwargs/">django models objects filter by dict kwargs</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>1. 大于等于、小于等于</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Model.objects.filter(price__gte=<span class="number">10</span>, price__lte=<span class="number">15</span>)</div><div class="line"><span class="comment"># or</span></div><div class="line">kwargs = &#123;<span class="string">'price__gte'</span>: <span class="number">10</span>,</div><div class="line">          <span class="string">'price__lte'</span>: <span class="number">15</span>&#125;      </div><div class="line">Model.objects.filter(**kwargs)</div></pre></td></tr></table></figure>
+<p><strong>2. LIKE、包含</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">kwargs = &#123;filter_field + <span class="string">'__icontains'</span>: filter_content&#125;</div><div class="line">edu_mtrl_list = edu_mtrl_list.filter(**kwargs)</div></pre></td></tr></table></figure>
+<p><a href="https://stackoverflow.com/questions/1763495/adding-extra-parameters-to-a-objects-filter-via-dict" target="_blank" rel="external">https://stackoverflow.com/questions/1763495/adding-extra-parameters-to-a-objects-filter-via-dict</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2017/10/25/django-models-objects-filter-by-dict-kwargs/" data-id="cjdzdzar50008dbqbyc8mq56u" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-django-models-not-equal-exclude-filter" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/10/25/django-models-not-equal-exclude-filter/" class="article-date">
+  <time datetime="2017-10-25T00:47:00.000Z" itemprop="datePublished">2017-10-25</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/python-django/">python,django</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/25/django-models-not-equal-exclude-filter/">django models not equal exclude filter</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Django-not-equal-exclude"><a href="#Django-not-equal-exclude" class="headerlink" title="Django != not equal exclude"></a>Django != not equal exclude</h2><p>not equal</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">user1_progress = models.EvaluationMaterial.objects.filter(</div><div class="line">    evaluation_task_id=evaluation_task_id).exclude(</div><div class="line">    user1=<span class="string">'-'</span>).values(<span class="string">'user1'</span>).annotate(alloced=Count(<span class="string">'user1'</span>))</div></pre></td></tr></table></figure>
+<h2 id="Django-NOT-IN-gt-exclude-a-in-b-list"><a href="#Django-NOT-IN-gt-exclude-a-in-b-list" class="headerlink" title="Django: NOT IN -&gt; exclude(a__in=b_list)"></a>Django: NOT IN -&gt; exclude(a__in=b_list)</h2><p>NOT IN</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">table1.objects.exclude(id__in = </div><div class="line">table2.objects.filter(your_condition).values_list(<span class="string">'id'</span>, flat=<span class="keyword">True</span>))</div></pre></td></tr></table></figure>
+<p>(Django in / not in query)[<a href="https://stackoverflow.com/questions/4523282/django-in-not-in-query" target="_blank" rel="external">https://stackoverflow.com/questions/4523282/django-in-not-in-query</a>]</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2017/10/25/django-models-not-equal-exclude-filter/" data-id="cjdzdzar60009dbqb7ej4w1dh" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-du-find-max-dir" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/10/25/du-find-max-dir/" class="article-date">
+  <time datetime="2017-10-25T00:46:00.000Z" itemprop="datePublished">2017-10-25</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/linux/">linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/25/du-find-max-dir/">du find max dir</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>##du最大深层1，查看目录大小</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">du -m --max-depth=1 ./ | sort -n | tail</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2017/10/25/du-find-max-dir/" data-id="cjdzdzard000ldbqbnunokg2w" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-python-check-class-has-attribute" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/10/25/python-check-class-has-attribute/" class="article-date">
+  <time datetime="2017-10-25T00:44:00.000Z" itemprop="datePublished">2017-10-25</time>
 </a>
     
   <div class="article-category">
@@ -82,7 +214,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2012/10/20/python-virtualenv-wrapper-and-pip/">Python Virtualenv Wrapper and Pip</a>
+      <a class="article-title" href="/2017/10/25/python-check-class-has-attribute/">check class has attribute</a>
     </h1>
   
 
@@ -90,21 +222,13 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="1-Install"><a href="#1-Install" class="headerlink" title="1.Install"></a>1.Install</h2><p>Arch 下默认是 <code>python3</code>, 而如果强制用软链接改为 <code>python2</code> 的话，一些程序会有问题的，之前都是小脚本，所以手动把第一行改为 <code>#!/usr/bin/env python2</code> 或者 <code>#!/usr/bin/python2</code> 就行，现在要做 GAE 发现手动改了好多还是不行，于是便有了 Python virtualenv 等。</p>
-<p>Install virtualenv virtualenvwrapper and pip</p>
-<pre><code># pacman -S python2-virtualenv
-# pacman -S python2-virtualenvwrapper
-# pacman -S python2-pip
-</code></pre>
-        
-          <p class="article-more-link">
-            <a href="/2012/10/20/python-virtualenv-wrapper-and-pip/#more">Read More</a>
-          </p>
-        
+        <h2 id="Python-check-Class-Object-has-attribute"><a href="#Python-check-Class-Object-has-attribute" class="headerlink" title="Python check Class/Object has attribute"></a>Python check Class/Object has attribute</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> hasattr(a, <span class="string">'property'</span>):</div><div class="line">    a.property</div></pre></td></tr></table></figure>
+<p><a href="https://stackoverflow.com/questions/610883/how-to-know-if-an-object-has-an-attribute-in-python" target="_blank" rel="external">https://stackoverflow.com/questions/610883/how-to-know-if-an-object-has-an-attribute-in-python</a></p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2012/10/20/python-virtualenv-wrapper-and-pip/" data-id="cj96btltw0013odswhn55zh1a" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/10/25/python-check-class-has-attribute/" data-id="cjdzdzarq001idbqb1l5zs26j" class="article-share-link">Share</a>
       
       
     </footer>
@@ -114,14 +238,14 @@
 
 
   
-    <article id="post-opencv-basis" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-shell-awk-filter-sort" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2012/10/13/opencv-basis/" class="article-date">
-  <time datetime="2012-10-13T10:30:00.000Z" itemprop="datePublished">2012-10-13</time>
+    <a href="/2017/10/25/shell-awk-filter-sort/" class="article-date">
+  <time datetime="2017-10-25T00:43:00.000Z" itemprop="datePublished">2017-10-25</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/opencv/">opencv</a>
+    <a class="article-category-link" href="/categories/linux/">linux</a>
   </div>
 
   </div>
@@ -132,7 +256,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2012/10/13/opencv-basis/">OpenCV Basis</a>
+      <a class="article-title" href="/2017/10/25/shell-awk-filter-sort/">awk filter by one col larger than a value</a>
     </h1>
   
 
@@ -140,141 +264,21 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="1-Load-an-image"><a href="#1-Load-an-image" class="headerlink" title="1.Load an image"></a>1.Load an image</h2><pre><code>In [1]: import cv
-
-In [2]: im1 = cv.LoadImageM(&apos;foo.jpg&apos;)
-
-In [3]: print type(im1)
-&lt;type &apos;cv2.cv.cvmat&apos;&gt;
-
-In [4]: im2 = cv.LoadImage(&apos;foo.jpg&apos;)
-
-In [5]: print type(im2)
-&lt;type &apos;cv2.cv.iplimage&apos;&gt;
-
-In [6]: cv.SaveImage(&apos;foo1.png&apos;, im1)
-
-In [7]: cv.SaveImage(&apos;foo2.png&apos;, im2)
-</code></pre><p>可以看到<code>LoadImageM</code>得到的是一个<code>cvmat</code>图像，而<code>LoadImage</code>得到的是一个<code>iplimage</code>图像，两者均可以输出为图像</p>
-        
-          <p class="article-more-link">
-            <a href="/2012/10/13/opencv-basis/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2012/10/13/opencv-basis/" data-id="cj96btltg000rodswuiez92xg" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-install-openexr-for-python" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2012/10/11/install-openexr-for-python/" class="article-date">
-  <time datetime="2012-10-11T04:50:00.000Z" itemprop="datePublished">2012-10-11</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/opencv/">opencv</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2012/10/11/install-openexr-for-python/">Install OpenEXR for Python</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Using OpenEXR’s Python bindings we can make a simple image viewer.<br>So, we should install OpenEXR first, following <a href="http://www.excamera.com/sphinx/articles-openexr.html" target="_blank" rel="external">OpenEXR bindings for Python</a><br>Make sure you have already installed OpenEXR’s Prerequisite: Python 2.5+ and the OpenEXR C++ library(openexr).</p>
-<pre><code>wget http://excamera.com/files/OpenEXR-1.2.0.tar.gz
-
-tar zxvf OpenEXR-1.2.0.tar.gz
-
-cd OpenEXR-1.2.0
-
-(sudo python2 setup.py build)
-
-sudo python2 setup.py install
-</code></pre><p>Then, we can follow <a href="http://opencv.willowgarage.com/documentation/python/cookbook.html#opencv-and-openexr" target="_blank" rel="external">OpenCV and OpenEXR</a></p>
-<p>References: <a href="http://blog.csdn.net/ponder008/article/details/6592719" target="_blank" rel="external">Python how to install setup.py</a></p>
+        <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">awk -F<span class="string">'\t'</span> <span class="string">'$36 &gt; "2017-10-18 15:00:00" &#123;print ;&#125;'</span> 13224_sample_material_encode_full | sort -r &gt; target.txt</div></pre></td></tr></table></figure>
+<h2 id="打印第36列大于某一时刻的整行"><a href="#打印第36列大于某一时刻的整行" class="headerlink" title="打印第36列大于某一时刻的整行"></a>打印第36列大于某一时刻的整行</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&apos;$36 &gt; &quot;2017-10-18 15:00:00&quot; &#123;print ;&#125;&apos;</div></pre></td></tr></table></figure>
+<p><code>filter</code>: <code>$36 &gt; &quot;2017-10-18 15:00:00&quot;</code></p>
+<p><code>print whole line</code>: <code>print ;</code></p>
+<h2 id="awk-cut-输出指定列"><a href="#awk-cut-输出指定列" class="headerlink" title="awk/cut 输出指定列"></a>awk/cut 输出指定列</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">awk &apos;&#123;for(i=10;i&lt;=20;i++)printf $i&quot;&quot;FS;print&quot;&quot;&#125;&apos; file</div></pre></td></tr></table></figure>
+<p><code>FS</code>就是<strong>分隔符</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cut -d&quot; &quot; -f 10-20 file</div></pre></td></tr></table></figure>
+<p><a href="https://zhidao.baidu.com/question/481774014.html" target="_blank" rel="external">百度知道</a></p>
+<h2 id="逆序"><a href="#逆序" class="headerlink" title="逆序"></a>逆序</h2><p><code>sort reverse</code>: <code>sort -r</code></p>
+<h2 id="按某列排序"><a href="#按某列排序" class="headerlink" title="按某列排序"></a>按某列排序</h2><p><code>sort -k 2 file.txt</code><br>按第二列排序<br><a href="https://stackoverflow.com/questions/4262650/linux-shell-sort-file-according-to-the-second-column" target="_blank" rel="external">stackoverflow</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2012/10/11/install-openexr-for-python/" data-id="cj96btlte000podsw1c9sa45x" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-wonderful-octopress" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2012/10/09/wonderful-octopress/" class="article-date">
-  <time datetime="2012-10-09T06:37:00.000Z" itemprop="datePublished">2012-10-09</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/note/">note</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2012/10/09/wonderful-octopress/">Wonderful Octopress</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Today, I install Octopress, it is wonderful.<br>I follow the official docs<br><a href="http://octopress.org/docs/setup/" target="_blank" rel="external">setup</a><br><a href="http://octopress.org/docs/deploying/github/" target="_blank" rel="external">deploy</a><br><a href="http://octopress.org/docs/configuring/" target="_blank" rel="external">config</a><br><a href="http://octopress.org/docs/blogging/" target="_blank" rel="external">blogging</a><br>and the other two blogs:<br><a href="http://jokry.com/2012/03/08/octopress/" target="_blank" rel="external">Octopress介绍与安装</a><br><a href="http://blog.javachen.com/2012/06/migrate-blog-form-wordpress-to-github-with-octopress/" target="_blank" rel="external">使用Octopress将博客从wordpress迁移到GitHub上</a></p>
-<p>The following command is in common use(in the project root directory):</p>
-<pre><code>rake new_post[&quot;title&quot;]
-rake new_page[super-awesome]
-rake new_page[super-awesome/page.html]
-
-rake preview
-rake generate
-rake deploy
-
-git add .
-git commit -m &apos;your message&apos;
-git push origin source
-</code></pre>
-        
-          <p class="article-more-link">
-            <a href="/2012/10/09/wonderful-octopress/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2012/10/09/wonderful-octopress/" data-id="cj96btlu4001bodswegxr6njq" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/10/25/shell-awk-filter-sort/" data-id="cjdzdzarw001udbqbgjnyzhqy" class="article-share-link">Share</a>
       
       
     </footer>
@@ -287,7 +291,7 @@ git push origin source
 
 
   <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/page/4/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span>
+    <a class="extend prev" rel="prev" href="/page/4/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/6/">下一页&raquo;</a>
   </nav>
 
 </section>
@@ -298,7 +302,7 @@ git push origin source
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/cpp/">cpp</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/">note</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/opencv/">opencv</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python-django/">python,django</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/cpp/">cpp</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/mysql/">mysql</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/">note</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/opencv/">opencv</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python-json/">python, json</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python-django/">python,django</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python-django-mongodb/">python,django,mongodb</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/redis/">redis</a></li></ul>
     </div>
   </div>
 
@@ -313,7 +317,7 @@ git push origin source
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">十一月 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/10/">十月 2012</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">十一月 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/10/">十月 2012</a></li></ul>
     </div>
   </div>
 
@@ -326,23 +330,23 @@ git push origin source
       <ul>
         
           <li>
-            <a href="/2017/10/25/django-transform-queryset-to-dict/">django transform queryset to dict</a>
+            <a href="/2017/12/03/adshow-refactoring/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2017/10/25/django-redis-cache-delete-pattern/">django redis cache delete pattern</a>
+            <a href="/2017/11/30/shell-shuffle-file-lines/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2017/10/25/django-pagination-demo/">django pagination demo</a>
+            <a href="/2017/11/29/python-absolute-import/">python from __future__ import absolute_import</a>
           </li>
         
           <li>
-            <a href="/2017/10/25/django-multi-database/">django multi database</a>
+            <a href="/2017/11/27/django-mongoengine-query-operators/">django models mongoengine not in filter</a>
           </li>
         
           <li>
-            <a href="/2017/10/25/django-models-objects-filter-by-dict-kwargs/">django models objects filter by dict kwargs</a>
+            <a href="/2017/11/27/mongodb-compact-disk-space/">(no title)</a>
           </li>
         
       </ul>
@@ -357,7 +361,7 @@ git push origin source
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2017 Krevy Li<br>
+      &copy; 2018 Krevy Li<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>

@@ -64,10 +64,85 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-shell-sed-certain-lines" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-python-loads-json-object-instead-of-unicode" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/10/24/shell-sed-certain-lines/" class="article-date">
-  <time datetime="2017-10-24T10:37:00.000Z" itemprop="datePublished">2017-10-24</time>
+    <a href="/2017/11/22/python-loads-json-object-instead-of-unicode/" class="article-date">
+  <time datetime="2017-11-22T05:14:00.000Z" itemprop="datePublished">2017-11-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/python-json/">python, json</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/11/22/python-loads-json-object-instead-of-unicode/">check class has attribute</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">import json</div><div class="line"></div><div class="line">def json_load_byteified(file_handle):</div><div class="line">    return _byteify(</div><div class="line">        json.load(file_handle, object_hook=_byteify),</div><div class="line">        ignore_dicts=True</div><div class="line">    )</div><div class="line"></div><div class="line">def json_loads_byteified(json_text):</div><div class="line">    return _byteify(</div><div class="line">        json.loads(json_text, object_hook=_byteify),</div><div class="line">        ignore_dicts=True</div><div class="line">    )</div><div class="line"></div><div class="line">def _byteify(data, ignore_dicts = False):</div><div class="line">    # if this is a unicode string, return its string representation</div><div class="line">    if isinstance(data, unicode):</div><div class="line">        return data.encode(&apos;utf-8&apos;)</div><div class="line">    # if this is a list of values, return list of byteified values</div><div class="line">    if isinstance(data, list):</div><div class="line">        return [ _byteify(item, ignore_dicts=True) for item in data ]</div><div class="line">    # if this is a dictionary, return dictionary of byteified keys and values</div><div class="line">    # but only if we haven&apos;t already byteified it</div><div class="line">    if isinstance(data, dict) and not ignore_dicts:</div><div class="line">        return &#123;</div><div class="line">            _byteify(key, ignore_dicts=True): _byteify(value, ignore_dicts=True)</div><div class="line">            for key, value in data.iteritems()</div><div class="line">        &#125;</div><div class="line">    # if it&apos;s anything else, return it in its original form</div><div class="line">    return data</div></pre></td></tr></table></figure>
+<p><strong>Example usage:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; json_loads_byteified(&apos;&#123;&quot;Hello&quot;: &quot;World&quot;&#125;&apos;)</div><div class="line">&#123;&apos;Hello&apos;: &apos;World&apos;&#125;</div><div class="line">&gt;&gt;&gt; json_loads_byteified(&apos;&quot;I am a top-level string&quot;&apos;)</div><div class="line">&apos;I am a top-level string&apos;</div><div class="line">&gt;&gt;&gt; json_loads_byteified(&apos;7&apos;)</div><div class="line">7</div><div class="line">&gt;&gt;&gt; json_loads_byteified(&apos;[&quot;I am inside a list&quot;]&apos;)</div><div class="line">[&apos;I am inside a list&apos;]</div><div class="line">&gt;&gt;&gt; json_loads_byteified(&apos;[[[[[[[[&quot;I am inside a big nest of lists&quot;]]]]]]]]&apos;)</div><div class="line">[[[[[[[[&apos;I am inside a big nest of lists&apos;]]]]]]]]</div><div class="line">&gt;&gt;&gt; json_loads_byteified(&apos;&#123;&quot;foo&quot;: &quot;bar&quot;, &quot;things&quot;: [7, &#123;&quot;qux&quot;: &quot;baz&quot;, &quot;moo&quot;: &#123;&quot;cow&quot;: [&quot;milk&quot;]&#125;&#125;]&#125;&apos;)</div><div class="line">&#123;&apos;things&apos;: [7, &#123;&apos;qux&apos;: &apos;baz&apos;, &apos;moo&apos;: &#123;&apos;cow&apos;: [&apos;milk&apos;]&#125;&#125;], &apos;foo&apos;: &apos;bar&apos;&#125;</div><div class="line">&gt;&gt;&gt; json_load_byteified(open(&apos;somefile.json&apos;))</div><div class="line">&#123;&apos;more json&apos;: &apos;from a file&apos;&#125;</div></pre></td></tr></table></figure>
+<p><a href="https://stackoverflow.com/questions/956867/how-to-get-string-objects-instead-of-unicode-from-json" target="_blank" rel="external">stackoverflow</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2017/11/22/python-loads-json-object-instead-of-unicode/" data-id="cjdzdzaru001ndbqbjybszv8o" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-linux-grep-by-reg-content-in-file" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/11/09/linux-grep-by-reg-content-in-file/" class="article-date">
+  <time datetime="2017-11-09T03:41:29.000Z" itemprop="datePublished">2017-11-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="grep-P"><a href="#grep-P" class="headerlink" title="grep -P"></a>grep -P</h2><h2 id="awk-F”-123-”"><a href="#awk-F”-123-”" class="headerlink" title="awk -F”[123]”"></a>awk -F”[123]”</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cat imas.log* | grep -P &apos;pa_prod_adv_info.*]&apos; -o | awk -F&apos;|&apos; &apos;&#123;print $2&#125;&apos; | grep -v 0</div></pre></td></tr></table></figure>
+<p><code>grep -P</code>切出想要的内容</p>
+<p><a href="http://blog.csdn.net/computer055maxi/article/details/6317251" target="_blank" rel="external">参考链接</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">awk -F&quot;[@ /t]&quot; &apos;&#123;print $2,$3&#125;&apos; test</div></pre></td></tr></table></figure>
+<p>以@，空格，Tab键分割test文件的每一行，并输出第二、第三列。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2017/11/09/linux-grep-by-reg-content-in-file/" data-id="cjdzdzarh000ydbqb1819ynj9" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-linux-sync-folder-by-rsync" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/11/02/linux-sync-folder-by-rsync/" class="article-date">
+  <time datetime="2017-11-02T00:35:00.000Z" itemprop="datePublished">2017-11-02</time>
 </a>
     
   <div class="article-category">
@@ -82,7 +157,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/24/shell-sed-certain-lines/">use sed print certain lines</a>
+      <a class="article-title" href="/2017/11/02/linux-sync-folder-by-rsync/">linux sync folder by rsync</a>
     </h1>
   
 
@@ -90,13 +165,20 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="用sed命令"><a href="#用sed命令" class="headerlink" title="用sed命令"></a>用sed命令</h2><p>sed -n ‘5,10p’ filename 这样你就可以只查看文件的第5行到第10行。</p>
-<p><a href="http://www.cnblogs.com/xianghang123/archive/2011/08/03/2125977.html" target="_blank" rel="external">linux 如何显示一个文件的某几行(中间几行)</a> </p>
+        <h2 id="rsync"><a href="#rsync" class="headerlink" title="rsync"></a>rsync</h2><p><code>rsync -avz --delete &quot;/home/user/A&quot; &quot;/home/user/B&quot;</code></p>
+<p>Explanation by SonicARG</p>
+<p><code>-a</code> Do the sync preserving all filesystem attributes</p>
+<p><code>-v</code> run verbosely</p>
+<p><code>-z</code> compress the data during the sync (transport the data in compressed mode)</p>
+<p><code>--delete</code> delete the files in target folder that do not exist in the source, /home/user/A: source folder, /home/user/B: target folder</p>
+<h2 id="exclude-git"><a href="#exclude-git" class="headerlink" title="exclude .git"></a>exclude .git</h2><p><code>--exclude=&#39;.git/&#39;</code></p>
+<p><a href="https://unix.stackexchange.com/questions/100660/how-to-use-rsync-to-backup-a-directory-without-git-subdirectory" target="_blank" rel="external">How to use rsync to backup a directory without git subdirectory</a></p>
+<p><a href="https://unix.stackexchange.com/questions/203846/how-to-sync-two-folders-with-command-line-tools" target="_blank" rel="external">How to sync two folders with command line tools?</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/10/24/shell-sed-certain-lines/" data-id="cj96btlu10017odswerqzy4k7" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/11/02/linux-sync-folder-by-rsync/" data-id="cjdzdzark0015dbqbhr9pxa8n" class="article-share-link">Share</a>
       
       
     </footer>
@@ -106,10 +188,10 @@
 
 
   
-    <article id="post-linux-dos-to-unix" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-turing" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/09/22/linux-dos-to-unix/" class="article-date">
-  <time datetime="2017-09-22T06:37:00.000Z" itemprop="datePublished">2017-09-22</time>
+    <a href="/2017/11/01/turing/" class="article-date">
+  <time datetime="2017-11-01T06:37:00.000Z" itemprop="datePublished">2017-11-01</time>
 </a>
     
   <div class="article-category">
@@ -124,7 +206,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/22/linux-dos-to-unix/">linux dos to unix</a>
+      <a class="article-title" href="/2017/11/01/turing/">sed replace</a>
     </h1>
   
 
@@ -132,14 +214,18 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="linux下文本处理"><a href="#linux下文本处理" class="headerlink" title="linux下文本处理"></a>linux下文本处理</h1><h2 id="dos2unix-直接修改原文件"><a href="#dos2unix-直接修改原文件" class="headerlink" title="dos2unix:直接修改原文件"></a>dos2unix:直接修改原文件</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">dos2unix file</div></pre></td></tr></table></figure>
-<p><a href="https://www.cyberciti.biz/faq/howto-unix-linux-convert-dos-newlines-cr-lf-unix-text-format/" target="_blank" rel="external">wiki</a></p>
-<h2 id="replace-t-with-4-blanks"><a href="#replace-t-with-4-blanks" class="headerlink" title="replace \t with 4 blanks"></a>replace \t with 4 blanks</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">expand -t 4 input &gt; output</div></pre></td></tr></table></figure>
+        <h2 id="图灵"><a href="#图灵" class="headerlink" title="图灵"></a>图灵</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">sed -i <span class="string">'s/\\"//g'</span> file</div><div class="line"></div><div class="line">sed -i <span class="string">'s/\\\\\//\//g'</span> file</div><div class="line"></div><div class="line">sed -i <span class="string">'s/"\[&#123;""json"":""/\[/g'</span> file</div><div class="line"></div><div class="line">sed -i <span class="string">'s/&#123;""json"":""//g'</span> file</div><div class="line"></div><div class="line">sed -i <span class="string">'s/"",""mt"":[0-9]*&#125;\]"/\]/g'</span> file</div><div class="line"></div><div class="line">sed -i <span class="string">'s/"",""mt"":[0-9]*&#125;//g'</span> file</div></pre></td></tr></table></figure>
+<h2 id="Use-double-quotes-so-that-sed-would-expand-variables"><a href="#Use-double-quotes-so-that-sed-would-expand-variables" class="headerlink" title="Use double quotes so that sed would expand variables."></a>Use double quotes so that sed would expand variables.</h2><p><code>sed &quot;s|\$ROOT|${HOME}|&quot; abc.sh</code></p>
+<ul>
+<li>shell变量在双引号内会被解析</li>
+<li>在单引号内不会被解析</li>
+</ul>
+<p><a href="https://stackoverflow.com/questions/19151954/how-to-use-variables-in-a-command-in-sed" target="_blank" rel="external">How to use variables in a command in sed?</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/09/22/linux-dos-to-unix/" data-id="cj96btltc000modsw61rnmdaz" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/11/01/turing/" data-id="cjdzdzas30028dbqbotubrk1w" class="article-share-link">Share</a>
       
       
     </footer>
@@ -149,14 +235,14 @@
 
 
   
-    <article id="post-boost-lexical-cast-cpp" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-redis-delete-all-keys" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/09/22/boost-lexical-cast-cpp/" class="article-date">
-  <time datetime="2017-09-22T06:37:00.000Z" itemprop="datePublished">2017-09-22</time>
+    <a href="/2017/10/25/redis-delete-all-keys/" class="article-date">
+  <time datetime="2017-10-25T05:59:00.000Z" itemprop="datePublished">2017-10-25</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/cpp/">cpp</a>
+    <a class="article-category-link" href="/categories/redis/">redis</a>
   </div>
 
   </div>
@@ -167,7 +253,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/22/boost-lexical-cast-cpp/">boost::lexical_cast</a>
+      <a class="article-title" href="/2017/10/25/redis-delete-all-keys/">redis-delete-all-keys</a>
     </h1>
   
 
@@ -175,98 +261,14 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="boost-lexical-cast"><a href="#boost-lexical-cast" class="headerlink" title="boost::lexical_cast"></a>boost::lexical_cast</h2><p><code>c++</code> 使用 <code>boost::lexical_cast</code> 数据类型转换</p>
-<p><a href="http://www.cnblogs.com/mx113/articles/1603985.html" target="_blank" rel="external">参考链接</a></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;boost/lexical_cast.hpp&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt; </span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> ERROR_LEXICAL_CAST     1 </span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    <span class="keyword">using</span> boost::lexical_cast;</div><div class="line">    <span class="keyword">int</span>         a = <span class="number">0</span>;</div><div class="line">    <span class="keyword">double</span>        b = <span class="number">0.0</span>;</div><div class="line">    <span class="built_in">std</span>::<span class="built_in">string</span> s = <span class="string">""</span>; </div><div class="line">    <span class="keyword">int</span>            e = <span class="number">0</span>;    </div><div class="line">    <span class="keyword">try</span></div><div class="line">    &#123; </div><div class="line">        <span class="comment">// ----- 字符串 --&gt; 数值 </span></div><div class="line">        a = lexical_cast&lt;<span class="keyword">int</span>&gt;(<span class="string">"123"</span>);</div><div class="line">        b = lexical_cast&lt;<span class="keyword">double</span>&gt;(<span class="string">"123.12"</span>);</div><div class="line">        <span class="comment">// ----- 数值 --&gt; 字符串</span></div><div class="line">        s = lexical_cast&lt;<span class="built_in">std</span>::<span class="built_in">string</span>&gt;(<span class="string">"123456.7"</span>); </div><div class="line">        <span class="comment">// ----- 异常处理演示</span></div><div class="line">        e = lexical_cast&lt;<span class="keyword">int</span>&gt;(<span class="string">"abc"</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">catch</span>(boost::bad_lexical_cast&amp; e)</div><div class="line">    &#123;</div><div class="line">        <span class="comment">// bad lexical cast: source type value could not be interpreted as target</span></div><div class="line">        <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; e.what() &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</div><div class="line">        <span class="keyword">return</span> ERROR_LEXICAL_CAST;</div><div class="line">    &#125; </div><div class="line">    </div><div class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; a &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;    <span class="comment">// 输出：123 </span></div><div class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; b &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;    <span class="comment">// 输出：123.12 </span></div><div class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; s &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;     <span class="comment">// 输出：123456.7 </span></div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+        <p><strong>Flushall</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">redis 127.0.0.1:6379&gt; FLUSHALL</div></pre></td></tr></table></figure>
+<p><a href="http://www.runoob.com/redis/server-flushall.html" target="_blank" rel="external">Redis Flushall 命令</a><br><a href="http://www.dnsdizhi.com/post-219.html" target="_blank" rel="external">Redis常用命令集，清空redis缓存数据库</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/09/22/boost-lexical-cast-cpp/" data-id="cj96btlse0002odsw8d2nse9f" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-shell-last-param" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/09/22/shell-last-param/" class="article-date">
-  <time datetime="2017-09-22T06:37:00.000Z" itemprop="datePublished">2017-09-22</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/linux/">linux</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/22/shell-last-param/">shell last param</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Shell-最后一个参数"><a href="#Shell-最后一个参数" class="headerlink" title="Shell 最后一个参数"></a>Shell 最后一个参数</h1><p><a href="http://www.letuknowit.com/post/81.html" target="_blank" rel="external">参考链接</a></p>
-<p><code>$_</code> 会直接执行</p>
-<p><code>!$</code> 会展示命令，等用户按Enter</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/09/22/shell-last-param/" data-id="cj96btlty0014odsw6ekor0my" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-shell-uniq-count" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/09/22/shell-uniq-count/" class="article-date">
-  <time datetime="2017-09-22T06:37:00.000Z" itemprop="datePublished">2017-09-22</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/linux/">linux</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/22/shell-uniq-count/">shell uniq count</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Shell中uniq去重并统计"><a href="#Shell中uniq去重并统计" class="headerlink" title="Shell中uniq去重并统计"></a>Shell中uniq去重并统计</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cat text | uniq -c</div></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/09/22/shell-uniq-count/" data-id="cj96btlu20019odswcdu5x30y" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/10/25/redis-delete-all-keys/" data-id="cjdzdzarx001vdbqb46ejb6m3" class="article-share-link">Share</a>
       
       
     </footer>
@@ -279,7 +281,7 @@
 
 
   <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/page/2/">&laquo; 上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/">下一页&raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/2/">&laquo; 上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/4/">下一页&raquo;</a>
   </nav>
 
 </section>
@@ -290,7 +292,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/cpp/">cpp</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/">note</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/opencv/">opencv</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python-django/">python,django</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/cpp/">cpp</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/mysql/">mysql</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/">note</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/opencv/">opencv</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python-json/">python, json</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python-django/">python,django</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python-django-mongodb/">python,django,mongodb</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/redis/">redis</a></li></ul>
     </div>
   </div>
 
@@ -305,7 +307,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">十一月 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/10/">十月 2012</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">十一月 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/10/">十月 2012</a></li></ul>
     </div>
   </div>
 
@@ -318,23 +320,23 @@
       <ul>
         
           <li>
-            <a href="/2017/10/25/django-transform-queryset-to-dict/">django transform queryset to dict</a>
+            <a href="/2017/12/03/adshow-refactoring/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2017/10/25/django-redis-cache-delete-pattern/">django redis cache delete pattern</a>
+            <a href="/2017/11/30/shell-shuffle-file-lines/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2017/10/25/django-pagination-demo/">django pagination demo</a>
+            <a href="/2017/11/29/python-absolute-import/">python from __future__ import absolute_import</a>
           </li>
         
           <li>
-            <a href="/2017/10/25/django-multi-database/">django multi database</a>
+            <a href="/2017/11/27/django-mongoengine-query-operators/">django models mongoengine not in filter</a>
           </li>
         
           <li>
-            <a href="/2017/10/25/django-models-objects-filter-by-dict-kwargs/">django models objects filter by dict kwargs</a>
+            <a href="/2017/11/27/mongodb-compact-disk-space/">(no title)</a>
           </li>
         
       </ul>
@@ -349,7 +351,7 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2017 Krevy Li<br>
+      &copy; 2018 Krevy Li<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>

@@ -12,7 +12,7 @@
 <meta property="og:site_name" content="记录点滴">
 <meta property="og:description" content="Django != not equal excludenot equal 123user1_progress = models.EvaluationMaterial.objects.filter(    evaluation_task_id=evaluation_task_id).exclude(    user1=&apos;-&apos;).values(&apos;user1&apos;).annotate(alloced=Cou">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-10-25T00:48:03.108Z">
+<meta property="og:updated_time" content="2017-11-27T02:46:59.954Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="django models not equal exclude filter">
 <meta name="twitter:description" content="Django != not equal excludenot equal 123user1_progress = models.EvaluationMaterial.objects.filter(    evaluation_task_id=evaluation_task_id).exclude(    user1=&apos;-&apos;).values(&apos;user1&apos;).annotate(alloced=Cou">
@@ -94,11 +94,14 @@
       
         <h2 id="Django-not-equal-exclude"><a href="#Django-not-equal-exclude" class="headerlink" title="Django != not equal exclude"></a>Django != not equal exclude</h2><p>not equal</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">user1_progress = models.EvaluationMaterial.objects.filter(</div><div class="line">    evaluation_task_id=evaluation_task_id).exclude(</div><div class="line">    user1=<span class="string">'-'</span>).values(<span class="string">'user1'</span>).annotate(alloced=Count(<span class="string">'user1'</span>))</div></pre></td></tr></table></figure>
+<h2 id="Django-NOT-IN-gt-exclude-a-in-b-list"><a href="#Django-NOT-IN-gt-exclude-a-in-b-list" class="headerlink" title="Django: NOT IN -&gt; exclude(a__in=b_list)"></a>Django: NOT IN -&gt; exclude(a__in=b_list)</h2><p>NOT IN</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">table1.objects.exclude(id__in = </div><div class="line">table2.objects.filter(your_condition).values_list(<span class="string">'id'</span>, flat=<span class="keyword">True</span>))</div></pre></td></tr></table></figure>
+<p>(Django in / not in query)[<a href="https://stackoverflow.com/questions/4523282/django-in-not-in-query" target="_blank" rel="external">https://stackoverflow.com/questions/4523282/django-in-not-in-query</a>]</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/10/25/django-models-not-equal-exclude-filter/" data-id="cj96btlsk0004odswbmvt1nuq" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/10/25/django-models-not-equal-exclude-filter/" data-id="cjdzdzar60009dbqb7ej4w1dh" class="article-share-link">Share</a>
       
       
     </footer>
@@ -135,7 +138,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/cpp/">cpp</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/">note</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/opencv/">opencv</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python-django/">python,django</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/cpp/">cpp</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/mysql/">mysql</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/">note</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/opencv/">opencv</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python-json/">python, json</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python-django/">python,django</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python-django-mongodb/">python,django,mongodb</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/redis/">redis</a></li></ul>
     </div>
   </div>
 
@@ -150,7 +153,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">十一月 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/10/">十月 2012</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">十一月 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/10/">十月 2012</a></li></ul>
     </div>
   </div>
 
@@ -163,23 +166,23 @@
       <ul>
         
           <li>
-            <a href="/2017/10/25/django-transform-queryset-to-dict/">django transform queryset to dict</a>
+            <a href="/2017/12/03/adshow-refactoring/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2017/10/25/django-redis-cache-delete-pattern/">django redis cache delete pattern</a>
+            <a href="/2017/11/30/shell-shuffle-file-lines/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2017/10/25/django-pagination-demo/">django pagination demo</a>
+            <a href="/2017/11/29/python-absolute-import/">python from __future__ import absolute_import</a>
           </li>
         
           <li>
-            <a href="/2017/10/25/django-multi-database/">django multi database</a>
+            <a href="/2017/11/27/django-mongoengine-query-operators/">django models mongoengine not in filter</a>
           </li>
         
           <li>
-            <a href="/2017/10/25/django-models-objects-filter-by-dict-kwargs/">django models objects filter by dict kwargs</a>
+            <a href="/2017/11/27/mongodb-compact-disk-space/">(no title)</a>
           </li>
         
       </ul>
@@ -194,7 +197,7 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2017 Krevy Li<br>
+      &copy; 2018 Krevy Li<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>

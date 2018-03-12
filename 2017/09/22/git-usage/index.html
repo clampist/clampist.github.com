@@ -13,7 +13,7 @@
 <meta property="og:description" content="git常用master开发123git add    # add后如果再修改，需要再add一次，否则提交add时版本git commit -m &quot;adshow-3-6-1 feed support&quot;git push origin master:refs/for/master branch开发123git add git commit -m &quot;sth&quot; git push origin master:">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://gerrit-review.googlesource.com/Documentation/images/intro-quick-central-gerrit.png">
-<meta property="og:updated_time" content="2017-09-22T09:55:32.000Z">
+<meta property="og:updated_time" content="2017-11-29T02:20:57.936Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git and gerrit">
 <meta name="twitter:description" content="git常用master开发123git add    # add后如果再修改，需要再add一次，否则提交add时版本git commit -m &quot;adshow-3-6-1 feed support&quot;git push origin master:refs/for/master branch开发123git add git commit -m &quot;sth&quot; git push origin master:">
@@ -98,13 +98,21 @@
 <h3 id="branch开发"><a href="#branch开发" class="headerlink" title="branch开发"></a><code>branch</code>开发</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git add </div><div class="line">git commit -m <span class="string">"sth"</span> </div><div class="line">git push origin master:refs/<span class="keyword">for</span>/patserver_1-0-23_BRANCH</div></pre></td></tr></table></figure>
 <h3 id="遇到stash冲突"><a href="#遇到stash冲突" class="headerlink" title="遇到stash冲突"></a>遇到<code>stash</code>冲突</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git stash    <span class="comment"># 将本地冲突改动 存入栈中</span></div><div class="line">git pull     <span class="comment"># 更新</span></div><div class="line">git stash pop    <span class="comment">#从栈中将改动拉出</span></div></pre></td></tr></table></figure>
 <a id="more"></a>
+<h3 id="已经push文件回滚"><a href="#已经push文件回滚" class="headerlink" title="已经push文件回滚"></a>已经<code>push</code>文件回滚</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git checkout commit_id --file_name</div></pre></td></tr></table></figure>
+<p><a href="http://blog.csdn.net/whu_zhangmin/article/details/18596665" target="_blank" rel="external">git恢复删除文件之ls-files</a></p>
+<h3 id="修改已经commit的评论"><a href="#修改已经commit的评论" class="headerlink" title="修改已经commit的评论"></a>修改已经commit的评论</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git commit --amend</div></pre></td></tr></table></figure>
+<p>进入默认编辑器打开的评论文件，修改保存退出，可写在多行</p>
+<h3 id="切换到远程分支"><a href="#切换到远程分支" class="headerlink" title="切换到远程分支"></a>切换到远程分支</h3><p>查看本地及远程分支</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git branch -va</div></pre></td></tr></table></figure>
+<p><a href="http://www.barretlee.com/blog/2014/04/30/switch-branch-in-git/" target="_blank" rel="external">git切换到远程分支</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git checkout -t origin/2.0.0</div></pre></td></tr></table></figure>
 <h2 id="gerrit"><a href="#gerrit" class="headerlink" title="gerrit"></a>gerrit</h2><p><a href="https://gerrit-review.googlesource.com/Documentation/intro-how-gerrit-works.html" target="_blank" rel="external">how gerrit works</a></p>
 <p><img src="https://gerrit-review.googlesource.com/Documentation/images/intro-quick-central-gerrit.png" alt="gerrit原理"></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/09/22/git-usage/" data-id="cj96btlt7000hodswsfc5o1d2" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/09/22/git-usage/" data-id="cjdzdzare000odbqbuq4qxevs" class="article-share-link">Share</a>
       
       
     </footer>
@@ -113,19 +121,19 @@
     
 <nav id="article-nav">
   
-    <a href="/2017/09/22/shell-uniq-count/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/09/22/shell-last-param/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          shell uniq count
+          shell last param
         
       </div>
     </a>
   
   
-    <a href="/2017/09/22/acquire-array-length-in-cpp/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2017/09/22/python-two-or-three-continuous-items-in-list/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">acquire array length in cpp</div>
+      <div class="article-nav-title">python two or three continuous items in list</div>
     </a>
   
 </nav>
@@ -141,7 +149,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/cpp/">cpp</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/">note</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/opencv/">opencv</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python-django/">python,django</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/cpp/">cpp</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/mysql/">mysql</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/">note</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/opencv/">opencv</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python-json/">python, json</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python-django/">python,django</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python-django-mongodb/">python,django,mongodb</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/redis/">redis</a></li></ul>
     </div>
   </div>
 
@@ -156,7 +164,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">十一月 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/10/">十月 2012</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">十一月 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/10/">十月 2012</a></li></ul>
     </div>
   </div>
 
@@ -169,23 +177,23 @@
       <ul>
         
           <li>
-            <a href="/2017/10/25/django-transform-queryset-to-dict/">django transform queryset to dict</a>
+            <a href="/2017/12/03/adshow-refactoring/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2017/10/25/django-redis-cache-delete-pattern/">django redis cache delete pattern</a>
+            <a href="/2017/11/30/shell-shuffle-file-lines/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2017/10/25/django-pagination-demo/">django pagination demo</a>
+            <a href="/2017/11/29/python-absolute-import/">python from __future__ import absolute_import</a>
           </li>
         
           <li>
-            <a href="/2017/10/25/django-multi-database/">django multi database</a>
+            <a href="/2017/11/27/django-mongoengine-query-operators/">django models mongoengine not in filter</a>
           </li>
         
           <li>
-            <a href="/2017/10/25/django-models-objects-filter-by-dict-kwargs/">django models objects filter by dict kwargs</a>
+            <a href="/2017/11/27/mongodb-compact-disk-space/">(no title)</a>
           </li>
         
       </ul>
@@ -200,7 +208,7 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2017 Krevy Li<br>
+      &copy; 2018 Krevy Li<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>

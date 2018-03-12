@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>check class has attribute | 记录点滴</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="123456789101112131415161718192021222324252627282930import jsondef json_load_byteified(file_handle):    return _byteify(        json.load(file_handle, object_hook=_byteify),        ignore_dicts=True">
+<meta property="og:type" content="article">
+<meta property="og:title" content="check class has attribute">
+<meta property="og:url" content="https://clampist.github.io/2017/11/22/python-loads-json-object-instead-of-unicode/index.html">
+<meta property="og:site_name" content="记录点滴">
+<meta property="og:description" content="123456789101112131415161718192021222324252627282930import jsondef json_load_byteified(file_handle):    return _byteify(        json.load(file_handle, object_hook=_byteify),        ignore_dicts=True">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-11-22T05:15:37.401Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="check class has attribute">
+<meta name="twitter:description" content="123456789101112131415161718192021222324252627282930import jsondef json_load_byteified(file_handle):    return _byteify(        json.load(file_handle, object_hook=_byteify),        ignore_dicts=True">
+  
+    <link rel="alternate" href="/atom.xml" title="记录点滴" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">记录点滴</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://clampist.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-python-loads-json-object-instead-of-unicode" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/11/22/python-loads-json-object-instead-of-unicode/" class="article-date">
+  <time datetime="2017-11-22T05:14:00.000Z" itemprop="datePublished">2017-11-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/python-json/">python, json</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      check class has attribute
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">import json</div><div class="line"></div><div class="line">def json_load_byteified(file_handle):</div><div class="line">    return _byteify(</div><div class="line">        json.load(file_handle, object_hook=_byteify),</div><div class="line">        ignore_dicts=True</div><div class="line">    )</div><div class="line"></div><div class="line">def json_loads_byteified(json_text):</div><div class="line">    return _byteify(</div><div class="line">        json.loads(json_text, object_hook=_byteify),</div><div class="line">        ignore_dicts=True</div><div class="line">    )</div><div class="line"></div><div class="line">def _byteify(data, ignore_dicts = False):</div><div class="line">    # if this is a unicode string, return its string representation</div><div class="line">    if isinstance(data, unicode):</div><div class="line">        return data.encode(&apos;utf-8&apos;)</div><div class="line">    # if this is a list of values, return list of byteified values</div><div class="line">    if isinstance(data, list):</div><div class="line">        return [ _byteify(item, ignore_dicts=True) for item in data ]</div><div class="line">    # if this is a dictionary, return dictionary of byteified keys and values</div><div class="line">    # but only if we haven&apos;t already byteified it</div><div class="line">    if isinstance(data, dict) and not ignore_dicts:</div><div class="line">        return &#123;</div><div class="line">            _byteify(key, ignore_dicts=True): _byteify(value, ignore_dicts=True)</div><div class="line">            for key, value in data.iteritems()</div><div class="line">        &#125;</div><div class="line">    # if it&apos;s anything else, return it in its original form</div><div class="line">    return data</div></pre></td></tr></table></figure>
+<p><strong>Example usage:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; json_loads_byteified(&apos;&#123;&quot;Hello&quot;: &quot;World&quot;&#125;&apos;)</div><div class="line">&#123;&apos;Hello&apos;: &apos;World&apos;&#125;</div><div class="line">&gt;&gt;&gt; json_loads_byteified(&apos;&quot;I am a top-level string&quot;&apos;)</div><div class="line">&apos;I am a top-level string&apos;</div><div class="line">&gt;&gt;&gt; json_loads_byteified(&apos;7&apos;)</div><div class="line">7</div><div class="line">&gt;&gt;&gt; json_loads_byteified(&apos;[&quot;I am inside a list&quot;]&apos;)</div><div class="line">[&apos;I am inside a list&apos;]</div><div class="line">&gt;&gt;&gt; json_loads_byteified(&apos;[[[[[[[[&quot;I am inside a big nest of lists&quot;]]]]]]]]&apos;)</div><div class="line">[[[[[[[[&apos;I am inside a big nest of lists&apos;]]]]]]]]</div><div class="line">&gt;&gt;&gt; json_loads_byteified(&apos;&#123;&quot;foo&quot;: &quot;bar&quot;, &quot;things&quot;: [7, &#123;&quot;qux&quot;: &quot;baz&quot;, &quot;moo&quot;: &#123;&quot;cow&quot;: [&quot;milk&quot;]&#125;&#125;]&#125;&apos;)</div><div class="line">&#123;&apos;things&apos;: [7, &#123;&apos;qux&apos;: &apos;baz&apos;, &apos;moo&apos;: &#123;&apos;cow&apos;: [&apos;milk&apos;]&#125;&#125;], &apos;foo&apos;: &apos;bar&apos;&#125;</div><div class="line">&gt;&gt;&gt; json_load_byteified(open(&apos;somefile.json&apos;))</div><div class="line">&#123;&apos;more json&apos;: &apos;from a file&apos;&#125;</div></pre></td></tr></table></figure>
+<p><a href="https://stackoverflow.com/questions/956867/how-to-get-string-objects-instead-of-unicode-from-json" target="_blank" rel="external">stackoverflow</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2017/11/22/python-loads-json-object-instead-of-unicode/" data-id="cjdzdzaru001ndbqbjybszv8o" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/11/26/python-argparse-nargs/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/11/09/linux-grep-by-reg-content-in-file/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/cpp/">cpp</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/mysql/">mysql</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/">note</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/opencv/">opencv</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python-json/">python, json</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python-django/">python,django</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python-django-mongodb/">python,django,mongodb</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/redis/">redis</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">十一月 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/10/">十月 2012</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/12/03/adshow-refactoring/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/11/30/shell-shuffle-file-lines/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/11/29/python-absolute-import/">python from __future__ import absolute_import</a>
+          </li>
+        
+          <li>
+            <a href="/2017/11/27/django-mongoengine-query-operators/">django models mongoengine not in filter</a>
+          </li>
+        
+          <li>
+            <a href="/2017/11/27/mongodb-compact-disk-space/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Krevy Li<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>记录点滴</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="grep -Pawk -F”[123]”1cat imas.log* | grep -P &amp;apos;pa_prod_adv_info.*]&amp;apos; -o | awk -F&amp;apos;|&amp;apos; &amp;apos;&amp;#123;print $2&amp;#125;&amp;apos; | grep -v 0 grep -P切出想要的内容 参考链接 1awk -F&amp;quot;[@ /t]&amp;quot; &amp;apos;&amp;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="记录点滴">
+<meta property="og:url" content="https://clampist.github.io/2017/11/09/linux-grep-by-reg-content-in-file/index.html">
+<meta property="og:site_name" content="记录点滴">
+<meta property="og:description" content="grep -Pawk -F”[123]”1cat imas.log* | grep -P &amp;apos;pa_prod_adv_info.*]&amp;apos; -o | awk -F&amp;apos;|&amp;apos; &amp;apos;&amp;#123;print $2&amp;#125;&amp;apos; | grep -v 0 grep -P切出想要的内容 参考链接 1awk -F&amp;quot;[@ /t]&amp;quot; &amp;apos;&amp;">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-11-09T03:41:29.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="记录点滴">
+<meta name="twitter:description" content="grep -Pawk -F”[123]”1cat imas.log* | grep -P &amp;apos;pa_prod_adv_info.*]&amp;apos; -o | awk -F&amp;apos;|&amp;apos; &amp;apos;&amp;#123;print $2&amp;#125;&amp;apos; | grep -v 0 grep -P切出想要的内容 参考链接 1awk -F&amp;quot;[@ /t]&amp;quot; &amp;apos;&amp;">
+  
+    <link rel="alternate" href="/atom.xml" title="记录点滴" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">记录点滴</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://clampist.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-linux-grep-by-reg-content-in-file" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/11/09/linux-grep-by-reg-content-in-file/" class="article-date">
+  <time datetime="2017-11-09T03:41:29.000Z" itemprop="datePublished">2017-11-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="grep-P"><a href="#grep-P" class="headerlink" title="grep -P"></a>grep -P</h2><h2 id="awk-F”-123-”"><a href="#awk-F”-123-”" class="headerlink" title="awk -F”[123]”"></a>awk -F”[123]”</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cat imas.log* | grep -P &apos;pa_prod_adv_info.*]&apos; -o | awk -F&apos;|&apos; &apos;&#123;print $2&#125;&apos; | grep -v 0</div></pre></td></tr></table></figure>
+<p><code>grep -P</code>切出想要的内容</p>
+<p><a href="http://blog.csdn.net/computer055maxi/article/details/6317251" target="_blank" rel="external">参考链接</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">awk -F&quot;[@ /t]&quot; &apos;&#123;print $2,$3&#125;&apos; test</div></pre></td></tr></table></figure>
+<p>以@，空格，Tab键分割test文件的每一行，并输出第二、第三列。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2017/11/09/linux-grep-by-reg-content-in-file/" data-id="cjdzdzarh000ydbqb1819ynj9" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/11/22/python-loads-json-object-instead-of-unicode/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          check class has attribute
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/11/02/linux-sync-folder-by-rsync/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">linux sync folder by rsync</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/cpp/">cpp</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/mysql/">mysql</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/">note</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/opencv/">opencv</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python-json/">python, json</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python-django/">python,django</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python-django-mongodb/">python,django,mongodb</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/redis/">redis</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">十一月 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/10/">十月 2012</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/12/03/adshow-refactoring/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/11/30/shell-shuffle-file-lines/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2017/11/29/python-absolute-import/">python from __future__ import absolute_import</a>
+          </li>
+        
+          <li>
+            <a href="/2017/11/27/django-mongoengine-query-operators/">django models mongoengine not in filter</a>
+          </li>
+        
+          <li>
+            <a href="/2017/11/27/mongodb-compact-disk-space/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Krevy Li<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
