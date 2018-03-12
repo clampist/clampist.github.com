@@ -96,7 +96,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/09/22/python-two-or-three-continuous-items-in-list/" data-id="cjeog2eli001wfxqbctl0rteh" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/09/22/python-two-or-three-continuous-items-in-list/" data-id="cjeog448u001yh7qbpzrh73zh" class="article-share-link">Share</a>
       
       
     </footer>
@@ -106,14 +106,14 @@
 
 
   
-    <article id="post-shell-uniq-count" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-boost-lexical-cast-cpp" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/09/22/shell-uniq-count/" class="article-date">
+    <a href="/2017/09/22/boost-lexical-cast-cpp/" class="article-date">
   <time datetime="2017-09-22T06:37:00.000Z" itemprop="datePublished">2017-09-22</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/linux/">linux</a>
+    <a class="article-category-link" href="/categories/cpp/">cpp</a>
   </div>
 
   </div>
@@ -124,7 +124,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/22/shell-uniq-count/">shell uniq count</a>
+      <a class="article-title" href="/2017/09/22/boost-lexical-cast-cpp/">boost::lexical_cast</a>
     </h1>
   
 
@@ -132,12 +132,14 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Shell中uniq去重并统计"><a href="#Shell中uniq去重并统计" class="headerlink" title="Shell中uniq去重并统计"></a>Shell中uniq去重并统计</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cat text | uniq -c</div></pre></td></tr></table></figure>
+        <h2 id="boost-lexical-cast"><a href="#boost-lexical-cast" class="headerlink" title="boost::lexical_cast"></a>boost::lexical_cast</h2><p><code>c++</code> 使用 <code>boost::lexical_cast</code> 数据类型转换</p>
+<p><a href="http://www.cnblogs.com/mx113/articles/1603985.html" target="_blank" rel="external">参考链接</a></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;boost/lexical_cast.hpp&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt; </span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> ERROR_LEXICAL_CAST     1 </span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    <span class="keyword">using</span> boost::lexical_cast;</div><div class="line">    <span class="keyword">int</span>         a = <span class="number">0</span>;</div><div class="line">    <span class="keyword">double</span>        b = <span class="number">0.0</span>;</div><div class="line">    <span class="built_in">std</span>::<span class="built_in">string</span> s = <span class="string">""</span>; </div><div class="line">    <span class="keyword">int</span>            e = <span class="number">0</span>;    </div><div class="line">    <span class="keyword">try</span></div><div class="line">    &#123; </div><div class="line">        <span class="comment">// ----- 字符串 --&gt; 数值 </span></div><div class="line">        a = lexical_cast&lt;<span class="keyword">int</span>&gt;(<span class="string">"123"</span>);</div><div class="line">        b = lexical_cast&lt;<span class="keyword">double</span>&gt;(<span class="string">"123.12"</span>);</div><div class="line">        <span class="comment">// ----- 数值 --&gt; 字符串</span></div><div class="line">        s = lexical_cast&lt;<span class="built_in">std</span>::<span class="built_in">string</span>&gt;(<span class="string">"123456.7"</span>); </div><div class="line">        <span class="comment">// ----- 异常处理演示</span></div><div class="line">        e = lexical_cast&lt;<span class="keyword">int</span>&gt;(<span class="string">"abc"</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">catch</span>(boost::bad_lexical_cast&amp; e)</div><div class="line">    &#123;</div><div class="line">        <span class="comment">// bad lexical cast: source type value could not be interpreted as target</span></div><div class="line">        <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; e.what() &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</div><div class="line">        <span class="keyword">return</span> ERROR_LEXICAL_CAST;</div><div class="line">    &#125; </div><div class="line">    </div><div class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; a &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;    <span class="comment">// 输出：123 </span></div><div class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; b &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;    <span class="comment">// 输出：123.12 </span></div><div class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; s &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;     <span class="comment">// 输出：123456.7 </span></div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/09/22/shell-uniq-count/" data-id="cjeog2elo0026fxqbnqf43qw7" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/09/22/boost-lexical-cast-cpp/" data-id="cjeog44790001h7qbr1ey0z9z" class="article-share-link">Share</a>
       
       
     </footer>
@@ -182,7 +184,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/09/07/hello-world/" data-id="cjeog2el10012fxqbl2zlbe41" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/09/07/hello-world/" data-id="cjeog4481000th7qbcgurbkhl" class="article-share-link">Share</a>
       
       
     </footer>
@@ -228,7 +230,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/02/24/shell-shuffle-file-lines/" data-id="cjeog2eln0024fxqby9fbizrn" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/02/24/shell-shuffle-file-lines/" data-id="cjeog4490002dh7qb550lt0c0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -280,7 +282,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2012/11/09/count-ip-address-appears-most-in-log-file/" data-id="cjeog2eki0004fxqbj43r8o69" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2012/11/09/count-ip-address-appears-most-in-log-file/" data-id="cjeog447i0004h7qbcivtg8de" class="article-share-link">Share</a>
       
       
     </footer>
