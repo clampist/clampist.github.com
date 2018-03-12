@@ -64,6 +64,51 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-django-delete-multi-object" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/10/25/django-delete-multi-object/" class="article-date">
+  <time datetime="2017-10-25T00:49:00.000Z" itemprop="datePublished">2017-10-25</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/django/">django</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/25/django-delete-multi-object/">django delete multi object</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1.高效</p>
+<p><code>MyModel.objects.filter(expired=True).delete()</code></p>
+<p>2.非高效</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">rows = MyModel.objects.filter(expired=True)</div><div class="line"></div><div class="line">for r in rows:</div><div class="line">    r.delete()</div></pre></td></tr></table></figure>
+<p><a href="https://www.djangorocks.com/snippets/deleting-multiple-rows-from-your-database.html" target="_blank" rel="external">Deleting multiple rows from your database</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2017/10/25/django-delete-multi-object/" data-id="cjeofqx1q0003bbqbzn2d7p02" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-django-pagination-demo" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/10/25/django-pagination-demo/" class="article-date">
@@ -99,7 +144,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/10/25/django-pagination-demo/" data-id="cjeofnf4k000d9eqbruptzw1d" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/10/25/django-pagination-demo/" data-id="cjeofqx1x000cbbqb0lbe3xmy" class="article-share-link">Share</a>
       
       
     </footer>
@@ -144,52 +189,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/10/25/django-multi-database/" data-id="cjeofnf4j000c9eqbjptvlm0y" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-django-delete-multi-object" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/10/25/django-delete-multi-object/" class="article-date">
-  <time datetime="2017-10-25T00:49:00.000Z" itemprop="datePublished">2017-10-25</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/django/">django</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/25/django-delete-multi-object/">django delete multi object</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>1.高效</p>
-<p><code>MyModel.objects.filter(expired=True).delete()</code></p>
-<p>2.非高效</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">rows = MyModel.objects.filter(expired=True)</div><div class="line"></div><div class="line">for r in rows:</div><div class="line">    r.delete()</div></pre></td></tr></table></figure>
-<p><a href="https://www.djangorocks.com/snippets/deleting-multiple-rows-from-your-database.html" target="_blank" rel="external">Deleting multiple rows from your database</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/10/25/django-delete-multi-object/" data-id="cjeofnf4f00069eqbu8rk41ib" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/10/25/django-multi-database/" data-id="cjeofqx1u0008bbqb09dcuvko" class="article-share-link">Share</a>
       
       
     </footer>
@@ -234,7 +234,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/10/25/django-models-objects-filter-by-dict-kwargs/" data-id="cjeofnf4h00089eqbbelfep2z" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/10/25/django-models-objects-filter-by-dict-kwargs/" data-id="cjeofqx1t0007bbqb37shg3bf" class="article-share-link">Share</a>
       
       
     </footer>
@@ -279,7 +279,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/10/25/django-models-not-equal-exclude-filter/" data-id="cjeofnf4e00059eqbfw64i0sp" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/10/25/django-models-not-equal-exclude-filter/" data-id="cjeofqx1r0005bbqbgx523jef" class="article-share-link">Share</a>
       
       
     </footer>
