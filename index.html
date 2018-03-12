@@ -64,107 +64,10 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-adshow-refactoring" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-python-argparse-nargs" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/12/03/adshow-refactoring/" class="article-date">
-  <time datetime="2017-12-03T03:01:20.236Z" itemprop="datePublished">2017-12-03</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Adshow重构"><a href="#Adshow重构" class="headerlink" title="Adshow重构"></a>Adshow重构</h1><h2 id="Adshow现状"><a href="#Adshow现状" class="headerlink" title="Adshow现状"></a>Adshow现状</h2><blockquote>
-<p>1.业务</p>
-</blockquote>
-<pre><code>抽样/还原/机器评测 进度及状态：不明确；
-
-抽样/还原/机器评测等异步任务与Adshow本身耦合，Adshow更新重启受异步任务影响太大；
-
-出错日志暴露：手动加；
-
-例行还原调用脚本：每次升级都要通知用户；
-</code></pre><blockquote>
-<p>2.工程</p>
-</blockquote>
-<pre><code>性能：
-1.评估页面：缓存10s/未缓存18s; 
-2.报告页面：缓存1s/未缓存18s;
-一条广告本身：20k+11个字段
-总量：22w, 5G, 平均每条20k+
-</code></pre><h2 id="重构方案"><a href="#重构方案" class="headerlink" title="重构方案"></a>重构方案</h2><blockquote>
-<p>1.性能</p>
-</blockquote>
-<pre><code>方案一：
-1.将MySQL中的广告本身转移到MongoDB
-2.广告本身单独存入缓存
-线下实验：最耗时的count：0.45s -&gt; 0.03s
-
-方案二：发送部分json + 前端组装固定部分
-方案三：发送html url，前端iframe展现
-</code></pre><blockquote>
-<p>2.业务</p>
-</blockquote>
-<pre><code>使用Celery，将异步任务和例行任务拆出，与Adshow解耦
-异步任务：抽样(launch抽样)、还原、机器评测(极耗性能) -&gt; worker
-例行任务：监控、api例行还原、清理、邮件 -&gt; worker
-</code></pre><blockquote>
-<p>3.移动端</p>
-</blockquote>
-<pre><code>网页版/移动版？
-与PC同一个接口？
-</code></pre>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/12/03/adshow-refactoring/" data-id="cjdzdzaqy0002dbqbcq5feonx" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-shell-shuffle-file-lines" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/11/30/shell-shuffle-file-lines/" class="article-date">
-  <time datetime="2017-11-30T12:54:31.270Z" itemprop="datePublished">2017-11-30</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="高版本CentOS自带sort-R-shuf"><a href="#高版本CentOS自带sort-R-shuf" class="headerlink" title="高版本CentOS自带sort -R/ shuf"></a>高版本CentOS自带sort -R/ shuf</h2><p>用awk实现文件：行乱序</p>
-<blockquote>
-<p>1.awk</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">awk ‘BEGIN&#123;srand()&#125;&#123;b[rand()NR]=<span class="variable">$0</span>&#125;END&#123;<span class="keyword">for</span>(x <span class="keyword">in</span> b)<span class="built_in">print</span> b[x]&#125;’ data</div></pre></td></tr></table></figure>
-<p><a href="http://ju.outofmemory.cn/entry/118502" target="_blank" rel="external">Linux下实现文件洗牌效果 行乱序</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/11/30/shell-shuffle-file-lines/" data-id="cjdzdzas10022dbqbiiqw0x0s" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-python-absolute-import" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/11/29/python-absolute-import/" class="article-date">
-  <time datetime="2017-11-29T02:35:00.000Z" itemprop="datePublished">2017-11-29</time>
+    <a href="/2018/03/10/python-argparse-nargs/" class="article-date">
+  <time datetime="2018-03-10T02:35:00.000Z" itemprop="datePublished">2018-03-10</time>
 </a>
     
   <div class="article-category">
@@ -179,7 +82,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/11/29/python-absolute-import/">python from __future__ import absolute_import</a>
+      <a class="article-title" href="/2018/03/10/python-argparse-nargs/">python argparse nargs</a>
     </h1>
   
 
@@ -187,20 +90,15 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="from-future-import-absolute-import"><a href="#from-future-import-absolute-import" class="headerlink" title="from __future__ import absolute_import"></a>from __future__ import absolute_import</h2><h3 id="1-使用以上语句则启动绝对导入"><a href="#1-使用以上语句则启动绝对导入" class="headerlink" title="1.使用以上语句则启动绝对导入"></a>1.使用以上语句则启动绝对导入</h3><p>会从 <code>sys.path</code> 里寻找所有名为 <code>x</code> 的顶层模块</p>
-<h3 id="2-而相应的相对导入则采用"><a href="#2-而相应的相对导入则采用" class="headerlink" title="2.而相应的相对导入则采用."></a>2.而相应的相对导入则采用<code>.</code></h3><p>比如一个 package 下有 a.py 和 b.py 两个文件，在 a.py 里 <code>from . import b</code> 即是相对导入 b.py。</p>
-<p><a href="https://segmentfault.com/q/1010000000458562" target="_blank" rel="external">区别</a></p>
-<p><a href="http://legacy.python.org/dev/peps/pep-0328/" target="_blank" rel="external"><code>PEP 328</code></a>中：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">package/</div><div class="line">    __init__.py</div><div class="line">    subpackage1/</div><div class="line">        __init__.py</div><div class="line">        moduleX.py</div><div class="line">        moduleY.py</div><div class="line">    subpackage2/</div><div class="line">        __init__.py</div><div class="line">        moduleZ.py</div><div class="line">    moduleA.py</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">from .moduleY import spam</div><div class="line">from .moduleY import spam as ham</div><div class="line">from . import moduleY</div><div class="line">from ..subpackage1 import moduleY</div><div class="line">from ..subpackage2.moduleZ import eggs</div><div class="line">from ..moduleA import foo</div><div class="line">from ...package import bar</div><div class="line">from ...sys import path</div></pre></td></tr></table></figure>
-<p>一个<code>.</code>表示从当前目录寻找</p>
-<p>两个<code>.</code>表示从父目录寻找</p>
-<p>更多的<code>.</code>则从更高层级的目录寻找</p>
+        <h2 id="可变形参列表"><a href="#可变形参列表" class="headerlink" title="可变形参列表"></a>可变形参列表</h2><p>你可以配置单个参数的定义使其能够匹配所解析的命令行的多个参数。根据需要或期望的参数个数，设置nargs为这些标识值之一：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">值  含义</div><div class="line">N   参数的绝对个数（例如：3）</div><div class="line">?   0或1个参数</div><div class="line">*   0或所有参数</div><div class="line">+   所有，并且至少一个参数</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> argparse</div><div class="line"></div><div class="line">parser = argparse.ArgumentParser()</div><div class="line"></div><div class="line">parser.add_argument(<span class="string">'--three'</span>, nargs=<span class="number">3</span>)</div><div class="line">parser.add_argument(<span class="string">'--optional'</span>, nargs=<span class="string">'?'</span>)</div><div class="line">parser.add_argument(<span class="string">'--all'</span>, nargs=<span class="string">'*'</span>, dest=<span class="string">'all'</span>)</div><div class="line">parser.add_argument(<span class="string">'--one-or-more'</span>, nargs=<span class="string">'+'</span>)</div><div class="line"></div><div class="line"><span class="keyword">print</span> parser.parse_args()</div></pre></td></tr></table></figure>
+<p><a href="http://blog.xiayf.cn/2013/03/30/argparse/" target="_blank" rel="external">argparse - 命令行选项与参数解析（译）</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/11/29/python-absolute-import/" data-id="cjdzdzaro001ddbqb157snqld" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2018/03/10/python-argparse-nargs/" data-id="cjeofnf4y001e9eqbrplvi8gi" class="article-share-link">Share</a>
       
       
     </footer>
@@ -210,14 +108,14 @@
 
 
   
-    <article id="post-django-mongoengine-query-operators" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-mysql-field-length" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/11/27/django-mongoengine-query-operators/" class="article-date">
-  <time datetime="2017-11-27T03:37:00.000Z" itemprop="datePublished">2017-11-27</time>
+    <a href="/2018/02/25/mysql-field-length/" class="article-date">
+  <time datetime="2018-02-25T02:22:00.000Z" itemprop="datePublished">2018-02-25</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/python-django-mongodb/">python,django,mongodb</a>
+    <a class="article-category-link" href="/categories/mysql/">mysql</a>
   </div>
 
   </div>
@@ -228,7 +126,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/11/27/django-mongoengine-query-operators/">django models mongoengine not in filter</a>
+      <a class="article-title" href="/2018/02/25/mysql-field-length/">mysql field length</a>
     </h1>
   
 
@@ -236,14 +134,57 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Django-NOT-IN-gt-exclude-a-in-b-list"><a href="#Django-NOT-IN-gt-exclude-a-in-b-list" class="headerlink" title="Django: NOT IN -&gt; exclude(a__in=b_list)"></a>Django: NOT IN -&gt; exclude(a__in=b_list)</h2><p>NOT IN: <code>nin</code></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">ne – <span class="keyword">not</span> equal to</div><div class="line">lt – less than</div><div class="line">lte – less than <span class="keyword">or</span> equal to</div><div class="line">gt – greater than</div><div class="line">gte – greater than <span class="keyword">or</span> equal to</div><div class="line"><span class="keyword">not</span> – negate a standard check, may be used before other operators (e.g. Q(age__not__mod=<span class="number">5</span>))</div><div class="line"><span class="keyword">in</span> – value <span class="keyword">is</span> <span class="keyword">in</span> list (a list of values should be provided)</div><div class="line">nin – value <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">in</span> list (a list of values should be provided)</div><div class="line">mod – value % x == y, where x <span class="keyword">and</span> y are two provided values</div><div class="line">all – every item <span class="keyword">in</span> list of values provided <span class="keyword">is</span> <span class="keyword">in</span> array</div><div class="line">size – the size of the array <span class="keyword">is</span></div><div class="line">exists – value <span class="keyword">for</span> field exists</div></pre></td></tr></table></figure>
-<p><a href="http://docs.mongoengine.org/guide/querying.html" target="_blank" rel="external">Offical Docs: Querying the database</a></p>
+        <p>LENGTH(str): 是计算字段的长度一个汉字是算三个字符,一个数字或字母算一个字符</p>
+<p>CHAR_LENGTH(str): 返回值为字符串 str 的长度，长度的单位为字符。一个多字节字符算作一个单字符</p>
+<p><a href="http://www.111cn.net/database/mysql/53993.htm" target="_blank" rel="external">mysql获取字符串长度函数(CHAR_LENGTH)</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/11/27/django-mongoengine-query-operators/" data-id="cjdzdzar9000ddbqb01vdsmuz" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2018/02/25/mysql-field-length/" data-id="cjeofnf4x00199eqbm6id2219" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-python-datetime-compare" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/02/21/python-datetime-compare/" class="article-date">
+  <time datetime="2018-02-21T02:35:00.000Z" itemprop="datePublished">2018-02-21</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/python/">python</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/02/21/python-datetime-compare/">python datetime compare</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="时间间隔timedelta可用于计算-比较"><a href="#时间间隔timedelta可用于计算-比较" class="headerlink" title="时间间隔timedelta可用于计算/比较"></a>时间间隔timedelta可用于计算/比较</h2><p>可以直接用<code>timedelta( days=1 )</code>来进行日期的计算，大小判断</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">from datetime import timedelta</div><div class="line">start_date = timezone.now().date()</div><div class="line">end_date = start_date + timedelta( days=1 ) </div><div class="line">Entry.objects.filter(created__range=(start_date, end_date))</div></pre></td></tr></table></figure>
+<p><a href="https://stackoverflow.com/questions/10048216/compare-date-and-datetime-in-django" target="_blank" rel="external">stack overflow</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2018/02/21/python-datetime-compare/" data-id="cjeofnf50001j9eqbtnfc9idi" class="article-share-link">Share</a>
       
       
     </footer>
@@ -255,13 +196,27 @@
   
     <article id="post-mongodb-compact-disk-space" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/11/27/mongodb-compact-disk-space/" class="article-date">
-  <time datetime="2017-11-27T03:09:34.972Z" itemprop="datePublished">2017-11-27</time>
+    <a href="/2018/01/27/mongodb-compact-disk-space/" class="article-date">
+  <time datetime="2018-01-27T03:38:00.000Z" itemprop="datePublished">2018-01-27</time>
 </a>
     
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/mongodb/">mongodb</a>
+  </div>
+
   </div>
   <div class="article-inner">
     
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/01/27/mongodb-compact-disk-space/">mongodb compact disk space</a>
+    </h1>
+  
+
+      </header>
     
     <div class="article-entry" itemprop="articleBody">
       
@@ -276,7 +231,50 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/11/27/mongodb-compact-disk-space/" data-id="cjdzdzari0010dbqb8r8k9jw9" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2018/01/27/mongodb-compact-disk-space/" data-id="cjeofnf4s000y9eqbwprf2ctt" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-python-hashlib-md5-unicodeEncodeError" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/01/13/python-hashlib-md5-unicodeEncodeError/" class="article-date">
+  <time datetime="2018-01-13T02:35:00.000Z" itemprop="datePublished">2018-01-13</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/python/">python</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/01/13/python-hashlib-md5-unicodeEncodeError/">python hashlib md5 unicodeEncodeError</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">string = &quot;beyongjie&quot;</div><div class="line"></div><div class="line"></div><div class="line">md5 = hashlib.md5()</div><div class="line">md5.update(string.encode(&apos;utf-8&apos;))     #注意转码</div><div class="line">res = md5.hexdigest()</div><div class="line">print(&quot;md5加密结果:&quot;,res)</div></pre></td></tr></table></figure>
+<p><strong>正常直接计算Unicode就行，但如果报编码错误，可以尝试计算str</strong></p>
+<p><a href="http://www.cnblogs.com/pycode/p/hashlib.html" target="_blank" rel="external">参考</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2018/01/13/python-hashlib-md5-unicodeEncodeError/" data-id="cjeofnf51001k9eqbjql99dij" class="article-share-link">Share</a>
       
       
     </footer>
@@ -300,7 +298,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/cpp/">cpp</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/mysql/">mysql</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/">note</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/opencv/">opencv</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python-json/">python, json</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python-django/">python,django</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python-django-mongodb/">python,django,mongodb</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/redis/">redis</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/cpp/">cpp</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/django/">django</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/json/">json</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/mongodb/">mongodb</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/mysql/">mysql</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/">note</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/opencv/">opencv</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/redis/">redis</a></li></ul>
     </div>
   </div>
 
@@ -315,7 +313,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">十一月 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/10/">十月 2012</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">十一月 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/10/">十月 2012</a></li></ul>
     </div>
   </div>
 
@@ -328,23 +326,23 @@
       <ul>
         
           <li>
-            <a href="/2017/12/03/adshow-refactoring/">(no title)</a>
+            <a href="/2018/03/10/python-argparse-nargs/">python argparse nargs</a>
           </li>
         
           <li>
-            <a href="/2017/11/30/shell-shuffle-file-lines/">(no title)</a>
+            <a href="/2018/02/25/mysql-field-length/">mysql field length</a>
           </li>
         
           <li>
-            <a href="/2017/11/29/python-absolute-import/">python from __future__ import absolute_import</a>
+            <a href="/2018/02/21/python-datetime-compare/">python datetime compare</a>
           </li>
         
           <li>
-            <a href="/2017/11/27/django-mongoengine-query-operators/">django models mongoengine not in filter</a>
+            <a href="/2018/01/27/mongodb-compact-disk-space/">mongodb compact disk space</a>
           </li>
         
           <li>
-            <a href="/2017/11/27/mongodb-compact-disk-space/">(no title)</a>
+            <a href="/2018/01/13/python-hashlib-md5-unicodeEncodeError/">python hashlib md5 unicodeEncodeError</a>
           </li>
         
       </ul>

@@ -64,134 +64,6 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-python-Chinese-punctuation-to-English-punctuation" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/10/25/python-Chinese-punctuation-to-English-punctuation/" class="article-date">
-  <time datetime="2017-10-25T00:43:00.000Z" itemprop="datePublished">2017-10-25</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/python/">python</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/25/python-Chinese-punctuation-to-English-punctuation/">Chinese punctuation to English punctuation</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Python中：中文标点转换成英文标点"><a href="#Python中：中文标点转换成英文标点" class="headerlink" title="Python中：中文标点转换成英文标点"></a>Python中：中文标点转换成英文标点</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># In Python3, use str.maketrans instead</span></div><div class="line">table = &#123;ord(f):ord(t) <span class="keyword">for</span> f,t <span class="keyword">in</span> zip(</div><div class="line">     <span class="string">u'，。！？【】（）％＃＠＆１２３４５６７８９０'</span>,</div><div class="line">     <span class="string">u',.!?[]()%#@&amp;1234567890'</span>)&#125;</div><div class="line">t = <span class="string">u'中国，中文，标点符号！你好？１２３４５＠＃【】+=-（）'</span></div><div class="line">t2 = t.translate(table)</div><div class="line"><span class="string">'''</span></div><div class="line"><span class="string"><span class="meta">&gt;&gt;&gt; </span>print t2</span></div><div class="line"><span class="string">中国,中文,标点符号!你好?12345@#[]+=-()</span></div><div class="line"><span class="string">'''</span></div><div class="line"></div><div class="line">作者：灵剑</div><div class="line">链接：https://www.zhihu.com/question/<span class="number">37720196</span>/answer/<span class="number">115870233</span></div><div class="line">来源：知乎</div><div class="line">著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</div></pre></td></tr></table></figure>
-<p><a href="https://www.zhihu.com/question/37720196" target="_blank" rel="external">链接</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/10/25/python-Chinese-punctuation-to-English-punctuation/" data-id="cjdzdzarn001bdbqbjff6byru" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-shell-sed-certain-lines" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/10/24/shell-sed-certain-lines/" class="article-date">
-  <time datetime="2017-10-24T10:37:00.000Z" itemprop="datePublished">2017-10-24</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/linux/">linux</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/24/shell-sed-certain-lines/">use sed print certain lines</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="用sed命令"><a href="#用sed命令" class="headerlink" title="用sed命令"></a>用sed命令</h2><p>sed -n ‘5,10p’ filename 这样你就可以只查看文件的第5行到第10行。</p>
-<p><a href="http://www.cnblogs.com/xianghang123/archive/2011/08/03/2125977.html" target="_blank" rel="external">linux 如何显示一个文件的某几行(中间几行)</a> </p>
-<h2 id="sed第一行、第二行至最后"><a href="#sed第一行、第二行至最后" class="headerlink" title="sed第一行、第二行至最后"></a>sed第一行、第二行至最后</h2><h2 id="最后添加一列"><a href="#最后添加一列" class="headerlink" title="最后添加一列"></a>最后添加一列</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">cmd_str = <span class="string">'sed -i "1s/$/\t%s-mirror/" %s'</span> % (str(file_col_num + <span class="number">1</span>),</div><div class="line">cmd_str = <span class="string">'sed -i "1s/$/\tmirror/" %s'</span> % local_upload_sample_file_path_name</div><div class="line">cmd_str = <span class="string">'sed -i \'2,$s/$/\t0/\' %s'</span> % local_upload_sample_file_path_name</div><div class="line">cmd_str = <span class="string">'sed -i \'1d %s\''</span> % local_upload_sample_file_path_name2</div><div class="line">cmd_str = <span class="string">'sed -i \'s/$/\t1/\' %s'</span> % local_upload_sample_file_path_name2</div></pre></td></tr></table></figure>
-<p><a href="https://unix.stackexchange.com/questions/117568/adding-a-column-of-values-in-a-tab-delimited-file" target="_blank" rel="external">Adding a Column of values in a tab delimited file</a></p>
-<p><a href="http://www.cnblogs.com/emanlee/p/3307642.html" target="_blank" rel="external">linux中sed的用法</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/10/24/shell-sed-certain-lines/" data-id="cjdzdzas20024dbqbrbmt7kps" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-shell-uniq-count" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/09/22/shell-uniq-count/" class="article-date">
-  <time datetime="2017-09-22T06:37:00.000Z" itemprop="datePublished">2017-09-22</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/linux/">linux</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/22/shell-uniq-count/">shell uniq count</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Shell中uniq去重并统计"><a href="#Shell中uniq去重并统计" class="headerlink" title="Shell中uniq去重并统计"></a>Shell中uniq去重并统计</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cat text | uniq -c</div></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/09/22/shell-uniq-count/" data-id="cjdzdzas00020dbqb5wapsfr8" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
     <article id="post-boost-lexical-cast-cpp" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/09/22/boost-lexical-cast-cpp/" class="article-date">
@@ -225,7 +97,50 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/09/22/boost-lexical-cast-cpp/" data-id="cjdzdzar10004dbqbb4jxt1dc" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/09/22/boost-lexical-cast-cpp/" data-id="cjeofnf4a00029eqb273tcplb" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-linux-dos-to-unix" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/09/22/linux-dos-to-unix/" class="article-date">
+  <time datetime="2017-09-22T06:37:00.000Z" itemprop="datePublished">2017-09-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/linux/">linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/09/22/linux-dos-to-unix/">linux dos to unix</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="linux下文本处理"><a href="#linux下文本处理" class="headerlink" title="linux下文本处理"></a>linux下文本处理</h1><h2 id="dos2unix-直接修改原文件"><a href="#dos2unix-直接修改原文件" class="headerlink" title="dos2unix:直接修改原文件"></a>dos2unix:直接修改原文件</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">dos2unix file</div></pre></td></tr></table></figure>
+<p><a href="https://www.cyberciti.biz/faq/howto-unix-linux-convert-dos-newlines-cr-lf-unix-text-format/" target="_blank" rel="external">wiki</a></p>
+<h2 id="replace-t-with-4-blanks"><a href="#replace-t-with-4-blanks" class="headerlink" title="replace \t with 4 blanks"></a>replace \t with 4 blanks</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">expand -t 4 input &gt; output</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2017/09/22/linux-dos-to-unix/" data-id="cjeofnf4q000t9eqbzi2aejlh" class="article-share-link">Share</a>
       
       
     </footer>
@@ -268,7 +183,102 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/09/22/shell-last-param/" data-id="cjdzdzarz001xdbqb9nl8klp8" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/09/22/shell-last-param/" data-id="cjeofnf57001x9eqb5epah557" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-git-usage" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/09/22/git-usage/" class="article-date">
+  <time datetime="2017-09-22T06:37:00.000Z" itemprop="datePublished">2017-09-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/git/">git</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/09/22/git-usage/">git and gerrit</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="git常用"><a href="#git常用" class="headerlink" title="git常用"></a>git常用</h2><h3 id="master开发"><a href="#master开发" class="headerlink" title="master开发"></a><code>master</code>开发</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git add    <span class="comment"># add后如果再修改，需要再add一次，否则提交add时版本</span></div><div class="line">git commit -m <span class="string">"adshow-3-6-1 feed support"</span></div><div class="line">git push origin master:refs/<span class="keyword">for</span>/master</div></pre></td></tr></table></figure>
+<h3 id="branch开发"><a href="#branch开发" class="headerlink" title="branch开发"></a><code>branch</code>开发</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git add </div><div class="line">git commit -m <span class="string">"sth"</span> </div><div class="line">git push origin master:refs/<span class="keyword">for</span>/patserver_1-0-23_BRANCH</div></pre></td></tr></table></figure>
+<h3 id="遇到stash冲突"><a href="#遇到stash冲突" class="headerlink" title="遇到stash冲突"></a>遇到<code>stash</code>冲突</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git stash    <span class="comment"># 将本地冲突改动 存入栈中</span></div><div class="line">git pull     <span class="comment"># 更新</span></div><div class="line">git stash pop    <span class="comment">#从栈中将改动拉出</span></div></pre></td></tr></table></figure>
+        
+          <p class="article-more-link">
+            <a href="/2017/09/22/git-usage/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2017/09/22/git-usage/" data-id="cjeofnf4n000l9eqbjuw5b28z" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-acquire-array-length-in-cpp" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/09/22/acquire-array-length-in-cpp/" class="article-date">
+  <time datetime="2017-09-22T06:37:00.000Z" itemprop="datePublished">2017-09-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/cpp/">cpp</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/09/22/acquire-array-length-in-cpp/">acquire array length in cpp</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="C-获取数组长度"><a href="#C-获取数组长度" class="headerlink" title="C++获取数组长度"></a>C++获取数组长度</h2><p>一、静态数组。</p>
+<p>比如 int int_ary[5] ,静态数组在编译的时候就知道了数组长度，这对编译器来说挺好实现的。</p>
+<p>用得最多的大概就是sizeof了吧：</p>
+<p><code>#define countof_macro(x) (sizeof((x)) / sizeof(x)[0])</code></p>
+<p>对于C++，可以用模板。</p>
+<p>如果将数组作为函数形参的话，它会退化成一个指针，但是引用则不会。使用引用带来的另外一个问题就是，声明参数时必须知道数组长度——我要是知道我还费这劲干啥？解决方法就是使用模板，将数组引用的数组大小声明为模板参数：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//错误的做法：这里形参已经退化为指针了</span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">countof_func_para</span><span class="params">(<span class="keyword">int</span> int_ary[<span class="number">5</span>])</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    <span class="keyword">return</span> countof_macro(int_ary);</div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="comment">//正确的做法</span></div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">size_t</span> n&gt;</div><div class="line">int countof_template(const int (&amp;int_ary)[N])</div><div class="line">&#123;</div><div class="line">    <span class="keyword">return</span> N;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><a href="http://www.cnblogs.com/h46incon/archive/2013/03/17/2965020.html" target="_blank" rel="external">参考链接</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2017/09/22/acquire-array-length-in-cpp/" data-id="cjeofnf4600009eqbmt12d4w8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -292,7 +302,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/cpp/">cpp</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/mysql/">mysql</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/">note</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/opencv/">opencv</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python-json/">python, json</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python-django/">python,django</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python-django-mongodb/">python,django,mongodb</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/redis/">redis</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/cpp/">cpp</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/django/">django</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/json/">json</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/mongodb/">mongodb</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/mysql/">mysql</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/">note</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/opencv/">opencv</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/redis/">redis</a></li></ul>
     </div>
   </div>
 
@@ -307,7 +317,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">十一月 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/10/">十月 2012</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">十一月 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/10/">十月 2012</a></li></ul>
     </div>
   </div>
 
@@ -320,23 +330,23 @@
       <ul>
         
           <li>
-            <a href="/2017/12/03/adshow-refactoring/">(no title)</a>
+            <a href="/2018/03/10/python-argparse-nargs/">python argparse nargs</a>
           </li>
         
           <li>
-            <a href="/2017/11/30/shell-shuffle-file-lines/">(no title)</a>
+            <a href="/2018/02/25/mysql-field-length/">mysql field length</a>
           </li>
         
           <li>
-            <a href="/2017/11/29/python-absolute-import/">python from __future__ import absolute_import</a>
+            <a href="/2018/02/21/python-datetime-compare/">python datetime compare</a>
           </li>
         
           <li>
-            <a href="/2017/11/27/django-mongoengine-query-operators/">django models mongoengine not in filter</a>
+            <a href="/2018/01/27/mongodb-compact-disk-space/">mongodb compact disk space</a>
           </li>
         
           <li>
-            <a href="/2017/11/27/mongodb-compact-disk-space/">(no title)</a>
+            <a href="/2018/01/13/python-hashlib-md5-unicodeEncodeError/">python hashlib md5 unicodeEncodeError</a>
           </li>
         
       </ul>

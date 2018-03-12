@@ -64,96 +64,6 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-django-models-objects-filter-by-dict-kwargs" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/10/25/django-models-objects-filter-by-dict-kwargs/" class="article-date">
-  <time datetime="2017-10-25T00:48:00.000Z" itemprop="datePublished">2017-10-25</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/python-django/">python,django</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/25/django-models-objects-filter-by-dict-kwargs/">django models objects filter by dict kwargs</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>1. 大于等于、小于等于</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Model.objects.filter(price__gte=<span class="number">10</span>, price__lte=<span class="number">15</span>)</div><div class="line"><span class="comment"># or</span></div><div class="line">kwargs = &#123;<span class="string">'price__gte'</span>: <span class="number">10</span>,</div><div class="line">          <span class="string">'price__lte'</span>: <span class="number">15</span>&#125;      </div><div class="line">Model.objects.filter(**kwargs)</div></pre></td></tr></table></figure>
-<p><strong>2. LIKE、包含</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">kwargs = &#123;filter_field + <span class="string">'__icontains'</span>: filter_content&#125;</div><div class="line">edu_mtrl_list = edu_mtrl_list.filter(**kwargs)</div></pre></td></tr></table></figure>
-<p><a href="https://stackoverflow.com/questions/1763495/adding-extra-parameters-to-a-objects-filter-via-dict" target="_blank" rel="external">https://stackoverflow.com/questions/1763495/adding-extra-parameters-to-a-objects-filter-via-dict</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/10/25/django-models-objects-filter-by-dict-kwargs/" data-id="cjdzdzar50008dbqbyc8mq56u" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-django-models-not-equal-exclude-filter" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/10/25/django-models-not-equal-exclude-filter/" class="article-date">
-  <time datetime="2017-10-25T00:47:00.000Z" itemprop="datePublished">2017-10-25</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/python-django/">python,django</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/25/django-models-not-equal-exclude-filter/">django models not equal exclude filter</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Django-not-equal-exclude"><a href="#Django-not-equal-exclude" class="headerlink" title="Django != not equal exclude"></a>Django != not equal exclude</h2><p>not equal</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">user1_progress = models.EvaluationMaterial.objects.filter(</div><div class="line">    evaluation_task_id=evaluation_task_id).exclude(</div><div class="line">    user1=<span class="string">'-'</span>).values(<span class="string">'user1'</span>).annotate(alloced=Count(<span class="string">'user1'</span>))</div></pre></td></tr></table></figure>
-<h2 id="Django-NOT-IN-gt-exclude-a-in-b-list"><a href="#Django-NOT-IN-gt-exclude-a-in-b-list" class="headerlink" title="Django: NOT IN -&gt; exclude(a__in=b_list)"></a>Django: NOT IN -&gt; exclude(a__in=b_list)</h2><p>NOT IN</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">table1.objects.exclude(id__in = </div><div class="line">table2.objects.filter(your_condition).values_list(<span class="string">'id'</span>, flat=<span class="keyword">True</span>))</div></pre></td></tr></table></figure>
-<p>(Django in / not in query)[<a href="https://stackoverflow.com/questions/4523282/django-in-not-in-query" target="_blank" rel="external">https://stackoverflow.com/questions/4523282/django-in-not-in-query</a>]</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/10/25/django-models-not-equal-exclude-filter/" data-id="cjdzdzar60009dbqb7ej4w1dh" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
     <article id="post-du-find-max-dir" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/10/25/du-find-max-dir/" class="article-date">
@@ -186,7 +96,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/10/25/du-find-max-dir/" data-id="cjdzdzard000ldbqbnunokg2w" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/10/25/du-find-max-dir/" data-id="cjeofnf4m000k9eqbwploiqen" class="article-share-link">Share</a>
       
       
     </footer>
@@ -228,7 +138,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/10/25/python-check-class-has-attribute/" data-id="cjdzdzarq001idbqb1l5zs26j" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/10/25/python-check-class-has-attribute/" data-id="cjeofnf4z001g9eqbiup8i6z7" class="article-share-link">Share</a>
       
       
     </footer>
@@ -278,7 +188,94 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/10/25/shell-awk-filter-sort/" data-id="cjdzdzarw001udbqbgjnyzhqy" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/10/25/shell-awk-filter-sort/" data-id="cjeofnf56001u9eqbnulx6a1o" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-python-Chinese-punctuation-to-English-punctuation" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/10/25/python-Chinese-punctuation-to-English-punctuation/" class="article-date">
+  <time datetime="2017-10-25T00:43:00.000Z" itemprop="datePublished">2017-10-25</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/python/">python</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/25/python-Chinese-punctuation-to-English-punctuation/">Chinese punctuation to English punctuation</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Python中：中文标点转换成英文标点"><a href="#Python中：中文标点转换成英文标点" class="headerlink" title="Python中：中文标点转换成英文标点"></a>Python中：中文标点转换成英文标点</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># In Python3, use str.maketrans instead</span></div><div class="line">table = &#123;ord(f):ord(t) <span class="keyword">for</span> f,t <span class="keyword">in</span> zip(</div><div class="line">     <span class="string">u'，。！？【】（）％＃＠＆１２３４５６７８９０'</span>,</div><div class="line">     <span class="string">u',.!?[]()%#@&amp;1234567890'</span>)&#125;</div><div class="line">t = <span class="string">u'中国，中文，标点符号！你好？１２３４５＠＃【】+=-（）'</span></div><div class="line">t2 = t.translate(table)</div><div class="line"><span class="string">'''</span></div><div class="line"><span class="string"><span class="meta">&gt;&gt;&gt; </span>print t2</span></div><div class="line"><span class="string">中国,中文,标点符号!你好?12345@#[]+=-()</span></div><div class="line"><span class="string">'''</span></div><div class="line"></div><div class="line">作者：灵剑</div><div class="line">链接：https://www.zhihu.com/question/<span class="number">37720196</span>/answer/<span class="number">115870233</span></div><div class="line">来源：知乎</div><div class="line">著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</div></pre></td></tr></table></figure>
+<p><a href="https://www.zhihu.com/question/37720196" target="_blank" rel="external">链接</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2017/10/25/python-Chinese-punctuation-to-English-punctuation/" data-id="cjeofnf4v00149eqb5wgq8xww" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-shell-sed-certain-lines" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/10/24/shell-sed-certain-lines/" class="article-date">
+  <time datetime="2017-10-24T10:37:00.000Z" itemprop="datePublished">2017-10-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/linux/">linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/24/shell-sed-certain-lines/">use sed print certain lines</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="用sed命令"><a href="#用sed命令" class="headerlink" title="用sed命令"></a>用sed命令</h2><p>sed -n ‘5,10p’ filename 这样你就可以只查看文件的第5行到第10行。</p>
+<p><a href="http://www.cnblogs.com/xianghang123/archive/2011/08/03/2125977.html" target="_blank" rel="external">linux 如何显示一个文件的某几行(中间几行)</a> </p>
+<h2 id="sed第一行、第二行至最后"><a href="#sed第一行、第二行至最后" class="headerlink" title="sed第一行、第二行至最后"></a>sed第一行、第二行至最后</h2><h2 id="最后添加一列"><a href="#最后添加一列" class="headerlink" title="最后添加一列"></a>最后添加一列</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">cmd_str = <span class="string">'sed -i "1s/$/\t%s-mirror/" %s'</span> % (str(file_col_num + <span class="number">1</span>),</div><div class="line">cmd_str = <span class="string">'sed -i "1s/$/\tmirror/" %s'</span> % local_upload_sample_file_path_name</div><div class="line">cmd_str = <span class="string">'sed -i \'2,$s/$/\t0/\' %s'</span> % local_upload_sample_file_path_name</div><div class="line">cmd_str = <span class="string">'sed -i \'1d %s\''</span> % local_upload_sample_file_path_name2</div><div class="line">cmd_str = <span class="string">'sed -i \'s/$/\t1/\' %s'</span> % local_upload_sample_file_path_name2</div></pre></td></tr></table></figure>
+<p><a href="https://unix.stackexchange.com/questions/117568/adding-a-column-of-values-in-a-tab-delimited-file" target="_blank" rel="external">Adding a Column of values in a tab delimited file</a></p>
+<p><a href="http://www.cnblogs.com/emanlee/p/3307642.html" target="_blank" rel="external">linux中sed的用法</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2017/10/24/shell-sed-certain-lines/" data-id="cjeofnf5a00239eqbmhc6i75o" class="article-share-link">Share</a>
       
       
     </footer>
@@ -302,7 +299,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/cpp/">cpp</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/mysql/">mysql</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/">note</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/opencv/">opencv</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python-json/">python, json</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python-django/">python,django</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python-django-mongodb/">python,django,mongodb</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/redis/">redis</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/cpp/">cpp</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/django/">django</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/json/">json</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/mongodb/">mongodb</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/mysql/">mysql</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/">note</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/opencv/">opencv</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/redis/">redis</a></li></ul>
     </div>
   </div>
 
@@ -317,7 +314,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">十一月 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/10/">十月 2012</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">十一月 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/10/">十月 2012</a></li></ul>
     </div>
   </div>
 
@@ -330,23 +327,23 @@
       <ul>
         
           <li>
-            <a href="/2017/12/03/adshow-refactoring/">(no title)</a>
+            <a href="/2018/03/10/python-argparse-nargs/">python argparse nargs</a>
           </li>
         
           <li>
-            <a href="/2017/11/30/shell-shuffle-file-lines/">(no title)</a>
+            <a href="/2018/02/25/mysql-field-length/">mysql field length</a>
           </li>
         
           <li>
-            <a href="/2017/11/29/python-absolute-import/">python from __future__ import absolute_import</a>
+            <a href="/2018/02/21/python-datetime-compare/">python datetime compare</a>
           </li>
         
           <li>
-            <a href="/2017/11/27/django-mongoengine-query-operators/">django models mongoengine not in filter</a>
+            <a href="/2018/01/27/mongodb-compact-disk-space/">mongodb compact disk space</a>
           </li>
         
           <li>
-            <a href="/2017/11/27/mongodb-compact-disk-space/">(no title)</a>
+            <a href="/2018/01/13/python-hashlib-md5-unicodeEncodeError/">python hashlib md5 unicodeEncodeError</a>
           </li>
         
       </ul>
