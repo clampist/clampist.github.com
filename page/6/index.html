@@ -64,57 +64,10 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-git-usage" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-shell-awk-filter-sort" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/09/22/git-usage/" class="article-date">
-  <time datetime="2017-09-22T06:37:00.000Z" itemprop="datePublished">2017-09-22</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/git/">git</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/22/git-usage/">git and gerrit</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="git常用"><a href="#git常用" class="headerlink" title="git常用"></a>git常用</h2><h3 id="master开发"><a href="#master开发" class="headerlink" title="master开发"></a><code>master</code>开发</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git add    <span class="comment"># add后如果再修改，需要再add一次，否则提交add时版本</span></div><div class="line">git commit -m <span class="string">"adshow-3-6-1 feed support"</span></div><div class="line">git push origin master:refs/<span class="keyword">for</span>/master</div></pre></td></tr></table></figure>
-<h3 id="branch开发"><a href="#branch开发" class="headerlink" title="branch开发"></a><code>branch</code>开发</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git add </div><div class="line">git commit -m <span class="string">"sth"</span> </div><div class="line">git push origin master:refs/<span class="keyword">for</span>/patserver_1-0-23_BRANCH</div></pre></td></tr></table></figure>
-<h3 id="遇到stash冲突"><a href="#遇到stash冲突" class="headerlink" title="遇到stash冲突"></a>遇到<code>stash</code>冲突</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git stash    <span class="comment"># 将本地冲突改动 存入栈中</span></div><div class="line">git pull     <span class="comment"># 更新</span></div><div class="line">git stash pop    <span class="comment">#从栈中将改动拉出</span></div></pre></td></tr></table></figure>
-        
-          <p class="article-more-link">
-            <a href="/2017/09/22/git-usage/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/09/22/git-usage/" data-id="cjeogahcw000lmbqb4vl66f9i" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-shell-last-param" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/09/22/shell-last-param/" class="article-date">
-  <time datetime="2017-09-22T06:37:00.000Z" itemprop="datePublished">2017-09-22</time>
+    <a href="/2017/10/25/shell-awk-filter-sort/" class="article-date">
+  <time datetime="2017-10-25T00:43:00.000Z" itemprop="datePublished">2017-10-25</time>
 </a>
     
   <div class="article-category">
@@ -129,7 +82,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/22/shell-last-param/">shell last param</a>
+      <a class="article-title" href="/2017/10/25/shell-awk-filter-sort/">awk filter by one col larger than a value</a>
     </h1>
   
 
@@ -137,14 +90,66 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Shell-最后一个参数"><a href="#Shell-最后一个参数" class="headerlink" title="Shell 最后一个参数"></a>Shell 最后一个参数</h1><p><a href="http://www.letuknowit.com/post/81.html" target="_blank" rel="external">参考链接</a></p>
-<p><code>$_</code> 会直接执行</p>
-<p><code>!$</code> 会展示命令，等用户按Enter</p>
+        <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">awk -F<span class="string">'\t'</span> <span class="string">'$36 &gt; "2017-10-18 15:00:00" &#123;print ;&#125;'</span> 13224_sample_material_encode_full | sort -r &gt; target.txt</div></pre></td></tr></table></figure>
+<h2 id="打印第36列大于某一时刻的整行"><a href="#打印第36列大于某一时刻的整行" class="headerlink" title="打印第36列大于某一时刻的整行"></a>打印第36列大于某一时刻的整行</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&apos;$36 &gt; &quot;2017-10-18 15:00:00&quot; &#123;print ;&#125;&apos;</div></pre></td></tr></table></figure>
+<p><code>filter</code>: <code>$36 &gt; &quot;2017-10-18 15:00:00&quot;</code></p>
+<p><code>print whole line</code>: <code>print ;</code></p>
+<h2 id="awk-cut-输出指定列"><a href="#awk-cut-输出指定列" class="headerlink" title="awk/cut 输出指定列"></a>awk/cut 输出指定列</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">awk &apos;&#123;for(i=10;i&lt;=20;i++)printf $i&quot;&quot;FS;print&quot;&quot;&#125;&apos; file</div></pre></td></tr></table></figure>
+<p><code>FS</code>就是<strong>分隔符</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cut -d&quot; &quot; -f 10-20 file</div></pre></td></tr></table></figure>
+<p><a href="https://zhidao.baidu.com/question/481774014.html" target="_blank" rel="external">百度知道</a></p>
+<h2 id="逆序"><a href="#逆序" class="headerlink" title="逆序"></a>逆序</h2><p><code>sort reverse</code>: <code>sort -r</code></p>
+<h2 id="按某列排序"><a href="#按某列排序" class="headerlink" title="按某列排序"></a>按某列排序</h2><p><code>sort -k 2 file.txt</code><br>按第二列排序<br><a href="https://stackoverflow.com/questions/4262650/linux-shell-sort-file-according-to-the-second-column" target="_blank" rel="external">stackoverflow</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/09/22/shell-last-param/" data-id="cjeogahea0025mbqbiu55ao85" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/10/25/shell-awk-filter-sort/" data-id="cjeogahe80023mbqb57cx1s90" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-shell-sed-certain-lines" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/10/24/shell-sed-certain-lines/" class="article-date">
+  <time datetime="2017-10-24T10:37:00.000Z" itemprop="datePublished">2017-10-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/linux/">linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/24/shell-sed-certain-lines/">use sed print certain lines</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="用sed命令"><a href="#用sed命令" class="headerlink" title="用sed命令"></a>用sed命令</h2><p>sed -n ‘5,10p’ filename 这样你就可以只查看文件的第5行到第10行。</p>
+<p><a href="http://www.cnblogs.com/xianghang123/archive/2011/08/03/2125977.html" target="_blank" rel="external">linux 如何显示一个文件的某几行(中间几行)</a> </p>
+<h2 id="sed第一行、第二行至最后"><a href="#sed第一行、第二行至最后" class="headerlink" title="sed第一行、第二行至最后"></a>sed第一行、第二行至最后</h2><h2 id="最后添加一列"><a href="#最后添加一列" class="headerlink" title="最后添加一列"></a>最后添加一列</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">cmd_str = <span class="string">'sed -i "1s/$/\t%s-mirror/" %s'</span> % (str(file_col_num + <span class="number">1</span>),</div><div class="line">cmd_str = <span class="string">'sed -i "1s/$/\tmirror/" %s'</span> % local_upload_sample_file_path_name</div><div class="line">cmd_str = <span class="string">'sed -i \'2,$s/$/\t0/\' %s'</span> % local_upload_sample_file_path_name</div><div class="line">cmd_str = <span class="string">'sed -i \'1d %s\''</span> % local_upload_sample_file_path_name2</div><div class="line">cmd_str = <span class="string">'sed -i \'s/$/\t1/\' %s'</span> % local_upload_sample_file_path_name2</div></pre></td></tr></table></figure>
+<p><a href="https://unix.stackexchange.com/questions/117568/adding-a-column-of-values-in-a-tab-delimited-file" target="_blank" rel="external">Adding a Column of values in a tab delimited file</a></p>
+<p><a href="http://www.cnblogs.com/emanlee/p/3307642.html" target="_blank" rel="external">linux中sed的用法</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2017/10/24/shell-sed-certain-lines/" data-id="cjeogahec0029mbqb8kv8ae92" class="article-share-link">Share</a>
       
       
     </footer>
@@ -239,14 +244,14 @@
 
 
   
-    <article id="post-boost-lexical-cast-cpp" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-shell-uniq-count" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/09/22/boost-lexical-cast-cpp/" class="article-date">
+    <a href="/2017/09/22/shell-uniq-count/" class="article-date">
   <time datetime="2017-09-22T06:37:00.000Z" itemprop="datePublished">2017-09-22</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/cpp/">cpp</a>
+    <a class="article-category-link" href="/categories/linux/">linux</a>
   </div>
 
   </div>
@@ -257,7 +262,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/22/boost-lexical-cast-cpp/">boost::lexical_cast</a>
+      <a class="article-title" href="/2017/09/22/shell-uniq-count/">shell uniq count</a>
     </h1>
   
 
@@ -265,14 +270,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="boost-lexical-cast"><a href="#boost-lexical-cast" class="headerlink" title="boost::lexical_cast"></a>boost::lexical_cast</h2><p><code>c++</code> 使用 <code>boost::lexical_cast</code> 数据类型转换</p>
-<p><a href="http://www.cnblogs.com/mx113/articles/1603985.html" target="_blank" rel="external">参考链接</a></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;boost/lexical_cast.hpp&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt; </span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> ERROR_LEXICAL_CAST     1 </span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    <span class="keyword">using</span> boost::lexical_cast;</div><div class="line">    <span class="keyword">int</span>         a = <span class="number">0</span>;</div><div class="line">    <span class="keyword">double</span>        b = <span class="number">0.0</span>;</div><div class="line">    <span class="built_in">std</span>::<span class="built_in">string</span> s = <span class="string">""</span>; </div><div class="line">    <span class="keyword">int</span>            e = <span class="number">0</span>;    </div><div class="line">    <span class="keyword">try</span></div><div class="line">    &#123; </div><div class="line">        <span class="comment">// ----- 字符串 --&gt; 数值 </span></div><div class="line">        a = lexical_cast&lt;<span class="keyword">int</span>&gt;(<span class="string">"123"</span>);</div><div class="line">        b = lexical_cast&lt;<span class="keyword">double</span>&gt;(<span class="string">"123.12"</span>);</div><div class="line">        <span class="comment">// ----- 数值 --&gt; 字符串</span></div><div class="line">        s = lexical_cast&lt;<span class="built_in">std</span>::<span class="built_in">string</span>&gt;(<span class="string">"123456.7"</span>); </div><div class="line">        <span class="comment">// ----- 异常处理演示</span></div><div class="line">        e = lexical_cast&lt;<span class="keyword">int</span>&gt;(<span class="string">"abc"</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">catch</span>(boost::bad_lexical_cast&amp; e)</div><div class="line">    &#123;</div><div class="line">        <span class="comment">// bad lexical cast: source type value could not be interpreted as target</span></div><div class="line">        <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; e.what() &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</div><div class="line">        <span class="keyword">return</span> ERROR_LEXICAL_CAST;</div><div class="line">    &#125; </div><div class="line">    </div><div class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; a &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;    <span class="comment">// 输出：123 </span></div><div class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; b &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;    <span class="comment">// 输出：123.12 </span></div><div class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; s &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;     <span class="comment">// 输出：123456.7 </span></div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+        <h1 id="Shell中uniq去重并统计"><a href="#Shell中uniq去重并统计" class="headerlink" title="Shell中uniq去重并统计"></a>Shell中uniq去重并统计</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cat text | uniq -c</div></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/09/22/boost-lexical-cast-cpp/" data-id="cjeogahcf0001mbqbnnhcoyuj" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/09/22/shell-uniq-count/" data-id="cjeogaheb0027mbqbwl42gns1" class="article-share-link">Share</a>
       
       
     </footer>
@@ -285,7 +288,7 @@
 
 
   <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/page/5/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/7/">下一页&raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/5/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/7/">下一页&raquo;</a>
   </nav>
 
 </section>
@@ -324,6 +327,14 @@
       <ul>
         
           <li>
+            <a href="/2018/03/17/mysql-where-yesterday/">mysql where yesterday by curdate()</a>
+          </li>
+        
+          <li>
+            <a href="/2018/03/16/python-sum-2d-list-by-col/">python sum the columns in 2D list</a>
+          </li>
+        
+          <li>
             <a href="/2018/03/10/python-argparse-nargs/">python argparse nargs</a>
           </li>
         
@@ -333,14 +344,6 @@
         
           <li>
             <a href="/2018/02/21/python-datetime-compare/">python datetime compare</a>
-          </li>
-        
-          <li>
-            <a href="/2018/01/27/mongodb-compact-disk-space/">mongodb compact disk space</a>
-          </li>
-        
-          <li>
-            <a href="/2018/01/13/python-hashlib-md5-unicodeEncodeError/">python hashlib md5 unicodeEncodeError</a>
           </li>
         
       </ul>

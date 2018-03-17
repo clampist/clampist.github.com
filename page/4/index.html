@@ -64,6 +64,97 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-django-transform-queryset-to-dict" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/10/25/django-transform-queryset-to-dict/" class="article-date">
+  <time datetime="2017-10-25T00:51:00.000Z" itemprop="datePublished">2017-10-25</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/django/">django</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/25/django-transform-queryset-to-dict/">django transform queryset to dict</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="model-to-dict方法"><a href="#model-to-dict方法" class="headerlink" title="model_to_dict方法"></a><code>model_to_dict</code>方法</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> django.forms.models <span class="keyword">import</span> model_to_dict</div><div class="line">model_to_dict(instance)</div></pre></td></tr></table></figure>
+<p><a href="https://codeday.me/bug/20170722/43534.html" target="_blank" rel="external">参考链接</a></p>
+<h2 id="toDict方法"><a href="#toDict方法" class="headerlink" title="toDict方法"></a><code>toDict</code>方法</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Category</span><span class="params">(models.Model)</span>:</span></div><div class="line">    autoid = models.AutoField(primary_key=<span class="keyword">True</span>)</div><div class="line">    email=models.CharField(max_length=<span class="number">150</span>,blank=<span class="keyword">False</span>)</div><div class="line">    comtype=models.CharField(max_length=<span class="number">20</span>,blank=<span class="keyword">False</span>)</div><div class="line">    catname=models.CharField(max_length=<span class="number">150</span>,blank=<span class="keyword">False</span>)  </div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__unicode__</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">return</span> <span class="string">'%s'</span> % (self.catname)</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">toJSON</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">import</span> json</div><div class="line">        <span class="keyword">return</span> json.dumps(dict([(attr, getattr(self, attr)) <span class="keyword">for</span> attr <span class="keyword">in</span> [f.name <span class="keyword">for</span> f <span class="keyword">in</span> self._meta.fields]]))</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">toDict</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">return</span> dict([(attr, getattr(self, attr)) <span class="keyword">for</span> attr <span class="keyword">in</span> [f.name <span class="keyword">for</span> f <span class="keyword">in</span> self._meta.fields]])</div></pre></td></tr></table></figure>
+<p>可读性更强的版本</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">toJSON</span><span class="params">(self)</span>:</span></div><div class="line">    fields = []</div><div class="line">    <span class="keyword">for</span> field <span class="keyword">in</span> self._meta.fields:</div><div class="line">        fields.append(field.name)</div><div class="line"></div><div class="line">    d = &#123;&#125;</div><div class="line">    <span class="keyword">for</span> attr <span class="keyword">in</span> fields:</div><div class="line">        d[attr] = getattr(self, attr)</div><div class="line"></div><div class="line">    <span class="keyword">import</span> json</div><div class="line">    <span class="keyword">return</span> json.dumps(d)</div><div class="line">    </div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">toDict</span><span class="params">(self)</span>:</span></div><div class="line">    fields = []</div><div class="line">    <span class="keyword">for</span> field <span class="keyword">in</span> self._meta.fields:</div><div class="line">        fields.append(field.name)</div><div class="line"></div><div class="line">    d = &#123;&#125;</div><div class="line">    <span class="keyword">for</span> attr <span class="keyword">in</span> fields:</div><div class="line">        d[attr] = getattr(self, attr)</div><div class="line"></div><div class="line">    <span class="keyword">return</span> d</div></pre></td></tr></table></figure>
+<p><a href="http://www.yihaomen.com/article/python/279.htm" target="_blank" rel="external">参考链接</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2017/10/25/django-transform-queryset-to-dict/" data-id="cjeogahcu000gmbqbfc41z460" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-django-redis-cache-delete-pattern" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/10/25/django-redis-cache-delete-pattern/" class="article-date">
+  <time datetime="2017-10-25T00:50:00.000Z" itemprop="datePublished">2017-10-25</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/redis/">redis</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/25/django-redis-cache-delete-pattern/">django redis cache delete pattern</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>Example use of delete_pattern</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> django.core.cache <span class="keyword">import</span> cache</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>cache.delete_pattern(<span class="string">"foo_*"</span>)</div></pre></td></tr></table></figure>
+<p><strong>Simple search keys by pattern</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> django.core.cache <span class="keyword">import</span> cache</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>cache.keys(<span class="string">"foo_*"</span>)</div><div class="line">[<span class="string">"foo_1"</span>, <span class="string">"foo_2"</span>]</div></pre></td></tr></table></figure>
+<p><a href="http://niwinz.github.io/django-redis/latest/#_scan_delete_keys_in_bulk" target="_blank" rel="external">django-redis</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2017/10/25/django-redis-cache-delete-pattern/" data-id="cjeogahct000fmbqb4gaj8vqh" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-django-pagination-demo" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/10/25/django-pagination-demo/" class="article-date">
@@ -100,51 +191,6 @@
     </div>
     <footer class="article-footer">
       <a data-url="https://clampist.github.io/2017/10/25/django-pagination-demo/" data-id="cjeogahcs000cmbqbgpdo3vyj" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-django-delete-multi-object" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/10/25/django-delete-multi-object/" class="article-date">
-  <time datetime="2017-10-25T00:49:00.000Z" itemprop="datePublished">2017-10-25</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/django/">django</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/25/django-delete-multi-object/">django delete multi object</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>1.高效</p>
-<p><code>MyModel.objects.filter(expired=True).delete()</code></p>
-<p>2.非高效</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">rows = MyModel.objects.filter(expired=True)</div><div class="line"></div><div class="line">for r in rows:</div><div class="line">    r.delete()</div></pre></td></tr></table></figure>
-<p><a href="https://www.djangorocks.com/snippets/deleting-multiple-rows-from-your-database.html" target="_blank" rel="external">Deleting multiple rows from your database</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/10/25/django-delete-multi-object/" data-id="cjeogahck0003mbqbx3xmwa0m" class="article-share-link">Share</a>
       
       
     </footer>
@@ -199,10 +245,10 @@
 
 
   
-    <article id="post-django-models-objects-filter-by-dict-kwargs" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-django-delete-multi-object" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/10/25/django-models-objects-filter-by-dict-kwargs/" class="article-date">
-  <time datetime="2017-10-25T00:48:00.000Z" itemprop="datePublished">2017-10-25</time>
+    <a href="/2017/10/25/django-delete-multi-object/" class="article-date">
+  <time datetime="2017-10-25T00:49:00.000Z" itemprop="datePublished">2017-10-25</time>
 </a>
     
   <div class="article-category">
@@ -217,7 +263,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/25/django-models-objects-filter-by-dict-kwargs/">django models objects filter by dict kwargs</a>
+      <a class="article-title" href="/2017/10/25/django-delete-multi-object/">django delete multi object</a>
     </h1>
   
 
@@ -225,61 +271,16 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><strong>1. 大于等于、小于等于</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Model.objects.filter(price__gte=<span class="number">10</span>, price__lte=<span class="number">15</span>)</div><div class="line"><span class="comment"># or</span></div><div class="line">kwargs = &#123;<span class="string">'price__gte'</span>: <span class="number">10</span>,</div><div class="line">          <span class="string">'price__lte'</span>: <span class="number">15</span>&#125;      </div><div class="line">Model.objects.filter(**kwargs)</div></pre></td></tr></table></figure>
-<p><strong>2. LIKE、包含</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">kwargs = &#123;filter_field + <span class="string">'__icontains'</span>: filter_content&#125;</div><div class="line">edu_mtrl_list = edu_mtrl_list.filter(**kwargs)</div></pre></td></tr></table></figure>
-<p><a href="https://stackoverflow.com/questions/1763495/adding-extra-parameters-to-a-objects-filter-via-dict" target="_blank" rel="external">https://stackoverflow.com/questions/1763495/adding-extra-parameters-to-a-objects-filter-via-dict</a></p>
+        <p>1.高效</p>
+<p><code>MyModel.objects.filter(expired=True).delete()</code></p>
+<p>2.非高效</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">rows = MyModel.objects.filter(expired=True)</div><div class="line"></div><div class="line">for r in rows:</div><div class="line">    r.delete()</div></pre></td></tr></table></figure>
+<p><a href="https://www.djangorocks.com/snippets/deleting-multiple-rows-from-your-database.html" target="_blank" rel="external">Deleting multiple rows from your database</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/10/25/django-models-objects-filter-by-dict-kwargs/" data-id="cjeogahco0007mbqbf7g6ia6a" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-django-models-not-equal-exclude-filter" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/10/25/django-models-not-equal-exclude-filter/" class="article-date">
-  <time datetime="2017-10-25T00:47:00.000Z" itemprop="datePublished">2017-10-25</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/django/">django</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/25/django-models-not-equal-exclude-filter/">django models not equal exclude filter</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Django-not-equal-exclude"><a href="#Django-not-equal-exclude" class="headerlink" title="Django != not equal exclude"></a>Django != not equal exclude</h2><p>not equal</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">user1_progress = models.EvaluationMaterial.objects.filter(</div><div class="line">    evaluation_task_id=evaluation_task_id).exclude(</div><div class="line">    user1=<span class="string">'-'</span>).values(<span class="string">'user1'</span>).annotate(alloced=Count(<span class="string">'user1'</span>))</div></pre></td></tr></table></figure>
-<h2 id="Django-NOT-IN-gt-exclude-a-in-b-list"><a href="#Django-NOT-IN-gt-exclude-a-in-b-list" class="headerlink" title="Django: NOT IN -&gt; exclude(a__in=b_list)"></a>Django: NOT IN -&gt; exclude(a__in=b_list)</h2><p>NOT IN</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">table1.objects.exclude(id__in = </div><div class="line">table2.objects.filter(your_condition).values_list(<span class="string">'id'</span>, flat=<span class="keyword">True</span>))</div></pre></td></tr></table></figure>
-<p>(Django in / not in query)[<a href="https://stackoverflow.com/questions/4523282/django-in-not-in-query" target="_blank" rel="external">https://stackoverflow.com/questions/4523282/django-in-not-in-query</a>]</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/10/25/django-models-not-equal-exclude-filter/" data-id="cjeogahcm0005mbqb2wrlwrib" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/10/25/django-delete-multi-object/" data-id="cjeogahck0003mbqbx3xmwa0m" class="article-share-link">Share</a>
       
       
     </footer>
@@ -292,7 +293,7 @@
 
 
   <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/page/3/">&laquo; 上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/5/">下一页&raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/3/">&laquo; 上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/5/">下一页&raquo;</a>
   </nav>
 
 </section>
@@ -331,6 +332,14 @@
       <ul>
         
           <li>
+            <a href="/2018/03/17/mysql-where-yesterday/">mysql where yesterday by curdate()</a>
+          </li>
+        
+          <li>
+            <a href="/2018/03/16/python-sum-2d-list-by-col/">python sum the columns in 2D list</a>
+          </li>
+        
+          <li>
             <a href="/2018/03/10/python-argparse-nargs/">python argparse nargs</a>
           </li>
         
@@ -340,14 +349,6 @@
         
           <li>
             <a href="/2018/02/21/python-datetime-compare/">python datetime compare</a>
-          </li>
-        
-          <li>
-            <a href="/2018/01/27/mongodb-compact-disk-space/">mongodb compact disk space</a>
-          </li>
-        
-          <li>
-            <a href="/2018/01/13/python-hashlib-md5-unicodeEncodeError/">python hashlib md5 unicodeEncodeError</a>
           </li>
         
       </ul>

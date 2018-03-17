@@ -64,6 +64,104 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-shell-shuffle-file-lines" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/02/24/shell-shuffle-file-lines/" class="article-date">
+  <time datetime="2017-02-24T10:37:00.000Z" itemprop="datePublished">2017-02-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/linux/">linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/24/shell-shuffle-file-lines/">shell shuffle file lines</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="高版本CentOS自带sort-R-shuf"><a href="#高版本CentOS自带sort-R-shuf" class="headerlink" title="高版本CentOS自带sort -R/ shuf"></a>高版本CentOS自带sort -R/ shuf</h2><p>用awk实现文件：行乱序</p>
+<blockquote>
+<p>1.awk</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">awk ‘BEGIN&#123;srand()&#125;&#123;b[rand()NR]=<span class="variable">$0</span>&#125;END&#123;<span class="keyword">for</span>(x <span class="keyword">in</span> b)<span class="built_in">print</span> b[x]&#125;’ data</div></pre></td></tr></table></figure>
+<p><a href="http://ju.outofmemory.cn/entry/118502" target="_blank" rel="external">Linux下实现文件洗牌效果 行乱序</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2017/02/24/shell-shuffle-file-lines/" data-id="cjeogahee002bmbqbmnk1kkp1" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-count-ip-address-appears-most-in-log-file" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2012/11/09/count-ip-address-appears-most-in-log-file/" class="article-date">
+  <time datetime="2012-11-09T02:32:00.000Z" itemprop="datePublished">2012-11-09</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/linux/">linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2012/11/09/count-ip-address-appears-most-in-log-file/">Count IP Address Appears Most in Log File</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-Problem"><a href="#1-Problem" class="headerlink" title="1.Problem"></a>1.Problem</h2><p>之前做运维的笔试题，有一道很经典的统计日志文件中出现最多的 IP 地址及次数的题。其日志格式为</p>
+<pre><code>122.224.6.43 - - [30/Oct/2012:21:29:42 +0800] &quot;GET /phpMyAdmin/scripts/setup.php HTTP/1.1&quot; 404 162 &quot;-&quot; &quot;ZmEu&quot;
+122.224.6.43 - - [30/Oct/2012:21:29:42 +0800] &quot;GET /MyAdmin/scripts/setup.php HTTP/1.1&quot; 404 162 &quot;-&quot; &quot;ZmEu&quot;
+122.224.6.43 - - [30/Oct/2012:21:29:42 +0800] &quot;GET /pma/scripts/setup.php HTTP/1.1&quot; 404 162 &quot;-&quot; &quot;ZmEu&quot;
+122.224.6.43 - - [30/Oct/2012:21:29:42 +0800] &quot;GET /myadmin/scripts/setup.php HTTP/1.1&quot; 404 162 &quot;-&quot; &quot;ZmEu&quot;
+58.251.60.248 - - [30/Oct/2012:23:05:46 +0800] &quot;GET http://www.baidu.com/ HTTP/1.1&quot; 200 612 &quot;-&quot; &quot;Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; QQDownload 551; .NET CLR 2.0.50727; CIBA)&quot;
+58.251.60.248 - - [30/Oct/2012:23:06:37 +0800] &quot;&quot; 400 0 &quot;-&quot; &quot;-&quot;
+</code></pre><p>这是 <code>nginx</code> 日志 <code>/var/log/nginx/access.log</code> 中的一个片段。</p>
+        
+          <p class="article-more-link">
+            <a href="/2012/11/09/count-ip-address-appears-most-in-log-file/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2012/11/09/count-ip-address-appears-most-in-log-file/" data-id="cjeogahcl0004mbqbph923fkx" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-python-virtualenv-wrapper-and-pip" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2012/10/20/python-virtualenv-wrapper-and-pip/" class="article-date">
@@ -226,68 +324,10 @@ sudo python2 setup.py install
 
 
   
-    <article id="post-wonderful-octopress" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2012/10/09/wonderful-octopress/" class="article-date">
-  <time datetime="2012-10-09T06:37:00.000Z" itemprop="datePublished">2012-10-09</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/note/">note</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2012/10/09/wonderful-octopress/">Wonderful Octopress</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Today, I install Octopress, it is wonderful.<br>I follow the official docs<br><a href="http://octopress.org/docs/setup/" target="_blank" rel="external">setup</a><br><a href="http://octopress.org/docs/deploying/github/" target="_blank" rel="external">deploy</a><br><a href="http://octopress.org/docs/configuring/" target="_blank" rel="external">config</a><br><a href="http://octopress.org/docs/blogging/" target="_blank" rel="external">blogging</a><br>and the other two blogs:<br><a href="http://jokry.com/2012/03/08/octopress/" target="_blank" rel="external">Octopress介绍与安装</a><br><a href="http://blog.javachen.com/2012/06/migrate-blog-form-wordpress-to-github-with-octopress/" target="_blank" rel="external">使用Octopress将博客从wordpress迁移到GitHub上</a></p>
-<p>The following command is in common use(in the project root directory):</p>
-<pre><code>rake new_post[&quot;title&quot;]
-rake new_page[super-awesome]
-rake new_page[super-awesome/page.html]
-
-rake preview
-rake generate
-rake deploy
-
-git add .
-git commit -m &apos;your message&apos;
-git push origin source
-</code></pre>
-        
-          <p class="article-more-link">
-            <a href="/2012/10/09/wonderful-octopress/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2012/10/09/wonderful-octopress/" data-id="cjeogahef002dmbqbytz0qv1b" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/page/7/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span>
+    <a class="extend prev" rel="prev" href="/page/7/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/9/">下一页&raquo;</a>
   </nav>
 
 </section>
@@ -326,6 +366,14 @@ git push origin source
       <ul>
         
           <li>
+            <a href="/2018/03/17/mysql-where-yesterday/">mysql where yesterday by curdate()</a>
+          </li>
+        
+          <li>
+            <a href="/2018/03/16/python-sum-2d-list-by-col/">python sum the columns in 2D list</a>
+          </li>
+        
+          <li>
             <a href="/2018/03/10/python-argparse-nargs/">python argparse nargs</a>
           </li>
         
@@ -335,14 +383,6 @@ git push origin source
         
           <li>
             <a href="/2018/02/21/python-datetime-compare/">python datetime compare</a>
-          </li>
-        
-          <li>
-            <a href="/2018/01/27/mongodb-compact-disk-space/">mongodb compact disk space</a>
-          </li>
-        
-          <li>
-            <a href="/2018/01/13/python-hashlib-md5-unicodeEncodeError/">python hashlib md5 unicodeEncodeError</a>
           </li>
         
       </ul>

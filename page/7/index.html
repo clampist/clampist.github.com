@@ -64,14 +64,14 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-shell-uniq-count" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-boost-lexical-cast-cpp" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/09/22/shell-uniq-count/" class="article-date">
+    <a href="/2017/09/22/boost-lexical-cast-cpp/" class="article-date">
   <time datetime="2017-09-22T06:37:00.000Z" itemprop="datePublished">2017-09-22</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/linux/">linux</a>
+    <a class="article-category-link" href="/categories/cpp/">cpp</a>
   </div>
 
   </div>
@@ -82,7 +82,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/22/shell-uniq-count/">shell uniq count</a>
+      <a class="article-title" href="/2017/09/22/boost-lexical-cast-cpp/">boost::lexical_cast</a>
     </h1>
   
 
@@ -90,12 +90,14 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Shell中uniq去重并统计"><a href="#Shell中uniq去重并统计" class="headerlink" title="Shell中uniq去重并统计"></a>Shell中uniq去重并统计</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cat text | uniq -c</div></pre></td></tr></table></figure>
+        <h2 id="boost-lexical-cast"><a href="#boost-lexical-cast" class="headerlink" title="boost::lexical_cast"></a>boost::lexical_cast</h2><p><code>c++</code> 使用 <code>boost::lexical_cast</code> 数据类型转换</p>
+<p><a href="http://www.cnblogs.com/mx113/articles/1603985.html" target="_blank" rel="external">参考链接</a></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;boost/lexical_cast.hpp&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt; </span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> ERROR_LEXICAL_CAST     1 </span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    <span class="keyword">using</span> boost::lexical_cast;</div><div class="line">    <span class="keyword">int</span>         a = <span class="number">0</span>;</div><div class="line">    <span class="keyword">double</span>        b = <span class="number">0.0</span>;</div><div class="line">    <span class="built_in">std</span>::<span class="built_in">string</span> s = <span class="string">""</span>; </div><div class="line">    <span class="keyword">int</span>            e = <span class="number">0</span>;    </div><div class="line">    <span class="keyword">try</span></div><div class="line">    &#123; </div><div class="line">        <span class="comment">// ----- 字符串 --&gt; 数值 </span></div><div class="line">        a = lexical_cast&lt;<span class="keyword">int</span>&gt;(<span class="string">"123"</span>);</div><div class="line">        b = lexical_cast&lt;<span class="keyword">double</span>&gt;(<span class="string">"123.12"</span>);</div><div class="line">        <span class="comment">// ----- 数值 --&gt; 字符串</span></div><div class="line">        s = lexical_cast&lt;<span class="built_in">std</span>::<span class="built_in">string</span>&gt;(<span class="string">"123456.7"</span>); </div><div class="line">        <span class="comment">// ----- 异常处理演示</span></div><div class="line">        e = lexical_cast&lt;<span class="keyword">int</span>&gt;(<span class="string">"abc"</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">catch</span>(boost::bad_lexical_cast&amp; e)</div><div class="line">    &#123;</div><div class="line">        <span class="comment">// bad lexical cast: source type value could not be interpreted as target</span></div><div class="line">        <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; e.what() &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</div><div class="line">        <span class="keyword">return</span> ERROR_LEXICAL_CAST;</div><div class="line">    &#125; </div><div class="line">    </div><div class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; a &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;    <span class="comment">// 输出：123 </span></div><div class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; b &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;    <span class="comment">// 输出：123.12 </span></div><div class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; s &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;     <span class="comment">// 输出：123456.7 </span></div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/09/22/shell-uniq-count/" data-id="cjeogaheb0027mbqbwl42gns1" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/09/22/boost-lexical-cast-cpp/" data-id="cjeogahcf0001mbqbnnhcoyuj" class="article-share-link">Share</a>
       
       
     </footer>
@@ -153,6 +155,96 @@
 
 
   
+    <article id="post-git-usage" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/09/22/git-usage/" class="article-date">
+  <time datetime="2017-09-22T06:37:00.000Z" itemprop="datePublished">2017-09-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/git/">git</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/09/22/git-usage/">git and gerrit</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="git常用"><a href="#git常用" class="headerlink" title="git常用"></a>git常用</h2><h3 id="master开发"><a href="#master开发" class="headerlink" title="master开发"></a><code>master</code>开发</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git add    <span class="comment"># add后如果再修改，需要再add一次，否则提交add时版本</span></div><div class="line">git commit -m <span class="string">"adshow-3-6-1 feed support"</span></div><div class="line">git push origin master:refs/<span class="keyword">for</span>/master</div></pre></td></tr></table></figure>
+<h3 id="branch开发"><a href="#branch开发" class="headerlink" title="branch开发"></a><code>branch</code>开发</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git add </div><div class="line">git commit -m <span class="string">"sth"</span> </div><div class="line">git push origin master:refs/<span class="keyword">for</span>/patserver_1-0-23_BRANCH</div></pre></td></tr></table></figure>
+<h3 id="遇到stash冲突"><a href="#遇到stash冲突" class="headerlink" title="遇到stash冲突"></a>遇到<code>stash</code>冲突</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git stash    <span class="comment"># 将本地冲突改动 存入栈中</span></div><div class="line">git pull     <span class="comment"># 更新</span></div><div class="line">git stash pop    <span class="comment">#从栈中将改动拉出</span></div></pre></td></tr></table></figure>
+        
+          <p class="article-more-link">
+            <a href="/2017/09/22/git-usage/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2017/09/22/git-usage/" data-id="cjeogahcw000lmbqb4vl66f9i" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-shell-last-param" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/09/22/shell-last-param/" class="article-date">
+  <time datetime="2017-09-22T06:37:00.000Z" itemprop="datePublished">2017-09-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/linux/">linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/09/22/shell-last-param/">shell last param</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Shell-最后一个参数"><a href="#Shell-最后一个参数" class="headerlink" title="Shell 最后一个参数"></a>Shell 最后一个参数</h1><p><a href="http://www.letuknowit.com/post/81.html" target="_blank" rel="external">参考链接</a></p>
+<p><code>$_</code> 会直接执行</p>
+<p><code>!$</code> 会展示命令，等用户按Enter</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2017/09/22/shell-last-param/" data-id="cjeogahea0025mbqbiu55ao85" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/09/07/hello-world/" class="article-date">
@@ -198,108 +290,10 @@
 
 
   
-    <article id="post-shell-shuffle-file-lines" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/02/24/shell-shuffle-file-lines/" class="article-date">
-  <time datetime="2017-02-24T10:37:00.000Z" itemprop="datePublished">2017-02-24</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/linux/">linux</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/24/shell-shuffle-file-lines/">shell shuffle file lines</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="高版本CentOS自带sort-R-shuf"><a href="#高版本CentOS自带sort-R-shuf" class="headerlink" title="高版本CentOS自带sort -R/ shuf"></a>高版本CentOS自带sort -R/ shuf</h2><p>用awk实现文件：行乱序</p>
-<blockquote>
-<p>1.awk</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">awk ‘BEGIN&#123;srand()&#125;&#123;b[rand()NR]=<span class="variable">$0</span>&#125;END&#123;<span class="keyword">for</span>(x <span class="keyword">in</span> b)<span class="built_in">print</span> b[x]&#125;’ data</div></pre></td></tr></table></figure>
-<p><a href="http://ju.outofmemory.cn/entry/118502" target="_blank" rel="external">Linux下实现文件洗牌效果 行乱序</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/02/24/shell-shuffle-file-lines/" data-id="cjeogahee002bmbqbmnk1kkp1" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-count-ip-address-appears-most-in-log-file" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2012/11/09/count-ip-address-appears-most-in-log-file/" class="article-date">
-  <time datetime="2012-11-09T02:32:00.000Z" itemprop="datePublished">2012-11-09</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/linux/">linux</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2012/11/09/count-ip-address-appears-most-in-log-file/">Count IP Address Appears Most in Log File</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="1-Problem"><a href="#1-Problem" class="headerlink" title="1.Problem"></a>1.Problem</h2><p>之前做运维的笔试题，有一道很经典的统计日志文件中出现最多的 IP 地址及次数的题。其日志格式为</p>
-<pre><code>122.224.6.43 - - [30/Oct/2012:21:29:42 +0800] &quot;GET /phpMyAdmin/scripts/setup.php HTTP/1.1&quot; 404 162 &quot;-&quot; &quot;ZmEu&quot;
-122.224.6.43 - - [30/Oct/2012:21:29:42 +0800] &quot;GET /MyAdmin/scripts/setup.php HTTP/1.1&quot; 404 162 &quot;-&quot; &quot;ZmEu&quot;
-122.224.6.43 - - [30/Oct/2012:21:29:42 +0800] &quot;GET /pma/scripts/setup.php HTTP/1.1&quot; 404 162 &quot;-&quot; &quot;ZmEu&quot;
-122.224.6.43 - - [30/Oct/2012:21:29:42 +0800] &quot;GET /myadmin/scripts/setup.php HTTP/1.1&quot; 404 162 &quot;-&quot; &quot;ZmEu&quot;
-58.251.60.248 - - [30/Oct/2012:23:05:46 +0800] &quot;GET http://www.baidu.com/ HTTP/1.1&quot; 200 612 &quot;-&quot; &quot;Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; QQDownload 551; .NET CLR 2.0.50727; CIBA)&quot;
-58.251.60.248 - - [30/Oct/2012:23:06:37 +0800] &quot;&quot; 400 0 &quot;-&quot; &quot;-&quot;
-</code></pre><p>这是 <code>nginx</code> 日志 <code>/var/log/nginx/access.log</code> 中的一个片段。</p>
-        
-          <p class="article-more-link">
-            <a href="/2012/11/09/count-ip-address-appears-most-in-log-file/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2012/11/09/count-ip-address-appears-most-in-log-file/" data-id="cjeogahcl0004mbqbph923fkx" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/page/6/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/8/">下一页&raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/6/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/8/">下一页&raquo;</a>
   </nav>
 
 </section>
@@ -338,6 +332,14 @@
       <ul>
         
           <li>
+            <a href="/2018/03/17/mysql-where-yesterday/">mysql where yesterday by curdate()</a>
+          </li>
+        
+          <li>
+            <a href="/2018/03/16/python-sum-2d-list-by-col/">python sum the columns in 2D list</a>
+          </li>
+        
+          <li>
             <a href="/2018/03/10/python-argparse-nargs/">python argparse nargs</a>
           </li>
         
@@ -347,14 +349,6 @@
         
           <li>
             <a href="/2018/02/21/python-datetime-compare/">python datetime compare</a>
-          </li>
-        
-          <li>
-            <a href="/2018/01/27/mongodb-compact-disk-space/">mongodb compact disk space</a>
-          </li>
-        
-          <li>
-            <a href="/2018/01/13/python-hashlib-md5-unicodeEncodeError/">python hashlib md5 unicodeEncodeError</a>
           </li>
         
       </ul>
