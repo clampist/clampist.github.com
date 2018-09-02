@@ -64,6 +64,51 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-django-redis-cache-delete-pattern" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/10/25/django-redis-cache-delete-pattern/" class="article-date">
+  <time datetime="2017-10-25T00:50:00.000Z" itemprop="datePublished">2017-10-25</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/redis/">redis</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/25/django-redis-cache-delete-pattern/">django redis cache delete pattern</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>Example use of delete_pattern</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> django.core.cache <span class="keyword">import</span> cache</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>cache.delete_pattern(<span class="string">"foo_*"</span>)</div></pre></td></tr></table></figure>
+<p><strong>Simple search keys by pattern</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> django.core.cache <span class="keyword">import</span> cache</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>cache.keys(<span class="string">"foo_*"</span>)</div><div class="line">[<span class="string">"foo_1"</span>, <span class="string">"foo_2"</span>]</div></pre></td></tr></table></figure>
+<p><a href="http://niwinz.github.io/django-redis/latest/#_scan_delete_keys_in_bulk" target="_blank" rel="external">django-redis</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2017/10/25/django-redis-cache-delete-pattern/" data-id="cjlkbkhf7000q77qbn7so539e" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-django-pagination-demo" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/10/25/django-pagination-demo/" class="article-date">
@@ -99,7 +144,52 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/10/25/django-pagination-demo/" data-id="cjledll55000djuqbb549vjtd" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/10/25/django-pagination-demo/" data-id="cjlkbkhez000b77qb75o8kn6s" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-django-multi-database" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/10/25/django-multi-database/" class="article-date">
+  <time datetime="2017-10-25T00:49:00.000Z" itemprop="datePublished">2017-10-25</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/django/">django</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/25/django-multi-database/">django multi database</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>1. 在<code>setting.py</code>中定义</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">DATABASES = &#123;</div><div class="line">    <span class="string">'default'</span>: &#123;</div><div class="line">        <span class="string">'NAME'</span>: <span class="string">'app_data'</span>,</div><div class="line">        <span class="string">'ENGINE'</span>: <span class="string">'django.db.backends.postgresql_psycopg2'</span>,</div><div class="line">        <span class="string">'USER'</span>: <span class="string">'postgres_user'</span>,</div><div class="line">        <span class="string">'PASSWORD'</span>: <span class="string">'s3krit'</span></div><div class="line">    &#125;,</div><div class="line">    <span class="string">'users'</span>: &#123;</div><div class="line">        <span class="string">'NAME'</span>: <span class="string">'user_data'</span>,</div><div class="line">        <span class="string">'ENGINE'</span>: <span class="string">'django.db.backends.mysql'</span>,</div><div class="line">        <span class="string">'USER'</span>: <span class="string">'mysql_user'</span>,</div><div class="line">        <span class="string">'PASSWORD'</span>: <span class="string">'priv4te'</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>2. 使用<code>using</code>手动选择一个数据库</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>u = User.objects.using(<span class="string">'legacy_users'</span>).get(username=<span class="string">'fred'</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>u.delete() <span class="comment"># will delete from the `legacy_users` database</span></div></pre></td></tr></table></figure>
+<p><a href="http://python.usyiyi.cn/translate/django_182/topics/db/multi-db.html" target="_blank" rel="external">django_182</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2017/10/25/django-multi-database/" data-id="cjlkbkhfb000y77qbc4dlenzy" class="article-share-link">Share</a>
       
       
     </footer>
@@ -144,7 +234,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/10/25/django-delete-multi-object/" data-id="cjledll4z0005juqbngdjtlll" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/10/25/django-delete-multi-object/" data-id="cjlkbkhew000577qbdplnieys" class="article-share-link">Share</a>
       
       
     </footer>
@@ -189,94 +279,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/10/25/django-models-objects-filter-by-dict-kwargs/" data-id="cjledll510008juqbphjuomp7" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-django-models-not-equal-exclude-filter" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/10/25/django-models-not-equal-exclude-filter/" class="article-date">
-  <time datetime="2017-10-25T00:47:00.000Z" itemprop="datePublished">2017-10-25</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/django/">django</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/25/django-models-not-equal-exclude-filter/">django models not equal exclude filter</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Django-not-equal-exclude"><a href="#Django-not-equal-exclude" class="headerlink" title="Django != not equal exclude"></a>Django != not equal exclude</h2><p>not equal</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">user1_progress = models.EvaluationMaterial.objects.filter(</div><div class="line">    evaluation_task_id=evaluation_task_id).exclude(</div><div class="line">    user1=<span class="string">'-'</span>).values(<span class="string">'user1'</span>).annotate(alloced=Count(<span class="string">'user1'</span>))</div></pre></td></tr></table></figure>
-<h2 id="Django-NOT-IN-gt-exclude-a-in-b-list"><a href="#Django-NOT-IN-gt-exclude-a-in-b-list" class="headerlink" title="Django: NOT IN -&gt; exclude(a__in=b_list)"></a>Django: NOT IN -&gt; exclude(a__in=b_list)</h2><p>NOT IN</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">table1.objects.exclude(id__in = </div><div class="line">table2.objects.filter(your_condition).values_list(<span class="string">'id'</span>, flat=<span class="keyword">True</span>))</div></pre></td></tr></table></figure>
-<p>(Django in / not in query)[<a href="https://stackoverflow.com/questions/4523282/django-in-not-in-query" target="_blank" rel="external">https://stackoverflow.com/questions/4523282/django-in-not-in-query</a>]</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/10/25/django-models-not-equal-exclude-filter/" data-id="cjledll500006juqba9f8a4jf" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-du-find-max-dir" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/10/25/du-find-max-dir/" class="article-date">
-  <time datetime="2017-10-25T00:46:00.000Z" itemprop="datePublished">2017-10-25</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/linux/">linux</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/25/du-find-max-dir/">du find max dir</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>##du最大深层1，查看目录大小</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">du -m --max-depth=1 ./ | sort -n | tail</div></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/10/25/du-find-max-dir/" data-id="cjledll57000kjuqbcutdcose" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/10/25/django-models-objects-filter-by-dict-kwargs/" data-id="cjlkbkhex000777qbtg6xte13" class="article-share-link">Share</a>
       
       
     </footer>
@@ -289,7 +292,7 @@
 
 
   <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/page/4/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/6/">下一页&raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/4/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/6/">下一页&raquo;</a>
   </nav>
 
 </section>
@@ -300,7 +303,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/cpp/">cpp</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/django/">django</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/hadoop-bigflow-lambda/">hadoop bigflow lambda</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/json/">json</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/mongodb/">mongodb</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/mysql/">mysql</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/">note</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/opencv/">opencv</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python-2d-array/">python, 2d-array</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/redis/">redis</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/cpp/">cpp</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/django/">django</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/hadoop-bigflow-lambda/">hadoop, bigflow, lambda</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/json/">json</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/mongodb/">mongodb</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/mysql/">mysql</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/">note</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/opencv/">opencv</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python-2d-array/">python, 2d-array</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python-leetcode/">python, leetcode</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python-leetcode-binary-tree/">python, leetcode, binary tree</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/redis/">redis</a></li></ul>
     </div>
   </div>
 
@@ -315,7 +318,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">十一月 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/10/">十月 2012</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">十一月 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/10/">十月 2012</a></li></ul>
     </div>
   </div>
 
@@ -328,6 +331,14 @@
       <ul>
         
           <li>
+            <a href="/2018/09/02/leetcode-product-of-array-except-self/">Product of Array Except Self</a>
+          </li>
+        
+          <li>
+            <a href="/2018/09/01/leetcode-binary-tree-inorder-traversal/">Binary Tree Inorder Traversal</a>
+          </li>
+        
+          <li>
             <a href="/2018/08/29/python-zip-2d-array-transpose/">python zip 2d array transpose</a>
           </li>
         
@@ -337,14 +348,6 @@
         
           <li>
             <a href="/2018/03/17/mysql-where-yesterday/">mysql where yesterday by curdate()</a>
-          </li>
-        
-          <li>
-            <a href="/2018/03/16/python-sum-2d-list-by-col/">python sum the columns in 2D list</a>
-          </li>
-        
-          <li>
-            <a href="/2018/03/10/python-argparse-nargs/">python argparse nargs</a>
           </li>
         
       </ul>

@@ -64,9 +64,100 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-shell-uniq-count" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-acquire-array-length-in-cpp" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/09/22/shell-uniq-count/" class="article-date">
+    <a href="/2017/09/22/acquire-array-length-in-cpp/" class="article-date">
+  <time datetime="2017-09-22T06:37:00.000Z" itemprop="datePublished">2017-09-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/cpp/">cpp</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/09/22/acquire-array-length-in-cpp/">acquire array length in cpp</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="C-获取数组长度"><a href="#C-获取数组长度" class="headerlink" title="C++获取数组长度"></a>C++获取数组长度</h2><p>一、静态数组。</p>
+<p>比如 int int_ary[5] ,静态数组在编译的时候就知道了数组长度，这对编译器来说挺好实现的。</p>
+<p>用得最多的大概就是sizeof了吧：</p>
+<p><code>#define countof_macro(x) (sizeof((x)) / sizeof(x)[0])</code></p>
+<p>对于C++，可以用模板。</p>
+<p>如果将数组作为函数形参的话，它会退化成一个指针，但是引用则不会。使用引用带来的另外一个问题就是，声明参数时必须知道数组长度——我要是知道我还费这劲干啥？解决方法就是使用模板，将数组引用的数组大小声明为模板参数：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//错误的做法：这里形参已经退化为指针了</span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">countof_func_para</span><span class="params">(<span class="keyword">int</span> int_ary[<span class="number">5</span>])</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    <span class="keyword">return</span> countof_macro(int_ary);</div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="comment">//正确的做法</span></div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">size_t</span> n&gt;</div><div class="line">int countof_template(const int (&amp;int_ary)[N])</div><div class="line">&#123;</div><div class="line">    <span class="keyword">return</span> N;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><a href="http://www.cnblogs.com/h46incon/archive/2013/03/17/2965020.html" target="_blank" rel="external">参考链接</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2017/09/22/acquire-array-length-in-cpp/" data-id="cjlkbkheo000077qbg71wn26g" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-boost-lexical-cast-cpp" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/09/22/boost-lexical-cast-cpp/" class="article-date">
+  <time datetime="2017-09-22T06:37:00.000Z" itemprop="datePublished">2017-09-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/cpp/">cpp</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/09/22/boost-lexical-cast-cpp/">boost::lexical_cast</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="boost-lexical-cast"><a href="#boost-lexical-cast" class="headerlink" title="boost::lexical_cast"></a>boost::lexical_cast</h2><p><code>c++</code> 使用 <code>boost::lexical_cast</code> 数据类型转换</p>
+<p><a href="http://www.cnblogs.com/mx113/articles/1603985.html" target="_blank" rel="external">参考链接</a></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;boost/lexical_cast.hpp&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt; </span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> ERROR_LEXICAL_CAST     1 </span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    <span class="keyword">using</span> boost::lexical_cast;</div><div class="line">    <span class="keyword">int</span>         a = <span class="number">0</span>;</div><div class="line">    <span class="keyword">double</span>        b = <span class="number">0.0</span>;</div><div class="line">    <span class="built_in">std</span>::<span class="built_in">string</span> s = <span class="string">""</span>; </div><div class="line">    <span class="keyword">int</span>            e = <span class="number">0</span>;    </div><div class="line">    <span class="keyword">try</span></div><div class="line">    &#123; </div><div class="line">        <span class="comment">// ----- 字符串 --&gt; 数值 </span></div><div class="line">        a = lexical_cast&lt;<span class="keyword">int</span>&gt;(<span class="string">"123"</span>);</div><div class="line">        b = lexical_cast&lt;<span class="keyword">double</span>&gt;(<span class="string">"123.12"</span>);</div><div class="line">        <span class="comment">// ----- 数值 --&gt; 字符串</span></div><div class="line">        s = lexical_cast&lt;<span class="built_in">std</span>::<span class="built_in">string</span>&gt;(<span class="string">"123456.7"</span>); </div><div class="line">        <span class="comment">// ----- 异常处理演示</span></div><div class="line">        e = lexical_cast&lt;<span class="keyword">int</span>&gt;(<span class="string">"abc"</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">catch</span>(boost::bad_lexical_cast&amp; e)</div><div class="line">    &#123;</div><div class="line">        <span class="comment">// bad lexical cast: source type value could not be interpreted as target</span></div><div class="line">        <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; e.what() &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</div><div class="line">        <span class="keyword">return</span> ERROR_LEXICAL_CAST;</div><div class="line">    &#125; </div><div class="line">    </div><div class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; a &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;    <span class="comment">// 输出：123 </span></div><div class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; b &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;    <span class="comment">// 输出：123.12 </span></div><div class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; s &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;     <span class="comment">// 输出：123456.7 </span></div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2017/09/22/boost-lexical-cast-cpp/" data-id="cjlkbkher000177qbmypqsahq" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-shell-last-param" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/09/22/shell-last-param/" class="article-date">
   <time datetime="2017-09-22T06:37:00.000Z" itemprop="datePublished">2017-09-22</time>
 </a>
     
@@ -82,7 +173,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/22/shell-uniq-count/">shell uniq count</a>
+      <a class="article-title" href="/2017/09/22/shell-last-param/">shell last param</a>
     </h1>
   
 
@@ -90,12 +181,14 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Shell中uniq去重并统计"><a href="#Shell中uniq去重并统计" class="headerlink" title="Shell中uniq去重并统计"></a>Shell中uniq去重并统计</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cat text | uniq -c</div></pre></td></tr></table></figure>
+        <h1 id="Shell-最后一个参数"><a href="#Shell-最后一个参数" class="headerlink" title="Shell 最后一个参数"></a>Shell 最后一个参数</h1><p><a href="http://www.letuknowit.com/post/81.html" target="_blank" rel="external">参考链接</a></p>
+<p><code>$_</code> 会直接执行</p>
+<p><code>!$</code> 会展示命令，等用户按Enter</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/09/22/shell-uniq-count/" data-id="cjledll5x002bjuqbjaibp2cs" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/09/22/shell-last-param/" data-id="cjlkbkhge002m77qbd5h5bluy" class="article-share-link">Share</a>
       
       
     </footer>
@@ -140,7 +233,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/09/07/hello-world/" data-id="cjledll5a000qjuqby7m03251" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/09/07/hello-world/" data-id="cjlkbkhf9000u77qbkb22bp1k" class="article-share-link">Share</a>
       
       
     </footer>
@@ -184,105 +277,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/04/26/git_svn_blame/" data-id="cjledll59000ojuqbl5b2t0d1" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-shell-shuffle-file-lines" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/02/24/shell-shuffle-file-lines/" class="article-date">
-  <time datetime="2017-02-24T10:37:00.000Z" itemprop="datePublished">2017-02-24</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/linux/">linux</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/24/shell-shuffle-file-lines/">shell shuffle file lines</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="高版本CentOS自带sort-R-shuf"><a href="#高版本CentOS自带sort-R-shuf" class="headerlink" title="高版本CentOS自带sort -R/ shuf"></a>高版本CentOS自带sort -R/ shuf</h2><p>用awk实现文件：行乱序</p>
-<blockquote>
-<p>1.awk</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">awk ‘BEGIN&#123;srand()&#125;&#123;b[rand()NR]=<span class="variable">$0</span>&#125;END&#123;<span class="keyword">for</span>(x <span class="keyword">in</span> b)<span class="built_in">print</span> b[x]&#125;’ data</div></pre></td></tr></table></figure>
-<p><a href="http://ju.outofmemory.cn/entry/118502" target="_blank" rel="external">Linux下实现文件洗牌效果 行乱序</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/02/24/shell-shuffle-file-lines/" data-id="cjledll5x0029juqbldk3n016" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-count-ip-address-appears-most-in-log-file" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2012/11/09/count-ip-address-appears-most-in-log-file/" class="article-date">
-  <time datetime="2012-11-09T02:32:00.000Z" itemprop="datePublished">2012-11-09</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/linux/">linux</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2012/11/09/count-ip-address-appears-most-in-log-file/">Count IP Address Appears Most in Log File</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="1-Problem"><a href="#1-Problem" class="headerlink" title="1.Problem"></a>1.Problem</h2><p>之前做运维的笔试题，有一道很经典的统计日志文件中出现最多的 IP 地址及次数的题。其日志格式为</p>
-<pre><code>122.224.6.43 - - [30/Oct/2012:21:29:42 +0800] &quot;GET /phpMyAdmin/scripts/setup.php HTTP/1.1&quot; 404 162 &quot;-&quot; &quot;ZmEu&quot;
-122.224.6.43 - - [30/Oct/2012:21:29:42 +0800] &quot;GET /MyAdmin/scripts/setup.php HTTP/1.1&quot; 404 162 &quot;-&quot; &quot;ZmEu&quot;
-122.224.6.43 - - [30/Oct/2012:21:29:42 +0800] &quot;GET /pma/scripts/setup.php HTTP/1.1&quot; 404 162 &quot;-&quot; &quot;ZmEu&quot;
-122.224.6.43 - - [30/Oct/2012:21:29:42 +0800] &quot;GET /myadmin/scripts/setup.php HTTP/1.1&quot; 404 162 &quot;-&quot; &quot;ZmEu&quot;
-58.251.60.248 - - [30/Oct/2012:23:05:46 +0800] &quot;GET http://www.baidu.com/ HTTP/1.1&quot; 200 612 &quot;-&quot; &quot;Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; QQDownload 551; .NET CLR 2.0.50727; CIBA)&quot;
-58.251.60.248 - - [30/Oct/2012:23:06:37 +0800] &quot;&quot; 400 0 &quot;-&quot; &quot;-&quot;
-</code></pre><p>这是 <code>nginx</code> 日志 <code>/var/log/nginx/access.log</code> 中的一个片段。</p>
-        
-          <p class="article-more-link">
-            <a href="/2012/11/09/count-ip-address-appears-most-in-log-file/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2012/11/09/count-ip-address-appears-most-in-log-file/" data-id="cjledll4y0004juqb10208hdp" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/04/26/git_svn_blame/" data-id="cjlkbkhf6000o77qbswvcmmzb" class="article-share-link">Share</a>
       
       
     </footer>
@@ -295,7 +290,7 @@
 
 
   <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/page/7/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/9/">下一页&raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/7/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/9/">下一页&raquo;</a>
   </nav>
 
 </section>
@@ -306,7 +301,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/cpp/">cpp</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/django/">django</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/hadoop-bigflow-lambda/">hadoop bigflow lambda</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/json/">json</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/mongodb/">mongodb</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/mysql/">mysql</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/">note</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/opencv/">opencv</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python-2d-array/">python, 2d-array</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/redis/">redis</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/cpp/">cpp</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/django/">django</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/hadoop-bigflow-lambda/">hadoop, bigflow, lambda</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/json/">json</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/mongodb/">mongodb</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/mysql/">mysql</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/">note</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/opencv/">opencv</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python-2d-array/">python, 2d-array</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python-leetcode/">python, leetcode</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python-leetcode-binary-tree/">python, leetcode, binary tree</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/redis/">redis</a></li></ul>
     </div>
   </div>
 
@@ -321,7 +316,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">十一月 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/10/">十月 2012</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">十一月 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/10/">十月 2012</a></li></ul>
     </div>
   </div>
 
@@ -334,6 +329,14 @@
       <ul>
         
           <li>
+            <a href="/2018/09/02/leetcode-product-of-array-except-self/">Product of Array Except Self</a>
+          </li>
+        
+          <li>
+            <a href="/2018/09/01/leetcode-binary-tree-inorder-traversal/">Binary Tree Inorder Traversal</a>
+          </li>
+        
+          <li>
             <a href="/2018/08/29/python-zip-2d-array-transpose/">python zip 2d array transpose</a>
           </li>
         
@@ -343,14 +346,6 @@
         
           <li>
             <a href="/2018/03/17/mysql-where-yesterday/">mysql where yesterday by curdate()</a>
-          </li>
-        
-          <li>
-            <a href="/2018/03/16/python-sum-2d-list-by-col/">python sum the columns in 2D list</a>
-          </li>
-        
-          <li>
-            <a href="/2018/03/10/python-argparse-nargs/">python argparse nargs</a>
           </li>
         
       </ul>

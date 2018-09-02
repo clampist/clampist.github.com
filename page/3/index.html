@@ -64,6 +64,98 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-python-hashlib-md5-unicodeEncodeError" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/01/13/python-hashlib-md5-unicodeEncodeError/" class="article-date">
+  <time datetime="2018-01-13T02:35:00.000Z" itemprop="datePublished">2018-01-13</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/python/">python</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/01/13/python-hashlib-md5-unicodeEncodeError/">python hashlib md5 unicodeEncodeError</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">string = &quot;beyongjie&quot;</div><div class="line"></div><div class="line"></div><div class="line">md5 = hashlib.md5()</div><div class="line">md5.update(string.encode(&apos;utf-8&apos;))     #注意转码</div><div class="line">res = md5.hexdigest()</div><div class="line">print(&quot;md5加密结果:&quot;,res)</div></pre></td></tr></table></figure>
+<p><strong>正常直接计算Unicode就行，但如果报编码错误，可以尝试计算str</strong></p>
+<p><a href="http://www.cnblogs.com/pycode/p/hashlib.html" target="_blank" rel="external">参考</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2018/01/13/python-hashlib-md5-unicodeEncodeError/" data-id="cjlkbkhg5002577qbx4my150y" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-python-absolute-import" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/11/29/python-absolute-import/" class="article-date">
+  <time datetime="2017-11-29T02:35:00.000Z" itemprop="datePublished">2017-11-29</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/python/">python</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/11/29/python-absolute-import/">python from __future__ import absolute_import</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="from-future-import-absolute-import"><a href="#from-future-import-absolute-import" class="headerlink" title="from __future__ import absolute_import"></a>from __future__ import absolute_import</h2><h3 id="1-使用以上语句则启动绝对导入"><a href="#1-使用以上语句则启动绝对导入" class="headerlink" title="1.使用以上语句则启动绝对导入"></a>1.使用以上语句则启动绝对导入</h3><p>会从 <code>sys.path</code> 里寻找所有名为 <code>x</code> 的顶层模块</p>
+<h3 id="2-而相应的相对导入则采用"><a href="#2-而相应的相对导入则采用" class="headerlink" title="2.而相应的相对导入则采用."></a>2.而相应的相对导入则采用<code>.</code></h3><p>比如一个 package 下有 a.py 和 b.py 两个文件，在 a.py 里 <code>from . import b</code> 即是相对导入 b.py。</p>
+<p><a href="https://segmentfault.com/q/1010000000458562" target="_blank" rel="external">区别</a></p>
+<p><a href="http://legacy.python.org/dev/peps/pep-0328/" target="_blank" rel="external"><code>PEP 328</code></a>中：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">package/</div><div class="line">    __init__.py</div><div class="line">    subpackage1/</div><div class="line">        __init__.py</div><div class="line">        moduleX.py</div><div class="line">        moduleY.py</div><div class="line">    subpackage2/</div><div class="line">        __init__.py</div><div class="line">        moduleZ.py</div><div class="line">    moduleA.py</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">from .moduleY import spam</div><div class="line">from .moduleY import spam as ham</div><div class="line">from . import moduleY</div><div class="line">from ..subpackage1 import moduleY</div><div class="line">from ..subpackage2.moduleZ import eggs</div><div class="line">from ..moduleA import foo</div><div class="line">from ...package import bar</div><div class="line">from ...sys import path</div></pre></td></tr></table></figure>
+<p>一个<code>.</code>表示从当前目录寻找</p>
+<p>两个<code>.</code>表示从父目录寻找</p>
+<p>更多的<code>.</code>则从更高层级的目录寻找</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2017/11/29/python-absolute-import/" data-id="cjlkbkhfz001w77qbp4mzpgb8" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-django-mongoengine-query-operators" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/11/27/django-mongoengine-query-operators/" class="article-date">
@@ -97,7 +189,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/11/27/django-mongoengine-query-operators/" data-id="cjledll520009juqblx193qua" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/11/27/django-mongoengine-query-operators/" data-id="cjlkbkhey000877qb1vynsj1y" class="article-share-link">Share</a>
       
       
     </footer>
@@ -141,7 +233,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/11/22/python-loads-json-object-instead-of-unicode/" data-id="cjledll5p001rjuqbxa5av6g3" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/11/22/python-loads-json-object-instead-of-unicode/" data-id="cjlkbkhg3002177qboev89x37" class="article-share-link">Share</a>
       
       
     </footer>
@@ -186,103 +278,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/11/02/linux-grep-by-reg-content-in-file/" data-id="cjledll5d000yjuqbjdskw0hh" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-linux-sync-folder-by-rsync" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/11/02/linux-sync-folder-by-rsync/" class="article-date">
-  <time datetime="2017-11-02T00:35:00.000Z" itemprop="datePublished">2017-11-02</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/linux/">linux</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/11/02/linux-sync-folder-by-rsync/">linux sync folder by rsync</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="rsync"><a href="#rsync" class="headerlink" title="rsync"></a>rsync</h2><p><code>rsync -avz --delete &quot;/home/user/A&quot; &quot;/home/user/B&quot;</code></p>
-<p>Explanation by SonicARG</p>
-<p><code>-a</code> Do the sync preserving all filesystem attributes</p>
-<p><code>-v</code> run verbosely</p>
-<p><code>-z</code> compress the data during the sync (transport the data in compressed mode)</p>
-<p><code>--delete</code> delete the files in target folder that do not exist in the source, /home/user/A: source folder, /home/user/B: target folder</p>
-<h2 id="exclude-git"><a href="#exclude-git" class="headerlink" title="exclude .git"></a>exclude .git</h2><p><code>--exclude=&#39;.git/&#39;</code></p>
-<p><a href="https://unix.stackexchange.com/questions/100660/how-to-use-rsync-to-backup-a-directory-without-git-subdirectory" target="_blank" rel="external">How to use rsync to backup a directory without git subdirectory</a></p>
-<p><a href="https://unix.stackexchange.com/questions/203846/how-to-sync-two-folders-with-command-line-tools" target="_blank" rel="external">How to sync two folders with command line tools?</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/11/02/linux-sync-folder-by-rsync/" data-id="cjledll5e000zjuqbebkxnb8h" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-turing" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/11/01/turing/" class="article-date">
-  <time datetime="2017-11-01T06:37:00.000Z" itemprop="datePublished">2017-11-01</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/linux/">linux</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/11/01/turing/">sed replace</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="图灵"><a href="#图灵" class="headerlink" title="图灵"></a>图灵</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">sed -i <span class="string">'s/\\"//g'</span> file</div><div class="line"></div><div class="line">sed -i <span class="string">'s/\\\\\//\//g'</span> file</div><div class="line"></div><div class="line">sed -i <span class="string">'s/"\[&#123;""json"":""/\[/g'</span> file</div><div class="line"></div><div class="line">sed -i <span class="string">'s/&#123;""json"":""//g'</span> file</div><div class="line"></div><div class="line">sed -i <span class="string">'s/"",""mt"":[0-9]*&#125;\]"/\]/g'</span> file</div><div class="line"></div><div class="line">sed -i <span class="string">'s/"",""mt"":[0-9]*&#125;//g'</span> file</div></pre></td></tr></table></figure>
-<h2 id="Use-double-quotes-so-that-sed-would-expand-variables"><a href="#Use-double-quotes-so-that-sed-would-expand-variables" class="headerlink" title="Use double quotes so that sed would expand variables."></a>Use double quotes so that sed would expand variables.</h2><p><code>sed &quot;s|\$ROOT|${HOME}|&quot; abc.sh</code></p>
-<ul>
-<li>shell变量在双引号内会被解析</li>
-<li>在单引号内不会被解析</li>
-</ul>
-<p><a href="https://stackoverflow.com/questions/19151954/how-to-use-variables-in-a-command-in-sed" target="_blank" rel="external">How to use variables in a command in sed?</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/11/01/turing/" data-id="cjledll5z002ejuqbny1hjywa" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/11/02/linux-grep-by-reg-content-in-file/" data-id="cjlkbkhfn001f77qblxfz9758" class="article-share-link">Share</a>
       
       
     </footer>
@@ -295,7 +291,7 @@
 
 
   <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/page/2/">&laquo; 上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/4/">下一页&raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/2/">&laquo; 上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/4/">下一页&raquo;</a>
   </nav>
 
 </section>
@@ -306,7 +302,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/cpp/">cpp</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/django/">django</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/hadoop-bigflow-lambda/">hadoop bigflow lambda</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/json/">json</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/mongodb/">mongodb</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/mysql/">mysql</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/">note</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/opencv/">opencv</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python-2d-array/">python, 2d-array</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/redis/">redis</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/cpp/">cpp</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/django/">django</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/hadoop-bigflow-lambda/">hadoop, bigflow, lambda</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/json/">json</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/mongodb/">mongodb</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/mysql/">mysql</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/">note</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/opencv/">opencv</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python-2d-array/">python, 2d-array</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python-leetcode/">python, leetcode</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python-leetcode-binary-tree/">python, leetcode, binary tree</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/redis/">redis</a></li></ul>
     </div>
   </div>
 
@@ -321,7 +317,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">十一月 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/10/">十月 2012</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">十一月 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/10/">十月 2012</a></li></ul>
     </div>
   </div>
 
@@ -334,6 +330,14 @@
       <ul>
         
           <li>
+            <a href="/2018/09/02/leetcode-product-of-array-except-self/">Product of Array Except Self</a>
+          </li>
+        
+          <li>
+            <a href="/2018/09/01/leetcode-binary-tree-inorder-traversal/">Binary Tree Inorder Traversal</a>
+          </li>
+        
+          <li>
             <a href="/2018/08/29/python-zip-2d-array-transpose/">python zip 2d array transpose</a>
           </li>
         
@@ -343,14 +347,6 @@
         
           <li>
             <a href="/2018/03/17/mysql-where-yesterday/">mysql where yesterday by curdate()</a>
-          </li>
-        
-          <li>
-            <a href="/2018/03/16/python-sum-2d-list-by-col/">python sum the columns in 2D list</a>
-          </li>
-        
-          <li>
-            <a href="/2018/03/10/python-argparse-nargs/">python argparse nargs</a>
           </li>
         
       </ul>
