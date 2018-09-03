@@ -64,6 +64,50 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-git_svn_blame" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/26/git_svn_blame/" class="article-date">
+  <time datetime="2017-04-26T08:21:00.000Z" itemprop="datePublished">2017-04-26</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/git/">git</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/26/git_svn_blame/">git blame / log</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="git常用"><a href="#git常用" class="headerlink" title="git常用"></a>git常用</h2><h3 id="blame"><a href="#blame" class="headerlink" title="blame"></a>blame</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git blame path/to/your/file</div><div class="line">svn blame path/to/your/file</div></pre></td></tr></table></figure>
+<p>只能看当前状态下，每一行的改动者</p>
+<h3 id="搜索所有的修改历史，全仓库历史-blame遇到stash冲突"><a href="#搜索所有的修改历史，全仓库历史-blame遇到stash冲突" class="headerlink" title="搜索所有的修改历史，全仓库历史 blame遇到stash冲突"></a>搜索所有的修改历史，全仓库历史 blame遇到<code>stash</code>冲突</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git <span class="built_in">log</span> -p -M --follow --<span class="built_in">stat</span> -- path/to/your/file</div></pre></td></tr></table></figure>
+<p>可以查找所有历史中，每一行的改动者</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2017/04/26/git_svn_blame/" data-id="cjllvkpi7000uwbqb8snk5tho" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-shell-shuffle-file-lines" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/02/24/shell-shuffle-file-lines/" class="article-date">
@@ -100,7 +144,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/02/24/shell-shuffle-file-lines/" data-id="cjlkbs9d6002yavqbcd0omo4k" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/02/24/shell-shuffle-file-lines/" data-id="cjllvkpj0002kwbqbe7g7vsmt" class="article-share-link">Share</a>
       
       
     </footer>
@@ -152,7 +196,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2012/11/09/count-ip-address-appears-most-in-log-file/" data-id="cjlkbs9br0004avqbishymoty" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2012/11/09/count-ip-address-appears-most-in-log-file/" data-id="cjllvkphs0004wbqb96vr98k4" class="article-share-link">Share</a>
       
       
     </footer>
@@ -202,7 +246,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2012/10/20/python-virtualenv-wrapper-and-pip/" data-id="cjlkbs9d1002lavqbay8anpg5" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2012/10/20/python-virtualenv-wrapper-and-pip/" data-id="cjllvkpix002ewbqbccuy16gw" class="article-share-link">Share</a>
       
       
     </footer>
@@ -262,59 +306,7 @@ In [7]: cv.SaveImage(&apos;foo2.png&apos;, im2)
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2012/10/13/opencv-basis/" data-id="cjlkbs9cs0029avqbysia34g5" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-install-openexr-for-python" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2012/10/11/install-openexr-for-python/" class="article-date">
-  <time datetime="2012-10-11T04:50:00.000Z" itemprop="datePublished">2012-10-11</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/opencv/">opencv</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2012/10/11/install-openexr-for-python/">Install OpenEXR for Python</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Using OpenEXR’s Python bindings we can make a simple image viewer.<br>So, we should install OpenEXR first, following <a href="http://www.excamera.com/sphinx/articles-openexr.html" target="_blank" rel="external">OpenEXR bindings for Python</a><br>Make sure you have already installed OpenEXR’s Prerequisite: Python 2.5+ and the OpenEXR C++ library(openexr).</p>
-<pre><code>wget http://excamera.com/files/OpenEXR-1.2.0.tar.gz
-
-tar zxvf OpenEXR-1.2.0.tar.gz
-
-cd OpenEXR-1.2.0
-
-(sudo python2 setup.py build)
-
-sudo python2 setup.py install
-</code></pre><p>Then, we can follow <a href="http://opencv.willowgarage.com/documentation/python/cookbook.html#opencv-and-openexr" target="_blank" rel="external">OpenCV and OpenEXR</a></p>
-<p>References: <a href="http://blog.csdn.net/ponder008/article/details/6592719" target="_blank" rel="external">Python how to install setup.py</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2012/10/11/install-openexr-for-python/" data-id="cjlkbs9c3000ravqbo372vn7h" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2012/10/13/opencv-basis/" data-id="cjllvkpik001nwbqbnkra7zwh" class="article-share-link">Share</a>
       
       
     </footer>
@@ -358,7 +350,7 @@ sudo python2 setup.py install
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/2d-array/" style="font-size: 15px;">2d-array</a> <a href="/tags/bigflow/" style="font-size: 10px;">bigflow</a> <a href="/tags/binary-tree/" style="font-size: 10px;">binary tree</a> <a href="/tags/hadoop/" style="font-size: 10px;">hadoop</a> <a href="/tags/lambda/" style="font-size: 10px;">lambda</a> <a href="/tags/leetcode/" style="font-size: 15px;">leetcode</a> <a href="/tags/python/" style="font-size: 20px;">python</a>
+      <a href="/tags/2d-array/" style="font-size: 13.33px;">2d-array</a> <a href="/tags/bigflow/" style="font-size: 10px;">bigflow</a> <a href="/tags/binary-tree/" style="font-size: 10px;">binary tree</a> <a href="/tags/hadoop/" style="font-size: 10px;">hadoop</a> <a href="/tags/lambda/" style="font-size: 10px;">lambda</a> <a href="/tags/leetcode/" style="font-size: 16.67px;">leetcode</a> <a href="/tags/python/" style="font-size: 20px;">python</a>
     </div>
   </div>
 
@@ -380,6 +372,10 @@ sudo python2 setup.py install
       <ul>
         
           <li>
+            <a href="/2018/09/03/leetcode-sum-of-two-integers/">Sum of Two Integers</a>
+          </li>
+        
+          <li>
             <a href="/2018/09/02/leetcode-product-of-array-except-self/">Product of Array Except Self</a>
           </li>
         
@@ -393,10 +389,6 @@ sudo python2 setup.py install
         
           <li>
             <a href="/2018/08/27/使用 Bigflow 筛选出某1个字段 top K 行/">bigflow top one field</a>
-          </li>
-        
-          <li>
-            <a href="/2018/03/17/mysql-where-yesterday/">mysql where yesterday by curdate()</a>
           </li>
         
       </ul>
