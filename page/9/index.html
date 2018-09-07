@@ -64,6 +64,49 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-linux-dos-to-unix" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/09/22/linux-dos-to-unix/" class="article-date">
+  <time datetime="2017-09-22T06:37:00.000Z" itemprop="datePublished">2017-09-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/linux/">linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/09/22/linux-dos-to-unix/">linux dos to unix</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="linux下文本处理"><a href="#linux下文本处理" class="headerlink" title="linux下文本处理"></a>linux下文本处理</h1><h2 id="dos2unix-直接修改原文件"><a href="#dos2unix-直接修改原文件" class="headerlink" title="dos2unix:直接修改原文件"></a>dos2unix:直接修改原文件</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">dos2unix file</div></pre></td></tr></table></figure>
+<p><a href="https://www.cyberciti.biz/faq/howto-unix-linux-convert-dos-newlines-cr-lf-unix-text-format/" target="_blank" rel="external">wiki</a></p>
+<h2 id="replace-t-with-4-blanks"><a href="#replace-t-with-4-blanks" class="headerlink" title="replace \t with 4 blanks"></a>replace \t with 4 blanks</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">expand -t 4 input &gt; output</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2017/09/22/linux-dos-to-unix/" data-id="cjlrct80k000z9jqb916zzo3q" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-acquire-array-length-in-cpp" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/09/22/acquire-array-length-in-cpp/" class="article-date">
@@ -102,7 +145,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/09/22/acquire-array-length-in-cpp/" data-id="cjlptyauf0000diqbgwu21ucr" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/09/22/acquire-array-length-in-cpp/" data-id="cjlrct7zu00009jqb0n1uq6v4" class="article-share-link">Share</a>
       
       
     </footer>
@@ -147,7 +190,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/09/07/hello-world/" data-id="cjlptyav50010diqbcrg1swdy" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/09/07/hello-world/" data-id="cjlrct80h000v9jqbfrskr552" class="article-share-link">Share</a>
       
       
     </footer>
@@ -191,7 +234,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/04/26/git_svn_blame/" data-id="cjlptyaux000ldiqbuqgwj8cj" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/04/26/git_svn_blame/" data-id="cjlrct80c000k9jqbw8wfzw8g" class="article-share-link">Share</a>
       
       
     </footer>
@@ -237,59 +280,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/02/24/shell-shuffle-file-lines/" data-id="cjlptyavz0032diqb2dt8ixjq" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-count-ip-address-appears-most-in-log-file" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2012/11/09/count-ip-address-appears-most-in-log-file/" class="article-date">
-  <time datetime="2012-11-09T02:32:00.000Z" itemprop="datePublished">2012-11-09</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/linux/">linux</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2012/11/09/count-ip-address-appears-most-in-log-file/">Count IP Address Appears Most in Log File</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="1-Problem"><a href="#1-Problem" class="headerlink" title="1.Problem"></a>1.Problem</h2><p>之前做运维的笔试题，有一道很经典的统计日志文件中出现最多的 IP 地址及次数的题。其日志格式为</p>
-<pre><code>122.224.6.43 - - [30/Oct/2012:21:29:42 +0800] &quot;GET /phpMyAdmin/scripts/setup.php HTTP/1.1&quot; 404 162 &quot;-&quot; &quot;ZmEu&quot;
-122.224.6.43 - - [30/Oct/2012:21:29:42 +0800] &quot;GET /MyAdmin/scripts/setup.php HTTP/1.1&quot; 404 162 &quot;-&quot; &quot;ZmEu&quot;
-122.224.6.43 - - [30/Oct/2012:21:29:42 +0800] &quot;GET /pma/scripts/setup.php HTTP/1.1&quot; 404 162 &quot;-&quot; &quot;ZmEu&quot;
-122.224.6.43 - - [30/Oct/2012:21:29:42 +0800] &quot;GET /myadmin/scripts/setup.php HTTP/1.1&quot; 404 162 &quot;-&quot; &quot;ZmEu&quot;
-58.251.60.248 - - [30/Oct/2012:23:05:46 +0800] &quot;GET http://www.baidu.com/ HTTP/1.1&quot; 200 612 &quot;-&quot; &quot;Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; QQDownload 551; .NET CLR 2.0.50727; CIBA)&quot;
-58.251.60.248 - - [30/Oct/2012:23:06:37 +0800] &quot;&quot; 400 0 &quot;-&quot; &quot;-&quot;
-</code></pre><p>这是 <code>nginx</code> 日志 <code>/var/log/nginx/access.log</code> 中的一个片段。</p>
-        
-          <p class="article-more-link">
-            <a href="/2012/11/09/count-ip-address-appears-most-in-log-file/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2012/11/09/count-ip-address-appears-most-in-log-file/" data-id="cjlptyaum0004diqb1lr7bctp" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/02/24/shell-shuffle-file-lines/" data-id="cjlrct81o003f9jqb7ljny1ji" class="article-share-link">Share</a>
       
       
     </footer>
@@ -355,6 +346,10 @@
       <ul>
         
           <li>
+            <a href="/2018/09/07/leetcode-permutations/">Permutations</a>
+          </li>
+        
+          <li>
             <a href="/2018/09/06/leetcode-generate-parentheses/">Generate Parentheses</a>
           </li>
         
@@ -368,10 +363,6 @@
         
           <li>
             <a href="/2018/09/02/leetcode-product-of-array-except-self/">Product of Array Except Self</a>
-          </li>
-        
-          <li>
-            <a href="/2018/09/01/leetcode-binary-tree-inorder-traversal/">Binary Tree Inorder Traversal</a>
           </li>
         
       </ul>

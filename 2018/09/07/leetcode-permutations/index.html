@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Permutations | 记录点滴</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Permutations 排列DFS1234567891011121314151617181920212223class Solution(object):    def permute(self, nums):        &quot;&quot;&quot;        :type nums: List[int]        :rtype: List[List[int]]        &quot;&quot;&quot;        res">
+<meta name="keywords" content="python,leetcode">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Permutations">
+<meta property="og:url" content="https://clampist.github.io/2018/09/07/leetcode-permutations/index.html">
+<meta property="og:site_name" content="记录点滴">
+<meta property="og:description" content="Permutations 排列DFS1234567891011121314151617181920212223class Solution(object):    def permute(self, nums):        &quot;&quot;&quot;        :type nums: List[int]        :rtype: List[List[int]]        &quot;&quot;&quot;        res">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-09-07T02:00:31.137Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Permutations">
+<meta name="twitter:description" content="Permutations 排列DFS1234567891011121314151617181920212223class Solution(object):    def permute(self, nums):        &quot;&quot;&quot;        :type nums: List[int]        :rtype: List[List[int]]        &quot;&quot;&quot;        res">
+  
+    <link rel="alternate" href="/atom.xml" title="记录点滴" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">记录点滴</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://clampist.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-leetcode-permutations" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/09/07/leetcode-permutations/" class="article-date">
+  <time datetime="2018-09-07T01:47:00.000Z" itemprop="datePublished">2018-09-07</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Permutations
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Permutations-排列"><a href="#Permutations-排列" class="headerlink" title="Permutations 排列"></a>Permutations 排列</h2><h3 id="DFS"><a href="#DFS" class="headerlink" title="DFS"></a>DFS</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">permute</span><span class="params">(self, nums)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        :type nums: List[int]</span></div><div class="line"><span class="string">        :rtype: List[List[int]]</span></div><div class="line"><span class="string">        """</span></div><div class="line">        res = []</div><div class="line">        self.dfs(nums, [], res)</div><div class="line">        <span class="keyword">return</span> res</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">dfs</span><span class="params">(self, nums, path, res)</span>:</span></div><div class="line">        <span class="keyword">print</span> <span class="string">'----------------BEGIN------------------'</span></div><div class="line">        <span class="keyword">print</span> <span class="string">'nums ='</span>, nums</div><div class="line">        <span class="keyword">if</span> <span class="keyword">not</span> nums:</div><div class="line">            res.append(path)</div><div class="line">            <span class="keyword">print</span> <span class="string">'res append ='</span>, res</div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> xrange(len(nums)):</div><div class="line">            <span class="keyword">print</span> <span class="string">'i = %d'</span> % i</div><div class="line">            <span class="keyword">print</span> <span class="string">'nums[:%d] ='</span> % i, nums[:i], <span class="string">'+ nums[%d:] ='</span> % (i + <span class="number">1</span>), nums[i+<span class="number">1</span>:]</div><div class="line">            <span class="keyword">print</span> <span class="string">'path ='</span>, path, <span class="string">'+ nums[%d] ='</span> % i, nums[i]</div><div class="line">            <span class="keyword">print</span> <span class="string">'res ='</span>, res</div><div class="line">            self.dfs(nums[:i] + nums[i+<span class="number">1</span>:], path+[nums[i]], res)</div><div class="line">            <span class="keyword">print</span> <span class="string">'----------------END-----------------\n'</span></div></pre></td></tr></table></figure>
+<p><em>output</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line">In [432]: s = Solution(); print s.permute([1, 2])</div><div class="line">----------------BEGIN------------------</div><div class="line">nums = [1, 2]</div><div class="line">i = 0</div><div class="line">nums[:0] = [] + nums[1:] = [2]</div><div class="line">path = [] + nums[0] = 1</div><div class="line">res = []</div><div class="line">----------------BEGIN------------------</div><div class="line">nums = [2]</div><div class="line">i = 0</div><div class="line">nums[:0] = [] + nums[1:] = []</div><div class="line">path = [1] + nums[0] = 2</div><div class="line">res = []</div><div class="line">----------------BEGIN------------------</div><div class="line">nums = []</div><div class="line">res append = [[1, 2]]</div><div class="line">----------------END-----------------</div><div class="line"></div><div class="line">----------------END-----------------</div><div class="line"></div><div class="line">i = 1</div><div class="line">nums[:1] = [1] + nums[2:] = []</div><div class="line">path = [] + nums[1] = 2</div><div class="line">res = [[1, 2]]</div><div class="line">----------------BEGIN------------------</div><div class="line">nums = [1]</div><div class="line">i = 0</div><div class="line">nums[:0] = [] + nums[1:] = []</div><div class="line">path = [2] + nums[0] = 1</div><div class="line">res = [[1, 2]]</div><div class="line">----------------BEGIN------------------</div><div class="line">nums = []</div><div class="line">res append = [[1, 2], [2, 1]]</div><div class="line">----------------END-----------------</div><div class="line"></div><div class="line">----------------END-----------------</div><div class="line"></div><div class="line">[[1, 2], [2, 1]]</div></pre></td></tr></table></figure>
+<h3 id="Recursive-insert-first-number-anywhere"><a href="#Recursive-insert-first-number-anywhere" class="headerlink" title="Recursive, insert first number anywhere"></a>Recursive, insert first number anywhere</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">permute</span><span class="params">(self, nums)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        :type nums: List[int]</span></div><div class="line"><span class="string">        :rtype: List[List[int]]</span></div><div class="line"><span class="string">        """</span></div><div class="line">        res = []</div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(nums)):</div><div class="line">            <span class="keyword">for</span> p <span class="keyword">in</span> self.permute(nums[<span class="number">1</span>:]):</div><div class="line">                res.append(p[:i] + [nums[<span class="number">0</span>]] + p[i:])</div><div class="line">        <span class="keyword">return</span> nums <span class="keyword">and</span> res <span class="keyword">or</span> [[]]</div><div class="line">```        </div><div class="line"></div><div class="line"><span class="comment">### Recursive, take any number as first</span></div><div class="line">```Python</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">permute</span><span class="params">(self, nums)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        :type nums: List[int]</span></div><div class="line"><span class="string">        :rtype: List[List[int]]</span></div><div class="line"><span class="string">        """</span></div><div class="line">        res = []</div><div class="line">        <span class="keyword">for</span> i, n <span class="keyword">in</span> enumerate(nums):</div><div class="line">            <span class="keyword">for</span> p <span class="keyword">in</span> self.permute(nums[:i] + nums[i+<span class="number">1</span>:]):</div><div class="line">                res.append([n] + p)</div><div class="line">        <span class="keyword">return</span> res <span class="keyword">or</span> [[]]</div></pre></td></tr></table></figure>
+<h3 id="Reduce-insert-next-number-anywhere"><a href="#Reduce-insert-next-number-anywhere" class="headerlink" title="Reduce, insert next number anywhere"></a>Reduce, insert next number anywhere</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">permute</span><span class="params">(self, nums)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        :type nums: List[int]</span></div><div class="line"><span class="string">        :rtype: List[List[int]]</span></div><div class="line"><span class="string">        """</span></div><div class="line">        <span class="keyword">return</span> reduce(<span class="keyword">lambda</span> P, n: [p[:i] + [n] + p[i:]</div><div class="line">                                <span class="keyword">for</span> p <span class="keyword">in</span> P <span class="keyword">for</span> i <span class="keyword">in</span> range(len(p)+<span class="number">1</span>)],</div><div class="line">                  nums, [[]])</div></pre></td></tr></table></figure>
+<p><a href="https://leetcode.com/problems/permutations/discuss/18241/One-Liners-in-Python" target="_blank" rel="external">One-Liners in Python</a></p>
+<p><a href="https://leetcode.com/problems/permutations/description/" target="_blank" rel="external">leet code</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2018/09/07/leetcode-permutations/" data-id="cjlrct80f000p9jqbg9lxaon7" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/09/06/leetcode-generate-parentheses/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Generate Parentheses</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/bigflow/">bigflow</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/cpp/">cpp</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/django/">django</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/git/">git</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/json/">json</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/leetcode/">leetcode</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/mongodb/">mongodb</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/mysql/">mysql</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/note/">note</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/opencv/">opencv</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/redis/">redis</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/2d-array/">2d-array</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bigflow/">bigflow</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/binary-tree/">binary tree</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hadoop/">hadoop</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/lambda/">lambda</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/2d-array/" style="font-size: 13.33px;">2d-array</a> <a href="/tags/bigflow/" style="font-size: 10px;">bigflow</a> <a href="/tags/binary-tree/" style="font-size: 10px;">binary tree</a> <a href="/tags/hadoop/" style="font-size: 10px;">hadoop</a> <a href="/tags/lambda/" style="font-size: 10px;">lambda</a> <a href="/tags/leetcode/" style="font-size: 16.67px;">leetcode</a> <a href="/tags/python/" style="font-size: 20px;">python</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">十一月 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/10/">十月 2012</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/09/07/leetcode-permutations/">Permutations</a>
+          </li>
+        
+          <li>
+            <a href="/2018/09/06/leetcode-generate-parentheses/">Generate Parentheses</a>
+          </li>
+        
+          <li>
+            <a href="/2018/09/04/leetcode-top-k-frequent-elements/">Top K Frequent Elements</a>
+          </li>
+        
+          <li>
+            <a href="/2018/09/03/leetcode-sum-of-two-integers/">Sum of Two Integers</a>
+          </li>
+        
+          <li>
+            <a href="/2018/09/02/leetcode-product-of-array-except-self/">Product of Array Except Self</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Krevy Li<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

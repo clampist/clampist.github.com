@@ -64,51 +64,9 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-python-two-or-three-continuous-items-in-list" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-shell-last-param" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/09/22/python-two-or-three-continuous-items-in-list/" class="article-date">
-  <time datetime="2017-09-22T06:37:00.000Z" itemprop="datePublished">2017-09-22</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/python/">python</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/22/python-two-or-three-continuous-items-in-list/">python two or three continuous items in list</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Python-list-中连续2-3个对象"><a href="#Python-list-中连续2-3个对象" class="headerlink" title="Python list 中连续2-3个对象"></a>Python list 中连续2-3个对象</h2><h3 id="1-前后连续两天"><a href="#1-前后连续两天" class="headerlink" title="1.前后连续两天"></a>1.前后连续两天</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> date <span class="keyword">in</span> [eval_obj.date_range[i:i+<span class="number">2</span>] <span class="keyword">for</span> i <span class="keyword">in</span> range(len(eval_obj.date_range) - <span class="number">1</span>)]:</div><div class="line">    <span class="keyword">print</span> date[<span class="number">0</span>], date[<span class="number">1</span>]</div></pre></td></tr></table></figure>
-<h3 id="2-时间间隔1-3天"><a href="#2-时间间隔1-3天" class="headerlink" title="2.时间间隔1-3天"></a>2.时间间隔1-3天</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> t <span class="keyword">in</span> [time_list[i:i + <span class="number">3</span>] <span class="keyword">for</span> i <span class="keyword">in</span> range(len(time_list) - <span class="number">1</span>)]:</div><div class="line">    <span class="keyword">if</span> len(t) == <span class="number">3</span>:</div><div class="line">        print(t[<span class="number">0</span>], t[<span class="number">2</span>])</div></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/09/22/python-two-or-three-continuous-items-in-list/" data-id="cjlptyavr002hdiqb0auqjevc" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-linux-dos-to-unix" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/09/22/linux-dos-to-unix/" class="article-date">
+    <a href="/2017/09/22/shell-last-param/" class="article-date">
   <time datetime="2017-09-22T06:37:00.000Z" itemprop="datePublished">2017-09-22</time>
 </a>
     
@@ -124,7 +82,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/22/linux-dos-to-unix/">linux dos to unix</a>
+      <a class="article-title" href="/2017/09/22/shell-last-param/">shell last param</a>
     </h1>
   
 
@@ -132,14 +90,14 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="linux下文本处理"><a href="#linux下文本处理" class="headerlink" title="linux下文本处理"></a>linux下文本处理</h1><h2 id="dos2unix-直接修改原文件"><a href="#dos2unix-直接修改原文件" class="headerlink" title="dos2unix:直接修改原文件"></a>dos2unix:直接修改原文件</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">dos2unix file</div></pre></td></tr></table></figure>
-<p><a href="https://www.cyberciti.biz/faq/howto-unix-linux-convert-dos-newlines-cr-lf-unix-text-format/" target="_blank" rel="external">wiki</a></p>
-<h2 id="replace-t-with-4-blanks"><a href="#replace-t-with-4-blanks" class="headerlink" title="replace \t with 4 blanks"></a>replace \t with 4 blanks</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">expand -t 4 input &gt; output</div></pre></td></tr></table></figure>
+        <h1 id="Shell-最后一个参数"><a href="#Shell-最后一个参数" class="headerlink" title="Shell 最后一个参数"></a>Shell 最后一个参数</h1><p><a href="http://www.letuknowit.com/post/81.html" target="_blank" rel="external">参考链接</a></p>
+<p><code>$_</code> 会直接执行</p>
+<p><code>!$</code> 会展示命令，等用户按Enter</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/09/22/linux-dos-to-unix/" data-id="cjlptyav90019diqb28dj7qjs" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/09/22/shell-last-param/" data-id="cjlrct81q003j9jqb1j56b5mu" class="article-share-link">Share</a>
       
       
     </footer>
@@ -180,7 +138,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/09/22/shell-uniq-count/" data-id="cjlptyavw002udiqb3dzvr516" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/09/22/shell-uniq-count/" data-id="cjlrct81s003m9jqbgx8tof5n" class="article-share-link">Share</a>
       
       
     </footer>
@@ -190,14 +148,14 @@
 
 
   
-    <article id="post-shell-last-param" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-python-two-or-three-continuous-items-in-list" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/09/22/shell-last-param/" class="article-date">
+    <a href="/2017/09/22/python-two-or-three-continuous-items-in-list/" class="article-date">
   <time datetime="2017-09-22T06:37:00.000Z" itemprop="datePublished">2017-09-22</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/linux/">linux</a>
+    <a class="article-category-link" href="/categories/python/">python</a>
   </div>
 
   </div>
@@ -208,7 +166,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/22/shell-last-param/">shell last param</a>
+      <a class="article-title" href="/2017/09/22/python-two-or-three-continuous-items-in-list/">python two or three continuous items in list</a>
     </h1>
   
 
@@ -216,14 +174,60 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Shell-最后一个参数"><a href="#Shell-最后一个参数" class="headerlink" title="Shell 最后一个参数"></a>Shell 最后一个参数</h1><p><a href="http://www.letuknowit.com/post/81.html" target="_blank" rel="external">参考链接</a></p>
-<p><code>$_</code> 会直接执行</p>
-<p><code>!$</code> 会展示命令，等用户按Enter</p>
+        <h2 id="Python-list-中连续2-3个对象"><a href="#Python-list-中连续2-3个对象" class="headerlink" title="Python list 中连续2-3个对象"></a>Python list 中连续2-3个对象</h2><h3 id="1-前后连续两天"><a href="#1-前后连续两天" class="headerlink" title="1.前后连续两天"></a>1.前后连续两天</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> date <span class="keyword">in</span> [eval_obj.date_range[i:i+<span class="number">2</span>] <span class="keyword">for</span> i <span class="keyword">in</span> range(len(eval_obj.date_range) - <span class="number">1</span>)]:</div><div class="line">    <span class="keyword">print</span> date[<span class="number">0</span>], date[<span class="number">1</span>]</div></pre></td></tr></table></figure>
+<h3 id="2-时间间隔1-3天"><a href="#2-时间间隔1-3天" class="headerlink" title="2.时间间隔1-3天"></a>2.时间间隔1-3天</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> t <span class="keyword">in</span> [time_list[i:i + <span class="number">3</span>] <span class="keyword">for</span> i <span class="keyword">in</span> range(len(time_list) - <span class="number">1</span>)]:</div><div class="line">    <span class="keyword">if</span> len(t) == <span class="number">3</span>:</div><div class="line">        print(t[<span class="number">0</span>], t[<span class="number">2</span>])</div></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/09/22/shell-last-param/" data-id="cjlptyavy002ydiqbfnjd9zob" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/09/22/python-two-or-three-continuous-items-in-list/" data-id="cjlrct81j00319jqbfj1xlzpu" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-git-usage" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/09/22/git-usage/" class="article-date">
+  <time datetime="2017-09-22T06:37:00.000Z" itemprop="datePublished">2017-09-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/git/">git</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/09/22/git-usage/">git and gerrit</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="git常用"><a href="#git常用" class="headerlink" title="git常用"></a>git常用</h2><h3 id="master开发"><a href="#master开发" class="headerlink" title="master开发"></a><code>master</code>开发</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git add    <span class="comment"># add后如果再修改，需要再add一次，否则提交add时版本</span></div><div class="line">git commit -m <span class="string">"adshow-3-6-1 feed support"</span></div><div class="line">git push origin master:refs/<span class="keyword">for</span>/master</div></pre></td></tr></table></figure>
+<h3 id="branch开发"><a href="#branch开发" class="headerlink" title="branch开发"></a><code>branch</code>开发</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git add </div><div class="line">git commit -m <span class="string">"sth"</span> </div><div class="line">git push origin master:refs/<span class="keyword">for</span>/patserver_1-0-23_BRANCH</div></pre></td></tr></table></figure>
+<h3 id="遇到stash冲突"><a href="#遇到stash冲突" class="headerlink" title="遇到stash冲突"></a>遇到<code>stash</code>冲突</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git stash    <span class="comment"># 将本地冲突改动 存入栈中</span></div><div class="line">git pull     <span class="comment"># 更新</span></div><div class="line">git stash pop    <span class="comment">#从栈中将改动拉出</span></div></pre></td></tr></table></figure>
+        
+          <p class="article-more-link">
+            <a href="/2017/09/22/git-usage/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2017/09/22/git-usage/" data-id="cjlrct80s001j9jqbtbjrezb8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -266,7 +270,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/09/22/boost-lexical-cast-cpp/" data-id="cjlptyauj0002diqbno97k0am" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/09/22/boost-lexical-cast-cpp/" data-id="cjlrct7zx00019jqbtay71rmr" class="article-share-link">Share</a>
       
       
     </footer>
@@ -332,6 +336,10 @@
       <ul>
         
           <li>
+            <a href="/2018/09/07/leetcode-permutations/">Permutations</a>
+          </li>
+        
+          <li>
             <a href="/2018/09/06/leetcode-generate-parentheses/">Generate Parentheses</a>
           </li>
         
@@ -345,10 +353,6 @@
         
           <li>
             <a href="/2018/09/02/leetcode-product-of-array-except-self/">Product of Array Except Self</a>
-          </li>
-        
-          <li>
-            <a href="/2018/09/01/leetcode-binary-tree-inorder-traversal/">Binary Tree Inorder Traversal</a>
           </li>
         
       </ul>
