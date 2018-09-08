@@ -64,6 +64,55 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-linux-sync-folder-by-rsync" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/11/02/linux-sync-folder-by-rsync/" class="article-date">
+  <time datetime="2017-11-02T00:35:00.000Z" itemprop="datePublished">2017-11-02</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/linux/">linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/11/02/linux-sync-folder-by-rsync/">linux sync folder by rsync</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="rsync"><a href="#rsync" class="headerlink" title="rsync"></a>rsync</h2><p><code>rsync -avz --delete &quot;/home/user/A&quot; &quot;/home/user/B&quot;</code></p>
+<p>Explanation by SonicARG</p>
+<p><code>-a</code> Do the sync preserving all filesystem attributes</p>
+<p><code>-v</code> run verbosely</p>
+<p><code>-z</code> compress the data during the sync (transport the data in compressed mode)</p>
+<p><code>--delete</code> delete the files in target folder that do not exist in the source, /home/user/A: source folder, /home/user/B: target folder</p>
+<h2 id="exclude-git"><a href="#exclude-git" class="headerlink" title="exclude .git"></a>exclude .git</h2><p><code>--exclude=&#39;.git/&#39;</code></p>
+<p><a href="https://unix.stackexchange.com/questions/100660/how-to-use-rsync-to-backup-a-directory-without-git-subdirectory" target="_blank" rel="external">How to use rsync to backup a directory without git subdirectory</a></p>
+<p><a href="https://unix.stackexchange.com/questions/203846/how-to-sync-two-folders-with-command-line-tools" target="_blank" rel="external">How to sync two folders with command line tools?</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2017/11/02/linux-sync-folder-by-rsync/" data-id="cjlstvc0h0021njqbcw1u0842" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-turing" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/11/01/turing/" class="article-date">
@@ -101,7 +150,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/11/01/turing/" data-id="cjlrcyi0x003mdqqb25fkl037" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/11/01/turing/" data-id="cjlstvc1d003xnjqbuv1qlnoy" class="article-share-link">Share</a>
       
       
     </footer>
@@ -144,7 +193,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/10/25/redis-delete-all-keys/" data-id="cjlrcyi0o0030dqqb5vbul4p2" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/10/25/redis-delete-all-keys/" data-id="cjlstvc15003gnjqbd5vb9h4w" class="article-share-link">Share</a>
       
       
     </footer>
@@ -186,7 +235,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/10/25/mysql-field-content-replace/" data-id="cjlrcyi02001mdqqb1odx6opx" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/10/25/mysql-field-content-replace/" data-id="cjlstvc0f001xnjqbgsgf77ix" class="article-share-link">Share</a>
       
       
     </footer>
@@ -232,52 +281,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/10/25/django-transform-queryset-to-dict/" data-id="cjlrcyhzm000hdqqbtxprgop6" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-django-redis-cache-delete-pattern" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/10/25/django-redis-cache-delete-pattern/" class="article-date">
-  <time datetime="2017-10-25T00:50:00.000Z" itemprop="datePublished">2017-10-25</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/redis/">redis</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/25/django-redis-cache-delete-pattern/">django redis cache delete pattern</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>Example use of delete_pattern</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> django.core.cache <span class="keyword">import</span> cache</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>cache.delete_pattern(<span class="string">"foo_*"</span>)</div></pre></td></tr></table></figure>
-<p><strong>Simple search keys by pattern</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> django.core.cache <span class="keyword">import</span> cache</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>cache.keys(<span class="string">"foo_*"</span>)</div><div class="line">[<span class="string">"foo_1"</span>, <span class="string">"foo_2"</span>]</div></pre></td></tr></table></figure>
-<p><a href="http://niwinz.github.io/django-redis/latest/#_scan_delete_keys_in_bulk" target="_blank" rel="external">django-redis</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/10/25/django-redis-cache-delete-pattern/" data-id="cjlrcyhzl000ddqqbgfgv0fo2" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/10/25/django-transform-queryset-to-dict/" data-id="cjlstvbzc000fnjqb9c3lt1b0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -290,7 +294,7 @@
 
 
   <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/page/4/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/6/">下一页&raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/4/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/6/">下一页&raquo;</a>
   </nav>
 
 </section>
@@ -343,6 +347,10 @@
       <ul>
         
           <li>
+            <a href="/2018/09/08/leetcode-roman-to-integer/">Permutations</a>
+          </li>
+        
+          <li>
             <a href="/2018/09/07/leetcode-permutations/">Permutations</a>
           </li>
         
@@ -356,10 +364,6 @@
         
           <li>
             <a href="/2018/09/03/leetcode-sum-of-two-integers/">Sum of Two Integers</a>
-          </li>
-        
-          <li>
-            <a href="/2018/09/02/leetcode-product-of-array-except-self/">Product of Array Except Self</a>
           </li>
         
       </ul>
