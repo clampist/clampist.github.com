@@ -64,6 +64,53 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-使用 Bigflow 筛选出某1个字段 top K 行" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/08/27/使用 Bigflow 筛选出某1个字段 top K 行/" class="article-date">
+  <time datetime="2018-08-27T11:42:00.000Z" itemprop="datePublished">2018-08-27</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/bigflow/">bigflow</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/27/使用 Bigflow 筛选出某1个字段 top K 行/">bigflow top one field</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="使用-Bigflow-筛选出某1个字段-top-K-行"><a href="#使用-Bigflow-筛选出某1个字段-top-K-行" class="headerlink" title="使用 Bigflow 筛选出某1个字段 top K 行"></a>使用 Bigflow 筛选出某1个字段 top K 行</h2><p>数据格式如下，空格和<code>\t</code>表示真正的 tab 分隔符</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">aggregation_word \t word_num \t valid \t …………</div><div class="line">_____________________________________________</div><div class="line"><span class="number">10.99</span><span class="number">.11</span><span class="number">.22</span>      \t <span class="number">1</span>        \t <span class="number">1</span>     \t …………</div><div class="line"><span class="number">10.99</span><span class="number">.11</span><span class="number">.23</span>      \t <span class="number">1</span>        \t <span class="number">1</span>     \t …………</div><div class="line"><span class="number">10.99</span><span class="number">.11</span><span class="number">.24</span>      \t <span class="number">1</span>        \t <span class="number">1</span>     \t …………</div><div class="line"><span class="number">10.99</span><span class="number">.11</span><span class="number">.24</span>      \t <span class="number">1</span>        \t <span class="number">1</span>     \t …………</div><div class="line"><span class="number">10.99</span><span class="number">.11</span><span class="number">.22</span>      \t <span class="number">1</span>        \t <span class="number">1</span>     \t …………</div><div class="line"><span class="number">10.99</span><span class="number">.11</span><span class="number">.22</span>      \t <span class="number">1</span>        \t <span class="number">1</span>     \t …………</div><div class="line"><span class="number">10.99</span><span class="number">.11</span><span class="number">.25</span>      \t <span class="number">1</span>        \t <span class="number">0</span>     \t …………</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> bigflow <span class="keyword">import</span> base</div><div class="line"><span class="keyword">from</span> bigflow <span class="keyword">import</span> transforms</div><div class="line"><span class="keyword">from</span> bigflow <span class="keyword">import</span> input</div><div class="line"><span class="keyword">from</span> bigflow <span class="keyword">import</span> output</div><div class="line">        </div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">cal_field_sum</span><span class="params">(line)</span>:</span></div><div class="line">    <span class="string">"""for top_field:</span></div><div class="line"><span class="string">    </span></div><div class="line"><span class="string">       a[0] is current field, b[0] is next field</span></div><div class="line"><span class="string">       OR</span></div><div class="line"><span class="string">       a[0] is last field, b[0] is current field</span></div><div class="line"><span class="string">       </span></div><div class="line"><span class="string">    """</span></div><div class="line">    <span class="keyword">return</span> line.reduce(<span class="keyword">lambda</span> a, b: [int(a[<span class="number">0</span>]) + int(b[<span class="number">0</span>])] + b[<span class="number">1</span>:])</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">one_filter</span><span class="params">(arr, valid)</span>:</span></div><div class="line">    <span class="keyword">if</span> arr[<span class="number">2</span>] != valid:</div><div class="line">        <span class="keyword">return</span> arr</div><div class="line"></div><div class="line"></div><div class="line">res_pipe = []</div><div class="line"></div><div class="line">wanted_num = <span class="string">'2'</span></div><div class="line">input_path = <span class="string">'./data'</span></div><div class="line">output_path = <span class="string">'./out'</span></div><div class="line">pipeline = base.Pipeline.create(<span class="string">'LOCAL'</span>)</div><div class="line"></div><div class="line"></div><div class="line">tmp_pipe = pipeline.read(input.TextFile(input_path)) \</div><div class="line">                   .map(<span class="keyword">lambda</span> line: line.rstrip().split(<span class="string">'\t'</span>)) \</div><div class="line">                   .map(<span class="keyword">lambda</span> arr: one_filter(arr, valid=<span class="number">0</span>&#125;)) \</div><div class="line">                   .filter(<span class="keyword">lambda</span> arr: arr <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span>) \</div><div class="line">                   .group_by(<span class="keyword">lambda</span> arr: arr[<span class="number">0</span>], <span class="keyword">lambda</span> arr: arr[<span class="number">1</span>:]) \</div><div class="line">                   .apply_values(cal_field_sum) \</div><div class="line">                   .flatten() \</div><div class="line">                   .max_elements(int(wanted_num), key=<span class="keyword">lambda</span> (aggregation_word, arr): int(arr[<span class="number">0</span>])) \</div><div class="line">                   .map(<span class="keyword">lambda</span> (aggregation_word, arr): [aggregation_word, str(arr[<span class="number">0</span>])] + arr[<span class="number">1</span>:]) \</div><div class="line">                   .map(<span class="keyword">lambda</span> arr: <span class="string">'\t'</span>.join(arr))</div><div class="line"></div><div class="line"></div><div class="line">res_pipe.append(tmp_pipe)</div><div class="line">res = transforms.union(*res_pipe)</div><div class="line"></div><div class="line">pipeline.write(res, output.TextFile(output_path).partition(<span class="number">2</span>))</div><div class="line"></div><div class="line">pipeline.run()</div></pre></td></tr></table></figure>
+<p><em>TODO</em> 如果数据中没有一列专门用来计数，应该如何计算？</p>
+<p><a href="http://bigflow.baidu.com/doc/guide.html" target="_blank" rel="external">Bigflow 编程指南</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2018/08/27/使用 Bigflow 筛选出某1个字段 top K 行/" data-id="cjlvlqgxk003uziqbx1ccpyiv" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bigflow/">bigflow</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hadoop/">hadoop</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/lambda/">lambda</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-mysql-where-yesterday" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/03/17/mysql-where-yesterday/" class="article-date">
@@ -97,7 +144,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/03/17/mysql-where-yesterday/" data-id="cjlurwqs0002bwjqbc7eyj2ky" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2018/03/17/mysql-where-yesterday/" data-id="cjlvlqgx1002hziqbjp95jtl5" class="article-share-link">Share</a>
       
       
     </footer>
@@ -144,7 +191,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/03/16/python-sum-2d-list-by-col/" data-id="cjlurwqsa002zwjqbxc76jpve" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2018/03/16/python-sum-2d-list-by-col/" data-id="cjlvlqgx7002zziqbjwcu7oof" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/2d-array/">2d-array</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
@@ -190,7 +237,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/03/10/python-argparse-nargs/" data-id="cjlurwqs2002ewjqbvwpumll8" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2018/03/10/python-argparse-nargs/" data-id="cjlvlqgx0002dziqbqayqcjub" class="article-share-link">Share</a>
       
       
     </footer>
@@ -233,50 +280,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/02/25/mysql-field-length/" data-id="cjlurwqry0025wjqb9f0kb3ct" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-python-datetime-compare" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/02/21/python-datetime-compare/" class="article-date">
-  <time datetime="2018-02-21T02:35:00.000Z" itemprop="datePublished">2018-02-21</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/python/">python</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/02/21/python-datetime-compare/">python datetime compare</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="时间间隔timedelta可用于计算-比较"><a href="#时间间隔timedelta可用于计算-比较" class="headerlink" title="时间间隔timedelta可用于计算/比较"></a>时间间隔timedelta可用于计算/比较</h2><p>可以直接用<code>timedelta( days=1 )</code>来进行日期的计算，大小判断</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">from datetime import timedelta</div><div class="line">start_date = timezone.now().date()</div><div class="line">end_date = start_date + timedelta( days=1 ) </div><div class="line">Entry.objects.filter(created__range=(start_date, end_date))</div></pre></td></tr></table></figure>
-<p><a href="https://stackoverflow.com/questions/10048216/compare-date-and-datetime-in-django" target="_blank" rel="external">stack overflow</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/02/21/python-datetime-compare/" data-id="cjlurwqs8002uwjqbn856jabj" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2018/02/25/mysql-field-length/" data-id="cjlvlqgwx0023ziqb5is8r6n0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -342,6 +346,10 @@
       <ul>
         
           <li>
+            <a href="/2018/09/10/leetcode-4-sum-ii/">4Sum II</a>
+          </li>
+        
+          <li>
             <a href="/2018/09/09/leetcode-best-time-to-buy-and-sell-stock-ii/">Best Time to Buy and Sell Stock II</a>
           </li>
         
@@ -355,10 +363,6 @@
         
           <li>
             <a href="/2018/09/06/leetcode-generate-parentheses/">Generate Parentheses</a>
-          </li>
-        
-          <li>
-            <a href="/2018/09/04/leetcode-top-k-frequent-elements/">Top K Frequent Elements</a>
           </li>
         
       </ul>

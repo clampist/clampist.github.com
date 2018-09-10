@@ -104,7 +104,49 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/10/25/shell-awk-filter-sort/" data-id="cjlurwqsd0039wjqb0m2ju84n" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/10/25/shell-awk-filter-sort/" data-id="cjlvlqgxc003bziqbbl2fexmo" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-python-Chinese-punctuation-to-English-punctuation" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/10/25/python-Chinese-punctuation-to-English-punctuation/" class="article-date">
+  <time datetime="2017-10-25T00:43:00.000Z" itemprop="datePublished">2017-10-25</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/python/">python</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/25/python-Chinese-punctuation-to-English-punctuation/">Chinese punctuation to English punctuation</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Python中：中文标点转换成英文标点"><a href="#Python中：中文标点转换成英文标点" class="headerlink" title="Python中：中文标点转换成英文标点"></a>Python中：中文标点转换成英文标点</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># In Python3, use str.maketrans instead</span></div><div class="line">table = &#123;ord(f):ord(t) <span class="keyword">for</span> f,t <span class="keyword">in</span> zip(</div><div class="line">     <span class="string">u'，。！？【】（）％＃＠＆１２３４５６７８９０'</span>,</div><div class="line">     <span class="string">u',.!?[]()%#@&amp;1234567890'</span>)&#125;</div><div class="line">t = <span class="string">u'中国，中文，标点符号！你好？１２３４５＠＃【】+=-（）'</span></div><div class="line">t2 = t.translate(table)</div><div class="line"><span class="string">'''</span></div><div class="line"><span class="string"><span class="meta">&gt;&gt;&gt; </span>print t2</span></div><div class="line"><span class="string">中国,中文,标点符号!你好?12345@#[]+=-()</span></div><div class="line"><span class="string">'''</span></div><div class="line"></div><div class="line">作者：灵剑</div><div class="line">链接：https://www.zhihu.com/question/<span class="number">37720196</span>/answer/<span class="number">115870233</span></div><div class="line">来源：知乎</div><div class="line">著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</div></pre></td></tr></table></figure>
+<p><a href="https://www.zhihu.com/question/37720196" target="_blank" rel="external">链接</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2017/10/25/python-Chinese-punctuation-to-English-punctuation/" data-id="cjlvlqgwz002aziqb5t47r8gu" class="article-share-link">Share</a>
       
       
     </footer>
@@ -149,48 +191,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/10/24/shell-sed-certain-lines/" data-id="cjlurwqsi003owjqbt63p5dxg" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-shell-uniq-count" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/09/22/shell-uniq-count/" class="article-date">
-  <time datetime="2017-09-22T06:37:00.000Z" itemprop="datePublished">2017-09-22</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/linux/">linux</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/22/shell-uniq-count/">shell uniq count</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Shell中uniq去重并统计"><a href="#Shell中uniq去重并统计" class="headerlink" title="Shell中uniq去重并统计"></a>Shell中uniq去重并统计</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cat text | uniq -c</div></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/09/22/shell-uniq-count/" data-id="cjlurwqsj003rwjqbph5x6i4z" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/10/24/shell-sed-certain-lines/" data-id="cjlvlqgxb0038ziqbc5tge21b" class="article-share-link">Share</a>
       
       
     </footer>
@@ -237,7 +238,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/09/22/git-usage/" data-id="cjlurwqrf000twjqb9h82iwqd" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/09/22/git-usage/" data-id="cjlvlqgw9000lziqblqtoco0v" class="article-share-link">Share</a>
       
       
     </footer>
@@ -247,14 +248,14 @@
 
 
   
-    <article id="post-linux-dos-to-unix" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-boost-lexical-cast-cpp" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/09/22/linux-dos-to-unix/" class="article-date">
+    <a href="/2017/09/22/boost-lexical-cast-cpp/" class="article-date">
   <time datetime="2017-09-22T06:37:00.000Z" itemprop="datePublished">2017-09-22</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/linux/">linux</a>
+    <a class="article-category-link" href="/categories/cpp/">cpp</a>
   </div>
 
   </div>
@@ -265,7 +266,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/22/linux-dos-to-unix/">linux dos to unix</a>
+      <a class="article-title" href="/2017/09/22/boost-lexical-cast-cpp/">boost::lexical_cast</a>
     </h1>
   
 
@@ -273,14 +274,14 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="linux下文本处理"><a href="#linux下文本处理" class="headerlink" title="linux下文本处理"></a>linux下文本处理</h1><h2 id="dos2unix-直接修改原文件"><a href="#dos2unix-直接修改原文件" class="headerlink" title="dos2unix:直接修改原文件"></a>dos2unix:直接修改原文件</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">dos2unix file</div></pre></td></tr></table></figure>
-<p><a href="https://www.cyberciti.biz/faq/howto-unix-linux-convert-dos-newlines-cr-lf-unix-text-format/" target="_blank" rel="external">wiki</a></p>
-<h2 id="replace-t-with-4-blanks"><a href="#replace-t-with-4-blanks" class="headerlink" title="replace \t with 4 blanks"></a>replace \t with 4 blanks</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">expand -t 4 input &gt; output</div></pre></td></tr></table></figure>
+        <h2 id="boost-lexical-cast"><a href="#boost-lexical-cast" class="headerlink" title="boost::lexical_cast"></a>boost::lexical_cast</h2><p><code>c++</code> 使用 <code>boost::lexical_cast</code> 数据类型转换</p>
+<p><a href="http://www.cnblogs.com/mx113/articles/1603985.html" target="_blank" rel="external">参考链接</a></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;boost/lexical_cast.hpp&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt; </span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> ERROR_LEXICAL_CAST     1 </span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    <span class="keyword">using</span> boost::lexical_cast;</div><div class="line">    <span class="keyword">int</span>         a = <span class="number">0</span>;</div><div class="line">    <span class="keyword">double</span>        b = <span class="number">0.0</span>;</div><div class="line">    <span class="built_in">std</span>::<span class="built_in">string</span> s = <span class="string">""</span>; </div><div class="line">    <span class="keyword">int</span>            e = <span class="number">0</span>;    </div><div class="line">    <span class="keyword">try</span></div><div class="line">    &#123; </div><div class="line">        <span class="comment">// ----- 字符串 --&gt; 数值 </span></div><div class="line">        a = lexical_cast&lt;<span class="keyword">int</span>&gt;(<span class="string">"123"</span>);</div><div class="line">        b = lexical_cast&lt;<span class="keyword">double</span>&gt;(<span class="string">"123.12"</span>);</div><div class="line">        <span class="comment">// ----- 数值 --&gt; 字符串</span></div><div class="line">        s = lexical_cast&lt;<span class="built_in">std</span>::<span class="built_in">string</span>&gt;(<span class="string">"123456.7"</span>); </div><div class="line">        <span class="comment">// ----- 异常处理演示</span></div><div class="line">        e = lexical_cast&lt;<span class="keyword">int</span>&gt;(<span class="string">"abc"</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">catch</span>(boost::bad_lexical_cast&amp; e)</div><div class="line">    &#123;</div><div class="line">        <span class="comment">// bad lexical cast: source type value could not be interpreted as target</span></div><div class="line">        <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; e.what() &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</div><div class="line">        <span class="keyword">return</span> ERROR_LEXICAL_CAST;</div><div class="line">    &#125; </div><div class="line">    </div><div class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; a &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;    <span class="comment">// 输出：123 </span></div><div class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; b &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;    <span class="comment">// 输出：123.12 </span></div><div class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; s &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;     <span class="comment">// 输出：123456.7 </span></div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/09/22/linux-dos-to-unix/" data-id="cjlurwqrq001lwjqbgpl8a0y8" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/09/22/boost-lexical-cast-cpp/" data-id="cjlvlqgvw0002ziqbmvq45s0k" class="article-share-link">Share</a>
       
       
     </footer>
@@ -346,6 +347,10 @@
       <ul>
         
           <li>
+            <a href="/2018/09/10/leetcode-4-sum-ii/">4Sum II</a>
+          </li>
+        
+          <li>
             <a href="/2018/09/09/leetcode-best-time-to-buy-and-sell-stock-ii/">Best Time to Buy and Sell Stock II</a>
           </li>
         
@@ -359,10 +364,6 @@
         
           <li>
             <a href="/2018/09/06/leetcode-generate-parentheses/">Generate Parentheses</a>
-          </li>
-        
-          <li>
-            <a href="/2018/09/04/leetcode-top-k-frequent-elements/">Top K Frequent Elements</a>
           </li>
         
       </ul>

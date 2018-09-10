@@ -3,20 +3,15 @@
 <head>
   <meta charset="utf-8">
   
-  <title>python sum the columns in 2D list | 记录点滴</title>
+  <title>Tag: python | 记录点滴</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Python 二维数组按列求和1.不使用 numpycol_totals = [ sum(x) for x in zip(*my_list) ] [stackoverflow] How do I sum the columns in 2D list?  2.使用 numpy12345import numpy as npa = [1, 2, 3]b = np.array(a)c = np.ndarr">
-<meta name="keywords" content="python,2d-array">
-<meta property="og:type" content="article">
-<meta property="og:title" content="python sum the columns in 2D list">
-<meta property="og:url" content="https://clampist.github.io/2018/03/16/python-sum-2d-list-by-col/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="记录点滴">
+<meta property="og:url" content="https://clampist.github.io/tags/python/page/3/index.html">
 <meta property="og:site_name" content="记录点滴">
-<meta property="og:description" content="Python 二维数组按列求和1.不使用 numpycol_totals = [ sum(x) for x in zip(*my_list) ] [stackoverflow] How do I sum the columns in 2D list?  2.使用 numpy12345import numpy as npa = [1, 2, 3]b = np.array(a)c = np.ndarr">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-09-02T03:56:43.565Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="python sum the columns in 2D list">
-<meta name="twitter:description" content="Python 二维数组按列求和1.不使用 numpycol_totals = [ sum(x) for x in zip(*my_list) ] [stackoverflow] How do I sum the columns in 2D list?  2.使用 numpy12345import numpy as npa = [1, 2, 3]b = np.array(a)c = np.ndarr">
+<meta name="twitter:title" content="记录点滴">
   
     <link rel="alternate" href="/atom.xml" title="记录点滴" type="application/atom+xml">
   
@@ -67,73 +62,44 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-python-sum-2d-list-by-col" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/03/16/python-sum-2d-list-by-col/" class="article-date">
-  <time datetime="2018-03-16T08:12:00.000Z" itemprop="datePublished">2018-03-16</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/python/">python</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
+        <section id="main">
   
-    <h1 class="article-title" itemprop="name">
-      python sum the columns in 2D list
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2018" class="archive-year">2018</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <a href="/2018/03/16/python-sum-2d-list-by-col/" class="archive-article-date">
+  <time datetime="2018-03-16T08:12:00.000Z" itemprop="datePublished">3月 16</time>
+</a>
+      
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2018/03/16/python-sum-2d-list-by-col/">python sum the columns in 2D list</a>
     </h1>
   
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Python-二维数组按列求和"><a href="#Python-二维数组按列求和" class="headerlink" title="Python 二维数组按列求和"></a>Python 二维数组按列求和</h2><h3 id="1-不使用-numpy"><a href="#1-不使用-numpy" class="headerlink" title="1.不使用 numpy"></a>1.不使用 numpy</h3><p><code>col_totals = [ sum(x) for x in zip(*my_list) ]</code></p>
-<p><a href="https://stackoverflow.com/questions/3223043/how-do-i-sum-the-columns-in-2d-list" target="_blank" rel="external">[stackoverflow] How do I sum the columns in 2D list?
-</a></p>
-<h3 id="2-使用-numpy"><a href="#2-使用-numpy" class="headerlink" title="2.使用 numpy"></a>2.使用 numpy</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line">a = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</div><div class="line">b = np.array(a)</div><div class="line"></div><div class="line">c = np.ndarray.tolist(b)</div></pre></td></tr></table></figure>
-<p><a href="https://www.jianshu.com/p/ff8a592cfae3" target="_blank" rel="external">numpy数组与python的list类型的互换</a></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>x = np.array([[<span class="number">1</span>, <span class="number">1</span>], [<span class="number">2</span>, <span class="number">2</span>]])</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>x</div><div class="line">    array([[<span class="number">1</span>, <span class="number">1</span>],</div><div class="line">           [<span class="number">2</span>, <span class="number">2</span>]])</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>x.sum(axis=<span class="number">0</span>) </div><div class="line">    array([<span class="number">3</span>, <span class="number">3</span>])</div></pre></td></tr></table></figure>
-<p><a href="http://blog.csdn.net/blateyang/article/details/78275024" target="_blank" rel="external">对Numpy数组按axis运算的理解</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/03/16/python-sum-2d-list-by-col/" data-id="cjlvlqgx7002zziqbjwcu7oof" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/2d-array/">2d-array</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
-
-    </footer>
+    </header>
   </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2018/03/17/mysql-where-yesterday/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          mysql where yesterday by curdate()
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2018/03/10/python-argparse-nargs/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">python argparse nargs</div>
-    </a>
-  
-</nav>
-
-  
 </article>
+  
+  
+    </div></section>
+  
+
+
+  <nav id="page-nav">
+    <a class="extend prev" rel="prev" href="/tags/python/page/2/">&laquo; 上一页</a><a class="page-number" href="/tags/python/">1</a><a class="page-number" href="/tags/python/page/2/">2</a><span class="page-number current">3</span>
+  </nav>
 
 </section>
         
