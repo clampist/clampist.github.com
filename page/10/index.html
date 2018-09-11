@@ -64,6 +64,49 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-boost-lexical-cast-cpp" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/09/22/boost-lexical-cast-cpp/" class="article-date">
+  <time datetime="2017-09-22T06:37:00.000Z" itemprop="datePublished">2017-09-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/cpp/">cpp</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/09/22/boost-lexical-cast-cpp/">boost::lexical_cast</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="boost-lexical-cast"><a href="#boost-lexical-cast" class="headerlink" title="boost::lexical_cast"></a>boost::lexical_cast</h2><p><code>c++</code> 使用 <code>boost::lexical_cast</code> 数据类型转换</p>
+<p><a href="http://www.cnblogs.com/mx113/articles/1603985.html" target="_blank" rel="external">参考链接</a></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;boost/lexical_cast.hpp&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt; </span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> ERROR_LEXICAL_CAST     1 </span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    <span class="keyword">using</span> boost::lexical_cast;</div><div class="line">    <span class="keyword">int</span>         a = <span class="number">0</span>;</div><div class="line">    <span class="keyword">double</span>        b = <span class="number">0.0</span>;</div><div class="line">    <span class="built_in">std</span>::<span class="built_in">string</span> s = <span class="string">""</span>; </div><div class="line">    <span class="keyword">int</span>            e = <span class="number">0</span>;    </div><div class="line">    <span class="keyword">try</span></div><div class="line">    &#123; </div><div class="line">        <span class="comment">// ----- 字符串 --&gt; 数值 </span></div><div class="line">        a = lexical_cast&lt;<span class="keyword">int</span>&gt;(<span class="string">"123"</span>);</div><div class="line">        b = lexical_cast&lt;<span class="keyword">double</span>&gt;(<span class="string">"123.12"</span>);</div><div class="line">        <span class="comment">// ----- 数值 --&gt; 字符串</span></div><div class="line">        s = lexical_cast&lt;<span class="built_in">std</span>::<span class="built_in">string</span>&gt;(<span class="string">"123456.7"</span>); </div><div class="line">        <span class="comment">// ----- 异常处理演示</span></div><div class="line">        e = lexical_cast&lt;<span class="keyword">int</span>&gt;(<span class="string">"abc"</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">catch</span>(boost::bad_lexical_cast&amp; e)</div><div class="line">    &#123;</div><div class="line">        <span class="comment">// bad lexical cast: source type value could not be interpreted as target</span></div><div class="line">        <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; e.what() &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</div><div class="line">        <span class="keyword">return</span> ERROR_LEXICAL_CAST;</div><div class="line">    &#125; </div><div class="line">    </div><div class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; a &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;    <span class="comment">// 输出：123 </span></div><div class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; b &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;    <span class="comment">// 输出：123.12 </span></div><div class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; s &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;     <span class="comment">// 输出：123456.7 </span></div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2017/09/22/boost-lexical-cast-cpp/" data-id="cjlwzqfl10002j9qb0ufjzfl3" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/09/07/hello-world/" class="article-date">
@@ -99,7 +142,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/09/07/hello-world/" data-id="cjlvlqgwb000qziqbl8h7djfs" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/09/07/hello-world/" data-id="cjlwzqfln000kj9qbwqvxs659" class="article-share-link">Share</a>
       
       
     </footer>
@@ -143,7 +186,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/04/26/git_svn_blame/" data-id="cjlvlqgwd000uziqblwa1w3no" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/04/26/git_svn_blame/" data-id="cjlwzqflt000tj9qb246bcesm" class="article-share-link">Share</a>
       
       
     </footer>
@@ -189,7 +232,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/02/24/shell-shuffle-file-lines/" data-id="cjlvlqgxe003hziqbn68mq686" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/02/24/shell-shuffle-file-lines/" data-id="cjlwzqfn1003gj9qbwkjf8pdv" class="article-share-link">Share</a>
       
       
     </footer>
@@ -241,57 +284,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2012/11/09/count-ip-address-appears-most-in-log-file/" data-id="cjlvlqgvy0004ziqbg1ryad2p" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-python-virtualenv-wrapper-and-pip" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2012/10/20/python-virtualenv-wrapper-and-pip/" class="article-date">
-  <time datetime="2012-10-20T06:33:00.000Z" itemprop="datePublished">2012-10-20</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/python/">python</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2012/10/20/python-virtualenv-wrapper-and-pip/">Python Virtualenv Wrapper and Pip</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="1-Install"><a href="#1-Install" class="headerlink" title="1.Install"></a>1.Install</h2><p>Arch 下默认是 <code>python3</code>, 而如果强制用软链接改为 <code>python2</code> 的话，一些程序会有问题的，之前都是小脚本，所以手动把第一行改为 <code>#!/usr/bin/env python2</code> 或者 <code>#!/usr/bin/python2</code> 就行，现在要做 GAE 发现手动改了好多还是不行，于是便有了 Python virtualenv 等。</p>
-<p>Install virtualenv virtualenvwrapper and pip</p>
-<pre><code># pacman -S python2-virtualenv
-# pacman -S python2-virtualenvwrapper
-# pacman -S python2-pip
-</code></pre>
-        
-          <p class="article-more-link">
-            <a href="/2012/10/20/python-virtualenv-wrapper-and-pip/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2012/10/20/python-virtualenv-wrapper-and-pip/" data-id="cjlvlqgx80030ziqbd0h3kzve" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2012/11/09/count-ip-address-appears-most-in-log-file/" data-id="cjlwzqfl80004j9qbfug28cwk" class="article-share-link">Share</a>
       
       
     </footer>
@@ -357,6 +350,10 @@
       <ul>
         
           <li>
+            <a href="/2018/09/11/leetcode-shuffle-an-array/">Shuffle an Array</a>
+          </li>
+        
+          <li>
             <a href="/2018/09/10/leetcode-4-sum-ii/">4Sum II</a>
           </li>
         
@@ -370,10 +367,6 @@
         
           <li>
             <a href="/2018/09/07/leetcode-permutations/">Permutations</a>
-          </li>
-        
-          <li>
-            <a href="/2018/09/06/leetcode-generate-parentheses/">Generate Parentheses</a>
           </li>
         
       </ul>
