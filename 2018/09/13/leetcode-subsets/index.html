@@ -5,18 +5,18 @@
   
   <title>Subsets | 记录点滴</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Subsetsslow version 1234567891011class Solution(object):    def subsets(self, nums):        &quot;&quot;&quot;        :type nums: List[int]        :rtype: List[List[int]]        &quot;&quot;&quot;        n, res = len(nums), list()">
+  <meta name="description" content="SubsetsSlow Version 1234567891011class Solution(object):    def subsets(self, nums):        &quot;&quot;&quot;        :type nums: List[int]        :rtype: List[List[int]]        &quot;&quot;&quot;        n, res = len(nums), list()">
 <meta name="keywords" content="python,leetcode">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Subsets">
 <meta property="og:url" content="https://clampist.github.io/2018/09/13/leetcode-subsets/index.html">
 <meta property="og:site_name" content="记录点滴">
-<meta property="og:description" content="Subsetsslow version 1234567891011class Solution(object):    def subsets(self, nums):        &quot;&quot;&quot;        :type nums: List[int]        :rtype: List[List[int]]        &quot;&quot;&quot;        n, res = len(nums), list()">
+<meta property="og:description" content="SubsetsSlow Version 1234567891011class Solution(object):    def subsets(self, nums):        &quot;&quot;&quot;        :type nums: List[int]        :rtype: List[List[int]]        &quot;&quot;&quot;        n, res = len(nums), list()">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-09-13T15:41:27.388Z">
+<meta property="og:updated_time" content="2018-09-14T02:23:55.812Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Subsets">
-<meta name="twitter:description" content="Subsetsslow version 1234567891011class Solution(object):    def subsets(self, nums):        &quot;&quot;&quot;        :type nums: List[int]        :rtype: List[List[int]]        &quot;&quot;&quot;        n, res = len(nums), list()">
+<meta name="twitter:description" content="SubsetsSlow Version 1234567891011class Solution(object):    def subsets(self, nums):        &quot;&quot;&quot;        :type nums: List[int]        :rtype: List[List[int]]        &quot;&quot;&quot;        n, res = len(nums), list()">
   
     <link rel="alternate" href="/atom.xml" title="记录点滴" type="application/atom+xml">
   
@@ -93,16 +93,19 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Subsets"><a href="#Subsets" class="headerlink" title="Subsets"></a>Subsets</h2><p><strong>slow version</strong></p>
+        <h2 id="Subsets"><a href="#Subsets" class="headerlink" title="Subsets"></a>Subsets</h2><p><strong>Slow Version</strong></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">subsets</span><span class="params">(self, nums)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        :type nums: List[int]</span></div><div class="line"><span class="string">        :rtype: List[List[int]]</span></div><div class="line"><span class="string">        """</span></div><div class="line">        n, res = len(nums), list()</div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> xrange(<span class="number">2</span>**n):</div><div class="line">            res.append(filter(<span class="keyword">lambda</span> x: x <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span>, map(<span class="keyword">lambda</span> x, y: y <span class="keyword">if</span> (int(x) * y <span class="keyword">or</span> y == <span class="number">0</span> <span class="keyword">and</span> int(x) != <span class="number">0</span>) <span class="keyword">else</span></div><div class="line"> <span class="keyword">None</span>, list(bin(i)[<span class="number">2</span>:].zfill(n)), nums)))</div><div class="line">        <span class="keyword">return</span> res</div></pre></td></tr></table></figure>
+<p><strong>BitwiseOperators Version</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">subsets</span><span class="params">(self, nums)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        :type nums: List[int]</span></div><div class="line"><span class="string">        :rtype: List[List[int]]</span></div><div class="line"><span class="string">        """</span></div><div class="line">        res = []</div><div class="line">        nums.sort()</div><div class="line">        STDOUT = <span class="keyword">True</span></div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> xrange(<span class="number">1</span> &lt;&lt; len(nums)):</div><div class="line">            <span class="keyword">if</span> STDOUT: <span class="keyword">print</span> <span class="string">'i ='</span>, i</div><div class="line">            tmp = []</div><div class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> xrange(len(nums)):</div><div class="line">                <span class="keyword">if</span> STDOUT: <span class="keyword">print</span> <span class="string">'&#123;0:03b&#125;'</span>.format(i), <span class="string">'&amp;'</span>, <span class="string">'&#123;0:03b&#125;'</span>.format(<span class="number">1</span> &lt;&lt; j), <span class="string">'-&gt;'</span>, i &amp; <span class="number">1</span> &lt;&lt; j</div><div class="line">                <span class="keyword">if</span> i &amp; <span class="number">1</span> &lt;&lt; j:</div><div class="line">                    <span class="keyword">if</span> STDOUT: <span class="keyword">print</span> <span class="string">'pick'</span>, <span class="string">'&#123;0:03b&#125;'</span>.format(<span class="number">1</span> &lt;&lt; j), nums, <span class="string">'j ='</span>, j, <span class="string">'target'</span>, nums[j]</div><div class="line">                    tmp.append(nums[j])</div><div class="line">            <span class="keyword">if</span> STDOUT: <span class="keyword">print</span> <span class="string">'i = &#123;0:03b&#125;'</span>.format(i), <span class="string">'tmp ='</span>, tmp</div><div class="line">            res.append(tmp)</div><div class="line">        <span class="keyword">return</span> res</div></pre></td></tr></table></figure>
 <p><em>output</em></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">In [706]: s = Solution(); print s.subsets([4, 1, 0])</div><div class="line">[[], [0], [1], [1, 0], [4], [4, 0], [4, 1], [4, 1, 0]]</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div></pre></td><td class="code"><pre><div class="line">In [748]: s = Solution(); print s.subsets([1, 2, 3])</div><div class="line">i = 0</div><div class="line">000 &amp; 001 -&gt; 0</div><div class="line">000 &amp; 010 -&gt; 0</div><div class="line">000 &amp; 100 -&gt; 0</div><div class="line">i = 000 tmp = []</div><div class="line">i = 1</div><div class="line">001 &amp; 001 -&gt; 1</div><div class="line">pick 001 [1, 2, 3] j = 0 target 1</div><div class="line">001 &amp; 010 -&gt; 0</div><div class="line">001 &amp; 100 -&gt; 0</div><div class="line">i = 001 tmp = [1]</div><div class="line">i = 2</div><div class="line">010 &amp; 001 -&gt; 0</div><div class="line">010 &amp; 010 -&gt; 2</div><div class="line">pick 010 [1, 2, 3] j = 1 target 2</div><div class="line">010 &amp; 100 -&gt; 0</div><div class="line">i = 010 tmp = [2]</div><div class="line">i = 3</div><div class="line">011 &amp; 001 -&gt; 1</div><div class="line">pick 001 [1, 2, 3] j = 0 target 1</div><div class="line">011 &amp; 010 -&gt; 2</div><div class="line">pick 010 [1, 2, 3] j = 1 target 2</div><div class="line">011 &amp; 100 -&gt; 0</div><div class="line">i = 011 tmp = [1, 2]</div><div class="line">i = 4</div><div class="line">100 &amp; 001 -&gt; 0</div><div class="line">100 &amp; 010 -&gt; 0</div><div class="line">100 &amp; 100 -&gt; 4</div><div class="line">pick 100 [1, 2, 3] j = 2 target 3</div><div class="line">i = 100 tmp = [3]</div><div class="line">i = 5</div><div class="line">101 &amp; 001 -&gt; 1</div><div class="line">pick 001 [1, 2, 3] j = 0 target 1</div><div class="line">101 &amp; 010 -&gt; 0</div><div class="line">101 &amp; 100 -&gt; 4</div><div class="line">pick 100 [1, 2, 3] j = 2 target 3</div><div class="line">i = 101 tmp = [1, 3]</div><div class="line">i = 6</div><div class="line">110 &amp; 001 -&gt; 0</div><div class="line">110 &amp; 010 -&gt; 2</div><div class="line">pick 010 [1, 2, 3] j = 1 target 2</div><div class="line">110 &amp; 100 -&gt; 4</div><div class="line">pick 100 [1, 2, 3] j = 2 target 3</div><div class="line">i = 110 tmp = [2, 3]</div><div class="line">i = 7</div><div class="line">111 &amp; 001 -&gt; 1</div><div class="line">pick 001 [1, 2, 3] j = 0 target 1</div><div class="line">111 &amp; 010 -&gt; 2</div><div class="line">pick 010 [1, 2, 3] j = 1 target 2</div><div class="line">111 &amp; 100 -&gt; 4</div><div class="line">pick 100 [1, 2, 3] j = 2 target 3</div><div class="line">i = 111 tmp = [1, 2, 3]</div><div class="line">[[], [1], [2], [1, 2], [3], [1, 3], [2, 3], [1, 2, 3]]</div></pre></td></tr></table></figure>
 <p><a href="https://leetcode.com/problems/subsets/description/" target="_blank" rel="external">leet code</a></p>
+<p><a href="https://wiki.python.org/moin/BitwiseOperators" target="_blank" rel="external">https://wiki.python.org/moin/BitwiseOperators</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/09/13/leetcode-subsets/" data-id="cjm0qsg5x001dnhqb7rfly331" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2018/09/13/leetcode-subsets/" data-id="cjmzm66w5001n4bqbakiyticq" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
@@ -112,6 +115,15 @@
   
     
 <nav id="article-nav">
+  
+    <a href="/2018/10/08/leetcode-kth-smallest-element-in-a-BST/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Kth Smallest Element in a BST
+        
+      </div>
+    </a>
   
   
     <a href="/2018/09/12/leetcode-first-unique-character-in-a-string/" id="article-nav-older" class="article-nav-link-wrap">
@@ -152,7 +164,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/2d-array/" style="font-size: 13.33px;">2d-array</a> <a href="/tags/bigflow/" style="font-size: 10px;">bigflow</a> <a href="/tags/binary-tree/" style="font-size: 10px;">binary tree</a> <a href="/tags/hadoop/" style="font-size: 10px;">hadoop</a> <a href="/tags/lambda/" style="font-size: 10px;">lambda</a> <a href="/tags/leetcode/" style="font-size: 16.67px;">leetcode</a> <a href="/tags/python/" style="font-size: 20px;">python</a>
+      <a href="/tags/2d-array/" style="font-size: 13.33px;">2d-array</a> <a href="/tags/bigflow/" style="font-size: 10px;">bigflow</a> <a href="/tags/binary-tree/" style="font-size: 13.33px;">binary tree</a> <a href="/tags/hadoop/" style="font-size: 10px;">hadoop</a> <a href="/tags/lambda/" style="font-size: 10px;">lambda</a> <a href="/tags/leetcode/" style="font-size: 16.67px;">leetcode</a> <a href="/tags/python/" style="font-size: 20px;">python</a>
     </div>
   </div>
 
@@ -161,7 +173,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">十一月 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/10/">十月 2012</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">十一月 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/10/">十月 2012</a></li></ul>
     </div>
   </div>
 
@@ -172,6 +184,10 @@
     <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2018/10/08/leetcode-kth-smallest-element-in-a-BST/">Kth Smallest Element in a BST</a>
+          </li>
         
           <li>
             <a href="/2018/09/13/leetcode-subsets/">Subsets</a>
@@ -187,10 +203,6 @@
         
           <li>
             <a href="/2018/09/10/leetcode-4-sum-ii/">4Sum II</a>
-          </li>
-        
-          <li>
-            <a href="/2018/09/09/leetcode-best-time-to-buy-and-sell-stock-ii/">Best Time to Buy and Sell Stock II</a>
           </li>
         
       </ul>
