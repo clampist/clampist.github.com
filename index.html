@@ -64,6 +64,52 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-leetcode-kth-smallest-element-in-a-sorted-matrix" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/10/10/leetcode-kth-smallest-element-in-a-sorted-matrix/" class="article-date">
+  <time datetime="2018-10-10T01:02:00.000Z" itemprop="datePublished">2018-10-10</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/10/leetcode-kth-smallest-element-in-a-sorted-matrix/">Kth Smallest Element in a Sorted Matrix</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Kth-Smallest-Element-in-a-Sorted-Matrix"><a href="#Kth-Smallest-Element-in-a-Sorted-Matrix" class="headerlink" title="Kth Smallest Element in a Sorted Matrix"></a>Kth Smallest Element in a Sorted Matrix</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> heapq</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">kthSmallest</span><span class="params">(self, matrix, k)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        :type matrix: List[List[int]]</span></div><div class="line"><span class="string">        :type k: int</span></div><div class="line"><span class="string">        :rtype: int</span></div><div class="line"><span class="string">        """</span></div><div class="line">        <span class="keyword">return</span> list(heapq.merge(*matrix))[k<span class="number">-1</span>]</div><div class="line">        </div><div class="line">        </div><div class="line">In [11]: heapq.merge?</div><div class="line">Signature: heapq.merge(*iterables)</div><div class="line">Docstring:</div><div class="line">Merge multiple sorted inputs into a single sorted output.</div><div class="line"></div><div class="line">Similar to sorted(itertools.chain(*iterables)) but returns a generator,</div><div class="line">does <span class="keyword">not</span> pull the data into memory all at once, <span class="keyword">and</span> assumes that each of</div><div class="line">the input streams <span class="keyword">is</span> already sorted (smallest to largest).</div><div class="line"></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>list(merge([<span class="number">1</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">7</span>], [<span class="number">0</span>,<span class="number">2</span>,<span class="number">4</span>,<span class="number">8</span>], [<span class="number">5</span>,<span class="number">10</span>,<span class="number">15</span>,<span class="number">20</span>], [], [<span class="number">25</span>]))</div><div class="line">[<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">10</span>, <span class="number">15</span>, <span class="number">20</span>, <span class="number">25</span>]</div></pre></td></tr></table></figure>
+<p><strong>test code</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">In [<span class="number">104</span>]: s = Solution(); t = s.kthSmallest([[<span class="number">1</span>,<span class="number">5</span>,<span class="number">9</span>],[<span class="number">10</span>,<span class="number">11</span>,<span class="number">13</span>],[<span class="number">12</span>,<span class="number">13</span>,<span class="number">15</span>]], <span class="number">8</span>)</div><div class="line"></div><div class="line">In [<span class="number">105</span>]: <span class="keyword">print</span> t</div><div class="line"><span class="number">13</span></div></pre></td></tr></table></figure>
+<p><a href="https://leetcode.com/problems/kth-smallest-element-in-a-sorted-matrix/description/" target="_blank" rel="external">leet code</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2018/10/10/leetcode-kth-smallest-element-in-a-sorted-matrix/" data-id="cjn2gdkfs0014elqbugsug1rw" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-leetcode-convert-sorted-array-to-binary-search-tree" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/10/09/leetcode-convert-sorted-array-to-binary-search-tree/" class="article-date">
@@ -103,7 +149,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/10/09/leetcode-convert-sorted-array-to-binary-search-tree/" data-id="cjn10muku000ub5qbi5yo2ld3" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2018/10/09/leetcode-convert-sorted-array-to-binary-search-tree/" data-id="cjn2gdkfo0010elqbu84k497o" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/binary-tree/">binary tree</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
@@ -155,7 +201,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/10/08/leetcode-kth-smallest-element-in-a-BST/" data-id="cjn10mul20016b5qbjfgyvw50" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2018/10/08/leetcode-kth-smallest-element-in-a-BST/" data-id="cjn2gdkfu0018elqbc5t6lyj7" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/binary-tree/">binary tree</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
@@ -205,7 +251,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/09/13/leetcode-subsets/" data-id="cjn10mul5001db5qbm3el0tmj" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2018/09/13/leetcode-subsets/" data-id="cjn2gdkgq003belqbo7qmatuj" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
@@ -254,55 +300,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/09/12/leetcode-first-unique-character-in-a-string/" data-id="cjn10mul00014b5qbvfvom6uq" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-leetcode-shuffle-an-array" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/09/11/leetcode-shuffle-an-array/" class="article-date">
-  <time datetime="2018-09-11T00:37:00.000Z" itemprop="datePublished">2018-09-11</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/11/leetcode-shuffle-an-array/">Shuffle an Array</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Shuffle-an-Array"><a href="#Shuffle-an-Array" class="headerlink" title="Shuffle an Array"></a>Shuffle an Array</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> random</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, nums)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        :type nums: List[int]</span></div><div class="line"><span class="string">        """</span></div><div class="line">        self.org = nums[:]</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">reset</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        Resets the array to its original configuration and return it.</span></div><div class="line"><span class="string">        :rtype: List[int]</span></div><div class="line"><span class="string">        """</span></div><div class="line">        <span class="keyword">return</span> self.org</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">shuffle</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        Returns a random shuffling of the array.</span></div><div class="line"><span class="string">        :rtype: List[int]</span></div><div class="line"><span class="string">        """</span></div><div class="line">        res = self.org[:]</div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(res)):</div><div class="line">            j = random.randrange(i + <span class="number">1</span>)</div><div class="line">            res[i], res[j] = res[j], res[i]</div><div class="line">        <span class="keyword">return</span> res</div></pre></td></tr></table></figure>
-<p><em>output</em></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">In [565]: li</div><div class="line">Out[565]: [2, 3, 1]</div><div class="line"></div><div class="line">In [566]: s = Solution(li); print s.shuffle(); print s.reset()</div><div class="line">[2, 1, 3]</div><div class="line">[2, 3, 1]</div></pre></td></tr></table></figure>
-<p><a href="http://www.runoob.com/python/func-number-randrange.html" target="_blank" rel="external">Python randrange() 函数</a></p>
-<p><a href="http://www.runoob.com/python/func-number-shuffle.html" target="_blank" rel="external">Python shuffle() 函数</a></p>
-<p><a href="https://leetcode.com/problems/shuffle-an-array/description/" target="_blank" rel="external">leet code</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/09/11/leetcode-shuffle-an-array/" data-id="cjn10mulb001rb5qbysd0aslz" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2018/09/12/leetcode-first-unique-character-in-a-string/" data-id="cjn2gdkfx001celqblsyqv2s3" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
@@ -370,6 +368,10 @@
       <ul>
         
           <li>
+            <a href="/2018/10/10/leetcode-kth-smallest-element-in-a-sorted-matrix/">Kth Smallest Element in a Sorted Matrix</a>
+          </li>
+        
+          <li>
             <a href="/2018/10/09/leetcode-convert-sorted-array-to-binary-search-tree/">Convert Sorted Array to Binary Search Tree</a>
           </li>
         
@@ -383,10 +385,6 @@
         
           <li>
             <a href="/2018/09/12/leetcode-first-unique-character-in-a-string/">First Unique Character in a String</a>
-          </li>
-        
-          <li>
-            <a href="/2018/09/11/leetcode-shuffle-an-array/">Shuffle an Array</a>
           </li>
         
       </ul>

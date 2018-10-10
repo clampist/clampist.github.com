@@ -64,6 +64,49 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-redis-delete-all-keys" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/10/25/redis-delete-all-keys/" class="article-date">
+  <time datetime="2017-10-25T05:59:00.000Z" itemprop="datePublished">2017-10-25</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/redis/">redis</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/25/redis-delete-all-keys/">redis-delete-all-keys</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>Flushall</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">redis 127.0.0.1:6379&gt; FLUSHALL</div></pre></td></tr></table></figure>
+<p><a href="http://www.runoob.com/redis/server-flushall.html" target="_blank" rel="external">Redis Flushall 命令</a><br><a href="http://www.dnsdizhi.com/post-219.html" target="_blank" rel="external">Redis常用命令集，清空redis缓存数据库</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2017/10/25/redis-delete-all-keys/" data-id="cjn2gdkhd004nelqbpw1zvi5h" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-mysql-field-content-replace" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/10/25/mysql-field-content-replace/" class="article-date">
@@ -96,7 +139,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/10/25/mysql-field-content-replace/" data-id="cjn10mum1003jb5qbyohd7dp1" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/10/25/mysql-field-content-replace/" data-id="cjn2gdkgv003melqbcc0u0awl" class="article-share-link">Share</a>
       
       
     </footer>
@@ -142,7 +185,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/10/25/django-transform-queryset-to-dict/" data-id="cjn10muko000hb5qbsfqs7p6n" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/10/25/django-transform-queryset-to-dict/" data-id="cjn2gdkfh000lelqbhzk6wcwb" class="article-share-link">Share</a>
       
       
     </footer>
@@ -187,7 +230,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/10/25/django-redis-cache-delete-pattern/" data-id="cjn10mul8001kb5qbr9gxtq9c" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/10/25/django-redis-cache-delete-pattern/" data-id="cjn2gdkfd000helqb7n1zyops" class="article-share-link">Share</a>
       
       
     </footer>
@@ -197,9 +240,9 @@
 
 
   
-    <article id="post-django-pagination-demo" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-django-multi-database" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/10/25/django-pagination-demo/" class="article-date">
+    <a href="/2017/10/25/django-multi-database/" class="article-date">
   <time datetime="2017-10-25T00:49:00.000Z" itemprop="datePublished">2017-10-25</time>
 </a>
     
@@ -215,7 +258,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/25/django-pagination-demo/">django pagination demo</a>
+      <a class="article-title" href="/2017/10/25/django-multi-database/">django multi database</a>
     </h1>
   
 
@@ -223,61 +266,16 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><strong>1. a demo for using pagination</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> django.core.paginator <span class="keyword">import</span> Paginator, EmptyPage, PageNotAnInteger</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">listing</span><span class="params">(request)</span>:</span></div><div class="line">    contact_list = Contacts.objects.all()</div><div class="line">    paginator = Paginator(contact_list, <span class="number">25</span>) <span class="comment"># Show 25 contacts per page</span></div><div class="line"></div><div class="line">    page = request.GET.get(<span class="string">'page'</span>)</div><div class="line">    <span class="keyword">try</span>:</div><div class="line">        contacts = paginator.page(page)</div><div class="line">    <span class="keyword">except</span> PageNotAnInteger:</div><div class="line">        <span class="comment"># If page is not an integer, deliver first page.</span></div><div class="line">        contacts = paginator.page(<span class="number">1</span>)</div><div class="line">    <span class="keyword">except</span> EmptyPage:</div><div class="line">        <span class="comment"># If page is out of range (e.g. 9999), deliver last page of results.</span></div><div class="line">        contacts = paginator.page(paginator.num_pages)</div><div class="line"></div><div class="line">    <span class="keyword">return</span> render_to_response(<span class="string">'list.html'</span>, &#123;<span class="string">"contacts"</span>: contacts&#125;)</div></pre></td></tr></table></figure>
-<p><a href="http://python.usyiyi.cn/translate/django_182/topics/pagination.html" target="_blank" rel="external">django_182</a></p>
-<p><strong>2. get objects length</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cnt = contact_list.count()</div><div class="line">cnt = Contacts.objects.all().count()</div></pre></td></tr></table></figure>
+        <p><strong>1. 在<code>setting.py</code>中定义</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">DATABASES = &#123;</div><div class="line">    <span class="string">'default'</span>: &#123;</div><div class="line">        <span class="string">'NAME'</span>: <span class="string">'app_data'</span>,</div><div class="line">        <span class="string">'ENGINE'</span>: <span class="string">'django.db.backends.postgresql_psycopg2'</span>,</div><div class="line">        <span class="string">'USER'</span>: <span class="string">'postgres_user'</span>,</div><div class="line">        <span class="string">'PASSWORD'</span>: <span class="string">'s3krit'</span></div><div class="line">    &#125;,</div><div class="line">    <span class="string">'users'</span>: &#123;</div><div class="line">        <span class="string">'NAME'</span>: <span class="string">'user_data'</span>,</div><div class="line">        <span class="string">'ENGINE'</span>: <span class="string">'django.db.backends.mysql'</span>,</div><div class="line">        <span class="string">'USER'</span>: <span class="string">'mysql_user'</span>,</div><div class="line">        <span class="string">'PASSWORD'</span>: <span class="string">'priv4te'</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>2. 使用<code>using</code>手动选择一个数据库</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>u = User.objects.using(<span class="string">'legacy_users'</span>).get(username=<span class="string">'fred'</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>u.delete() <span class="comment"># will delete from the `legacy_users` database</span></div></pre></td></tr></table></figure>
+<p><a href="http://python.usyiyi.cn/translate/django_182/topics/db/multi-db.html" target="_blank" rel="external">django_182</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/10/25/django-pagination-demo/" data-id="cjn10mukn000gb5qb77b3ebs5" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-django-delete-multi-object" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/10/25/django-delete-multi-object/" class="article-date">
-  <time datetime="2017-10-25T00:49:00.000Z" itemprop="datePublished">2017-10-25</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/django/">django</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/25/django-delete-multi-object/">django delete multi object</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>1.高效</p>
-<p><code>MyModel.objects.filter(expired=True).delete()</code></p>
-<p>2.非高效</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">rows = MyModel.objects.filter(expired=True)</div><div class="line"></div><div class="line">for r in rows:</div><div class="line">    r.delete()</div></pre></td></tr></table></figure>
-<p><a href="https://www.djangorocks.com/snippets/deleting-multiple-rows-from-your-database.html" target="_blank" rel="external">Deleting multiple rows from your database</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/10/25/django-delete-multi-object/" data-id="cjn10mukg0005b5qbhnjgp9vp" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/10/25/django-multi-database/" data-id="cjn2gdkfb000delqbo3t99j4e" class="article-share-link">Share</a>
       
       
     </footer>
@@ -343,6 +341,10 @@
       <ul>
         
           <li>
+            <a href="/2018/10/10/leetcode-kth-smallest-element-in-a-sorted-matrix/">Kth Smallest Element in a Sorted Matrix</a>
+          </li>
+        
+          <li>
             <a href="/2018/10/09/leetcode-convert-sorted-array-to-binary-search-tree/">Convert Sorted Array to Binary Search Tree</a>
           </li>
         
@@ -356,10 +358,6 @@
         
           <li>
             <a href="/2018/09/12/leetcode-first-unique-character-in-a-string/">First Unique Character in a String</a>
-          </li>
-        
-          <li>
-            <a href="/2018/09/11/leetcode-shuffle-an-array/">Shuffle an Array</a>
           </li>
         
       </ul>

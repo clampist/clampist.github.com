@@ -64,6 +64,56 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-python-virtualenv-wrapper-and-pip" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2012/10/20/python-virtualenv-wrapper-and-pip/" class="article-date">
+  <time datetime="2012-10-20T06:33:00.000Z" itemprop="datePublished">2012-10-20</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/python/">python</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2012/10/20/python-virtualenv-wrapper-and-pip/">Python Virtualenv Wrapper and Pip</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-Install"><a href="#1-Install" class="headerlink" title="1.Install"></a>1.Install</h2><p>Arch 下默认是 <code>python3</code>, 而如果强制用软链接改为 <code>python2</code> 的话，一些程序会有问题的，之前都是小脚本，所以手动把第一行改为 <code>#!/usr/bin/env python2</code> 或者 <code>#!/usr/bin/python2</code> 就行，现在要做 GAE 发现手动改了好多还是不行，于是便有了 Python virtualenv 等。</p>
+<p>Install virtualenv virtualenvwrapper and pip</p>
+<pre><code># pacman -S python2-virtualenv
+# pacman -S python2-virtualenvwrapper
+# pacman -S python2-pip
+</code></pre>
+        
+          <p class="article-more-link">
+            <a href="/2012/10/20/python-virtualenv-wrapper-and-pip/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2012/10/20/python-virtualenv-wrapper-and-pip/" data-id="cjn2gdkhc004kelqb55tn4nne" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-opencv-basis" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2012/10/13/opencv-basis/" class="article-date">
@@ -114,7 +164,7 @@ In [7]: cv.SaveImage(&apos;foo2.png&apos;, im2)
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2012/10/13/opencv-basis/" data-id="cjn10mum3003qb5qbi0qce788" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2012/10/13/opencv-basis/" data-id="cjn2gdkgz003welqbn3t3etzb" class="article-share-link">Share</a>
       
       
     </footer>
@@ -166,7 +216,7 @@ sudo python2 setup.py install
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2012/10/11/install-openexr-for-python/" data-id="cjn10muks000rb5qbcxuijlw7" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2012/10/11/install-openexr-for-python/" data-id="cjn2gdkfi000oelqb14gbadl9" class="article-share-link">Share</a>
       
       
     </footer>
@@ -224,7 +274,7 @@ git push origin source
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2012/10/09/wonderful-octopress/" data-id="cjn10mumr0051b5qbzqd1x1fk" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2012/10/09/wonderful-octopress/" data-id="cjn2gdkhl0053elqb9g2yq6g8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -290,6 +340,10 @@ git push origin source
       <ul>
         
           <li>
+            <a href="/2018/10/10/leetcode-kth-smallest-element-in-a-sorted-matrix/">Kth Smallest Element in a Sorted Matrix</a>
+          </li>
+        
+          <li>
             <a href="/2018/10/09/leetcode-convert-sorted-array-to-binary-search-tree/">Convert Sorted Array to Binary Search Tree</a>
           </li>
         
@@ -303,10 +357,6 @@ git push origin source
         
           <li>
             <a href="/2018/09/12/leetcode-first-unique-character-in-a-string/">First Unique Character in a String</a>
-          </li>
-        
-          <li>
-            <a href="/2018/09/11/leetcode-shuffle-an-array/">Shuffle an Array</a>
           </li>
         
       </ul>
