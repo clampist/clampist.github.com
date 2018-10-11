@@ -64,6 +64,50 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-python-argparse-nargs" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/03/10/python-argparse-nargs/" class="article-date">
+  <time datetime="2018-03-10T02:35:00.000Z" itemprop="datePublished">2018-03-10</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/python/">python</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/03/10/python-argparse-nargs/">python argparse nargs</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="可变形参列表"><a href="#可变形参列表" class="headerlink" title="可变形参列表"></a>可变形参列表</h2><p>你可以配置单个参数的定义使其能够匹配所解析的命令行的多个参数。根据需要或期望的参数个数，设置nargs为这些标识值之一：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">值  含义</div><div class="line">N   参数的绝对个数（例如：3）</div><div class="line">?   0或1个参数</div><div class="line">*   0或所有参数</div><div class="line">+   所有，并且至少一个参数</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> argparse</div><div class="line"></div><div class="line">parser = argparse.ArgumentParser()</div><div class="line"></div><div class="line">parser.add_argument(<span class="string">'--three'</span>, nargs=<span class="number">3</span>)</div><div class="line">parser.add_argument(<span class="string">'--optional'</span>, nargs=<span class="string">'?'</span>)</div><div class="line">parser.add_argument(<span class="string">'--all'</span>, nargs=<span class="string">'*'</span>, dest=<span class="string">'all'</span>)</div><div class="line">parser.add_argument(<span class="string">'--one-or-more'</span>, nargs=<span class="string">'+'</span>)</div><div class="line"></div><div class="line"><span class="keyword">print</span> parser.parse_args()</div></pre></td></tr></table></figure>
+<p><a href="http://blog.xiayf.cn/2013/03/30/argparse/" target="_blank" rel="external">argparse - 命令行选项与参数解析（译）</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2018/03/10/python-argparse-nargs/" data-id="cjn3tykbz003azmqbt1l6afm8" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-mysql-field-length" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/02/25/mysql-field-length/" class="article-date">
@@ -97,7 +141,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/02/25/mysql-field-length/" data-id="cjn2gdkgz003velqbcx7rev4f" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2018/02/25/mysql-field-length/" data-id="cjn3tykbu002szmqbpd0xd472" class="article-share-link">Share</a>
       
       
     </footer>
@@ -140,7 +184,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/02/21/python-datetime-compare/" data-id="cjn2gdkh60049elqb6b73mzui" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2018/02/21/python-datetime-compare/" data-id="cjn3tykc2003hzmqbhhyt4yt5" class="article-share-link">Share</a>
       
       
     </footer>
@@ -187,7 +231,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/01/27/mongodb-compact-disk-space/" data-id="cjn2gdkgt003gelqbyu2c5xc2" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2018/01/27/mongodb-compact-disk-space/" data-id="cjn3tykbq002dzmqb95kvdzzo" class="article-share-link">Share</a>
       
       
     </footer>
@@ -230,56 +274,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/01/13/python-hashlib-md5-unicodeEncodeError/" data-id="cjn2gdkh40047elqbzk8s2riq" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-python-absolute-import" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/11/29/python-absolute-import/" class="article-date">
-  <time datetime="2017-11-29T02:35:00.000Z" itemprop="datePublished">2017-11-29</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/python/">python</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/11/29/python-absolute-import/">python from __future__ import absolute_import</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="from-future-import-absolute-import"><a href="#from-future-import-absolute-import" class="headerlink" title="from __future__ import absolute_import"></a>from __future__ import absolute_import</h2><h3 id="1-使用以上语句则启动绝对导入"><a href="#1-使用以上语句则启动绝对导入" class="headerlink" title="1.使用以上语句则启动绝对导入"></a>1.使用以上语句则启动绝对导入</h3><p>会从 <code>sys.path</code> 里寻找所有名为 <code>x</code> 的顶层模块</p>
-<h3 id="2-而相应的相对导入则采用"><a href="#2-而相应的相对导入则采用" class="headerlink" title="2.而相应的相对导入则采用."></a>2.而相应的相对导入则采用<code>.</code></h3><p>比如一个 package 下有 a.py 和 b.py 两个文件，在 a.py 里 <code>from . import b</code> 即是相对导入 b.py。</p>
-<p><a href="https://segmentfault.com/q/1010000000458562" target="_blank" rel="external">区别</a></p>
-<p><a href="http://legacy.python.org/dev/peps/pep-0328/" target="_blank" rel="external"><code>PEP 328</code></a>中：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">package/</div><div class="line">    __init__.py</div><div class="line">    subpackage1/</div><div class="line">        __init__.py</div><div class="line">        moduleX.py</div><div class="line">        moduleY.py</div><div class="line">    subpackage2/</div><div class="line">        __init__.py</div><div class="line">        moduleZ.py</div><div class="line">    moduleA.py</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">from .moduleY import spam</div><div class="line">from .moduleY import spam as ham</div><div class="line">from . import moduleY</div><div class="line">from ..subpackage1 import moduleY</div><div class="line">from ..subpackage2.moduleZ import eggs</div><div class="line">from ..moduleA import foo</div><div class="line">from ...package import bar</div><div class="line">from ...sys import path</div></pre></td></tr></table></figure>
-<p>一个<code>.</code>表示从当前目录寻找</p>
-<p>两个<code>.</code>表示从父目录寻找</p>
-<p>更多的<code>.</code>则从更高层级的目录寻找</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/11/29/python-absolute-import/" data-id="cjn2gdkh20043elqb1txub886" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2018/01/13/python-hashlib-md5-unicodeEncodeError/" data-id="cjn3tykc3003kzmqbhien4qvm" class="article-share-link">Share</a>
       
       
     </footer>
@@ -345,6 +340,10 @@
       <ul>
         
           <li>
+            <a href="/2018/10/11/leetcode-missing-number/">Missing Number</a>
+          </li>
+        
+          <li>
             <a href="/2018/10/10/leetcode-kth-smallest-element-in-a-sorted-matrix/">Kth Smallest Element in a Sorted Matrix</a>
           </li>
         
@@ -358,10 +357,6 @@
         
           <li>
             <a href="/2018/09/13/leetcode-subsets/">Subsets</a>
-          </li>
-        
-          <li>
-            <a href="/2018/09/12/leetcode-first-unique-character-in-a-string/">First Unique Character in a String</a>
           </li>
         
       </ul>

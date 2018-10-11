@@ -64,6 +64,53 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-turing" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/11/01/turing/" class="article-date">
+  <time datetime="2017-11-01T06:37:00.000Z" itemprop="datePublished">2017-11-01</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/linux/">linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/11/01/turing/">sed replace</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="图灵"><a href="#图灵" class="headerlink" title="图灵"></a>图灵</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">sed -i <span class="string">'s/\\"//g'</span> file</div><div class="line"></div><div class="line">sed -i <span class="string">'s/\\\\\//\//g'</span> file</div><div class="line"></div><div class="line">sed -i <span class="string">'s/"\[&#123;""json"":""/\[/g'</span> file</div><div class="line"></div><div class="line">sed -i <span class="string">'s/&#123;""json"":""//g'</span> file</div><div class="line"></div><div class="line">sed -i <span class="string">'s/"",""mt"":[0-9]*&#125;\]"/\]/g'</span> file</div><div class="line"></div><div class="line">sed -i <span class="string">'s/"",""mt"":[0-9]*&#125;//g'</span> file</div></pre></td></tr></table></figure>
+<h2 id="Use-double-quotes-so-that-sed-would-expand-variables"><a href="#Use-double-quotes-so-that-sed-would-expand-variables" class="headerlink" title="Use double quotes so that sed would expand variables."></a>Use double quotes so that sed would expand variables.</h2><p><code>sed &quot;s|\$ROOT|${HOME}|&quot; abc.sh</code></p>
+<ul>
+<li>shell变量在双引号内会被解析</li>
+<li>在单引号内不会被解析</li>
+</ul>
+<p><a href="https://stackoverflow.com/questions/19151954/how-to-use-variables-in-a-command-in-sed" target="_blank" rel="external">How to use variables in a command in sed?</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2017/11/01/turing/" data-id="cjn3tykcg004lzmqbcsw0qlgs" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-redis-delete-all-keys" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/10/25/redis-delete-all-keys/" class="article-date">
@@ -97,7 +144,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/10/25/redis-delete-all-keys/" data-id="cjn2gdkhd004nelqbpw1zvi5h" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/10/25/redis-delete-all-keys/" data-id="cjn3tykc80042zmqbcxkvupkx" class="article-share-link">Share</a>
       
       
     </footer>
@@ -139,7 +186,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/10/25/mysql-field-content-replace/" data-id="cjn2gdkgv003melqbcc0u0awl" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/10/25/mysql-field-content-replace/" data-id="cjn3tykbs002lzmqbadlcmvdy" class="article-share-link">Share</a>
       
       
     </footer>
@@ -185,7 +232,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/10/25/django-transform-queryset-to-dict/" data-id="cjn2gdkfh000lelqbhzk6wcwb" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/10/25/django-transform-queryset-to-dict/" data-id="cjn3tykaw000gzmqb027p9ftl" class="article-share-link">Share</a>
       
       
     </footer>
@@ -230,52 +277,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/10/25/django-redis-cache-delete-pattern/" data-id="cjn2gdkfd000helqb7n1zyops" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-django-multi-database" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/10/25/django-multi-database/" class="article-date">
-  <time datetime="2017-10-25T00:49:00.000Z" itemprop="datePublished">2017-10-25</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/django/">django</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/25/django-multi-database/">django multi database</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>1. 在<code>setting.py</code>中定义</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">DATABASES = &#123;</div><div class="line">    <span class="string">'default'</span>: &#123;</div><div class="line">        <span class="string">'NAME'</span>: <span class="string">'app_data'</span>,</div><div class="line">        <span class="string">'ENGINE'</span>: <span class="string">'django.db.backends.postgresql_psycopg2'</span>,</div><div class="line">        <span class="string">'USER'</span>: <span class="string">'postgres_user'</span>,</div><div class="line">        <span class="string">'PASSWORD'</span>: <span class="string">'s3krit'</span></div><div class="line">    &#125;,</div><div class="line">    <span class="string">'users'</span>: &#123;</div><div class="line">        <span class="string">'NAME'</span>: <span class="string">'user_data'</span>,</div><div class="line">        <span class="string">'ENGINE'</span>: <span class="string">'django.db.backends.mysql'</span>,</div><div class="line">        <span class="string">'USER'</span>: <span class="string">'mysql_user'</span>,</div><div class="line">        <span class="string">'PASSWORD'</span>: <span class="string">'priv4te'</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><strong>2. 使用<code>using</code>手动选择一个数据库</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>u = User.objects.using(<span class="string">'legacy_users'</span>).get(username=<span class="string">'fred'</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>u.delete() <span class="comment"># will delete from the `legacy_users` database</span></div></pre></td></tr></table></figure>
-<p><a href="http://python.usyiyi.cn/translate/django_182/topics/db/multi-db.html" target="_blank" rel="external">django_182</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/10/25/django-multi-database/" data-id="cjn2gdkfb000delqbo3t99j4e" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/10/25/django-redis-cache-delete-pattern/" data-id="cjn3tykav000dzmqbd1dbzjml" class="article-share-link">Share</a>
       
       
     </footer>
@@ -341,6 +343,10 @@
       <ul>
         
           <li>
+            <a href="/2018/10/11/leetcode-missing-number/">Missing Number</a>
+          </li>
+        
+          <li>
             <a href="/2018/10/10/leetcode-kth-smallest-element-in-a-sorted-matrix/">Kth Smallest Element in a Sorted Matrix</a>
           </li>
         
@@ -354,10 +360,6 @@
         
           <li>
             <a href="/2018/09/13/leetcode-subsets/">Subsets</a>
-          </li>
-        
-          <li>
-            <a href="/2018/09/12/leetcode-first-unique-character-in-a-string/">First Unique Character in a String</a>
           </li>
         
       </ul>
