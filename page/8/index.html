@@ -64,14 +64,14 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-django-delete-multi-object" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-django-redis-cache-delete-pattern" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/10/25/django-delete-multi-object/" class="article-date">
-  <time datetime="2017-10-25T00:49:00.000Z" itemprop="datePublished">2017-10-25</time>
+    <a href="/2017/10/25/django-redis-cache-delete-pattern/" class="article-date">
+  <time datetime="2017-10-25T00:50:00.000Z" itemprop="datePublished">2017-10-25</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/django/">django</a>
+    <a class="article-category-link" href="/categories/redis/">redis</a>
   </div>
 
   </div>
@@ -82,7 +82,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/25/django-delete-multi-object/">django delete multi object</a>
+      <a class="article-title" href="/2017/10/25/django-redis-cache-delete-pattern/">django redis cache delete pattern</a>
     </h1>
   
 
@@ -90,16 +90,16 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>1.高效</p>
-<p><code>MyModel.objects.filter(expired=True).delete()</code></p>
-<p>2.非高效</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">rows = MyModel.objects.filter(expired=True)</div><div class="line"></div><div class="line">for r in rows:</div><div class="line">    r.delete()</div></pre></td></tr></table></figure>
-<p><a href="https://www.djangorocks.com/snippets/deleting-multiple-rows-from-your-database.html" target="_blank" rel="external">Deleting multiple rows from your database</a></p>
+        <p><strong>Example use of delete_pattern</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> django.core.cache <span class="keyword">import</span> cache</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>cache.delete_pattern(<span class="string">"foo_*"</span>)</div></pre></td></tr></table></figure>
+<p><strong>Simple search keys by pattern</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> django.core.cache <span class="keyword">import</span> cache</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>cache.keys(<span class="string">"foo_*"</span>)</div><div class="line">[<span class="string">"foo_1"</span>, <span class="string">"foo_2"</span>]</div></pre></td></tr></table></figure>
+<p><a href="http://niwinz.github.io/django-redis/latest/#_scan_delete_keys_in_bulk" target="_blank" rel="external">django-redis</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/10/25/django-delete-multi-object/" data-id="cjn3tykao0006zmqbgq2h8lx6" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/10/25/django-redis-cache-delete-pattern/" data-id="cjn59hnf8000ftmqb5084fkxn" class="article-share-link">Share</a>
       
       
     </footer>
@@ -144,7 +144,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/10/25/django-pagination-demo/" data-id="cjn3tykar0009zmqbm9t3syvi" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/10/25/django-pagination-demo/" data-id="cjn59hnf6000btmqbmoszt56a" class="article-share-link">Share</a>
       
       
     </footer>
@@ -189,7 +189,52 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/10/25/django-multi-database/" data-id="cjn3tykas000czmqb6qk9n4cu" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/10/25/django-multi-database/" data-id="cjn59hnf50008tmqbu7nnykcu" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-django-delete-multi-object" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/10/25/django-delete-multi-object/" class="article-date">
+  <time datetime="2017-10-25T00:49:00.000Z" itemprop="datePublished">2017-10-25</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/django/">django</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/25/django-delete-multi-object/">django delete multi object</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1.高效</p>
+<p><code>MyModel.objects.filter(expired=True).delete()</code></p>
+<p>2.非高效</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">rows = MyModel.objects.filter(expired=True)</div><div class="line"></div><div class="line">for r in rows:</div><div class="line">    r.delete()</div></pre></td></tr></table></figure>
+<p><a href="https://www.djangorocks.com/snippets/deleting-multiple-rows-from-your-database.html" target="_blank" rel="external">Deleting multiple rows from your database</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2017/10/25/django-delete-multi-object/" data-id="cjn59hnfp001etmqbm6bfycqr" class="article-share-link">Share</a>
       
       
     </footer>
@@ -234,52 +279,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/10/25/django-models-objects-filter-by-dict-kwargs/" data-id="cjn3tykam0004zmqb34hn3nsm" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-django-models-not-equal-exclude-filter" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/10/25/django-models-not-equal-exclude-filter/" class="article-date">
-  <time datetime="2017-10-25T00:47:00.000Z" itemprop="datePublished">2017-10-25</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/django/">django</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/25/django-models-not-equal-exclude-filter/">django models not equal exclude filter</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Django-not-equal-exclude"><a href="#Django-not-equal-exclude" class="headerlink" title="Django != not equal exclude"></a>Django != not equal exclude</h2><p>not equal</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">user1_progress = models.EvaluationMaterial.objects.filter(</div><div class="line">    evaluation_task_id=evaluation_task_id).exclude(</div><div class="line">    user1=<span class="string">'-'</span>).values(<span class="string">'user1'</span>).annotate(alloced=Count(<span class="string">'user1'</span>))</div></pre></td></tr></table></figure>
-<h2 id="Django-NOT-IN-gt-exclude-a-in-b-list"><a href="#Django-NOT-IN-gt-exclude-a-in-b-list" class="headerlink" title="Django: NOT IN -&gt; exclude(a__in=b_list)"></a>Django: NOT IN -&gt; exclude(a__in=b_list)</h2><p>NOT IN</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">table1.objects.exclude(id__in = </div><div class="line">table2.objects.filter(your_condition).values_list(<span class="string">'id'</span>, flat=<span class="keyword">True</span>))</div></pre></td></tr></table></figure>
-<p>(Django in / not in query)[<a href="https://stackoverflow.com/questions/4523282/django-in-not-in-query" target="_blank" rel="external">https://stackoverflow.com/questions/4523282/django-in-not-in-query</a>]</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/10/25/django-models-not-equal-exclude-filter/" data-id="cjn3tykan0005zmqb0wlo6266" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/10/25/django-models-objects-filter-by-dict-kwargs/" data-id="cjn59hnf00003tmqbk3qhrs8k" class="article-share-link">Share</a>
       
       
     </footer>
@@ -292,7 +292,7 @@
 
 
   <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/page/7/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/9/">下一页&raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/7/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/9/">下一页&raquo;</a>
   </nav>
 
 </section>
@@ -345,6 +345,10 @@
       <ul>
         
           <li>
+            <a href="/2018/10/12/leetcode-find-the-duplicate-number/">Find the Duplicate Number</a>
+          </li>
+        
+          <li>
             <a href="/2018/10/11/leetcode-missing-number/">Missing Number</a>
           </li>
         
@@ -358,10 +362,6 @@
         
           <li>
             <a href="/2018/10/08/leetcode-kth-smallest-element-in-a-BST/">Kth Smallest Element in a BST</a>
-          </li>
-        
-          <li>
-            <a href="/2018/09/13/leetcode-subsets/">Subsets</a>
           </li>
         
       </ul>

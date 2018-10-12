@@ -64,6 +64,89 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-python-two-or-three-continuous-items-in-list" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/09/22/python-two-or-three-continuous-items-in-list/" class="article-date">
+  <time datetime="2017-09-22T06:37:00.000Z" itemprop="datePublished">2017-09-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/python/">python</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/09/22/python-two-or-three-continuous-items-in-list/">python two or three continuous items in list</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Python-list-中连续2-3个对象"><a href="#Python-list-中连续2-3个对象" class="headerlink" title="Python list 中连续2-3个对象"></a>Python list 中连续2-3个对象</h2><h3 id="1-前后连续两天"><a href="#1-前后连续两天" class="headerlink" title="1.前后连续两天"></a>1.前后连续两天</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> date <span class="keyword">in</span> [eval_obj.date_range[i:i+<span class="number">2</span>] <span class="keyword">for</span> i <span class="keyword">in</span> range(len(eval_obj.date_range) - <span class="number">1</span>)]:</div><div class="line">    <span class="keyword">print</span> date[<span class="number">0</span>], date[<span class="number">1</span>]</div></pre></td></tr></table></figure>
+<h3 id="2-时间间隔1-3天"><a href="#2-时间间隔1-3天" class="headerlink" title="2.时间间隔1-3天"></a>2.时间间隔1-3天</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> t <span class="keyword">in</span> [time_list[i:i + <span class="number">3</span>] <span class="keyword">for</span> i <span class="keyword">in</span> range(len(time_list) - <span class="number">1</span>)]:</div><div class="line">    <span class="keyword">if</span> len(t) == <span class="number">3</span>:</div><div class="line">        print(t[<span class="number">0</span>], t[<span class="number">2</span>])</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2017/09/22/python-two-or-three-continuous-items-in-list/" data-id="cjn59hnh7004ntmqb9y2qrix8" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-shell-uniq-count" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/09/22/shell-uniq-count/" class="article-date">
+  <time datetime="2017-09-22T06:37:00.000Z" itemprop="datePublished">2017-09-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/linux/">linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/09/22/shell-uniq-count/">shell uniq count</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Shell中uniq去重并统计"><a href="#Shell中uniq去重并统计" class="headerlink" title="Shell中uniq去重并统计"></a>Shell中uniq去重并统计</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cat text | uniq -c</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2017/09/22/shell-uniq-count/" data-id="cjn59hnhb004xtmqbp0rh8zu0" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-shell-last-param" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/09/22/shell-last-param/" class="article-date">
@@ -97,55 +180,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/09/22/shell-last-param/" data-id="cjn3tykc90045zmqbsjk2tykv" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-acquire-array-length-in-cpp" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/09/22/acquire-array-length-in-cpp/" class="article-date">
-  <time datetime="2017-09-22T06:37:00.000Z" itemprop="datePublished">2017-09-22</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/cpp/">cpp</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/22/acquire-array-length-in-cpp/">acquire array length in cpp</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="C-获取数组长度"><a href="#C-获取数组长度" class="headerlink" title="C++获取数组长度"></a>C++获取数组长度</h2><p>一、静态数组。</p>
-<p>比如 int int_ary[5] ,静态数组在编译的时候就知道了数组长度，这对编译器来说挺好实现的。</p>
-<p>用得最多的大概就是sizeof了吧：</p>
-<p><code>#define countof_macro(x) (sizeof((x)) / sizeof(x)[0])</code></p>
-<p>对于C++，可以用模板。</p>
-<p>如果将数组作为函数形参的话，它会退化成一个指针，但是引用则不会。使用引用带来的另外一个问题就是，声明参数时必须知道数组长度——我要是知道我还费这劲干啥？解决方法就是使用模板，将数组引用的数组大小声明为模板参数：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//错误的做法：这里形参已经退化为指针了</span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">countof_func_para</span><span class="params">(<span class="keyword">int</span> int_ary[<span class="number">5</span>])</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    <span class="keyword">return</span> countof_macro(int_ary);</div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="comment">//正确的做法</span></div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">size_t</span> n&gt;</div><div class="line">int countof_template(const int (&amp;int_ary)[N])</div><div class="line">&#123;</div><div class="line">    <span class="keyword">return</span> N;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><a href="http://www.cnblogs.com/h46incon/archive/2013/03/17/2965020.html" target="_blank" rel="external">参考链接</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/09/22/acquire-array-length-in-cpp/" data-id="cjn3tykag0000zmqb1p27te7y" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/09/22/shell-last-param/" data-id="cjn59hnh9004rtmqbbx2lnjno" class="article-share-link">Share</a>
       
       
     </footer>
@@ -190,7 +225,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/09/07/hello-world/" data-id="cjn3tykax000hzmqbp95wmcl0" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/09/07/hello-world/" data-id="cjn59hnfe000ttmqbgvbfylu0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -234,53 +269,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/04/26/git_svn_blame/" data-id="cjn3tykb3000vzmqbgtbsphw0" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-shell-shuffle-file-lines" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/02/24/shell-shuffle-file-lines/" class="article-date">
-  <time datetime="2017-02-24T10:37:00.000Z" itemprop="datePublished">2017-02-24</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/linux/">linux</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/24/shell-shuffle-file-lines/">shell shuffle file lines</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="高版本CentOS自带sort-R-shuf"><a href="#高版本CentOS自带sort-R-shuf" class="headerlink" title="高版本CentOS自带sort -R/ shuf"></a>高版本CentOS自带sort -R/ shuf</h2><p>用awk实现文件：行乱序</p>
-<blockquote>
-<p>1.awk</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">awk ‘BEGIN&#123;srand()&#125;&#123;b[rand()NR]=<span class="variable">$0</span>&#125;END&#123;<span class="keyword">for</span>(x <span class="keyword">in</span> b)<span class="built_in">print</span> b[x]&#125;’ data</div></pre></td></tr></table></figure>
-<p><a href="http://ju.outofmemory.cn/entry/118502" target="_blank" rel="external">Linux下实现文件洗牌效果 行乱序</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/02/24/shell-shuffle-file-lines/" data-id="cjn3tykce004fzmqbdyktfhj2" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/04/26/git_svn_blame/" data-id="cjn59hnfc000otmqbcdh5n8ly" class="article-share-link">Share</a>
       
       
     </footer>
@@ -293,7 +282,7 @@
 
 
   <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/page/10/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/12/">下一页&raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/10/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/12/">下一页&raquo;</a>
   </nav>
 
 </section>
@@ -346,6 +335,10 @@
       <ul>
         
           <li>
+            <a href="/2018/10/12/leetcode-find-the-duplicate-number/">Find the Duplicate Number</a>
+          </li>
+        
+          <li>
             <a href="/2018/10/11/leetcode-missing-number/">Missing Number</a>
           </li>
         
@@ -359,10 +352,6 @@
         
           <li>
             <a href="/2018/10/08/leetcode-kth-smallest-element-in-a-BST/">Kth Smallest Element in a BST</a>
-          </li>
-        
-          <li>
-            <a href="/2018/09/13/leetcode-subsets/">Subsets</a>
           </li>
         
       </ul>
