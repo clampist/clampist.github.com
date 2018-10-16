@@ -64,6 +64,51 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-django-delete-multi-object" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/10/25/django-delete-multi-object/" class="article-date">
+  <time datetime="2017-10-25T00:49:00.000Z" itemprop="datePublished">2017-10-25</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/django/">django</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/25/django-delete-multi-object/">django delete multi object</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1.高效</p>
+<p><code>MyModel.objects.filter(expired=True).delete()</code></p>
+<p>2.非高效</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">rows = MyModel.objects.filter(expired=True)</div><div class="line"></div><div class="line">for r in rows:</div><div class="line">    r.delete()</div></pre></td></tr></table></figure>
+<p><a href="https://www.djangorocks.com/snippets/deleting-multiple-rows-from-your-database.html" target="_blank" rel="external">Deleting multiple rows from your database</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2017/10/25/django-delete-multi-object/" data-id="cjncd68e50004d1qboas1sjvp" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-django-models-objects-filter-by-dict-kwargs" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/10/25/django-models-objects-filter-by-dict-kwargs/" class="article-date">
@@ -99,7 +144,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/10/25/django-models-objects-filter-by-dict-kwargs/" data-id="cjnaya9py0006rnqbvjdkw453" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/10/25/django-models-objects-filter-by-dict-kwargs/" data-id="cjncd68e90008d1qb9d5ybuoo" class="article-share-link">Share</a>
       
       
     </footer>
@@ -144,7 +189,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/10/25/django-models-not-equal-exclude-filter/" data-id="cjnaya9pz0008rnqb9w3mg0y4" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/10/25/django-models-not-equal-exclude-filter/" data-id="cjncd68dv0002d1qb1qgec1tf" class="article-share-link">Share</a>
       
       
     </footer>
@@ -186,7 +231,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/10/25/du-find-max-dir/" data-id="cjnaya9q5000irnqbt4mspkdu" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/10/25/du-find-max-dir/" data-id="cjncd68ee000hd1qbfa3ylwe6" class="article-share-link">Share</a>
       
       
     </footer>
@@ -228,57 +273,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/10/25/python-check-class-has-attribute/" data-id="cjnaya9rf003jrnqbsfhlho1j" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-shell-awk-filter-sort" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/10/25/shell-awk-filter-sort/" class="article-date">
-  <time datetime="2017-10-25T00:43:00.000Z" itemprop="datePublished">2017-10-25</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/linux/">linux</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/25/shell-awk-filter-sort/">awk filter by one col larger than a value</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">awk -F<span class="string">'\t'</span> <span class="string">'$36 &gt; "2017-10-18 15:00:00" &#123;print ;&#125;'</span> 13224_sample_material_encode_full | sort -r &gt; target.txt</div></pre></td></tr></table></figure>
-<h2 id="打印第36列大于某一时刻的整行"><a href="#打印第36列大于某一时刻的整行" class="headerlink" title="打印第36列大于某一时刻的整行"></a>打印第36列大于某一时刻的整行</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&apos;$36 &gt; &quot;2017-10-18 15:00:00&quot; &#123;print ;&#125;&apos;</div></pre></td></tr></table></figure>
-<p><code>filter</code>: <code>$36 &gt; &quot;2017-10-18 15:00:00&quot;</code></p>
-<p><code>print whole line</code>: <code>print ;</code></p>
-<h2 id="awk-cut-输出指定列"><a href="#awk-cut-输出指定列" class="headerlink" title="awk/cut 输出指定列"></a>awk/cut 输出指定列</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">awk &apos;&#123;for(i=10;i&lt;=20;i++)printf $i&quot;&quot;FS;print&quot;&quot;&#125;&apos; file</div></pre></td></tr></table></figure>
-<p><code>FS</code>就是<strong>分隔符</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cut -d&quot; &quot; -f 10-20 file</div></pre></td></tr></table></figure>
-<p><a href="https://zhidao.baidu.com/question/481774014.html" target="_blank" rel="external">百度知道</a></p>
-<h2 id="逆序"><a href="#逆序" class="headerlink" title="逆序"></a>逆序</h2><p><code>sort reverse</code>: <code>sort -r</code></p>
-<h2 id="按某列排序"><a href="#按某列排序" class="headerlink" title="按某列排序"></a>按某列排序</h2><p><code>sort -k 2 file.txt</code><br>按第二列排序<br><a href="https://stackoverflow.com/questions/4262650/linux-shell-sort-file-according-to-the-second-column" target="_blank" rel="external">stackoverflow</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/10/25/shell-awk-filter-sort/" data-id="cjnaya9s0004qrnqbigb2v7jg" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/10/25/python-check-class-has-attribute/" data-id="cjncd68mh003wd1qbeem79qmm" class="article-share-link">Share</a>
       
       
     </footer>
@@ -344,6 +339,10 @@
       <ul>
         
           <li>
+            <a href="/2018/10/17/leetcode-unique-paths/">Unique Paths</a>
+          </li>
+        
+          <li>
             <a href="/2018/10/16/leetcode-flatten-nested-list-iterator/">Flatten Nested List Iterator</a>
           </li>
         
@@ -357,10 +356,6 @@
         
           <li>
             <a href="/2018/10/11/leetcode-missing-number/">Missing Number</a>
-          </li>
-        
-          <li>
-            <a href="/2018/10/10/leetcode-kth-smallest-element-in-a-sorted-matrix/">Kth Smallest Element in a Sorted Matrix</a>
           </li>
         
       </ul>
