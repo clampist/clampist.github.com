@@ -64,6 +64,48 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-python-two-or-three-continuous-items-in-list" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/09/22/python-two-or-three-continuous-items-in-list/" class="article-date">
+  <time datetime="2017-09-22T06:37:00.000Z" itemprop="datePublished">2017-09-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/python/">python</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/09/22/python-two-or-three-continuous-items-in-list/">python two or three continuous items in list</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Python-list-中连续2-3个对象"><a href="#Python-list-中连续2-3个对象" class="headerlink" title="Python list 中连续2-3个对象"></a>Python list 中连续2-3个对象</h2><h3 id="1-前后连续两天"><a href="#1-前后连续两天" class="headerlink" title="1.前后连续两天"></a>1.前后连续两天</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> date <span class="keyword">in</span> [eval_obj.date_range[i:i+<span class="number">2</span>] <span class="keyword">for</span> i <span class="keyword">in</span> range(len(eval_obj.date_range) - <span class="number">1</span>)]:</div><div class="line">    <span class="keyword">print</span> date[<span class="number">0</span>], date[<span class="number">1</span>]</div></pre></td></tr></table></figure>
+<h3 id="2-时间间隔1-3天"><a href="#2-时间间隔1-3天" class="headerlink" title="2.时间间隔1-3天"></a>2.时间间隔1-3天</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> t <span class="keyword">in</span> [time_list[i:i + <span class="number">3</span>] <span class="keyword">for</span> i <span class="keyword">in</span> range(len(time_list) - <span class="number">1</span>)]:</div><div class="line">    <span class="keyword">if</span> len(t) == <span class="number">3</span>:</div><div class="line">        print(t[<span class="number">0</span>], t[<span class="number">2</span>])</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2017/09/22/python-two-or-three-continuous-items-in-list/" data-id="cjndsyl44003vwzqblhscqbl6" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/09/07/hello-world/" class="article-date">
@@ -99,7 +141,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/09/07/hello-world/" data-id="cjncd68ho001id1qb73gu1e5x" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/09/07/hello-world/" data-id="cjndsyl2i000owzqbpj1q3ham" class="article-share-link">Share</a>
       
       
     </footer>
@@ -143,7 +185,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/04/26/git_svn_blame/" data-id="cjncd68f9000wd1qb6hqzuq3q" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/04/26/git_svn_blame/" data-id="cjndsyl2j000qwzqbh9v9fcqc" class="article-share-link">Share</a>
       
       
     </footer>
@@ -189,7 +231,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/02/24/shell-shuffle-file-lines/" data-id="cjncd68n2004md1qbrfta4av1" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/02/24/shell-shuffle-file-lines/" data-id="cjndsyl4g004owzqb4668m3c5" class="article-share-link">Share</a>
       
       
     </footer>
@@ -241,57 +283,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2012/11/09/count-ip-address-appears-most-in-log-file/" data-id="cjncd68e80006d1qbcc8u8u7h" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-python-virtualenv-wrapper-and-pip" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2012/10/20/python-virtualenv-wrapper-and-pip/" class="article-date">
-  <time datetime="2012-10-20T06:33:00.000Z" itemprop="datePublished">2012-10-20</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/python/">python</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2012/10/20/python-virtualenv-wrapper-and-pip/">Python Virtualenv Wrapper and Pip</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="1-Install"><a href="#1-Install" class="headerlink" title="1.Install"></a>1.Install</h2><p>Arch 下默认是 <code>python3</code>, 而如果强制用软链接改为 <code>python2</code> 的话，一些程序会有问题的，之前都是小脚本，所以手动把第一行改为 <code>#!/usr/bin/env python2</code> 或者 <code>#!/usr/bin/python2</code> 就行，现在要做 GAE 发现手动改了好多还是不行，于是便有了 Python virtualenv 等。</p>
-<p>Install virtualenv virtualenvwrapper and pip</p>
-<pre><code># pacman -S python2-virtualenv
-# pacman -S python2-virtualenvwrapper
-# pacman -S python2-pip
-</code></pre>
-        
-          <p class="article-more-link">
-            <a href="/2012/10/20/python-virtualenv-wrapper-and-pip/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2012/10/20/python-virtualenv-wrapper-and-pip/" data-id="cjncd68mr0046d1qba4rwqm55" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2012/11/09/count-ip-address-appears-most-in-log-file/" data-id="cjndsyl1n0004wzqbxzrabpf7" class="article-share-link">Share</a>
       
       
     </footer>
@@ -357,6 +349,10 @@
       <ul>
         
           <li>
+            <a href="/2018/10/18/leetcode-rotate-image/">Rotate Image</a>
+          </li>
+        
+          <li>
             <a href="/2018/10/17/leetcode-unique-paths/">Unique Paths</a>
           </li>
         
@@ -370,10 +366,6 @@
         
           <li>
             <a href="/2018/10/12/leetcode-find-the-duplicate-number/">Find the Duplicate Number</a>
-          </li>
-        
-          <li>
-            <a href="/2018/10/11/leetcode-missing-number/">Missing Number</a>
           </li>
         
       </ul>

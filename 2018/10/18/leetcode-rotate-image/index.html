@@ -3,19 +3,20 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Install OpenEXR for Python | 记录点滴</title>
+  <title>Rotate Image | 记录点滴</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Using OpenEXR’s Python bindings we can make a simple image viewer.So, we should install OpenEXR first, following OpenEXR bindings for PythonMake sure you have already installed OpenEXR’s Prerequisite:">
+  <meta name="description" content="Rotate ImageYou are given an n x n 2D matrix representing an image. Rotate the image by 90 degrees (clockwise). Note: You have to rotate the image in-place, which means you have to modify the input 2D">
+<meta name="keywords" content="python,leetcode">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Install OpenEXR for Python">
-<meta property="og:url" content="https://clampist.github.io/2012/10/11/install-openexr-for-python/index.html">
+<meta property="og:title" content="Rotate Image">
+<meta property="og:url" content="https://clampist.github.io/2018/10/18/leetcode-rotate-image/index.html">
 <meta property="og:site_name" content="记录点滴">
-<meta property="og:description" content="Using OpenEXR’s Python bindings we can make a simple image viewer.So, we should install OpenEXR first, following OpenEXR bindings for PythonMake sure you have already installed OpenEXR’s Prerequisite:">
+<meta property="og:description" content="Rotate ImageYou are given an n x n 2D matrix representing an image. Rotate the image by 90 degrees (clockwise). Note: You have to rotate the image in-place, which means you have to modify the input 2D">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2014-05-21T13:25:14.000Z">
+<meta property="og:updated_time" content="2018-10-17T23:42:22.147Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Install OpenEXR for Python">
-<meta name="twitter:description" content="Using OpenEXR’s Python bindings we can make a simple image viewer.So, we should install OpenEXR first, following OpenEXR bindings for PythonMake sure you have already installed OpenEXR’s Prerequisite:">
+<meta name="twitter:title" content="Rotate Image">
+<meta name="twitter:description" content="Rotate ImageYou are given an n x n 2D matrix representing an image. Rotate the image by 90 degrees (clockwise). Note: You have to rotate the image in-place, which means you have to modify the input 2D">
   
     <link rel="alternate" href="/atom.xml" title="记录点滴" type="application/atom+xml">
   
@@ -66,14 +67,14 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-install-openexr-for-python" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-leetcode-rotate-image" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2012/10/11/install-openexr-for-python/" class="article-date">
-  <time datetime="2012-10-11T04:50:00.000Z" itemprop="datePublished">2012-10-11</time>
+    <a href="/2018/10/18/leetcode-rotate-image/" class="article-date">
+  <time datetime="2018-10-17T23:34:00.000Z" itemprop="datePublished">2018-10-18</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/opencv/">opencv</a>
+    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
   </div>
 
   </div>
@@ -84,7 +85,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Install OpenEXR for Python
+      Rotate Image
     </h1>
   
 
@@ -92,44 +93,40 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Using OpenEXR’s Python bindings we can make a simple image viewer.<br>So, we should install OpenEXR first, following <a href="http://www.excamera.com/sphinx/articles-openexr.html" target="_blank" rel="external">OpenEXR bindings for Python</a><br>Make sure you have already installed OpenEXR’s Prerequisite: Python 2.5+ and the OpenEXR C++ library(openexr).</p>
-<pre><code>wget http://excamera.com/files/OpenEXR-1.2.0.tar.gz
-
-tar zxvf OpenEXR-1.2.0.tar.gz
-
-cd OpenEXR-1.2.0
-
-(sudo python2 setup.py build)
-
-sudo python2 setup.py install
-</code></pre><p>Then, we can follow <a href="http://opencv.willowgarage.com/documentation/python/cookbook.html#opencv-and-openexr" target="_blank" rel="external">OpenCV and OpenEXR</a></p>
-<p>References: <a href="http://blog.csdn.net/ponder008/article/details/6592719" target="_blank" rel="external">Python how to install setup.py</a></p>
+        <h2 id="Rotate-Image"><a href="#Rotate-Image" class="headerlink" title="Rotate Image"></a>Rotate Image</h2><p>You are given an n x n 2D matrix representing an image.</p>
+<p>Rotate the image by 90 degrees (clockwise).</p>
+<p>Note:</p>
+<p>You have to rotate the image in-place, which means you have to modify the input 2D matrix directly. DO NOT allocate another 2D matrix and do the rotation.</p>
+<p><strong>Clean Most Pythonic</strong> - 24ms</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">rotate</span><span class="params">(self, matrix)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        :type matrix: List[List[int]]</span></div><div class="line"><span class="string">        :rtype: void Do not return anything, modify matrix in-place instead.</span></div><div class="line"><span class="string">        """</span></div><div class="line">        matrix[:] = map(list, zip(*matrix[::<span class="number">-1</span>]))</div></pre></td></tr></table></figure>
+<p><strong>test code</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">In [13]: m = [</div><div class="line">    ...:   [ 5, 1, 9,11],</div><div class="line">    ...:   [ 2, 4, 8,10],</div><div class="line">    ...:   [13, 3, 6, 7],</div><div class="line">    ...:   [15,14,12,16]</div><div class="line">    ...: ]</div><div class="line"></div><div class="line">In [14]: zip(*m)</div><div class="line">Out[14]: [(5, 2, 13, 15), (1, 4, 3, 14), (9, 8, 6, 12), (11, 10, 7, 16)]</div><div class="line"></div><div class="line">In [15]: m[::-1]</div><div class="line">Out[15]: [[15, 14, 12, 16], [13, 3, 6, 7], [2, 4, 8, 10], [5, 1, 9, 11]]</div><div class="line"></div><div class="line">In [16]: zip(*m[::-1])</div><div class="line">Out[16]: [(15, 13, 2, 5), (14, 3, 4, 1), (12, 6, 8, 9), (16, 7, 10, 11)]</div><div class="line"></div><div class="line">In [17]: map(list, zip(*m[::-1]))</div><div class="line">Out[17]: [[15, 13, 2, 5], [14, 3, 4, 1], [12, 6, 8, 9], [16, 7, 10, 11]]</div><div class="line">In [18]: m[:] = zip(*m[::-1])</div><div class="line">In [18]: m[:] = zip(*m[::-1])</div><div class="line"></div><div class="line">In [19]: m</div><div class="line">Out[19]: [(15, 13, 2, 5), (14, 3, 4, 1), (12, 6, 8, 9), (16, 7, 10, 11)]</div></pre></td></tr></table></figure>
+<p><strong>ref</strong></p>
+<p>This syntax is a slice assignment. A slice of <code>[:]</code> means the entire list. The difference between <code>nums[:] =</code> and <code>nums =</code> is that the latter doesn’t replace elements in the original list. This is observable when there are two references to the list</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>a = list(range(<span class="number">10</span>))</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>b = a</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>a[:] = [<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>] <span class="comment"># changes what a and b both refer to</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>b</div><div class="line">[<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>]</div></pre></td></tr></table></figure>
+<p>To see the difference just remove the [:] from the above sequence.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>a = list(range(<span class="number">10</span>))</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>b = a</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>a = [<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>] <span class="comment"># a now refers to a different list than b</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>b</div><div class="line">[<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>]</div></pre></td></tr></table></figure>
+<p><a href="https://stackoverflow.com/questions/32448414/what-does-colon-at-assignment-for-list-do-in-python" target="_blank" rel="external">What does colon at assignment for list[:] = […] do in Python [duplicate]</a></p>
+<p><a href="https://leetcode.com/problems/rotate-image/description/" target="_blank" rel="external">leet code</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2012/10/11/install-openexr-for-python/" data-id="cjndsyl2k000twzqbs6ig4g8d" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2018/10/18/leetcode-rotate-image/" data-id="cjndsyl32001uwzqbs4ccg2o8" class="article-share-link">Share</a>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+
     </footer>
   </div>
   
     
 <nav id="article-nav">
   
-    <a href="/2012/10/13/opencv-basis/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          OpenCV Basis
-        
-      </div>
-    </a>
   
-  
-    <a href="/2012/10/09/wonderful-octopress/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2018/10/17/leetcode-unique-paths/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Wonderful Octopress</div>
+      <div class="article-nav-title">Unique Paths</div>
     </a>
   
 </nav>

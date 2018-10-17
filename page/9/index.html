@@ -64,6 +64,51 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-django-multi-database" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/10/25/django-multi-database/" class="article-date">
+  <time datetime="2017-10-25T00:49:00.000Z" itemprop="datePublished">2017-10-25</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/django/">django</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/25/django-multi-database/">django multi database</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>1. 在<code>setting.py</code>中定义</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">DATABASES = &#123;</div><div class="line">    <span class="string">'default'</span>: &#123;</div><div class="line">        <span class="string">'NAME'</span>: <span class="string">'app_data'</span>,</div><div class="line">        <span class="string">'ENGINE'</span>: <span class="string">'django.db.backends.postgresql_psycopg2'</span>,</div><div class="line">        <span class="string">'USER'</span>: <span class="string">'postgres_user'</span>,</div><div class="line">        <span class="string">'PASSWORD'</span>: <span class="string">'s3krit'</span></div><div class="line">    &#125;,</div><div class="line">    <span class="string">'users'</span>: &#123;</div><div class="line">        <span class="string">'NAME'</span>: <span class="string">'user_data'</span>,</div><div class="line">        <span class="string">'ENGINE'</span>: <span class="string">'django.db.backends.mysql'</span>,</div><div class="line">        <span class="string">'USER'</span>: <span class="string">'mysql_user'</span>,</div><div class="line">        <span class="string">'PASSWORD'</span>: <span class="string">'priv4te'</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>2. 使用<code>using</code>手动选择一个数据库</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>u = User.objects.using(<span class="string">'legacy_users'</span>).get(username=<span class="string">'fred'</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>u.delete() <span class="comment"># will delete from the `legacy_users` database</span></div></pre></td></tr></table></figure>
+<p><a href="http://python.usyiyi.cn/translate/django_182/topics/db/multi-db.html" target="_blank" rel="external">django_182</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2017/10/25/django-multi-database/" data-id="cjndsyl2b000dwzqbdue6y68t" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-django-delete-multi-object" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/10/25/django-delete-multi-object/" class="article-date">
@@ -99,7 +144,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/10/25/django-delete-multi-object/" data-id="cjncd68e50004d1qboas1sjvp" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/10/25/django-delete-multi-object/" data-id="cjndsyl250008wzqbulmtromt" class="article-share-link">Share</a>
       
       
     </footer>
@@ -144,7 +189,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/10/25/django-models-objects-filter-by-dict-kwargs/" data-id="cjncd68e90008d1qb9d5ybuoo" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/10/25/django-models-objects-filter-by-dict-kwargs/" data-id="cjndsyl1t0006wzqb8hzr2gyn" class="article-share-link">Share</a>
       
       
     </footer>
@@ -189,7 +234,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/10/25/django-models-not-equal-exclude-filter/" data-id="cjncd68dv0002d1qb1qgec1tf" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/10/25/django-models-not-equal-exclude-filter/" data-id="cjndsyl1p0005wzqb8wo261ju" class="article-share-link">Share</a>
       
       
     </footer>
@@ -231,49 +276,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/10/25/du-find-max-dir/" data-id="cjncd68ee000hd1qbfa3ylwe6" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-python-check-class-has-attribute" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/10/25/python-check-class-has-attribute/" class="article-date">
-  <time datetime="2017-10-25T00:44:00.000Z" itemprop="datePublished">2017-10-25</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/python/">python</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/25/python-check-class-has-attribute/">check class has attribute</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Python-check-Class-Object-has-attribute"><a href="#Python-check-Class-Object-has-attribute" class="headerlink" title="Python check Class/Object has attribute"></a>Python check Class/Object has attribute</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> hasattr(a, <span class="string">'property'</span>):</div><div class="line">    a.property</div></pre></td></tr></table></figure>
-<p><a href="https://stackoverflow.com/questions/610883/how-to-know-if-an-object-has-an-attribute-in-python" target="_blank" rel="external">https://stackoverflow.com/questions/610883/how-to-know-if-an-object-has-an-attribute-in-python</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/10/25/python-check-class-has-attribute/" data-id="cjncd68mh003wd1qbeem79qmm" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/10/25/du-find-max-dir/" data-id="cjndsyl2e000kwzqb181akweu" class="article-share-link">Share</a>
       
       
     </footer>
@@ -339,6 +342,10 @@
       <ul>
         
           <li>
+            <a href="/2018/10/18/leetcode-rotate-image/">Rotate Image</a>
+          </li>
+        
+          <li>
             <a href="/2018/10/17/leetcode-unique-paths/">Unique Paths</a>
           </li>
         
@@ -352,10 +359,6 @@
         
           <li>
             <a href="/2018/10/12/leetcode-find-the-duplicate-number/">Find the Duplicate Number</a>
-          </li>
-        
-          <li>
-            <a href="/2018/10/11/leetcode-missing-number/">Missing Number</a>
           </li>
         
       </ul>

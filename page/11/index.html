@@ -64,6 +64,49 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-boost-lexical-cast-cpp" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/09/22/boost-lexical-cast-cpp/" class="article-date">
+  <time datetime="2017-09-22T06:37:00.000Z" itemprop="datePublished">2017-09-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/cpp/">cpp</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/09/22/boost-lexical-cast-cpp/">boost::lexical_cast</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="boost-lexical-cast"><a href="#boost-lexical-cast" class="headerlink" title="boost::lexical_cast"></a>boost::lexical_cast</h2><p><code>c++</code> 使用 <code>boost::lexical_cast</code> 数据类型转换</p>
+<p><a href="http://www.cnblogs.com/mx113/articles/1603985.html" target="_blank" rel="external">参考链接</a></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;boost/lexical_cast.hpp&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt; </span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> ERROR_LEXICAL_CAST     1 </span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    <span class="keyword">using</span> boost::lexical_cast;</div><div class="line">    <span class="keyword">int</span>         a = <span class="number">0</span>;</div><div class="line">    <span class="keyword">double</span>        b = <span class="number">0.0</span>;</div><div class="line">    <span class="built_in">std</span>::<span class="built_in">string</span> s = <span class="string">""</span>; </div><div class="line">    <span class="keyword">int</span>            e = <span class="number">0</span>;    </div><div class="line">    <span class="keyword">try</span></div><div class="line">    &#123; </div><div class="line">        <span class="comment">// ----- 字符串 --&gt; 数值 </span></div><div class="line">        a = lexical_cast&lt;<span class="keyword">int</span>&gt;(<span class="string">"123"</span>);</div><div class="line">        b = lexical_cast&lt;<span class="keyword">double</span>&gt;(<span class="string">"123.12"</span>);</div><div class="line">        <span class="comment">// ----- 数值 --&gt; 字符串</span></div><div class="line">        s = lexical_cast&lt;<span class="built_in">std</span>::<span class="built_in">string</span>&gt;(<span class="string">"123456.7"</span>); </div><div class="line">        <span class="comment">// ----- 异常处理演示</span></div><div class="line">        e = lexical_cast&lt;<span class="keyword">int</span>&gt;(<span class="string">"abc"</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">catch</span>(boost::bad_lexical_cast&amp; e)</div><div class="line">    &#123;</div><div class="line">        <span class="comment">// bad lexical cast: source type value could not be interpreted as target</span></div><div class="line">        <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; e.what() &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</div><div class="line">        <span class="keyword">return</span> ERROR_LEXICAL_CAST;</div><div class="line">    &#125; </div><div class="line">    </div><div class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; a &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;    <span class="comment">// 输出：123 </span></div><div class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; b &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;    <span class="comment">// 输出：123.12 </span></div><div class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; s &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;     <span class="comment">// 输出：123456.7 </span></div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2017/09/22/boost-lexical-cast-cpp/" data-id="cjndsyl1j0002wzqbo45jm8be" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-acquire-array-length-in-cpp" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/09/22/acquire-array-length-in-cpp/" class="article-date">
@@ -102,7 +145,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/09/22/acquire-array-length-in-cpp/" data-id="cjncd68e60005d1qb0r3p5jpt" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/09/22/acquire-array-length-in-cpp/" data-id="cjndsyl1a0000wzqbrmmuvzdx" class="article-share-link">Share</a>
       
       
     </footer>
@@ -149,7 +192,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/09/22/git-usage/" data-id="cjncd68eh000md1qbp34qzabs" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/09/22/git-usage/" data-id="cjndsyl2f000lwzqbmcsspek2" class="article-share-link">Share</a>
       
       
     </footer>
@@ -159,9 +202,9 @@
 
 
   
-    <article id="post-shell-last-param" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-linux-dos-to-unix" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/09/22/shell-last-param/" class="article-date">
+    <a href="/2017/09/22/linux-dos-to-unix/" class="article-date">
   <time datetime="2017-09-22T06:37:00.000Z" itemprop="datePublished">2017-09-22</time>
 </a>
     
@@ -177,7 +220,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/22/shell-last-param/">shell last param</a>
+      <a class="article-title" href="/2017/09/22/linux-dos-to-unix/">linux dos to unix</a>
     </h1>
   
 
@@ -185,14 +228,14 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Shell-最后一个参数"><a href="#Shell-最后一个参数" class="headerlink" title="Shell 最后一个参数"></a>Shell 最后一个参数</h1><p><a href="http://www.letuknowit.com/post/81.html" target="_blank" rel="external">参考链接</a></p>
-<p><code>$_</code> 会直接执行</p>
-<p><code>!$</code> 会展示命令，等用户按Enter</p>
+        <h1 id="linux下文本处理"><a href="#linux下文本处理" class="headerlink" title="linux下文本处理"></a>linux下文本处理</h1><h2 id="dos2unix-直接修改原文件"><a href="#dos2unix-直接修改原文件" class="headerlink" title="dos2unix:直接修改原文件"></a>dos2unix:直接修改原文件</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">dos2unix file</div></pre></td></tr></table></figure>
+<p><a href="https://www.cyberciti.biz/faq/howto-unix-linux-convert-dos-newlines-cr-lf-unix-text-format/" target="_blank" rel="external">wiki</a></p>
+<h2 id="replace-t-with-4-blanks"><a href="#replace-t-with-4-blanks" class="headerlink" title="replace \t with 4 blanks"></a>replace \t with 4 blanks</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">expand -t 4 input &gt; output</div></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/09/22/shell-last-param/" data-id="cjncd68my004gd1qbuuqqi0kt" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/09/22/linux-dos-to-unix/" data-id="cjndsyl3m002jwzqb9fhsnrck" class="article-share-link">Share</a>
       
       
     </footer>
@@ -233,50 +276,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/09/22/shell-uniq-count/" data-id="cjncd68n0004id1qbk73hws0h" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-boost-lexical-cast-cpp" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/09/22/boost-lexical-cast-cpp/" class="article-date">
-  <time datetime="2017-09-22T06:37:00.000Z" itemprop="datePublished">2017-09-22</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/cpp/">cpp</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/22/boost-lexical-cast-cpp/">boost::lexical_cast</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="boost-lexical-cast"><a href="#boost-lexical-cast" class="headerlink" title="boost::lexical_cast"></a>boost::lexical_cast</h2><p><code>c++</code> 使用 <code>boost::lexical_cast</code> 数据类型转换</p>
-<p><a href="http://www.cnblogs.com/mx113/articles/1603985.html" target="_blank" rel="external">参考链接</a></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;boost/lexical_cast.hpp&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt; </span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> ERROR_LEXICAL_CAST     1 </span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    <span class="keyword">using</span> boost::lexical_cast;</div><div class="line">    <span class="keyword">int</span>         a = <span class="number">0</span>;</div><div class="line">    <span class="keyword">double</span>        b = <span class="number">0.0</span>;</div><div class="line">    <span class="built_in">std</span>::<span class="built_in">string</span> s = <span class="string">""</span>; </div><div class="line">    <span class="keyword">int</span>            e = <span class="number">0</span>;    </div><div class="line">    <span class="keyword">try</span></div><div class="line">    &#123; </div><div class="line">        <span class="comment">// ----- 字符串 --&gt; 数值 </span></div><div class="line">        a = lexical_cast&lt;<span class="keyword">int</span>&gt;(<span class="string">"123"</span>);</div><div class="line">        b = lexical_cast&lt;<span class="keyword">double</span>&gt;(<span class="string">"123.12"</span>);</div><div class="line">        <span class="comment">// ----- 数值 --&gt; 字符串</span></div><div class="line">        s = lexical_cast&lt;<span class="built_in">std</span>::<span class="built_in">string</span>&gt;(<span class="string">"123456.7"</span>); </div><div class="line">        <span class="comment">// ----- 异常处理演示</span></div><div class="line">        e = lexical_cast&lt;<span class="keyword">int</span>&gt;(<span class="string">"abc"</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">catch</span>(boost::bad_lexical_cast&amp; e)</div><div class="line">    &#123;</div><div class="line">        <span class="comment">// bad lexical cast: source type value could not be interpreted as target</span></div><div class="line">        <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; e.what() &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</div><div class="line">        <span class="keyword">return</span> ERROR_LEXICAL_CAST;</div><div class="line">    &#125; </div><div class="line">    </div><div class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; a &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;    <span class="comment">// 输出：123 </span></div><div class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; b &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;    <span class="comment">// 输出：123.12 </span></div><div class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; s &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;     <span class="comment">// 输出：123456.7 </span></div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/09/22/boost-lexical-cast-cpp/" data-id="cjncd68dm0001d1qb55qirryp" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/09/22/shell-uniq-count/" data-id="cjndsyl4c004hwzqbgwvey7h7" class="article-share-link">Share</a>
       
       
     </footer>
@@ -342,6 +342,10 @@
       <ul>
         
           <li>
+            <a href="/2018/10/18/leetcode-rotate-image/">Rotate Image</a>
+          </li>
+        
+          <li>
             <a href="/2018/10/17/leetcode-unique-paths/">Unique Paths</a>
           </li>
         
@@ -355,10 +359,6 @@
         
           <li>
             <a href="/2018/10/12/leetcode-find-the-duplicate-number/">Find the Duplicate Number</a>
-          </li>
-        
-          <li>
-            <a href="/2018/10/11/leetcode-missing-number/">Missing Number</a>
           </li>
         
       </ul>
