@@ -64,6 +64,52 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-shell-shuffle-file-lines" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/02/24/shell-shuffle-file-lines/" class="article-date">
+  <time datetime="2017-02-24T10:37:00.000Z" itemprop="datePublished">2017-02-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/linux/">linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/24/shell-shuffle-file-lines/">shell shuffle file lines</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="高版本CentOS自带sort-R-shuf"><a href="#高版本CentOS自带sort-R-shuf" class="headerlink" title="高版本CentOS自带sort -R/ shuf"></a>高版本CentOS自带sort -R/ shuf</h2><p>用awk实现文件：行乱序</p>
+<blockquote>
+<p>1.awk</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">awk ‘BEGIN&#123;srand()&#125;&#123;b[rand()NR]=<span class="variable">$0</span>&#125;END&#123;<span class="keyword">for</span>(x <span class="keyword">in</span> b)<span class="built_in">print</span> b[x]&#125;’ data</div></pre></td></tr></table></figure>
+<p><a href="http://ju.outofmemory.cn/entry/118502" target="_blank" rel="external">Linux下实现文件洗牌效果 行乱序</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2017/02/24/shell-shuffle-file-lines/" data-id="cjnjjo3zo005dmsqb2uigp1nf" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-count-ip-address-appears-most-in-log-file" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2012/11/09/count-ip-address-appears-most-in-log-file/" class="article-date">
@@ -106,7 +152,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2012/11/09/count-ip-address-appears-most-in-log-file/" data-id="cjnf8du7c00062yqb12sux13o" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2012/11/09/count-ip-address-appears-most-in-log-file/" data-id="cjnjjo3ut000amsqbcb1w0np1" class="article-share-link">Share</a>
       
       
     </footer>
@@ -156,7 +202,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2012/10/20/python-virtualenv-wrapper-and-pip/" data-id="cjnf8duab004k2yqbpcb6ohsh" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2012/10/20/python-virtualenv-wrapper-and-pip/" data-id="cjnjjo3zh0053msqbuju5r3if" class="article-share-link">Share</a>
       
       
     </footer>
@@ -216,7 +262,7 @@ In [7]: cv.SaveImage(&apos;foo2.png&apos;, im2)
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2012/10/13/opencv-basis/" data-id="cjnf8du9w003l2yqbmtqxhsad" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2012/10/13/opencv-basis/" data-id="cjnjjo3yb003jmsqb1a4l609r" class="article-share-link">Share</a>
       
       
     </footer>
@@ -268,65 +314,7 @@ sudo python2 setup.py install
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2012/10/11/install-openexr-for-python/" data-id="cjnf8du7r000q2yqb9930w590" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-wonderful-octopress" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2012/10/09/wonderful-octopress/" class="article-date">
-  <time datetime="2012-10-09T06:37:00.000Z" itemprop="datePublished">2012-10-09</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/note/">note</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2012/10/09/wonderful-octopress/">Wonderful Octopress</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Today, I install Octopress, it is wonderful.<br>I follow the official docs<br><a href="http://octopress.org/docs/setup/" target="_blank" rel="external">setup</a><br><a href="http://octopress.org/docs/deploying/github/" target="_blank" rel="external">deploy</a><br><a href="http://octopress.org/docs/configuring/" target="_blank" rel="external">config</a><br><a href="http://octopress.org/docs/blogging/" target="_blank" rel="external">blogging</a><br>and the other two blogs:<br><a href="http://jokry.com/2012/03/08/octopress/" target="_blank" rel="external">Octopress介绍与安装</a><br><a href="http://blog.javachen.com/2012/06/migrate-blog-form-wordpress-to-github-with-octopress/" target="_blank" rel="external">使用Octopress将博客从wordpress迁移到GitHub上</a></p>
-<p>The following command is in common use(in the project root directory):</p>
-<pre><code>rake new_post[&quot;title&quot;]
-rake new_page[super-awesome]
-rake new_page[super-awesome/page.html]
-
-rake preview
-rake generate
-rake deploy
-
-git add .
-git commit -m &apos;your message&apos;
-git push origin source
-</code></pre>
-        
-          <p class="article-more-link">
-            <a href="/2012/10/09/wonderful-octopress/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2012/10/09/wonderful-octopress/" data-id="cjnf8duai00572yqbxyt3uk7e" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2012/10/11/install-openexr-for-python/" data-id="cjnjjo3ve000tmsqbbo93ghsy" class="article-share-link">Share</a>
       
       
     </footer>
@@ -339,7 +327,7 @@ git push origin source
 
 
   <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/page/12/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><span class="page-number current">13</span>
+    <a class="extend prev" rel="prev" href="/page/12/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><span class="page-number current">13</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/14/">下一页&raquo;</a>
   </nav>
 
 </section>
@@ -392,6 +380,10 @@ git push origin source
       <ul>
         
           <li>
+            <a href="/2018/10/22/leetcode-group-anagrams/">Group Anagrams</a>
+          </li>
+        
+          <li>
             <a href="/2018/10/19/leetcode-kth-largest-element-in-an-array/">Kth Largest Element in an Array</a>
           </li>
         
@@ -405,10 +397,6 @@ git push origin source
         
           <li>
             <a href="/2018/10/16/leetcode-flatten-nested-list-iterator/">Flatten Nested List Iterator</a>
-          </li>
-        
-          <li>
-            <a href="/2018/10/15/leetcode-intersection-of-two-arrays-ii/">Intersection of Two Arrays II</a>
           </li>
         
       </ul>
