@@ -3,20 +3,20 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Group Anagrams | 记录点滴</title>
+  <title>Insert Delete GetRandom O(1) | 记录点滴</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Group Anagramsdict solution - 172ms 1234567891011class Solution(object):    def groupAnagrams(self, strs):        &quot;&quot;&quot;        :type strs: List[str]        :rtype: List[List[str]]        &quot;&quot;&quot;        ret">
+  <meta name="description" content="Insert Delete GetRandom O(1)dict+list Version - 80 ms 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354import randomclass RandomizedSet(object):    de">
 <meta name="keywords" content="python,leetcode">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Group Anagrams">
-<meta property="og:url" content="https://clampist.github.io/2018/10/22/leetcode-group-anagrams/index.html">
+<meta property="og:title" content="Insert Delete GetRandom O(1)">
+<meta property="og:url" content="https://clampist.github.io/2018/10/24/leetcode-insert-delete-getrandom-o1/index.html">
 <meta property="og:site_name" content="记录点滴">
-<meta property="og:description" content="Group Anagramsdict solution - 172ms 1234567891011class Solution(object):    def groupAnagrams(self, strs):        &quot;&quot;&quot;        :type strs: List[str]        :rtype: List[List[str]]        &quot;&quot;&quot;        ret">
+<meta property="og:description" content="Insert Delete GetRandom O(1)dict+list Version - 80 ms 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354import randomclass RandomizedSet(object):    de">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-10-22T00:40:18.941Z">
+<meta property="og:updated_time" content="2018-10-24T00:00:34.585Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Group Anagrams">
-<meta name="twitter:description" content="Group Anagramsdict solution - 172ms 1234567891011class Solution(object):    def groupAnagrams(self, strs):        &quot;&quot;&quot;        :type strs: List[str]        :rtype: List[List[str]]        &quot;&quot;&quot;        ret">
+<meta name="twitter:title" content="Insert Delete GetRandom O(1)">
+<meta name="twitter:description" content="Insert Delete GetRandom O(1)dict+list Version - 80 ms 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354import randomclass RandomizedSet(object):    de">
   
     <link rel="alternate" href="/atom.xml" title="记录点滴" type="application/atom+xml">
   
@@ -67,10 +67,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-leetcode-group-anagrams" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-leetcode-insert-delete-getrandom-o1" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/10/22/leetcode-group-anagrams/" class="article-date">
-  <time datetime="2018-10-21T23:55:00.000Z" itemprop="datePublished">2018-10-22</time>
+    <a href="/2018/10/24/leetcode-insert-delete-getrandom-o1/" class="article-date">
+  <time datetime="2018-10-23T23:33:00.000Z" itemprop="datePublished">2018-10-24</time>
 </a>
     
   <div class="article-category">
@@ -85,7 +85,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Group Anagrams
+      Insert Delete GetRandom O(1)
     </h1>
   
 
@@ -93,22 +93,14 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Group-Anagrams"><a href="#Group-Anagrams" class="headerlink" title="Group Anagrams"></a>Group Anagrams</h2><p><strong>dict solution</strong> - 172ms</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">groupAnagrams</span><span class="params">(self, strs)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        :type strs: List[str]</span></div><div class="line"><span class="string">        :rtype: List[List[str]]</span></div><div class="line"><span class="string">        """</span></div><div class="line">        ret = &#123;&#125;</div><div class="line">        <span class="keyword">for</span> s <span class="keyword">in</span> sorted(strs):</div><div class="line">            key = tuple(sorted(s))</div><div class="line">            ret[key] = ret.get(key, []) + [s]</div><div class="line">        <span class="keyword">return</span> ret.values()</div></pre></td></tr></table></figure>
-<p><strong>defaultdict solution</strong> - 128ms</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> collections</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">	<span class="function"><span class="keyword">def</span> <span class="title">groupAnagrams</span><span class="params">(self, strs)</span>:</span></div><div class="line">	    groups = collections.defaultdict(list)</div><div class="line">	    <span class="keyword">for</span> s <span class="keyword">in</span> strs:</div><div class="line">	        groups[tuple(sorted(s))].append(s)</div><div class="line">	    <span class="keyword">return</span> map(sorted, groups.values())</div></pre></td></tr></table></figure>
-<p><strong>itertools solution</strong> - 156ms</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> itertools</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">	<span class="function"><span class="keyword">def</span> <span class="title">groupAnagrams</span><span class="params">(self, strs)</span>:</span></div><div class="line">	    <span class="keyword">return</span> [sorted(g) <span class="keyword">for</span> _, g <span class="keyword">in</span> itertools.groupby(sorted(strs, key=sorted), sorted)]</div></pre></td></tr></table></figure>
-<p><strong>test code</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">In [460]: s = Solution(); t = s.groupAnagrams([<span class="string">"eat"</span>,<span class="string">"tea"</span>,<span class="string">"tan"</span>,<span class="string">"ate"</span>,<span class="string">"nat"</span>,<span class="string">"bat"</span>])</div><div class="line"></div><div class="line">In [461]: t</div><div class="line">Out[461]: [[<span class="string">'bat'</span>], [<span class="string">'ate'</span>, <span class="string">'eat'</span>, <span class="string">'tea'</span>], [<span class="string">'nat'</span>, <span class="string">'tan'</span>]]</div></pre></td></tr></table></figure>
-<p><a href="https://leetcode.com/problems/group-anagrams/description/" target="_blank" rel="external">leet code</a></p>
-<p><a href="https://www.jianshu.com/p/26df28b3bfc8" target="_blank" rel="external">Python中collections.defaultdict()使用</a></p>
-<p><a href="http://kodango.com/understand-defaultdict-in-python" target="_blank" rel="external">理解 Python 语言中的 defaultdict</a></p>
+        <h2 id="Insert-Delete-GetRandom-O-1"><a href="#Insert-Delete-GetRandom-O-1" class="headerlink" title="Insert Delete GetRandom O(1)"></a>Insert Delete GetRandom O(1)</h2><p><strong>dict+list Version - 80 ms</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> random</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">RandomizedSet</span><span class="params">(object)</span>:</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        Initialize your data structure here.</span></div><div class="line"><span class="string">        """</span></div><div class="line">        self.data = []</div><div class="line">        self.idxs = &#123;&#125;</div><div class="line">        self.cnt = <span class="number">0</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">insert</span><span class="params">(self, val)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        Inserts a value to the set. Returns true if the set did not already contain the specified element.</span></div><div class="line"><span class="string">        :type val: int</span></div><div class="line"><span class="string">        :rtype: bool</span></div><div class="line"><span class="string">        """</span></div><div class="line">        <span class="keyword">if</span> val <span class="keyword">in</span> self.idxs:</div><div class="line">            <span class="keyword">return</span> <span class="keyword">False</span></div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            self.data.append(val)</div><div class="line">            self.idxs[val] = self.cnt</div><div class="line">            self.cnt += <span class="number">1</span></div><div class="line">            <span class="keyword">return</span> <span class="keyword">True</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">remove</span><span class="params">(self, val)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        Removes a value from the set. Returns true if the set contained the specified element.</span></div><div class="line"><span class="string">        :type val: int</span></div><div class="line"><span class="string">        :rtype: bool</span></div><div class="line"><span class="string">        """</span></div><div class="line">        <span class="keyword">if</span> val <span class="keyword">in</span> self.idxs:</div><div class="line">            idx, value = self.idxs[val], self.data[<span class="number">-1</span>]</div><div class="line">            self.idxs[value], self.data[idx] = idx, value</div><div class="line">            self.data.pop()</div><div class="line">            self.idxs.pop(val, <span class="number">0</span>)</div><div class="line">            self.cnt -= <span class="number">1</span></div><div class="line">            <span class="keyword">return</span> <span class="keyword">True</span></div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            <span class="keyword">return</span> <span class="keyword">False</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getRandom</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        Get a random element from the set.</span></div><div class="line"><span class="string">        :rtype: int</span></div><div class="line"><span class="string">        """</span></div><div class="line">        <span class="keyword">return</span> random.choice(self.data)</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment"># Your RandomizedSet object will be instantiated and called as such:</span></div><div class="line"><span class="comment"># obj = RandomizedSet()</span></div><div class="line"><span class="comment"># param_1 = obj.insert(val)</span></div><div class="line"><span class="comment"># param_2 = obj.remove(val)</span></div><div class="line"><span class="comment"># param_3 = obj.getRandom()</span></div></pre></td></tr></table></figure>
+<p><a href="https://leetcode.com/problems/insert-delete-getrandom-o1/description/" target="_blank" rel="external">leet code</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/10/22/leetcode-group-anagrams/" data-id="cjnme80u50017luqbm96dtg6k" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2018/10/24/leetcode-insert-delete-getrandom-o1/" data-id="cjnme80ub001iluqbpj0dmkb7" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
@@ -119,19 +111,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2018/10/23/leetcode-maximum-subarray/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          Maximum Subarray
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/10/19/leetcode-kth-largest-element-in-an-array/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2018/10/23/leetcode-maximum-subarray/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Kth Largest Element in an Array</div>
+      <div class="article-nav-title">Maximum Subarray</div>
     </a>
   
 </nav>
