@@ -64,6 +64,49 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-redis-delete-all-keys" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/10/25/redis-delete-all-keys/" class="article-date">
+  <time datetime="2017-10-25T05:59:00.000Z" itemprop="datePublished">2017-10-25</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/redis/">redis</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/25/redis-delete-all-keys/">redis-delete-all-keys</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>Flushall</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">redis 127.0.0.1:6379&gt; FLUSHALL</div></pre></td></tr></table></figure>
+<p><a href="http://www.runoob.com/redis/server-flushall.html" target="_blank" rel="external">Redis Flushall 命令</a><br><a href="http://www.dnsdizhi.com/post-219.html" target="_blank" rel="external">Redis常用命令集，清空redis缓存数据库</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2017/10/25/redis-delete-all-keys/" data-id="cjnnvzcnd004vgjqbr9wnhmue" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-mysql-field-content-replace" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/10/25/mysql-field-content-replace/" class="article-date">
@@ -96,7 +139,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/10/25/mysql-field-content-replace/" data-id="cjnme80vp004qluqbrr5j7488" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/10/25/mysql-field-content-replace/" data-id="cjnnvzclx003dgjqbxp9d2k26" class="article-share-link">Share</a>
       
       
     </footer>
@@ -142,7 +185,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/10/25/django-transform-queryset-to-dict/" data-id="cjnme80tp000gluqbupc5tdjc" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/10/25/django-transform-queryset-to-dict/" data-id="cjnnvzcjt000ggjqb7cssh8g4" class="article-share-link">Share</a>
       
       
     </footer>
@@ -187,52 +230,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/10/25/django-redis-cache-delete-pattern/" data-id="cjnme80tn000dluqbmnog3zc7" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-django-delete-multi-object" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/10/25/django-delete-multi-object/" class="article-date">
-  <time datetime="2017-10-25T00:49:00.000Z" itemprop="datePublished">2017-10-25</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/django/">django</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/25/django-delete-multi-object/">django delete multi object</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>1.高效</p>
-<p><code>MyModel.objects.filter(expired=True).delete()</code></p>
-<p>2.非高效</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">rows = MyModel.objects.filter(expired=True)</div><div class="line"></div><div class="line">for r in rows:</div><div class="line">    r.delete()</div></pre></td></tr></table></figure>
-<p><a href="https://www.djangorocks.com/snippets/deleting-multiple-rows-from-your-database.html" target="_blank" rel="external">Deleting multiple rows from your database</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/10/25/django-delete-multi-object/" data-id="cjnme80ti0006luqbx7bgzim0" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/10/25/django-redis-cache-delete-pattern/" data-id="cjnnvzcju000hgjqbqr0koz7d" class="article-share-link">Share</a>
       
       
     </footer>
@@ -277,7 +275,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/10/25/django-multi-database/" data-id="cjnme80tl0009luqb8huaxs3v" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/10/25/django-multi-database/" data-id="cjnnvzcjp000cgjqb6bqubai8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -311,7 +309,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/2d-array/">2d-array</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bigflow/">bigflow</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/binary-tree/">binary tree</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hadoop/">hadoop</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/lambda/">lambda</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/2d-array/">2d-array</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bigflow/">bigflow</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/binary-tree/">binary tree</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hadoop/">hadoop</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/lambda/">lambda</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python3/">python3</a></li></ul>
     </div>
   </div>
 
@@ -321,7 +319,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/2d-array/" style="font-size: 12.5px;">2d-array</a> <a href="/tags/bigflow/" style="font-size: 10px;">bigflow</a> <a href="/tags/binary-tree/" style="font-size: 15px;">binary tree</a> <a href="/tags/hadoop/" style="font-size: 10px;">hadoop</a> <a href="/tags/lambda/" style="font-size: 10px;">lambda</a> <a href="/tags/leetcode/" style="font-size: 17.5px;">leetcode</a> <a href="/tags/python/" style="font-size: 20px;">python</a>
+      <a href="/tags/2d-array/" style="font-size: 12.5px;">2d-array</a> <a href="/tags/bigflow/" style="font-size: 10px;">bigflow</a> <a href="/tags/binary-tree/" style="font-size: 15px;">binary tree</a> <a href="/tags/hadoop/" style="font-size: 10px;">hadoop</a> <a href="/tags/lambda/" style="font-size: 10px;">lambda</a> <a href="/tags/leetcode/" style="font-size: 17.5px;">leetcode</a> <a href="/tags/python/" style="font-size: 20px;">python</a> <a href="/tags/python3/" style="font-size: 10px;">python3</a>
     </div>
   </div>
 
@@ -343,6 +341,10 @@
       <ul>
         
           <li>
+            <a href="/2018/10/25/leetcode-game-of-life/">Game of Life</a>
+          </li>
+        
+          <li>
             <a href="/2018/10/24/leetcode-insert-delete-getrandom-o1/">Insert Delete GetRandom O(1)</a>
           </li>
         
@@ -356,10 +358,6 @@
         
           <li>
             <a href="/2018/10/19/leetcode-kth-largest-element-in-an-array/">Kth Largest Element in an Array</a>
-          </li>
-        
-          <li>
-            <a href="/2018/10/18/leetcode-rotate-image/">Rotate Image</a>
           </li>
         
       </ul>

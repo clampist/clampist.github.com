@@ -64,6 +64,54 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-acquire-array-length-in-cpp" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/09/22/acquire-array-length-in-cpp/" class="article-date">
+  <time datetime="2017-09-22T06:37:00.000Z" itemprop="datePublished">2017-09-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/cpp/">cpp</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/09/22/acquire-array-length-in-cpp/">acquire array length in cpp</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="C-获取数组长度"><a href="#C-获取数组长度" class="headerlink" title="C++获取数组长度"></a>C++获取数组长度</h2><p>一、静态数组。</p>
+<p>比如 int int_ary[5] ,静态数组在编译的时候就知道了数组长度，这对编译器来说挺好实现的。</p>
+<p>用得最多的大概就是sizeof了吧：</p>
+<p><code>#define countof_macro(x) (sizeof((x)) / sizeof(x)[0])</code></p>
+<p>对于C++，可以用模板。</p>
+<p>如果将数组作为函数形参的话，它会退化成一个指针，但是引用则不会。使用引用带来的另外一个问题就是，声明参数时必须知道数组长度——我要是知道我还费这劲干啥？解决方法就是使用模板，将数组引用的数组大小声明为模板参数：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//错误的做法：这里形参已经退化为指针了</span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">countof_func_para</span><span class="params">(<span class="keyword">int</span> int_ary[<span class="number">5</span>])</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    <span class="keyword">return</span> countof_macro(int_ary);</div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="comment">//正确的做法</span></div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">size_t</span> n&gt;</div><div class="line">int countof_template(const int (&amp;int_ary)[N])</div><div class="line">&#123;</div><div class="line">    <span class="keyword">return</span> N;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><a href="http://www.cnblogs.com/h46incon/archive/2013/03/17/2965020.html" target="_blank" rel="external">参考链接</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2017/09/22/acquire-array-length-in-cpp/" data-id="cjnnvzcj80001gjqbucyznjgy" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/09/07/hello-world/" class="article-date">
@@ -99,7 +147,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/09/07/hello-world/" data-id="cjnme80tv000pluqbzyiu11ux" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/09/07/hello-world/" data-id="cjnnvzcjz000ogjqbwzy16cv9" class="article-share-link">Share</a>
       
       
     </footer>
@@ -143,7 +191,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/04/26/git_svn_blame/" data-id="cjnme80tt000mluqbruo7r9bh" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/04/26/git_svn_blame/" data-id="cjnnvzck3000tgjqb9ncd9in3" class="article-share-link">Share</a>
       
       
     </footer>
@@ -189,7 +237,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/02/24/shell-shuffle-file-lines/" data-id="cjnme80wl0069luqbkhvogmll" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/02/24/shell-shuffle-file-lines/" data-id="cjnnvzco80058gjqbdtxls48l" class="article-share-link">Share</a>
       
       
     </footer>
@@ -241,57 +289,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2012/11/09/count-ip-address-appears-most-in-log-file/" data-id="cjnme80ts000kluqbw0rrtikl" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-python-virtualenv-wrapper-and-pip" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2012/10/20/python-virtualenv-wrapper-and-pip/" class="article-date">
-  <time datetime="2012-10-20T06:33:00.000Z" itemprop="datePublished">2012-10-20</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/python/">python</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2012/10/20/python-virtualenv-wrapper-and-pip/">Python Virtualenv Wrapper and Pip</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="1-Install"><a href="#1-Install" class="headerlink" title="1.Install"></a>1.Install</h2><p>Arch 下默认是 <code>python3</code>, 而如果强制用软链接改为 <code>python2</code> 的话，一些程序会有问题的，之前都是小脚本，所以手动把第一行改为 <code>#!/usr/bin/env python2</code> 或者 <code>#!/usr/bin/python2</code> 就行，现在要做 GAE 发现手动改了好多还是不行，于是便有了 Python virtualenv 等。</p>
-<p>Install virtualenv virtualenvwrapper and pip</p>
-<pre><code># pacman -S python2-virtualenv
-# pacman -S python2-virtualenvwrapper
-# pacman -S python2-pip
-</code></pre>
-        
-          <p class="article-more-link">
-            <a href="/2012/10/20/python-virtualenv-wrapper-and-pip/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2012/10/20/python-virtualenv-wrapper-and-pip/" data-id="cjnme80w5005kluqbfyz2u8f1" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2012/11/09/count-ip-address-appears-most-in-log-file/" data-id="cjnnvzcjg0004gjqbhw3axtpi" class="article-share-link">Share</a>
       
       
     </footer>
@@ -325,7 +323,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/2d-array/">2d-array</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bigflow/">bigflow</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/binary-tree/">binary tree</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hadoop/">hadoop</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/lambda/">lambda</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/2d-array/">2d-array</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bigflow/">bigflow</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/binary-tree/">binary tree</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hadoop/">hadoop</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/lambda/">lambda</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python3/">python3</a></li></ul>
     </div>
   </div>
 
@@ -335,7 +333,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/2d-array/" style="font-size: 12.5px;">2d-array</a> <a href="/tags/bigflow/" style="font-size: 10px;">bigflow</a> <a href="/tags/binary-tree/" style="font-size: 15px;">binary tree</a> <a href="/tags/hadoop/" style="font-size: 10px;">hadoop</a> <a href="/tags/lambda/" style="font-size: 10px;">lambda</a> <a href="/tags/leetcode/" style="font-size: 17.5px;">leetcode</a> <a href="/tags/python/" style="font-size: 20px;">python</a>
+      <a href="/tags/2d-array/" style="font-size: 12.5px;">2d-array</a> <a href="/tags/bigflow/" style="font-size: 10px;">bigflow</a> <a href="/tags/binary-tree/" style="font-size: 15px;">binary tree</a> <a href="/tags/hadoop/" style="font-size: 10px;">hadoop</a> <a href="/tags/lambda/" style="font-size: 10px;">lambda</a> <a href="/tags/leetcode/" style="font-size: 17.5px;">leetcode</a> <a href="/tags/python/" style="font-size: 20px;">python</a> <a href="/tags/python3/" style="font-size: 10px;">python3</a>
     </div>
   </div>
 
@@ -357,6 +355,10 @@
       <ul>
         
           <li>
+            <a href="/2018/10/25/leetcode-game-of-life/">Game of Life</a>
+          </li>
+        
+          <li>
             <a href="/2018/10/24/leetcode-insert-delete-getrandom-o1/">Insert Delete GetRandom O(1)</a>
           </li>
         
@@ -370,10 +372,6 @@
         
           <li>
             <a href="/2018/10/19/leetcode-kth-largest-element-in-an-array/">Kth Largest Element in an Array</a>
-          </li>
-        
-          <li>
-            <a href="/2018/10/18/leetcode-rotate-image/">Rotate Image</a>
           </li>
         
       </ul>

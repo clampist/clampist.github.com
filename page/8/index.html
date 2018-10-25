@@ -64,6 +64,49 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-django-mongoengine-query-operators" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/11/27/django-mongoengine-query-operators/" class="article-date">
+  <time datetime="2017-11-27T03:37:00.000Z" itemprop="datePublished">2017-11-27</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/mongodb/">mongodb</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/11/27/django-mongoengine-query-operators/">django models mongoengine not in filter</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Django-NOT-IN-gt-exclude-a-in-b-list"><a href="#Django-NOT-IN-gt-exclude-a-in-b-list" class="headerlink" title="Django: NOT IN -&gt; exclude(a__in=b_list)"></a>Django: NOT IN -&gt; exclude(a__in=b_list)</h2><p>NOT IN: <code>nin</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">ne – <span class="keyword">not</span> equal to</div><div class="line">lt – less than</div><div class="line">lte – less than <span class="keyword">or</span> equal to</div><div class="line">gt – greater than</div><div class="line">gte – greater than <span class="keyword">or</span> equal to</div><div class="line"><span class="keyword">not</span> – negate a standard check, may be used before other operators (e.g. Q(age__not__mod=<span class="number">5</span>))</div><div class="line"><span class="keyword">in</span> – value <span class="keyword">is</span> <span class="keyword">in</span> list (a list of values should be provided)</div><div class="line">nin – value <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">in</span> list (a list of values should be provided)</div><div class="line">mod – value % x == y, where x <span class="keyword">and</span> y are two provided values</div><div class="line">all – every item <span class="keyword">in</span> list of values provided <span class="keyword">is</span> <span class="keyword">in</span> array</div><div class="line">size – the size of the array <span class="keyword">is</span></div><div class="line">exists – value <span class="keyword">for</span> field exists</div></pre></td></tr></table></figure>
+<p><a href="http://docs.mongoengine.org/guide/querying.html" target="_blank" rel="external">Offical Docs: Querying the database</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2017/11/27/django-mongoengine-query-operators/" data-id="cjnnvzcjn0009gjqb843kxa60" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-python-loads-json-object-instead-of-unicode" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/11/22/python-loads-json-object-instead-of-unicode/" class="article-date">
@@ -98,7 +141,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/11/22/python-loads-json-object-instead-of-unicode/" data-id="cjnme80vy005aluqb1dy9gwxv" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/11/22/python-loads-json-object-instead-of-unicode/" data-id="cjnnvzcmw004ggjqbi178agix" class="article-share-link">Share</a>
       
       
     </footer>
@@ -143,7 +186,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/11/02/linux-grep-by-reg-content-in-file/" data-id="cjnme80vl004hluqbt2nxkqmz" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/11/02/linux-grep-by-reg-content-in-file/" data-id="cjnnvzclv003agjqbfkx8qyu9" class="article-share-link">Share</a>
       
       
     </footer>
@@ -192,7 +235,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/11/02/linux-sync-folder-by-rsync/" data-id="cjnme80vo004nluqbe6plbreo" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/11/02/linux-sync-folder-by-rsync/" data-id="cjnnvzcm1003kgjqb0990bwyj" class="article-share-link">Share</a>
       
       
     </footer>
@@ -239,50 +282,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/11/01/turing/" data-id="cjnme80wo006fluqbn52xua2e" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-redis-delete-all-keys" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/10/25/redis-delete-all-keys/" class="article-date">
-  <time datetime="2017-10-25T05:59:00.000Z" itemprop="datePublished">2017-10-25</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/redis/">redis</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/25/redis-delete-all-keys/">redis-delete-all-keys</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>Flushall</strong></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">redis 127.0.0.1:6379&gt; FLUSHALL</div></pre></td></tr></table></figure>
-<p><a href="http://www.runoob.com/redis/server-flushall.html" target="_blank" rel="external">Redis Flushall 命令</a><br><a href="http://www.dnsdizhi.com/post-219.html" target="_blank" rel="external">Redis常用命令集，清空redis缓存数据库</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/10/25/redis-delete-all-keys/" data-id="cjnme80wj0067luqb2yg6do94" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/11/01/turing/" data-id="cjnnvzcoz005ugjqbi6hpfuwp" class="article-share-link">Share</a>
       
       
     </footer>
@@ -316,7 +316,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/2d-array/">2d-array</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bigflow/">bigflow</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/binary-tree/">binary tree</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hadoop/">hadoop</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/lambda/">lambda</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/2d-array/">2d-array</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bigflow/">bigflow</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/binary-tree/">binary tree</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hadoop/">hadoop</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/lambda/">lambda</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python3/">python3</a></li></ul>
     </div>
   </div>
 
@@ -326,7 +326,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/2d-array/" style="font-size: 12.5px;">2d-array</a> <a href="/tags/bigflow/" style="font-size: 10px;">bigflow</a> <a href="/tags/binary-tree/" style="font-size: 15px;">binary tree</a> <a href="/tags/hadoop/" style="font-size: 10px;">hadoop</a> <a href="/tags/lambda/" style="font-size: 10px;">lambda</a> <a href="/tags/leetcode/" style="font-size: 17.5px;">leetcode</a> <a href="/tags/python/" style="font-size: 20px;">python</a>
+      <a href="/tags/2d-array/" style="font-size: 12.5px;">2d-array</a> <a href="/tags/bigflow/" style="font-size: 10px;">bigflow</a> <a href="/tags/binary-tree/" style="font-size: 15px;">binary tree</a> <a href="/tags/hadoop/" style="font-size: 10px;">hadoop</a> <a href="/tags/lambda/" style="font-size: 10px;">lambda</a> <a href="/tags/leetcode/" style="font-size: 17.5px;">leetcode</a> <a href="/tags/python/" style="font-size: 20px;">python</a> <a href="/tags/python3/" style="font-size: 10px;">python3</a>
     </div>
   </div>
 
@@ -348,6 +348,10 @@
       <ul>
         
           <li>
+            <a href="/2018/10/25/leetcode-game-of-life/">Game of Life</a>
+          </li>
+        
+          <li>
             <a href="/2018/10/24/leetcode-insert-delete-getrandom-o1/">Insert Delete GetRandom O(1)</a>
           </li>
         
@@ -361,10 +365,6 @@
         
           <li>
             <a href="/2018/10/19/leetcode-kth-largest-element-in-an-array/">Kth Largest Element in an Array</a>
-          </li>
-        
-          <li>
-            <a href="/2018/10/18/leetcode-rotate-image/">Rotate Image</a>
           </li>
         
       </ul>
