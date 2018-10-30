@@ -3,15 +3,20 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Category: bigflow | 记录点滴</title>
+  <title>Longest Consecutive Sequence | 记录点滴</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="记录点滴">
-<meta property="og:url" content="https://clampist.github.io/categories/bigflow/index.html">
+  <meta name="description" content="Longest Consecutive SequenceO(n) Version - 44ms 123456789101112131415class Solution:    def longestConsecutive(self, nums):        &quot;&quot;&quot;        :type nums: List[int]        :rtype: int        &quot;&quot;&quot;">
+<meta name="keywords" content="leetcode,python3">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Longest Consecutive Sequence">
+<meta property="og:url" content="https://clampist.github.io/2018/10/31/leetcode-longest-consecutive-sequence/index.html">
 <meta property="og:site_name" content="记录点滴">
+<meta property="og:description" content="Longest Consecutive SequenceO(n) Version - 44ms 123456789101112131415class Solution:    def longestConsecutive(self, nums):        &quot;&quot;&quot;        :type nums: List[int]        :rtype: int        &quot;&quot;&quot;">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-10-30T23:28:24.289Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="记录点滴">
+<meta name="twitter:title" content="Longest Consecutive Sequence">
+<meta name="twitter:description" content="Longest Consecutive SequenceO(n) Version - 44ms 123456789101112131415class Solution:    def longestConsecutive(self, nums):        &quot;&quot;&quot;        :type nums: List[int]        :rtype: int        &quot;&quot;&quot;">
   
     <link rel="alternate" href="/atom.xml" title="记录点滴" type="application/atom+xml">
   
@@ -62,40 +67,62 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/08/27/使用 Bigflow 筛选出某1个字段 top K 行/" class="archive-article-date">
-  <time datetime="2018-08-27T11:42:00.000Z" itemprop="datePublished">8月 27</time>
+        <section id="main"><article id="post-leetcode-longest-consecutive-sequence" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/10/31/leetcode-longest-consecutive-sequence/" class="article-date">
+  <time datetime="2018-10-30T23:27:00.000Z" itemprop="datePublished">2018-10-31</time>
 </a>
-      
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/27/使用 Bigflow 筛选出某1个字段 top K 行/">bigflow top one field</a>
+    <h1 class="article-title" itemprop="name">
+      Longest Consecutive Sequence
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Longest-Consecutive-Sequence"><a href="#Longest-Consecutive-Sequence" class="headerlink" title="Longest Consecutive Sequence"></a>Longest Consecutive Sequence</h2><p><strong>O(n) Version</strong> - 44ms</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">longestConsecutive</span><span class="params">(self, nums)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        :type nums: List[int]</span></div><div class="line"><span class="string">        :rtype: int</span></div><div class="line"><span class="string">        """</span></div><div class="line">        nums = set(nums)</div><div class="line">        ret = <span class="number">0</span></div><div class="line">        <span class="keyword">for</span> x <span class="keyword">in</span> nums:</div><div class="line">            <span class="keyword">if</span> x - <span class="number">1</span> <span class="keyword">not</span> <span class="keyword">in</span> nums:</div><div class="line">                y = x + <span class="number">1</span></div><div class="line">                <span class="keyword">while</span> y <span class="keyword">in</span> nums:</div><div class="line">                    y += <span class="number">1</span></div><div class="line">                ret = max(ret, y - x)</div><div class="line">        <span class="keyword">return</span> ret</div></pre></td></tr></table></figure>
+<p><strong>test code</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">In [66]: s = Solution(); t = s.longestConsecutive([100, 4, 200, 3, 1, 2])</div><div class="line"></div><div class="line">In [67]: t</div><div class="line">Out[67]: 4</div></pre></td></tr></table></figure>
+<p><a href="https://leetcode.com/problems/longest-consecutive-sequence/description/" target="_blank" rel="external">leet code</a></p>
 
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2018/10/31/leetcode-longest-consecutive-sequence/" data-id="cjnwd5ggx002f49qb2lmrilyd" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python3/">python3</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/10/30/leetcode-trapping-rain-water/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Trapping Rain Water</div>
+    </a>
+  
+</nav>
+
+  
+</article>
 
 </section>
         
