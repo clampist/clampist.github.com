@@ -3,19 +3,20 @@
 <head>
   <meta charset="utf-8">
   
-  <title>python from __future__ import absolute_import | 记录点滴</title>
+  <title>Trapping Rain Water | 记录点滴</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="from __future__ import absolute_import1.使用以上语句则启动绝对导入会从 sys.path 里寻找所有名为 x 的顶层模块 2.而相应的相对导入则采用.比如一个 package 下有 a.py 和 b.py 两个文件，在 a.py 里 from . import b 即是相对导入 b.py。 区别 PEP 328中： 12345678910package/">
+  <meta name="description" content="Trapping Rain WaterO(1) Version - 44ms 1234567891011121314151617class Solution:    def trap(self, height):        &quot;&quot;&quot;        :type height: List[int]        :rtype: int        &quot;&quot;&quot;        left = right =">
+<meta name="keywords" content="leetcode,python3">
 <meta property="og:type" content="article">
-<meta property="og:title" content="python from __future__ import absolute_import">
-<meta property="og:url" content="https://clampist.github.io/2017/11/29/python-absolute-import/index.html">
+<meta property="og:title" content="Trapping Rain Water">
+<meta property="og:url" content="https://clampist.github.io/2018/10/30/leetcode-trapping-rain-water/index.html">
 <meta property="og:site_name" content="记录点滴">
-<meta property="og:description" content="from __future__ import absolute_import1.使用以上语句则启动绝对导入会从 sys.path 里寻找所有名为 x 的顶层模块 2.而相应的相对导入则采用.比如一个 package 下有 a.py 和 b.py 两个文件，在 a.py 里 from . import b 即是相对导入 b.py。 区别 PEP 328中： 12345678910package/">
+<meta property="og:description" content="Trapping Rain WaterO(1) Version - 44ms 1234567891011121314151617class Solution:    def trap(self, height):        &quot;&quot;&quot;        :type height: List[int]        :rtype: int        &quot;&quot;&quot;        left = right =">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-11-29T02:43:14.095Z">
+<meta property="og:updated_time" content="2018-10-30T00:04:37.318Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="python from __future__ import absolute_import">
-<meta name="twitter:description" content="from __future__ import absolute_import1.使用以上语句则启动绝对导入会从 sys.path 里寻找所有名为 x 的顶层模块 2.而相应的相对导入则采用.比如一个 package 下有 a.py 和 b.py 两个文件，在 a.py 里 from . import b 即是相对导入 b.py。 区别 PEP 328中： 12345678910package/">
+<meta name="twitter:title" content="Trapping Rain Water">
+<meta name="twitter:description" content="Trapping Rain WaterO(1) Version - 44ms 1234567891011121314151617class Solution:    def trap(self, height):        &quot;&quot;&quot;        :type height: List[int]        :rtype: int        &quot;&quot;&quot;        left = right =">
   
     <link rel="alternate" href="/atom.xml" title="记录点滴" type="application/atom+xml">
   
@@ -66,14 +67,14 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-python-absolute-import" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-leetcode-trapping-rain-water" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/11/29/python-absolute-import/" class="article-date">
-  <time datetime="2017-11-29T02:35:00.000Z" itemprop="datePublished">2017-11-29</time>
+    <a href="/2018/10/30/leetcode-trapping-rain-water/" class="article-date">
+  <time datetime="2018-10-30T00:03:00.000Z" itemprop="datePublished">2018-10-30</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/python/">python</a>
+    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
   </div>
 
   </div>
@@ -84,7 +85,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      python from __future__ import absolute_import
+      Trapping Rain Water
     </h1>
   
 
@@ -92,41 +93,30 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="from-future-import-absolute-import"><a href="#from-future-import-absolute-import" class="headerlink" title="from __future__ import absolute_import"></a>from __future__ import absolute_import</h2><h3 id="1-使用以上语句则启动绝对导入"><a href="#1-使用以上语句则启动绝对导入" class="headerlink" title="1.使用以上语句则启动绝对导入"></a>1.使用以上语句则启动绝对导入</h3><p>会从 <code>sys.path</code> 里寻找所有名为 <code>x</code> 的顶层模块</p>
-<h3 id="2-而相应的相对导入则采用"><a href="#2-而相应的相对导入则采用" class="headerlink" title="2.而相应的相对导入则采用."></a>2.而相应的相对导入则采用<code>.</code></h3><p>比如一个 package 下有 a.py 和 b.py 两个文件，在 a.py 里 <code>from . import b</code> 即是相对导入 b.py。</p>
-<p><a href="https://segmentfault.com/q/1010000000458562" target="_blank" rel="external">区别</a></p>
-<p><a href="http://legacy.python.org/dev/peps/pep-0328/" target="_blank" rel="external"><code>PEP 328</code></a>中：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">package/</div><div class="line">    __init__.py</div><div class="line">    subpackage1/</div><div class="line">        __init__.py</div><div class="line">        moduleX.py</div><div class="line">        moduleY.py</div><div class="line">    subpackage2/</div><div class="line">        __init__.py</div><div class="line">        moduleZ.py</div><div class="line">    moduleA.py</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">from .moduleY import spam</div><div class="line">from .moduleY import spam as ham</div><div class="line">from . import moduleY</div><div class="line">from ..subpackage1 import moduleY</div><div class="line">from ..subpackage2.moduleZ import eggs</div><div class="line">from ..moduleA import foo</div><div class="line">from ...package import bar</div><div class="line">from ...sys import path</div></pre></td></tr></table></figure>
-<p>一个<code>.</code>表示从当前目录寻找</p>
-<p>两个<code>.</code>表示从父目录寻找</p>
-<p>更多的<code>.</code>则从更高层级的目录寻找</p>
+        <h2 id="Trapping-Rain-Water"><a href="#Trapping-Rain-Water" class="headerlink" title="Trapping Rain Water"></a>Trapping Rain Water</h2><p><strong>O(1) Version</strong> - 44ms</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">trap</span><span class="params">(self, height)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        :type height: List[int]</span></div><div class="line"><span class="string">        :rtype: int</span></div><div class="line"><span class="string">        """</span></div><div class="line">        left = right = water = <span class="number">0</span></div><div class="line">        i, j = <span class="number">0</span>, len(height) - <span class="number">1</span></div><div class="line">        <span class="keyword">while</span> i &lt;= j:</div><div class="line">            left, right = max(left, height[i]), max(right, height[j])</div><div class="line">            <span class="keyword">while</span> i &lt;= j <span class="keyword">and</span> height[i] &lt;= left &lt;= right:</div><div class="line">                water += left - height[i]</div><div class="line">                i += <span class="number">1</span></div><div class="line">            <span class="keyword">while</span> i &lt;= j <span class="keyword">and</span> height[j] &lt;= right &lt;= left:</div><div class="line">                water += right - height[j]</div><div class="line">                j -= <span class="number">1</span></div><div class="line">        <span class="keyword">return</span> water</div></pre></td></tr></table></figure>
+<p><strong>test code</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">In [36]: s = Solution(); t = s.trap([0,1,0,2,1,0,1,3,2,1,2,1])</div><div class="line"></div><div class="line">In [37]: t</div><div class="line">Out[37]: 6</div></pre></td></tr></table></figure>
+<p><a href="https://leetcode.com/problems/trapping-rain-water/description/" target="_blank" rel="external">leet code</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/11/29/python-absolute-import/" data-id="cjnuz08jy005a43qbaa80s68z" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2018/10/30/leetcode-trapping-rain-water/" data-id="cjnuz08iz004a43qbbkyg70zk" class="article-share-link">Share</a>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python3/">python3</a></li></ul>
+
     </footer>
   </div>
   
     
 <nav id="article-nav">
   
-    <a href="/2018/01/13/python-hashlib-md5-unicodeEncodeError/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          python hashlib md5 unicodeEncodeError
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/11/27/django-mongoengine-query-operators/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2018/10/29/leetcode-find-peak-element/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">django models mongoengine not in filter</div>
+      <div class="article-nav-title">Find Peak Element</div>
     </a>
   
 </nav>

@@ -64,6 +64,56 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-shell-awk-filter-sort" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/10/25/shell-awk-filter-sort/" class="article-date">
+  <time datetime="2017-10-25T00:43:00.000Z" itemprop="datePublished">2017-10-25</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/linux/">linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/25/shell-awk-filter-sort/">awk filter by one col larger than a value</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">awk -F<span class="string">'\t'</span> <span class="string">'$36 &gt; "2017-10-18 15:00:00" &#123;print ;&#125;'</span> 13224_sample_material_encode_full | sort -r &gt; target.txt</div></pre></td></tr></table></figure>
+<h2 id="打印第36列大于某一时刻的整行"><a href="#打印第36列大于某一时刻的整行" class="headerlink" title="打印第36列大于某一时刻的整行"></a>打印第36列大于某一时刻的整行</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&apos;$36 &gt; &quot;2017-10-18 15:00:00&quot; &#123;print ;&#125;&apos;</div></pre></td></tr></table></figure>
+<p><code>filter</code>: <code>$36 &gt; &quot;2017-10-18 15:00:00&quot;</code></p>
+<p><code>print whole line</code>: <code>print ;</code></p>
+<h2 id="awk-cut-输出指定列"><a href="#awk-cut-输出指定列" class="headerlink" title="awk/cut 输出指定列"></a>awk/cut 输出指定列</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">awk &apos;&#123;for(i=10;i&lt;=20;i++)printf $i&quot;&quot;FS;print&quot;&quot;&#125;&apos; file</div></pre></td></tr></table></figure>
+<p><code>FS</code>就是<strong>分隔符</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cut -d&quot; &quot; -f 10-20 file</div></pre></td></tr></table></figure>
+<p><a href="https://zhidao.baidu.com/question/481774014.html" target="_blank" rel="external">百度知道</a></p>
+<h2 id="逆序"><a href="#逆序" class="headerlink" title="逆序"></a>逆序</h2><p><code>sort reverse</code>: <code>sort -r</code></p>
+<h2 id="按某列排序"><a href="#按某列排序" class="headerlink" title="按某列排序"></a>按某列排序</h2><p><code>sort -k 2 file.txt</code><br>按第二列排序<br><a href="https://stackoverflow.com/questions/4262650/linux-shell-sort-file-according-to-the-second-column" target="_blank" rel="external">stackoverflow</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2017/10/25/shell-awk-filter-sort/" data-id="cjnuz08l9006l43qbulti2xzz" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-shell-sed-certain-lines" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/10/24/shell-sed-certain-lines/" class="article-date">
@@ -99,7 +149,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/10/24/shell-sed-certain-lines/" data-id="cjntjbhvq0053heqbtoy25iaj" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/10/24/shell-sed-certain-lines/" data-id="cjnuz08l1006g43qb7ogklqle" class="article-share-link">Share</a>
       
       
     </footer>
@@ -147,7 +197,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/09/22/acquire-array-length-in-cpp/" data-id="cjntjbhs80005heqbjcjmv6wd" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/09/22/acquire-array-length-in-cpp/" data-id="cjnuz08f9000143qbpkkty2yn" class="article-share-link">Share</a>
       
       
     </footer>
@@ -190,7 +240,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/09/22/boost-lexical-cast-cpp/" data-id="cjntjbhsb0008heqbbrfb0cum" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/09/22/boost-lexical-cast-cpp/" data-id="cjnuz08fh000443qbw2b3qbsh" class="article-share-link">Share</a>
       
       
     </footer>
@@ -237,50 +287,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/09/22/git-usage/" data-id="cjntjbhtl000theqbj63ml4aw" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-linux-dos-to-unix" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/09/22/linux-dos-to-unix/" class="article-date">
-  <time datetime="2017-09-22T06:37:00.000Z" itemprop="datePublished">2017-09-22</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/linux/">linux</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/22/linux-dos-to-unix/">linux dos to unix</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="linux下文本处理"><a href="#linux下文本处理" class="headerlink" title="linux下文本处理"></a>linux下文本处理</h1><h2 id="dos2unix-直接修改原文件"><a href="#dos2unix-直接修改原文件" class="headerlink" title="dos2unix:直接修改原文件"></a>dos2unix:直接修改原文件</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">dos2unix file</div></pre></td></tr></table></figure>
-<p><a href="https://www.cyberciti.biz/faq/howto-unix-linux-convert-dos-newlines-cr-lf-unix-text-format/" target="_blank" rel="external">wiki</a></p>
-<h2 id="replace-t-with-4-blanks"><a href="#replace-t-with-4-blanks" class="headerlink" title="replace \t with 4 blanks"></a>replace \t with 4 blanks</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">expand -t 4 input &gt; output</div></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/09/22/linux-dos-to-unix/" data-id="cjntjbhv3003iheqbnf2catc9" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/09/22/git-usage/" data-id="cjnuz08fs000k43qba49l5o11" class="article-share-link">Share</a>
       
       
     </footer>
@@ -324,7 +331,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/2d-array/" style="font-size: 12.5px;">2d-array</a> <a href="/tags/bigflow/" style="font-size: 10px;">bigflow</a> <a href="/tags/binary-tree/" style="font-size: 15px;">binary tree</a> <a href="/tags/hadoop/" style="font-size: 10px;">hadoop</a> <a href="/tags/lambda/" style="font-size: 10px;">lambda</a> <a href="/tags/leetcode/" style="font-size: 20px;">leetcode</a> <a href="/tags/python/" style="font-size: 17.5px;">python</a> <a href="/tags/python3/" style="font-size: 15px;">python3</a>
+      <a href="/tags/2d-array/" style="font-size: 12px;">2d-array</a> <a href="/tags/bigflow/" style="font-size: 10px;">bigflow</a> <a href="/tags/binary-tree/" style="font-size: 14px;">binary tree</a> <a href="/tags/hadoop/" style="font-size: 10px;">hadoop</a> <a href="/tags/lambda/" style="font-size: 10px;">lambda</a> <a href="/tags/leetcode/" style="font-size: 20px;">leetcode</a> <a href="/tags/python/" style="font-size: 18px;">python</a> <a href="/tags/python3/" style="font-size: 16px;">python3</a>
     </div>
   </div>
 
@@ -346,6 +353,10 @@
       <ul>
         
           <li>
+            <a href="/2018/10/30/leetcode-trapping-rain-water/">Trapping Rain Water</a>
+          </li>
+        
+          <li>
             <a href="/2018/10/29/leetcode-find-peak-element/">Find Peak Element</a>
           </li>
         
@@ -359,10 +370,6 @@
         
           <li>
             <a href="/2018/10/24/leetcode-insert-delete-getrandom-o1/">Insert Delete GetRandom O(1)</a>
-          </li>
-        
-          <li>
-            <a href="/2018/10/23/leetcode-maximum-subarray/">Maximum Subarray</a>
           </li>
         
       </ul>

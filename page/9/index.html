@@ -64,6 +64,51 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-linux-grep-by-reg-content-in-file" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/11/02/linux-grep-by-reg-content-in-file/" class="article-date">
+  <time datetime="2017-11-02T00:36:00.000Z" itemprop="datePublished">2017-11-02</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/linux/">linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/11/02/linux-grep-by-reg-content-in-file/">linux grep reg content</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="grep-P"><a href="#grep-P" class="headerlink" title="grep -P"></a>grep -P</h2><h2 id="awk-F”-123-”"><a href="#awk-F”-123-”" class="headerlink" title="awk -F”[123]”"></a>awk -F”[123]”</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cat some.log* | grep -P &apos;abc.*]&apos; -o | awk -F&apos;|&apos; &apos;&#123;print $2&#125;&apos; | grep -v 0</div></pre></td></tr></table></figure>
+<p><code>grep -P</code>切出想要的内容</p>
+<p><a href="http://blog.csdn.net/computer055maxi/article/details/6317251" target="_blank" rel="external">参考链接</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">awk -F&quot;[@ /t]&quot; &apos;&#123;print $2,$3&#125;&apos; test</div></pre></td></tr></table></figure>
+<p>以@，空格，Tab键分割test文件的每一行，并输出第二、第三列。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2017/11/02/linux-grep-by-reg-content-in-file/" data-id="cjnuz08jf004p43qbj9c6eqij" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-linux-sync-folder-by-rsync" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/11/02/linux-sync-folder-by-rsync/" class="article-date">
@@ -103,7 +148,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/11/02/linux-sync-folder-by-rsync/" data-id="cjntjbhv5003oheqb19dvipw3" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/11/02/linux-sync-folder-by-rsync/" data-id="cjnuz08jm004v43qben1jevuy" class="article-share-link">Share</a>
       
       
     </footer>
@@ -150,7 +195,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/11/01/turing/" data-id="cjntjbhw4005xheqbkodkliwx" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/11/01/turing/" data-id="cjnuz08lk006s43qbvk4scweb" class="article-share-link">Share</a>
       
       
     </footer>
@@ -193,7 +238,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/10/25/redis-delete-all-keys/" data-id="cjntjbhvv005gheqbcxyi5dxu" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/10/25/redis-delete-all-keys/" data-id="cjnuz08kv006743qb9fefkupt" class="article-share-link">Share</a>
       
       
     </footer>
@@ -235,53 +280,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/10/25/mysql-field-content-replace/" data-id="cjntjbhv6003rheqbra1jyrkq" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-django-transform-queryset-to-dict" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/10/25/django-transform-queryset-to-dict/" class="article-date">
-  <time datetime="2017-10-25T00:51:00.000Z" itemprop="datePublished">2017-10-25</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/django/">django</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/25/django-transform-queryset-to-dict/">django transform queryset to dict</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="model-to-dict方法"><a href="#model-to-dict方法" class="headerlink" title="model_to_dict方法"></a><code>model_to_dict</code>方法</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> django.forms.models <span class="keyword">import</span> model_to_dict</div><div class="line">model_to_dict(instance)</div></pre></td></tr></table></figure>
-<p><a href="https://codeday.me/bug/20170722/43534.html" target="_blank" rel="external">参考链接</a></p>
-<h2 id="toDict方法"><a href="#toDict方法" class="headerlink" title="toDict方法"></a><code>toDict</code>方法</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Category</span><span class="params">(models.Model)</span>:</span></div><div class="line">    autoid = models.AutoField(primary_key=<span class="keyword">True</span>)</div><div class="line">    email=models.CharField(max_length=<span class="number">150</span>,blank=<span class="keyword">False</span>)</div><div class="line">    comtype=models.CharField(max_length=<span class="number">20</span>,blank=<span class="keyword">False</span>)</div><div class="line">    catname=models.CharField(max_length=<span class="number">150</span>,blank=<span class="keyword">False</span>)  </div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__unicode__</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">return</span> <span class="string">'%s'</span> % (self.catname)</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">toJSON</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">import</span> json</div><div class="line">        <span class="keyword">return</span> json.dumps(dict([(attr, getattr(self, attr)) <span class="keyword">for</span> attr <span class="keyword">in</span> [f.name <span class="keyword">for</span> f <span class="keyword">in</span> self._meta.fields]]))</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">toDict</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">return</span> dict([(attr, getattr(self, attr)) <span class="keyword">for</span> attr <span class="keyword">in</span> [f.name <span class="keyword">for</span> f <span class="keyword">in</span> self._meta.fields]])</div></pre></td></tr></table></figure>
-<p>可读性更强的版本</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">toJSON</span><span class="params">(self)</span>:</span></div><div class="line">    fields = []</div><div class="line">    <span class="keyword">for</span> field <span class="keyword">in</span> self._meta.fields:</div><div class="line">        fields.append(field.name)</div><div class="line"></div><div class="line">    d = &#123;&#125;</div><div class="line">    <span class="keyword">for</span> attr <span class="keyword">in</span> fields:</div><div class="line">        d[attr] = getattr(self, attr)</div><div class="line"></div><div class="line">    <span class="keyword">import</span> json</div><div class="line">    <span class="keyword">return</span> json.dumps(d)</div><div class="line">    </div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">toDict</span><span class="params">(self)</span>:</span></div><div class="line">    fields = []</div><div class="line">    <span class="keyword">for</span> field <span class="keyword">in</span> self._meta.fields:</div><div class="line">        fields.append(field.name)</div><div class="line"></div><div class="line">    d = &#123;&#125;</div><div class="line">    <span class="keyword">for</span> attr <span class="keyword">in</span> fields:</div><div class="line">        d[attr] = getattr(self, attr)</div><div class="line"></div><div class="line">    <span class="keyword">return</span> d</div></pre></td></tr></table></figure>
-<p><a href="http://www.yihaomen.com/article/python/279.htm" target="_blank" rel="external">参考链接</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/10/25/django-transform-queryset-to-dict/" data-id="cjntjbhsd0009heqbmbxpbhhg" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/10/25/mysql-field-content-replace/" data-id="cjnuz08jt005143qbc40183uw" class="article-share-link">Share</a>
       
       
     </footer>
@@ -325,7 +324,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/2d-array/" style="font-size: 12.5px;">2d-array</a> <a href="/tags/bigflow/" style="font-size: 10px;">bigflow</a> <a href="/tags/binary-tree/" style="font-size: 15px;">binary tree</a> <a href="/tags/hadoop/" style="font-size: 10px;">hadoop</a> <a href="/tags/lambda/" style="font-size: 10px;">lambda</a> <a href="/tags/leetcode/" style="font-size: 20px;">leetcode</a> <a href="/tags/python/" style="font-size: 17.5px;">python</a> <a href="/tags/python3/" style="font-size: 15px;">python3</a>
+      <a href="/tags/2d-array/" style="font-size: 12px;">2d-array</a> <a href="/tags/bigflow/" style="font-size: 10px;">bigflow</a> <a href="/tags/binary-tree/" style="font-size: 14px;">binary tree</a> <a href="/tags/hadoop/" style="font-size: 10px;">hadoop</a> <a href="/tags/lambda/" style="font-size: 10px;">lambda</a> <a href="/tags/leetcode/" style="font-size: 20px;">leetcode</a> <a href="/tags/python/" style="font-size: 18px;">python</a> <a href="/tags/python3/" style="font-size: 16px;">python3</a>
     </div>
   </div>
 
@@ -347,6 +346,10 @@
       <ul>
         
           <li>
+            <a href="/2018/10/30/leetcode-trapping-rain-water/">Trapping Rain Water</a>
+          </li>
+        
+          <li>
             <a href="/2018/10/29/leetcode-find-peak-element/">Find Peak Element</a>
           </li>
         
@@ -360,10 +363,6 @@
         
           <li>
             <a href="/2018/10/24/leetcode-insert-delete-getrandom-o1/">Insert Delete GetRandom O(1)</a>
-          </li>
-        
-          <li>
-            <a href="/2018/10/23/leetcode-maximum-subarray/">Maximum Subarray</a>
           </li>
         
       </ul>

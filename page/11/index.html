@@ -64,6 +64,51 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-django-models-objects-filter-by-dict-kwargs" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/10/25/django-models-objects-filter-by-dict-kwargs/" class="article-date">
+  <time datetime="2017-10-25T00:48:00.000Z" itemprop="datePublished">2017-10-25</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/django/">django</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/25/django-models-objects-filter-by-dict-kwargs/">django models objects filter by dict kwargs</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>1. 大于等于、小于等于</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Model.objects.filter(price__gte=<span class="number">10</span>, price__lte=<span class="number">15</span>)</div><div class="line"><span class="comment"># or</span></div><div class="line">kwargs = &#123;<span class="string">'price__gte'</span>: <span class="number">10</span>,</div><div class="line">          <span class="string">'price__lte'</span>: <span class="number">15</span>&#125;      </div><div class="line">Model.objects.filter(**kwargs)</div></pre></td></tr></table></figure>
+<p><strong>2. LIKE、包含</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">kwargs = &#123;filter_field + <span class="string">'__icontains'</span>: filter_content&#125;</div><div class="line">edu_mtrl_list = edu_mtrl_list.filter(**kwargs)</div></pre></td></tr></table></figure>
+<p><a href="https://stackoverflow.com/questions/1763495/adding-extra-parameters-to-a-objects-filter-via-dict" target="_blank" rel="external">https://stackoverflow.com/questions/1763495/adding-extra-parameters-to-a-objects-filter-via-dict</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2017/10/25/django-models-objects-filter-by-dict-kwargs/" data-id="cjnuz08fi000543qbs0kof1dq" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-django-models-not-equal-exclude-filter" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/10/25/django-models-not-equal-exclude-filter/" class="article-date">
@@ -99,7 +144,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/10/25/django-models-not-equal-exclude-filter/" data-id="cjntjbhs10002heqbg9qt1e7w" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/10/25/django-models-not-equal-exclude-filter/" data-id="cjnuz08fj000643qblqw5oetq" class="article-share-link">Share</a>
       
       
     </footer>
@@ -141,7 +186,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/10/25/du-find-max-dir/" data-id="cjntjbhsj000gheqbc0ejljqp" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/10/25/du-find-max-dir/" data-id="cjnuz08g9000z43qb6oa28cz4" class="article-share-link">Share</a>
       
       
     </footer>
@@ -183,57 +228,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/10/25/python-check-class-has-attribute/" data-id="cjntjbhvf004iheqbc5o23grs" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-shell-awk-filter-sort" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/10/25/shell-awk-filter-sort/" class="article-date">
-  <time datetime="2017-10-25T00:43:00.000Z" itemprop="datePublished">2017-10-25</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/linux/">linux</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/25/shell-awk-filter-sort/">awk filter by one col larger than a value</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">awk -F<span class="string">'\t'</span> <span class="string">'$36 &gt; "2017-10-18 15:00:00" &#123;print ;&#125;'</span> 13224_sample_material_encode_full | sort -r &gt; target.txt</div></pre></td></tr></table></figure>
-<h2 id="打印第36列大于某一时刻的整行"><a href="#打印第36列大于某一时刻的整行" class="headerlink" title="打印第36列大于某一时刻的整行"></a>打印第36列大于某一时刻的整行</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&apos;$36 &gt; &quot;2017-10-18 15:00:00&quot; &#123;print ;&#125;&apos;</div></pre></td></tr></table></figure>
-<p><code>filter</code>: <code>$36 &gt; &quot;2017-10-18 15:00:00&quot;</code></p>
-<p><code>print whole line</code>: <code>print ;</code></p>
-<h2 id="awk-cut-输出指定列"><a href="#awk-cut-输出指定列" class="headerlink" title="awk/cut 输出指定列"></a>awk/cut 输出指定列</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">awk &apos;&#123;for(i=10;i&lt;=20;i++)printf $i&quot;&quot;FS;print&quot;&quot;&#125;&apos; file</div></pre></td></tr></table></figure>
-<p><code>FS</code>就是<strong>分隔符</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cut -d&quot; &quot; -f 10-20 file</div></pre></td></tr></table></figure>
-<p><a href="https://zhidao.baidu.com/question/481774014.html" target="_blank" rel="external">百度知道</a></p>
-<h2 id="逆序"><a href="#逆序" class="headerlink" title="逆序"></a>逆序</h2><p><code>sort reverse</code>: <code>sort -r</code></p>
-<h2 id="按某列排序"><a href="#按某列排序" class="headerlink" title="按某列排序"></a>按某列排序</h2><p><code>sort -k 2 file.txt</code><br>按第二列排序<br><a href="https://stackoverflow.com/questions/4262650/linux-shell-sort-file-according-to-the-second-column" target="_blank" rel="external">stackoverflow</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/10/25/shell-awk-filter-sort/" data-id="cjntjbhvt005aheqbitwwmfg2" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/10/25/python-check-class-has-attribute/" data-id="cjnuz08ki005t43qb333gmoeo" class="article-share-link">Share</a>
       
       
     </footer>
@@ -275,7 +270,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/10/25/python-Chinese-punctuation-to-English-punctuation/" data-id="cjntjbhw2005uheqbst1avo9z" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/10/25/python-Chinese-punctuation-to-English-punctuation/" data-id="cjnuz08ka005k43qb2eqo3rlu" class="article-share-link">Share</a>
       
       
     </footer>
@@ -319,7 +314,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/2d-array/" style="font-size: 12.5px;">2d-array</a> <a href="/tags/bigflow/" style="font-size: 10px;">bigflow</a> <a href="/tags/binary-tree/" style="font-size: 15px;">binary tree</a> <a href="/tags/hadoop/" style="font-size: 10px;">hadoop</a> <a href="/tags/lambda/" style="font-size: 10px;">lambda</a> <a href="/tags/leetcode/" style="font-size: 20px;">leetcode</a> <a href="/tags/python/" style="font-size: 17.5px;">python</a> <a href="/tags/python3/" style="font-size: 15px;">python3</a>
+      <a href="/tags/2d-array/" style="font-size: 12px;">2d-array</a> <a href="/tags/bigflow/" style="font-size: 10px;">bigflow</a> <a href="/tags/binary-tree/" style="font-size: 14px;">binary tree</a> <a href="/tags/hadoop/" style="font-size: 10px;">hadoop</a> <a href="/tags/lambda/" style="font-size: 10px;">lambda</a> <a href="/tags/leetcode/" style="font-size: 20px;">leetcode</a> <a href="/tags/python/" style="font-size: 18px;">python</a> <a href="/tags/python3/" style="font-size: 16px;">python3</a>
     </div>
   </div>
 
@@ -341,6 +336,10 @@
       <ul>
         
           <li>
+            <a href="/2018/10/30/leetcode-trapping-rain-water/">Trapping Rain Water</a>
+          </li>
+        
+          <li>
             <a href="/2018/10/29/leetcode-find-peak-element/">Find Peak Element</a>
           </li>
         
@@ -354,10 +353,6 @@
         
           <li>
             <a href="/2018/10/24/leetcode-insert-delete-getrandom-o1/">Insert Delete GetRandom O(1)</a>
-          </li>
-        
-          <li>
-            <a href="/2018/10/23/leetcode-maximum-subarray/">Maximum Subarray</a>
           </li>
         
       </ul>
