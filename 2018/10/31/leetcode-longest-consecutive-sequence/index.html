@@ -5,18 +5,18 @@
   
   <title>Longest Consecutive Sequence | 记录点滴</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Longest Consecutive SequenceO(n) Version - 44ms 123456789101112131415class Solution:    def longestConsecutive(self, nums):        &quot;&quot;&quot;        :type nums: List[int]        :rtype: int        &quot;&quot;&quot;">
+  <meta name="description" content="Longest Consecutive SequenceO(n) Version - 40ms 123456789101112131415161718class Solution:    def longestConsecutive(self, nums):        &quot;&quot;&quot;        :type nums: List[int]        :rtype: int        &quot;&quot;&quot;">
 <meta name="keywords" content="leetcode,python3">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Longest Consecutive Sequence">
 <meta property="og:url" content="https://clampist.github.io/2018/10/31/leetcode-longest-consecutive-sequence/index.html">
 <meta property="og:site_name" content="记录点滴">
-<meta property="og:description" content="Longest Consecutive SequenceO(n) Version - 44ms 123456789101112131415class Solution:    def longestConsecutive(self, nums):        &quot;&quot;&quot;        :type nums: List[int]        :rtype: int        &quot;&quot;&quot;">
+<meta property="og:description" content="Longest Consecutive SequenceO(n) Version - 40ms 123456789101112131415161718class Solution:    def longestConsecutive(self, nums):        &quot;&quot;&quot;        :type nums: List[int]        :rtype: int        &quot;&quot;&quot;">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-10-30T23:28:24.289Z">
+<meta property="og:updated_time" content="2018-10-30T23:34:19.799Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Longest Consecutive Sequence">
-<meta name="twitter:description" content="Longest Consecutive SequenceO(n) Version - 44ms 123456789101112131415class Solution:    def longestConsecutive(self, nums):        &quot;&quot;&quot;        :type nums: List[int]        :rtype: int        &quot;&quot;&quot;">
+<meta name="twitter:description" content="Longest Consecutive SequenceO(n) Version - 40ms 123456789101112131415161718class Solution:    def longestConsecutive(self, nums):        &quot;&quot;&quot;        :type nums: List[int]        :rtype: int        &quot;&quot;&quot;">
   
     <link rel="alternate" href="/atom.xml" title="记录点滴" type="application/atom+xml">
   
@@ -93,7 +93,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Longest-Consecutive-Sequence"><a href="#Longest-Consecutive-Sequence" class="headerlink" title="Longest Consecutive Sequence"></a>Longest Consecutive Sequence</h2><p><strong>O(n) Version</strong> - 44ms</p>
+        <h2 id="Longest-Consecutive-Sequence"><a href="#Longest-Consecutive-Sequence" class="headerlink" title="Longest Consecutive Sequence"></a>Longest Consecutive Sequence</h2><p><strong>O(n) Version</strong> - 40ms</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">longestConsecutive</span><span class="params">(self, nums)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        :type nums: List[int]</span></div><div class="line"><span class="string">        :rtype: int</span></div><div class="line"><span class="string">        """</span>    </div><div class="line">        nums = set(nums)</div><div class="line">        maxlen = <span class="number">0</span></div><div class="line">        <span class="keyword">while</span> nums:</div><div class="line">            first = last = nums.pop()</div><div class="line">            <span class="keyword">while</span> first - <span class="number">1</span> <span class="keyword">in</span> nums:</div><div class="line">                first -= <span class="number">1</span></div><div class="line">                nums.remove(first)</div><div class="line">            <span class="keyword">while</span> last + <span class="number">1</span> <span class="keyword">in</span> nums:</div><div class="line">                last += <span class="number">1</span></div><div class="line">                nums.remove(last)</div><div class="line">            maxlen = max(maxlen, last - first + <span class="number">1</span>)</div><div class="line">        <span class="keyword">return</span> maxlen</div></pre></td></tr></table></figure>
+<p><strong>O(n) Version</strong> - 44ms</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">longestConsecutive</span><span class="params">(self, nums)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        :type nums: List[int]</span></div><div class="line"><span class="string">        :rtype: int</span></div><div class="line"><span class="string">        """</span></div><div class="line">        nums = set(nums)</div><div class="line">        ret = <span class="number">0</span></div><div class="line">        <span class="keyword">for</span> x <span class="keyword">in</span> nums:</div><div class="line">            <span class="keyword">if</span> x - <span class="number">1</span> <span class="keyword">not</span> <span class="keyword">in</span> nums:</div><div class="line">                y = x + <span class="number">1</span></div><div class="line">                <span class="keyword">while</span> y <span class="keyword">in</span> nums:</div><div class="line">                    y += <span class="number">1</span></div><div class="line">                ret = max(ret, y - x)</div><div class="line">        <span class="keyword">return</span> ret</div></pre></td></tr></table></figure>
 <p><strong>test code</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">In [66]: s = Solution(); t = s.longestConsecutive([100, 4, 200, 3, 1, 2])</div><div class="line"></div><div class="line">In [67]: t</div><div class="line">Out[67]: 4</div></pre></td></tr></table></figure>
@@ -102,7 +104,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/10/31/leetcode-longest-consecutive-sequence/" data-id="cjnwd5ggx002f49qb2lmrilyd" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2018/10/31/leetcode-longest-consecutive-sequence/" data-id="cjnwdcw8p00246zqbx2l71w35" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python3/">python3</a></li></ul>
