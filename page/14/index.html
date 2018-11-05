@@ -64,6 +64,49 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-linux-dos-to-unix" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/09/22/linux-dos-to-unix/" class="article-date">
+  <time datetime="2017-09-22T06:37:00.000Z" itemprop="datePublished">2017-09-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/linux/">linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/09/22/linux-dos-to-unix/">linux dos to unix</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="linux下文本处理"><a href="#linux下文本处理" class="headerlink" title="linux下文本处理"></a>linux下文本处理</h1><h2 id="dos2unix-直接修改原文件"><a href="#dos2unix-直接修改原文件" class="headerlink" title="dos2unix:直接修改原文件"></a>dos2unix:直接修改原文件</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">dos2unix file</div></pre></td></tr></table></figure>
+<p><a href="https://www.cyberciti.biz/faq/howto-unix-linux-convert-dos-newlines-cr-lf-unix-text-format/" target="_blank" rel="external">wiki</a></p>
+<h2 id="replace-t-with-4-blanks"><a href="#replace-t-with-4-blanks" class="headerlink" title="replace \t with 4 blanks"></a>replace \t with 4 blanks</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">expand -t 4 input &gt; output</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2017/09/22/linux-dos-to-unix/" data-id="cjo4xuuze00402sqboddffy3n" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-python-two-or-three-continuous-items-in-list" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/09/22/python-two-or-three-continuous-items-in-list/" class="article-date">
@@ -96,7 +139,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/09/22/python-two-or-three-continuous-items-in-list/" data-id="cjo3kgasn006jlqqbcribl7c3" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/09/22/python-two-or-three-continuous-items-in-list/" data-id="cjo4xuv09005k2sqb2yah62l4" class="article-share-link">Share</a>
       
       
     </footer>
@@ -139,7 +182,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/09/22/shell-last-param/" data-id="cjo3kgasw006qlqqbhn3pmotf" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/09/22/shell-last-param/" data-id="cjo4xuv1g005v2sqbtglnk4b0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -180,7 +223,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/09/22/shell-uniq-count/" data-id="cjo3kgatc006xlqqbqo8j732g" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/09/22/shell-uniq-count/" data-id="cjo4xuv2000692sqbxhz7r6z9" class="article-share-link">Share</a>
       
       
     </footer>
@@ -225,51 +268,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/09/07/hello-world/" data-id="cjo3kgap6000olqqbhrqohnip" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-git_svn_blame" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/04/26/git_svn_blame/" class="article-date">
-  <time datetime="2017-04-26T08:21:00.000Z" itemprop="datePublished">2017-04-26</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/git/">git</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/26/git_svn_blame/">git blame / log</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="git常用"><a href="#git常用" class="headerlink" title="git常用"></a>git常用</h2><h3 id="blame"><a href="#blame" class="headerlink" title="blame"></a>blame</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git blame path/to/your/file</div><div class="line">svn blame path/to/your/file</div></pre></td></tr></table></figure>
-<p>只能看当前状态下，每一行的改动者</p>
-<h3 id="搜索所有的修改历史，全仓库历史-blame遇到stash冲突"><a href="#搜索所有的修改历史，全仓库历史-blame遇到stash冲突" class="headerlink" title="搜索所有的修改历史，全仓库历史 blame遇到stash冲突"></a>搜索所有的修改历史，全仓库历史 blame遇到<code>stash</code>冲突</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git <span class="built_in">log</span> -p -M --follow --<span class="built_in">stat</span> -- path/to/your/file</div></pre></td></tr></table></figure>
-<p>可以查找所有历史中，每一行的改动者</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/04/26/git_svn_blame/" data-id="cjo3kgap3000llqqbhs6evk3m" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/09/07/hello-world/" data-id="cjo4xuuxb000q2sqb8j99pq3v" class="article-share-link">Share</a>
       
       
     </footer>
@@ -335,6 +334,10 @@
       <ul>
         
           <li>
+            <a href="/2018/11/06/leetcode-increasing-triplet-subsequence/">Increasing Triplet Subsequence</a>
+          </li>
+        
+          <li>
             <a href="/2018/11/05/leetcode-longest-increasing-subsequence/">Longest Increasing Subsequence</a>
           </li>
         
@@ -348,10 +351,6 @@
         
           <li>
             <a href="/2018/10/31/leetcode-longest-consecutive-sequence/">Longest Consecutive Sequence</a>
-          </li>
-        
-          <li>
-            <a href="/2018/10/30/leetcode-trapping-rain-water/">Trapping Rain Water</a>
           </li>
         
       </ul>
