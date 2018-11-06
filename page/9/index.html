@@ -64,6 +64,49 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-python-datetime-compare" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/02/21/python-datetime-compare/" class="article-date">
+  <time datetime="2018-02-21T02:35:00.000Z" itemprop="datePublished">2018-02-21</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/python/">python</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/02/21/python-datetime-compare/">python datetime compare</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="时间间隔timedelta可用于计算-比较"><a href="#时间间隔timedelta可用于计算-比较" class="headerlink" title="时间间隔timedelta可用于计算/比较"></a>时间间隔timedelta可用于计算/比较</h2><p>可以直接用<code>timedelta( days=1 )</code>来进行日期的计算，大小判断</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">from datetime import timedelta</div><div class="line">start_date = timezone.now().date()</div><div class="line">end_date = start_date + timedelta( days=1 ) </div><div class="line">Entry.objects.filter(created__range=(start_date, end_date))</div></pre></td></tr></table></figure>
+<p><a href="https://stackoverflow.com/questions/10048216/compare-date-and-datetime-in-django" target="_blank" rel="external">stack overflow</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2018/02/21/python-datetime-compare/" data-id="cjo6e9fa8006iosqb7bh9nj5f" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-mongodb-compact-disk-space" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/01/27/mongodb-compact-disk-space/" class="article-date">
@@ -101,7 +144,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/01/27/mongodb-compact-disk-space/" data-id="cjo4xuuzi004b2sqbpnn3xe1z" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2018/01/27/mongodb-compact-disk-space/" data-id="cjo6e9f9s005uosqbedqkldqw" class="article-share-link">Share</a>
       
       
     </footer>
@@ -144,7 +187,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/01/13/python-hashlib-md5-unicodeEncodeError/" data-id="cjo4xuuzy00552sqbwv4gazv9" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2018/01/13/python-hashlib-md5-unicodeEncodeError/" data-id="cjo6e9fa9006losqbqqq7e1lr" class="article-share-link">Share</a>
       
       
     </footer>
@@ -193,7 +236,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/11/29/python-absolute-import/" data-id="cjo4xuv26006m2sqbklsrhb9k" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/11/29/python-absolute-import/" data-id="cjo6e9fa5006eosqbdtmwpsse" class="article-share-link">Share</a>
       
       
     </footer>
@@ -236,51 +279,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/11/27/django-mongoengine-query-operators/" data-id="cjo4xuuwy00092sqb4nz5z8px" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-python-loads-json-object-instead-of-unicode" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/11/22/python-loads-json-object-instead-of-unicode/" class="article-date">
-  <time datetime="2017-11-22T05:14:00.000Z" itemprop="datePublished">2017-11-22</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/json/">json</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/11/22/python-loads-json-object-instead-of-unicode/">check class has attribute</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">import json</div><div class="line"></div><div class="line">def json_load_byteified(file_handle):</div><div class="line">    return _byteify(</div><div class="line">        json.load(file_handle, object_hook=_byteify),</div><div class="line">        ignore_dicts=True</div><div class="line">    )</div><div class="line"></div><div class="line">def json_loads_byteified(json_text):</div><div class="line">    return _byteify(</div><div class="line">        json.loads(json_text, object_hook=_byteify),</div><div class="line">        ignore_dicts=True</div><div class="line">    )</div><div class="line"></div><div class="line">def _byteify(data, ignore_dicts = False):</div><div class="line">    # if this is a unicode string, return its string representation</div><div class="line">    if isinstance(data, unicode):</div><div class="line">        return data.encode(&apos;utf-8&apos;)</div><div class="line">    # if this is a list of values, return list of byteified values</div><div class="line">    if isinstance(data, list):</div><div class="line">        return [ _byteify(item, ignore_dicts=True) for item in data ]</div><div class="line">    # if this is a dictionary, return dictionary of byteified keys and values</div><div class="line">    # but only if we haven&apos;t already byteified it</div><div class="line">    if isinstance(data, dict) and not ignore_dicts:</div><div class="line">        return &#123;</div><div class="line">            _byteify(key, ignore_dicts=True): _byteify(value, ignore_dicts=True)</div><div class="line">            for key, value in data.iteritems()</div><div class="line">        &#125;</div><div class="line">    # if it&apos;s anything else, return it in its original form</div><div class="line">    return data</div></pre></td></tr></table></figure>
-<p><strong>Example usage:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; json_loads_byteified(&apos;&#123;&quot;Hello&quot;: &quot;World&quot;&#125;&apos;)</div><div class="line">&#123;&apos;Hello&apos;: &apos;World&apos;&#125;</div><div class="line">&gt;&gt;&gt; json_loads_byteified(&apos;&quot;I am a top-level string&quot;&apos;)</div><div class="line">&apos;I am a top-level string&apos;</div><div class="line">&gt;&gt;&gt; json_loads_byteified(&apos;7&apos;)</div><div class="line">7</div><div class="line">&gt;&gt;&gt; json_loads_byteified(&apos;[&quot;I am inside a list&quot;]&apos;)</div><div class="line">[&apos;I am inside a list&apos;]</div><div class="line">&gt;&gt;&gt; json_loads_byteified(&apos;[[[[[[[[&quot;I am inside a big nest of lists&quot;]]]]]]]]&apos;)</div><div class="line">[[[[[[[[&apos;I am inside a big nest of lists&apos;]]]]]]]]</div><div class="line">&gt;&gt;&gt; json_loads_byteified(&apos;&#123;&quot;foo&quot;: &quot;bar&quot;, &quot;things&quot;: [7, &#123;&quot;qux&quot;: &quot;baz&quot;, &quot;moo&quot;: &#123;&quot;cow&quot;: [&quot;milk&quot;]&#125;&#125;]&#125;&apos;)</div><div class="line">&#123;&apos;things&apos;: [7, &#123;&apos;qux&apos;: &apos;baz&apos;, &apos;moo&apos;: &#123;&apos;cow&apos;: [&apos;milk&apos;]&#125;&#125;], &apos;foo&apos;: &apos;bar&apos;&#125;</div><div class="line">&gt;&gt;&gt; json_load_byteified(open(&apos;somefile.json&apos;))</div><div class="line">&#123;&apos;more json&apos;: &apos;from a file&apos;&#125;</div></pre></td></tr></table></figure>
-<p><a href="https://stackoverflow.com/questions/956867/how-to-get-string-objects-instead-of-unicode-from-json" target="_blank" rel="external">stackoverflow</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/11/22/python-loads-json-object-instead-of-unicode/" data-id="cjo4xuv0000592sqb8il57a7l" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/11/27/django-mongoengine-query-operators/" data-id="cjo6e9f7f0009osqbs6ov3is6" class="article-share-link">Share</a>
       
       
     </footer>
@@ -346,6 +345,10 @@
       <ul>
         
           <li>
+            <a href="/2018/11/07/leetcode-perfect-squares/">Perfect Squares</a>
+          </li>
+        
+          <li>
             <a href="/2018/11/06/leetcode-increasing-triplet-subsequence/">Increasing Triplet Subsequence</a>
           </li>
         
@@ -359,10 +362,6 @@
         
           <li>
             <a href="/2018/11/01/leetcode-container-with-most-water/">Container With Most Water</a>
-          </li>
-        
-          <li>
-            <a href="/2018/10/31/leetcode-longest-consecutive-sequence/">Longest Consecutive Sequence</a>
           </li>
         
       </ul>
