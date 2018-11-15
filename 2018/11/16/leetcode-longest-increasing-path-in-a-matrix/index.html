@@ -3,15 +3,20 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Tag: python3 | 记录点滴</title>
+  <title>Longest Increasing Path in a Matrix | 记录点滴</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="记录点滴">
-<meta property="og:url" content="https://clampist.github.io/tags/python3/page/3/index.html">
+  <meta name="description" content="Longest Increasing Path in a MatrixDP Version - 260ms 123456789101112131415161718class Solution:    def longestIncreasingPath(self, matrix):        &quot;&quot;&quot;        :type matrix: List[List[int]]        :rty">
+<meta name="keywords" content="leetcode,python3">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Longest Increasing Path in a Matrix">
+<meta property="og:url" content="https://clampist.github.io/2018/11/16/leetcode-longest-increasing-path-in-a-matrix/index.html">
 <meta property="og:site_name" content="记录点滴">
+<meta property="og:description" content="Longest Increasing Path in a MatrixDP Version - 260ms 123456789101112131415161718class Solution:    def longestIncreasingPath(self, matrix):        &quot;&quot;&quot;        :type matrix: List[List[int]]        :rty">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-11-15T23:48:45.480Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="记录点滴">
+<meta name="twitter:title" content="Longest Increasing Path in a Matrix">
+<meta name="twitter:description" content="Longest Increasing Path in a MatrixDP Version - 260ms 123456789101112131415161718class Solution:    def longestIncreasingPath(self, matrix):        &quot;&quot;&quot;        :type matrix: List[List[int]]        :rty">
   
     <link rel="alternate" href="/atom.xml" title="记录点滴" type="application/atom+xml">
   
@@ -62,120 +67,62 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/10/31/leetcode-longest-consecutive-sequence/" class="archive-article-date">
-  <time datetime="2018-10-30T23:27:00.000Z" itemprop="datePublished">10月 31</time>
+        <section id="main"><article id="post-leetcode-longest-increasing-path-in-a-matrix" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/11/16/leetcode-longest-increasing-path-in-a-matrix/" class="article-date">
+  <time datetime="2018-11-15T23:48:00.000Z" itemprop="datePublished">2018-11-16</time>
 </a>
-      
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/10/31/leetcode-longest-consecutive-sequence/">Longest Consecutive Sequence</a>
+    <h1 class="article-title" itemprop="name">
+      Longest Increasing Path in a Matrix
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/10/30/leetcode-trapping-rain-water/" class="archive-article-date">
-  <time datetime="2018-10-30T00:03:00.000Z" itemprop="datePublished">10月 30</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/10/30/leetcode-trapping-rain-water/">Trapping Rain Water</a>
-    </h1>
-  
+        <h2 id="Longest-Increasing-Path-in-a-Matrix"><a href="#Longest-Increasing-Path-in-a-Matrix" class="headerlink" title="Longest Increasing Path in a Matrix"></a>Longest Increasing Path in a Matrix</h2><p><strong>DP Version</strong> - 260ms</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">longestIncreasingPath</span><span class="params">(self, matrix)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        :type matrix: List[List[int]]</span></div><div class="line"><span class="string">        :rtype: int</span></div><div class="line"><span class="string">        """</span></div><div class="line">        <span class="function"><span class="keyword">def</span> <span class="title">dfs</span><span class="params">(i, j)</span>:</span></div><div class="line">            <span class="keyword">if</span> <span class="keyword">not</span> dp[i][j]:</div><div class="line">                val = matrix[i][j]</div><div class="line">                dp[i][j] = <span class="number">1</span> + max(dfs(i - <span class="number">1</span>, j) <span class="keyword">if</span> i <span class="keyword">and</span> val &gt; matrix[i - <span class="number">1</span>][j] <span class="keyword">else</span> <span class="number">0</span>,</div><div class="line">                    dfs(i + <span class="number">1</span>, j) <span class="keyword">if</span> i &lt; M - <span class="number">1</span> <span class="keyword">and</span> val &gt; matrix[i + <span class="number">1</span>][j] <span class="keyword">else</span> <span class="number">0</span>,</div><div class="line">                    dfs(i, j - <span class="number">1</span>) <span class="keyword">if</span> j <span class="keyword">and</span> val &gt; matrix[i][j - <span class="number">1</span>] <span class="keyword">else</span> <span class="number">0</span>,</div><div class="line">                    dfs(i, j + <span class="number">1</span>) <span class="keyword">if</span> j &lt; N - <span class="number">1</span> <span class="keyword">and</span> val &gt; matrix[i][j + <span class="number">1</span>] <span class="keyword">else</span> <span class="number">0</span>)</div><div class="line">            <span class="keyword">return</span> dp[i][j]</div><div class="line">        <span class="keyword">if</span> <span class="keyword">not</span> matrix <span class="keyword">or</span> <span class="keyword">not</span> matrix[<span class="number">0</span>]: <span class="keyword">return</span> <span class="number">0</span></div><div class="line">        M, N = len(matrix), len(matrix[<span class="number">0</span>])</div><div class="line">        dp = [[<span class="number">0</span>] * N <span class="keyword">for</span> i <span class="keyword">in</span> range(M)]</div><div class="line">        <span class="keyword">return</span> max(dfs(x, y) <span class="keyword">for</span> x <span class="keyword">in</span> range(M) <span class="keyword">for</span> y <span class="keyword">in</span> range(N))</div></pre></td></tr></table></figure>
+<p><strong>test code</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">In [7]: s = Solution(); t = s.longestIncreasingPath([[9,9,4],[6,6,8],[2,1,1]]); <span class="built_in">print</span>(t)</div><div class="line">4</div></pre></td></tr></table></figure>
+<p><a href="https://leetcode.com/problems/longest-increasing-path-in-a-matrix/description/" target="_blank" rel="external">leet code</a></p>
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/10/29/leetcode-find-peak-element/" class="archive-article-date">
-  <time datetime="2018-10-28T23:33:00.000Z" itemprop="datePublished">10月 29</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/10/29/leetcode-find-peak-element/">Find Peak Element</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/10/26/leetcode-sort-colors/" class="archive-article-date">
-  <time datetime="2018-10-25T23:32:00.000Z" itemprop="datePublished">10月 26</time>
-</a>
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2018/11/16/leetcode-longest-increasing-path-in-a-matrix/" data-id="cjoj8xnqz002nsgqbpzl2jkq7" class="article-share-link">Share</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/10/26/leetcode-sort-colors/">Sort Colors</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/10/25/leetcode-game-of-life/" class="archive-article-date">
-  <time datetime="2018-10-25T00:04:00.000Z" itemprop="datePublished">10月 25</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/10/25/leetcode-game-of-life/">Game of Life</a>
-    </h1>
-  
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python3/">python3</a></li></ul>
 
-    </header>
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/11/15/leetcode-count-and-say/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Count and Say</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-  
-    </div></section>
-  
-
-
-  <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/tags/python3/page/2/">&laquo; 上一页</a><a class="page-number" href="/tags/python3/">1</a><a class="page-number" href="/tags/python3/page/2/">2</a><span class="page-number current">3</span>
-  </nav>
 
 </section>
         
