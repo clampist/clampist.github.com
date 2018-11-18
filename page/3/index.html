@@ -64,6 +64,55 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-leetcode-container-with-most-water" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/11/01/leetcode-container-with-most-water/" class="article-date">
+  <time datetime="2018-10-31T23:57:00.000Z" itemprop="datePublished">2018-11-01</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/01/leetcode-container-with-most-water/">Container With Most Water</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Container-With-Most-Water"><a href="#Container-With-Most-Water" class="headerlink" title="Container With Most Water"></a>Container With Most Water</h2><p><strong>One Version</strong> - 96ms</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">maxArea</span><span class="params">(self, height)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        :type height: List[int]</span></div><div class="line"><span class="string">        :rtype: int</span></div><div class="line"><span class="string">        """</span></div><div class="line">        i, j = <span class="number">0</span>, len(height) - <span class="number">1</span></div><div class="line">        left = right = water = <span class="number">0</span></div><div class="line">        <span class="keyword">while</span> i &lt;= j:</div><div class="line">            left, right = max(left, height[i]), max(right, height[j])</div><div class="line">            <span class="keyword">while</span> i &lt;= j <span class="keyword">and</span> height[i] &lt;= left &lt;= right:</div><div class="line">                water = max(water, (j - i) * min(left, right))</div><div class="line">                i += <span class="number">1</span></div><div class="line">            <span class="keyword">while</span> i &lt;= j <span class="keyword">and</span> height[j] &lt;= right &lt;= left:</div><div class="line">                water = max(water, (j - i) * min(left, right))</div><div class="line">                j -= <span class="number">1</span></div><div class="line">        <span class="keyword">return</span> water</div></pre></td></tr></table></figure>
+<p><strong>Another Version</strong> - 72ms</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">maxArea</span><span class="params">(self, height)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        :type height: List[int]</span></div><div class="line"><span class="string">        :rtype: int</span></div><div class="line"><span class="string">        """</span></div><div class="line">        i, j = <span class="number">0</span>, len(height) - <span class="number">1</span></div><div class="line">        water = <span class="number">0</span></div><div class="line">        <span class="keyword">while</span> i &lt;= j:</div><div class="line">            water = max(water, (j - i) * min(height[i], height[j]))</div><div class="line">            <span class="keyword">if</span> height[i] &lt; height[j]:</div><div class="line">                i += <span class="number">1</span></div><div class="line">            <span class="keyword">else</span>:</div><div class="line">                j -= <span class="number">1</span></div><div class="line">        <span class="keyword">return</span> water</div></pre></td></tr></table></figure>
+<p><strong>test code</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">In [7]: s = Solution(); t = s.maxArea([1,8,6,2,5,4,8,3,7])</div><div class="line"></div><div class="line">In [8]: t</div><div class="line">Out[8]: 49</div></pre></td></tr></table></figure>
+<p><a href="https://leetcode.com/problems/container-with-most-water/description/" target="_blank" rel="external">leet code</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2018/11/01/leetcode-container-with-most-water/" data-id="cjonj8rfi0014tsqbkdjcavgb" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python3/">python3</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-leetcode-longest-consecutive-sequence" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/10/31/leetcode-longest-consecutive-sequence/" class="article-date">
@@ -101,7 +150,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/10/31/leetcode-longest-consecutive-sequence/" data-id="cjoj8xnr4002vsgqb856a95j1" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2018/10/31/leetcode-longest-consecutive-sequence/" data-id="cjonj8rg2002mtsqb73z1rrzh" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python3/">python3</a></li></ul>
@@ -148,7 +197,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/10/30/leetcode-trapping-rain-water/" data-id="cjoj8xnrp0046sgqb2d9miwsc" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2018/10/30/leetcode-trapping-rain-water/" data-id="cjonj8rh8005rtsqb0dmqzyss" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python3/">python3</a></li></ul>
@@ -195,7 +244,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/10/29/leetcode-find-peak-element/" data-id="cjoj8xnqd001dsgqbymi3iyzd" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2018/10/29/leetcode-find-peak-element/" data-id="cjonj8rfm001ctsqbazzplwfs" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python3/">python3</a></li></ul>
@@ -242,55 +291,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/10/26/leetcode-sort-colors/" data-id="cjoj8xnrh003osgqblf5djv11" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python3/">python3</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-leetcode-game-of-life" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/10/25/leetcode-game-of-life/" class="article-date">
-  <time datetime="2018-10-25T00:04:00.000Z" itemprop="datePublished">2018-10-25</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/10/25/leetcode-game-of-life/">Game of Life</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Game-of-Life"><a href="#Game-of-Life" class="headerlink" title="Game of Life"></a>Game of Life</h2><p><strong>another solution</strong> - 36ms</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">class Solution:</div><div class="line">    def gameOfLife(self, board):</div><div class="line">        &quot;&quot;&quot;</div><div class="line">        :type board: List[List[int]]</div><div class="line">        :rtype: void Do not return anything, modify board in-place instead.</div><div class="line">        &quot;&quot;&quot;</div><div class="line">        if not board or not board[0]: return</div><div class="line">        m, n = len(board), len(board[0])</div><div class="line">        for i, row in enumerate(board):</div><div class="line">            for j, ele in enumerate(row):</div><div class="line">                count = 0</div><div class="line">                for a in range(max(0, i - 1), min(i + 2, m)):</div><div class="line">                    for b in range(max(0, j - 1), min(j + 2, n)):</div><div class="line">                        # skip i, j itself, (a, b) is (i, j)&apos;s eight neighbors</div><div class="line">                        # should count current_alive(1) and formerly_alive(2)</div><div class="line">                        if (a, b) != (i, j) and 1 &lt;= board[a][b] &lt;= 2:</div><div class="line">                            count += 1</div><div class="line">                if board[i][j] == 0:</div><div class="line">                    if count == 3:</div><div class="line">                        board[i][j] = 3</div><div class="line">                else:</div><div class="line">                    if count &lt; 2 or count &gt; 3:</div><div class="line">                        board[i][j] = 2</div><div class="line">        for i in range(m):</div><div class="line">            for j in range(n):</div><div class="line">                if board[i][j] == 2:</div><div class="line">                    board[i][j] = 0</div><div class="line">                elif board[i][j] == 3:</div><div class="line">                    board[i][j] = 1</div></pre></td></tr></table></figure>
-<p><strong>test code</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">In [16]: in_arr = [[0,1,0],[0,0,1],[1,1,1],[0,0,0]]</div><div class="line"></div><div class="line">In [17]: s = Solution(); s.gameOfLife(in_arr)</div><div class="line"></div><div class="line">In [18]: in_arr</div><div class="line">Out[18]: [[0, 0, 0], [1, 0, 1], [0, 1, 1], [0, 1, 0]]</div></pre></td></tr></table></figure>
-<p><a href="https://leetcode.com/problems/game-of-life/description/" target="_blank" rel="external">leet code</a></p>
-<p><a href="https://zh.wikipedia.org/wiki/康威生命游戏" target="_blank" rel="external">康威生命游戏</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/10/25/leetcode-game-of-life/" data-id="cjoj8xnqh001ksgqbwcz4wwvn" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2018/10/26/leetcode-sort-colors/" data-id="cjonj8rh3005ctsqboar5jkke" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python3/">python3</a></li></ul>
@@ -358,6 +359,10 @@
       <ul>
         
           <li>
+            <a href="/2018/11/19/leetcode-palindrome-partitioning/">Palindrome Partitioning</a>
+          </li>
+        
+          <li>
             <a href="/2018/11/16/leetcode-longest-increasing-path-in-a-matrix/">Longest Increasing Path in a Matrix</a>
           </li>
         
@@ -371,10 +376,6 @@
         
           <li>
             <a href="/2018/11/09/leetcode-letter-combinations-of-a-phone-number/">Letter Combinations of a Phone Number</a>
-          </li>
-        
-          <li>
-            <a href="/2018/11/08/leetcode-binary-tree-zigzag-level-order-traversal/">Binary Tree Zigzag Level Order Traversal</a>
           </li>
         
       </ul>
