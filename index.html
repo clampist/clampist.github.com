@@ -90,7 +90,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Set-Matrix-Zeroes"><a href="#Set-Matrix-Zeroes" class="headerlink" title="Set Matrix Zeroes"></a>Set Matrix Zeroes</h2><p><strong>O(1) Space Version</strong> - 192ms</p>
+        <h2 id="Set-Matrix-Zeroes"><a href="#Set-Matrix-Zeroes" class="headerlink" title="Set Matrix Zeroes"></a>Set Matrix Zeroes</h2><p><strong>O(1) Space Version</strong> - 92ms</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">setZeroes</span><span class="params">(self, matrix)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        :type matrix: List[List[int]]</span></div><div class="line"><span class="string">        :rtype: void Do not return anything, modify matrix in-place instead.</span></div><div class="line"><span class="string">        """</span></div><div class="line">        m = len(matrix)</div><div class="line">        <span class="keyword">if</span> m == <span class="number">0</span>:</div><div class="line">            <span class="keyword">return</span></div><div class="line">        n = len(matrix[<span class="number">0</span>])</div><div class="line"></div><div class="line">        row_zero = <span class="keyword">False</span></div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(m):</div><div class="line">            <span class="keyword">if</span> matrix[i][<span class="number">0</span>] == <span class="number">0</span>:</div><div class="line">                row_zero = <span class="keyword">True</span></div><div class="line">        col_zero = <span class="keyword">False</span></div><div class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(n):</div><div class="line">            <span class="keyword">if</span> matrix[<span class="number">0</span>][j] == <span class="number">0</span>:</div><div class="line">                col_zero = <span class="keyword">True</span></div><div class="line"></div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, m):</div><div class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">1</span>, n):</div><div class="line">                <span class="keyword">if</span> matrix[i][j] == <span class="number">0</span>:</div><div class="line">                    matrix[i][<span class="number">0</span>] = <span class="number">0</span></div><div class="line">                    matrix[<span class="number">0</span>][j] = <span class="number">0</span></div><div class="line"></div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, m):</div><div class="line">            <span class="keyword">if</span> matrix[i][<span class="number">0</span>] == <span class="number">0</span>:</div><div class="line">                <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">1</span>, n):</div><div class="line">                    matrix[i][j] = <span class="number">0</span></div><div class="line"></div><div class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">1</span>, n):</div><div class="line">            <span class="keyword">if</span> matrix[<span class="number">0</span>][j] == <span class="number">0</span>:</div><div class="line">                <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, m):</div><div class="line">                    matrix[i][j] = <span class="number">0</span></div><div class="line"></div><div class="line">        <span class="keyword">if</span> col_zero:</div><div class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(n):</div><div class="line">                matrix[<span class="number">0</span>][j] = <span class="number">0</span></div><div class="line">        <span class="keyword">if</span> row_zero:</div><div class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(m):</div><div class="line">                matrix[i][<span class="number">0</span>] = <span class="number">0</span></div></pre></td></tr></table></figure>
 <p><strong>test code</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">In [23]: m = [[1,1,1],[1,0,1],[1,1,1]]</div><div class="line"></div><div class="line">In [24]: s = Solution(); s.setZeroes(m)</div><div class="line"></div><div class="line">In [25]: m</div><div class="line">Out[25]: [[1, 0, 1], [0, 0, 0], [1, 0, 1]]</div></pre></td></tr></table></figure>
@@ -99,7 +99,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/11/20/leetcode-set-matrix-zeroes/" data-id="cjooydzeo003svxqbv66d3i0q" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2018/11/20/leetcode-set-matrix-zeroes/" data-id="cjooyf2id003qxaqbgg5trtwc" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python3/">python3</a></li></ul>
@@ -146,7 +146,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/11/19/leetcode-palindrome-partitioning/" data-id="cjooydzej003kvxqbpgqu8lzy" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2018/11/19/leetcode-palindrome-partitioning/" data-id="cjooyf2i7003fxaqbj7updd92" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python3/">python3</a></li></ul>
@@ -193,7 +193,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/11/16/leetcode-longest-increasing-path-in-a-matrix/" data-id="cjooydze9002svxqb8jw30ufz" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2018/11/16/leetcode-longest-increasing-path-in-a-matrix/" data-id="cjooyf2i10030xaqbughfwk2j" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python3/">python3</a></li></ul>
@@ -242,7 +242,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/11/15/leetcode-count-and-say/" data-id="cjooydzdm0018vxqbllossc2z" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2018/11/15/leetcode-count-and-say/" data-id="cjooyf2h40012xaqbe31zrc4y" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python3/">python3</a></li></ul>
@@ -291,7 +291,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/11/12/leetcode-number-of-islands/" data-id="cjooydzee0034vxqbmn5kb9nq" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2018/11/12/leetcode-number-of-islands/" data-id="cjooyf2i50038xaqbvn0nfvv7" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python3/">python3</a></li></ul>
