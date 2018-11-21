@@ -64,6 +64,53 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-mongodb-compact-disk-space" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/01/27/mongodb-compact-disk-space/" class="article-date">
+  <time datetime="2018-01-27T03:38:00.000Z" itemprop="datePublished">2018-01-27</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/mongodb/">mongodb</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/01/27/mongodb-compact-disk-space/">mongodb compact disk space</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>##Disk空间回收</p>
+<p>当从MongoDB中删除文档（Documents）或集合（Collections）后，MongoDB不会将Disk空间释放给OS，MongoDB在数据文件（Data Files）中维护Empty Records的列表。当重新插入数据后，MongoDB从Empty Records列表中分配存储空间给新的Document，因此，不需要重新开辟空间。为了更新有效的重用Disk空间，必须重新整理数据碎片。</p>
+<p>WiredTiger使用compact 命令，移除集合（Collection）中数据和索引的碎片，并将unused的空间释放，调用语法：</p>
+<p><code>db.runCommand ( { compact: &#39;&lt;collection&gt;&#39; } )</code></p>
+<p>在执行compact命令时，MongoDB会对当前的database加锁，阻塞其他操作。在compact命令执行完成之后，mongod会重建集合的所有索引。</p>
+<p>On WiredTiger, <strong>compact</strong> will rewrite the collection and indexes to minimize disk space by releasing unused disk space to the operating system. This is useful if you have removed a large amount of data from the collection, and do not plan to replace it.</p>
+<p><a href="http://www.cnblogs.com/ljhdo/p/4947357.html" target="_blank" rel="external">MongoDB 存储引擎：WiredTiger和In-Memory</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2018/01/27/mongodb-compact-disk-space/" data-id="cjortd28k0050adqbmzenph72" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-python-hashlib-md5-unicodeEncodeError" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/01/13/python-hashlib-md5-unicodeEncodeError/" class="article-date">
@@ -97,7 +144,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/01/13/python-hashlib-md5-unicodeEncodeError/" data-id="cjoqepysx005wzyqbx4lf093a" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2018/01/13/python-hashlib-md5-unicodeEncodeError/" data-id="cjortd298006hadqbuyntx9bc" class="article-share-link">Share</a>
       
       
     </footer>
@@ -146,7 +193,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/11/29/python-absolute-import/" data-id="cjoqepysp005ezyqbxo972d79" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/11/29/python-absolute-import/" data-id="cjortd28u005gadqbkg0p3u38" class="article-share-link">Share</a>
       
       
     </footer>
@@ -189,7 +236,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/11/27/django-mongoengine-query-operators/" data-id="cjoqepyqa0008zyqbwnf68zi9" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/11/27/django-mongoengine-query-operators/" data-id="cjortd2600009adqbnpt6cf25" class="article-share-link">Share</a>
       
       
     </footer>
@@ -233,52 +280,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/11/22/python-loads-json-object-instead-of-unicode/" data-id="cjoqepysy005zzyqbke33b0a7" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-linux-grep-by-reg-content-in-file" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/11/02/linux-grep-by-reg-content-in-file/" class="article-date">
-  <time datetime="2017-11-02T00:36:00.000Z" itemprop="datePublished">2017-11-02</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/linux/">linux</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/11/02/linux-grep-by-reg-content-in-file/">linux grep reg content</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="grep-P"><a href="#grep-P" class="headerlink" title="grep -P"></a>grep -P</h2><h2 id="awk-F”-123-”"><a href="#awk-F”-123-”" class="headerlink" title="awk -F”[123]”"></a>awk -F”[123]”</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cat some.log* | grep -P &apos;abc.*]&apos; -o | awk -F&apos;|&apos; &apos;&#123;print $2&#125;&apos; | grep -v 0</div></pre></td></tr></table></figure>
-<p><code>grep -P</code>切出想要的内容</p>
-<p><a href="http://blog.csdn.net/computer055maxi/article/details/6317251" target="_blank" rel="external">参考链接</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">awk -F&quot;[@ /t]&quot; &apos;&#123;print $2,$3&#125;&apos; test</div></pre></td></tr></table></figure>
-<p>以@，空格，Tab键分割test文件的每一行，并输出第二、第三列。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/11/02/linux-grep-by-reg-content-in-file/" data-id="cjoqepysc004szyqbdio3ntbs" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/11/22/python-loads-json-object-instead-of-unicode/" data-id="cjortd291005xadqbs86d0qg0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -344,6 +346,10 @@
       <ul>
         
           <li>
+            <a href="/2018/11/22/leetcode-serialize-and-deserialize-binary-tree/">Serialize and Deserialize Binary Tree</a>
+          </li>
+        
+          <li>
             <a href="/2018/11/21/leetcode-construct-binary-tree-from-preorder-and-inorder-traversal/">Construct Binary Tree from Preorder and Inorder Traversal</a>
           </li>
         
@@ -357,10 +363,6 @@
         
           <li>
             <a href="/2018/11/16/leetcode-longest-increasing-path-in-a-matrix/">Longest Increasing Path in a Matrix</a>
-          </li>
-        
-          <li>
-            <a href="/2018/11/15/leetcode-count-and-say/">Count and Say</a>
           </li>
         
       </ul>

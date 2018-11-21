@@ -64,6 +64,51 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-leetcode-serialize-and-deserialize-binary-tree" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/11/22/leetcode-serialize-and-deserialize-binary-tree/" class="article-date">
+  <time datetime="2018-11-21T23:42:00.000Z" itemprop="datePublished">2018-11-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/22/leetcode-serialize-and-deserialize-binary-tree/">Serialize and Deserialize Binary Tree</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Serialize-and-Deserialize-Binary-Tree"><a href="#Serialize-and-Deserialize-Binary-Tree" class="headerlink" title="Serialize and Deserialize Binary Tree"></a>Serialize and Deserialize Binary Tree</h2><p><strong>Recursive Preorder Version</strong> - 120ms</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Definition for a binary tree node.</span></div><div class="line"><span class="comment"># class TreeNode(object):</span></div><div class="line"><span class="comment">#     def __init__(self, x):</span></div><div class="line"><span class="comment">#         self.val = x</span></div><div class="line"><span class="comment">#         self.left = None</span></div><div class="line"><span class="comment">#         self.right = None</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Codec</span>:</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">serialize</span><span class="params">(self, root)</span>:</span></div><div class="line">        <span class="string">"""Encodes a tree to a single string.</span></div><div class="line"><span class="string">        </span></div><div class="line"><span class="string">        :type root: TreeNode</span></div><div class="line"><span class="string">        :rtype: str</span></div><div class="line"><span class="string">        """</span></div><div class="line">        vals = []</div><div class="line">        <span class="function"><span class="keyword">def</span> <span class="title">convert</span><span class="params">(node)</span>:</span></div><div class="line">            <span class="keyword">if</span> node:</div><div class="line">                vals.append(str(node.val))</div><div class="line">                convert(node.left)</div><div class="line">                convert(node.right)</div><div class="line">            <span class="keyword">else</span>:</div><div class="line">                vals.append(<span class="string">'#'</span>)</div><div class="line">        convert(root)</div><div class="line">        <span class="keyword">return</span> <span class="string">' '</span>.join(vals)</div><div class="line"></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">deserialize</span><span class="params">(self, data)</span>:</span></div><div class="line">        <span class="string">"""Decodes your encoded data to tree.</span></div><div class="line"><span class="string">        </span></div><div class="line"><span class="string">        :type data: str</span></div><div class="line"><span class="string">        :rtype: TreeNode</span></div><div class="line"><span class="string">        """</span></div><div class="line">        <span class="function"><span class="keyword">def</span> <span class="title">convert</span><span class="params">()</span>:</span></div><div class="line">            val = next(vals)</div><div class="line">            <span class="keyword">if</span> val == <span class="string">'#'</span>:</div><div class="line">                <span class="keyword">return</span> <span class="keyword">None</span></div><div class="line">            node = TreeNode(int(val))</div><div class="line">            node.left = convert()</div><div class="line">            node.right = convert()</div><div class="line">            <span class="keyword">return</span> node</div><div class="line">        vals = iter(data.split())</div><div class="line">        <span class="keyword">return</span> convert()        </div><div class="line">        </div><div class="line"></div><div class="line"><span class="comment"># Your Codec object will be instantiated and called as such:</span></div><div class="line"><span class="comment"># codec = Codec()</span></div><div class="line"><span class="comment"># codec.deserialize(codec.serialize(root))</span></div></pre></td></tr></table></figure>
+<p><a href="https://leetcode.com/problems/serialize-and-deserialize-binary-tree/description/" target="_blank" rel="external">leet code</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2018/11/22/leetcode-serialize-and-deserialize-binary-tree/" data-id="cjortd27y003xadqb21px7e1p" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python3/">python3</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-leetcode-construct-binary-tree-from-preorder-and-inorder-traversal" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/11/21/leetcode-construct-binary-tree-from-preorder-and-inorder-traversal/" class="article-date">
@@ -99,7 +144,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/11/21/leetcode-construct-binary-tree-from-preorder-and-inorder-traversal/" data-id="cjoqepyqq000xzyqbfcuodyfq" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2018/11/21/leetcode-construct-binary-tree-from-preorder-and-inorder-traversal/" data-id="cjortd26j0017adqbs2e6t3bj" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python3/">python3</a></li></ul>
@@ -146,7 +191,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/11/20/leetcode-set-matrix-zeroes/" data-id="cjoqepys20044zyqb7f242ekn" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2018/11/20/leetcode-set-matrix-zeroes/" data-id="cjortd2840046adqbre5iajsp" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python3/">python3</a></li></ul>
@@ -193,7 +238,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/11/19/leetcode-palindrome-partitioning/" data-id="cjoqepyrs003jzyqb6yhyqqcj" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2018/11/19/leetcode-palindrome-partitioning/" data-id="cjortd27n003dadqbj2yzukss" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python3/">python3</a></li></ul>
@@ -240,56 +285,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/11/16/leetcode-longest-increasing-path-in-a-matrix/" data-id="cjoqepyrm0033zyqbq6rkds6i" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python3/">python3</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-leetcode-count-and-say" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/11/15/leetcode-count-and-say/" class="article-date">
-  <time datetime="2018-11-14T23:27:00.000Z" itemprop="datePublished">2018-11-15</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/15/leetcode-count-and-say/">Count and Say</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Count-and-Say"><a href="#Count-and-Say" class="headerlink" title="Count and Say"></a>Count and Say</h2><p><strong>groupby Version</strong> - 40ms</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> itertools</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">countAndSay</span><span class="params">(self, n)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        :type n: int</span></div><div class="line"><span class="string">        :rtype: str</span></div><div class="line"><span class="string">        """</span></div><div class="line">        ret = <span class="string">'1'</span></div><div class="line">        <span class="keyword">for</span> _ <span class="keyword">in</span> range(n - <span class="number">1</span>):</div><div class="line">            ret = <span class="string">''</span>.join(str(len(list(group))) + digit <span class="keyword">for</span> digit, group <span class="keyword">in</span> itertools.groupby(ret))</div><div class="line">        <span class="keyword">return</span> ret</div></pre></td></tr></table></figure>
-<p><strong>Prev Version</strong> - 52ms</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">countAndSay</span><span class="params">(self, n)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        :type n: int</span></div><div class="line"><span class="string">        :rtype: str</span></div><div class="line"><span class="string">        """</span></div><div class="line">        ret = <span class="string">'1'</span></div><div class="line">        <span class="keyword">for</span> _ <span class="keyword">in</span> range(n - <span class="number">1</span>):</div><div class="line">            prev = ret</div><div class="line">            ret = <span class="string">''</span></div><div class="line">            j = <span class="number">0</span></div><div class="line">            <span class="keyword">while</span> j &lt; len(prev):</div><div class="line">                cur = prev[j]</div><div class="line">                cnt = <span class="number">1</span></div><div class="line">                j += <span class="number">1</span></div><div class="line">                <span class="keyword">while</span> j &lt; len(prev) <span class="keyword">and</span> prev[j] == cur:</div><div class="line">                    cnt += <span class="number">1</span></div><div class="line">                    j += <span class="number">1</span></div><div class="line">                ret += str(cnt) + str(cur)</div><div class="line">        <span class="keyword">return</span> ret</div></pre></td></tr></table></figure>
-<p><strong>test code</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">In [<span class="number">472</span>]: s = Solution(); t = s.countAndSay(<span class="number">8</span>); print(t)</div><div class="line"><span class="number">1113213211</span></div></pre></td></tr></table></figure>
-<p><a href="https://leetcode.com/problems/count-and-say/description/" target="_blank" rel="external">leet code</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/11/15/leetcode-count-and-say/" data-id="cjoqepyqx001fzyqbbhgzosir" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2018/11/16/leetcode-longest-increasing-path-in-a-matrix/" data-id="cjortd27j0033adqb07gfcues" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python3/">python3</a></li></ul>
@@ -357,6 +353,10 @@
       <ul>
         
           <li>
+            <a href="/2018/11/22/leetcode-serialize-and-deserialize-binary-tree/">Serialize and Deserialize Binary Tree</a>
+          </li>
+        
+          <li>
             <a href="/2018/11/21/leetcode-construct-binary-tree-from-preorder-and-inorder-traversal/">Construct Binary Tree from Preorder and Inorder Traversal</a>
           </li>
         
@@ -370,10 +370,6 @@
         
           <li>
             <a href="/2018/11/16/leetcode-longest-increasing-path-in-a-matrix/">Longest Increasing Path in a Matrix</a>
-          </li>
-        
-          <li>
-            <a href="/2018/11/15/leetcode-count-and-say/">Count and Say</a>
           </li>
         
       </ul>
