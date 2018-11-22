@@ -64,6 +64,56 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-leetcode-unique-paths" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/10/17/leetcode-unique-paths/" class="article-date">
+  <time datetime="2018-10-16T23:22:00.000Z" itemprop="datePublished">2018-10-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/17/leetcode-unique-paths/">Unique Paths</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Unique-Paths"><a href="#Unique-Paths" class="headerlink" title="Unique Paths"></a>Unique Paths</h2><p><strong>Math Method</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> math</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">uniquePaths</span><span class="params">(self, m, n)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        :type m: int</span></div><div class="line"><span class="string">        :type n: int</span></div><div class="line"><span class="string">        :rtype: int</span></div><div class="line"><span class="string">        """</span></div><div class="line">        <span class="keyword">return</span> math.factorial(m+n<span class="number">-2</span>) / math.factorial(m<span class="number">-1</span>) / math.factorial(n<span class="number">-1</span>)</div></pre></td></tr></table></figure>
+<p>Write down your command in a sequence, “right, down, down, right, …” it will always be m+n-2 slots, u just need to insert n-1 “right” commands uniquely in this sequence,and that is just binomial coefficient of m+n-2 choose n-1.</p>
+<p><strong>DP Version</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">uniquePaths</span><span class="params">(self, m, n)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        :type m: int</span></div><div class="line"><span class="string">        :type n: int</span></div><div class="line"><span class="string">        :rtype: int</span></div><div class="line"><span class="string">        """</span></div><div class="line">        aux = [[<span class="number">1</span> <span class="keyword">for</span> x <span class="keyword">in</span> xrange(n)] <span class="keyword">for</span> x <span class="keyword">in</span> xrange(m)]</div><div class="line">        <span class="comment">#print aux</span></div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, m):</div><div class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">1</span>, n):</div><div class="line">                aux[i][j] = aux[i][j<span class="number">-1</span>] + aux[i<span class="number">-1</span>][j]</div><div class="line">        <span class="comment">#print aux</span></div><div class="line">        <span class="keyword">return</span> aux[<span class="number">-1</span>][<span class="number">-1</span>]</div></pre></td></tr></table></figure>
+<p><strong>test code</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">In [329]: s = Solution(); t = s.uniquePaths(3, 2)</div><div class="line">[[1, 1], [1, 1], [1, 1]]</div><div class="line">[[1, 1], [1, 2], [1, 3]]</div><div class="line"></div><div class="line">In [330]: t</div><div class="line">Out[330]: 3</div></pre></td></tr></table></figure>
+<p><a href="https://leetcode.com/problems/unique-paths/description/" target="_blank" rel="external">leet code</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2018/10/17/leetcode-unique-paths/" data-id="cjot8izc7004texqbv12bxmb7" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-leetcode-flatten-nested-list-iterator" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/10/16/leetcode-flatten-nested-list-iterator/" class="article-date">
@@ -99,7 +149,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/10/16/leetcode-flatten-nested-list-iterator/" data-id="cjortd26u001vadqbnpid0jof" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2018/10/16/leetcode-flatten-nested-list-iterator/" data-id="cjot8izaq001nexqb9ie09yz4" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
@@ -148,7 +198,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/10/15/leetcode-intersection-of-two-arrays-ii/" data-id="cjortd279002nadqbo5jtsp38" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2018/10/15/leetcode-intersection-of-two-arrays-ii/" data-id="cjot8izb10028exqbf5eleq5q" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
@@ -196,7 +246,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/10/12/leetcode-find-the-duplicate-number/" data-id="cjortd26q001ladqby6zfxoz9" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2018/10/12/leetcode-find-the-duplicate-number/" data-id="cjot8izao001hexqb5oh1a9ik" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
@@ -243,53 +293,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/10/11/leetcode-missing-number/" data-id="cjortd27o003hadqb2dt3vicg" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-leetcode-kth-smallest-element-in-a-sorted-matrix" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/10/10/leetcode-kth-smallest-element-in-a-sorted-matrix/" class="article-date">
-  <time datetime="2018-10-10T01:02:00.000Z" itemprop="datePublished">2018-10-10</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/10/10/leetcode-kth-smallest-element-in-a-sorted-matrix/">Kth Smallest Element in a Sorted Matrix</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Kth-Smallest-Element-in-a-Sorted-Matrix"><a href="#Kth-Smallest-Element-in-a-Sorted-Matrix" class="headerlink" title="Kth Smallest Element in a Sorted Matrix"></a>Kth Smallest Element in a Sorted Matrix</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> heapq</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">kthSmallest</span><span class="params">(self, matrix, k)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        :type matrix: List[List[int]]</span></div><div class="line"><span class="string">        :type k: int</span></div><div class="line"><span class="string">        :rtype: int</span></div><div class="line"><span class="string">        """</span></div><div class="line">        <span class="keyword">return</span> list(heapq.merge(*matrix))[k<span class="number">-1</span>]</div><div class="line">        </div><div class="line">        </div><div class="line">In [11]: heapq.merge?</div><div class="line">Signature: heapq.merge(*iterables)</div><div class="line">Docstring:</div><div class="line">Merge multiple sorted inputs into a single sorted output.</div><div class="line"></div><div class="line">Similar to sorted(itertools.chain(*iterables)) but returns a generator,</div><div class="line">does <span class="keyword">not</span> pull the data into memory all at once, <span class="keyword">and</span> assumes that each of</div><div class="line">the input streams <span class="keyword">is</span> already sorted (smallest to largest).</div><div class="line"></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>list(merge([<span class="number">1</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">7</span>], [<span class="number">0</span>,<span class="number">2</span>,<span class="number">4</span>,<span class="number">8</span>], [<span class="number">5</span>,<span class="number">10</span>,<span class="number">15</span>,<span class="number">20</span>], [], [<span class="number">25</span>]))</div><div class="line">[<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">10</span>, <span class="number">15</span>, <span class="number">20</span>, <span class="number">25</span>]</div></pre></td></tr></table></figure>
-<p><strong>test code</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">In [<span class="number">104</span>]: s = Solution(); t = s.kthSmallest([[<span class="number">1</span>,<span class="number">5</span>,<span class="number">9</span>],[<span class="number">10</span>,<span class="number">11</span>,<span class="number">13</span>],[<span class="number">12</span>,<span class="number">13</span>,<span class="number">15</span>]], <span class="number">8</span>)</div><div class="line"></div><div class="line">In [<span class="number">105</span>]: <span class="keyword">print</span> t</div><div class="line"><span class="number">13</span></div></pre></td></tr></table></figure>
-<p><a href="https://leetcode.com/problems/kth-smallest-element-in-a-sorted-matrix/description/" target="_blank" rel="external">leet code</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/10/10/leetcode-kth-smallest-element-in-a-sorted-matrix/" data-id="cjortd27c002radqbqvyohff2" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2018/10/11/leetcode-missing-number/" data-id="cjot8izbg003aexqbvrxc007p" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
@@ -357,6 +361,10 @@
       <ul>
         
           <li>
+            <a href="/2018/11/23/leetcode-longest-substring-with-at-least-k-repeating-characters/">Longest Substring with At Least K Repeating Characters</a>
+          </li>
+        
+          <li>
             <a href="/2018/11/22/leetcode-serialize-and-deserialize-binary-tree/">Serialize and Deserialize Binary Tree</a>
           </li>
         
@@ -370,10 +378,6 @@
         
           <li>
             <a href="/2018/11/19/leetcode-palindrome-partitioning/">Palindrome Partitioning</a>
-          </li>
-        
-          <li>
-            <a href="/2018/11/16/leetcode-longest-increasing-path-in-a-matrix/">Longest Increasing Path in a Matrix</a>
           </li>
         
       </ul>
