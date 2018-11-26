@@ -64,6 +64,54 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-leetcode-find-the-duplicate-number" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/10/12/leetcode-find-the-duplicate-number/" class="article-date">
+  <time datetime="2018-10-12T00:08:00.000Z" itemprop="datePublished">2018-10-12</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/12/leetcode-find-the-duplicate-number/">Find the Duplicate Number</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Find-the-Duplicate-Number"><a href="#Find-the-Duplicate-Number" class="headerlink" title="Find the Duplicate Number"></a>Find the Duplicate Number</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">findDuplicate</span><span class="params">(self, nums)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        :type nums: List[int]</span></div><div class="line"><span class="string">        :rtype: int</span></div><div class="line"><span class="string">        """</span></div><div class="line">        d = &#123;&#125;</div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> nums:</div><div class="line">            <span class="keyword">if</span> i <span class="keyword">in</span> d:</div><div class="line">                <span class="keyword">return</span> i</div><div class="line">            <span class="keyword">else</span>:</div><div class="line">                d[i] = <span class="number">1</span></div></pre></td></tr></table></figure>
+<p><strong>O(1) space</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">findDuplicate</span><span class="params">(self, nums)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        :type nums: List[int]</span></div><div class="line"><span class="string">        :rtype: int</span></div><div class="line"><span class="string">        """</span></div><div class="line">        low = <span class="number">0</span></div><div class="line">        high = len(nums) - <span class="number">1</span></div><div class="line">        mid = (high + low) / <span class="number">2</span></div><div class="line">        <span class="keyword">while</span> high - low &gt; <span class="number">1</span>:</div><div class="line">            count = <span class="number">0</span></div><div class="line">            <span class="keyword">for</span> x <span class="keyword">in</span> nums:</div><div class="line">                <span class="keyword">if</span> mid &lt; x &lt;= high:</div><div class="line">                    count += <span class="number">1</span></div><div class="line">            <span class="keyword">if</span> count &gt; high - mid:</div><div class="line">                low = mid</div><div class="line">            <span class="keyword">else</span>:</div><div class="line">                high = mid</div><div class="line">            mid = (high + low) / <span class="number">2</span></div><div class="line">        <span class="keyword">return</span> high</div></pre></td></tr></table></figure>
+<p><strong>test code</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">In [179]: s = Solution(); t = s.findDuplicate([5,4,7,8,1,2,3,1,1,9]); <span class="built_in">print</span> t</div><div class="line">1</div></pre></td></tr></table></figure>
+<p><a href="https://leetcode.com/problems/find-the-duplicate-number/description/" target="_blank" rel="external">leet code</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2018/10/12/leetcode-find-the-duplicate-number/" data-id="cjoyy28cd001iqpqbqxi8h3po" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-leetcode-missing-number" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/10/11/leetcode-missing-number/" class="article-date">
@@ -99,7 +147,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/10/11/leetcode-missing-number/" data-id="cjoxiouzj004ifoqb3ht3gvsw" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2018/10/11/leetcode-missing-number/" data-id="cjoyy28ea003nqpqbrh9k4x1i" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
@@ -145,7 +193,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/10/10/leetcode-kth-smallest-element-in-a-sorted-matrix/" data-id="cjoxiouza003ufoqbm40wgguy" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2018/10/10/leetcode-kth-smallest-element-in-a-sorted-matrix/" data-id="cjoyy28d7002nqpqbys3abqar" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
@@ -196,7 +244,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/10/09/leetcode-convert-sorted-array-to-binary-search-tree/" data-id="cjoxioux5001dfoqbmzc3r4ay" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2018/10/09/leetcode-convert-sorted-array-to-binary-search-tree/" data-id="cjoyy28ao0016qpqbnjjiww3y" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/binary-tree/">binary tree</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
@@ -248,60 +296,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/10/08/leetcode-kth-smallest-element-in-a-BST/" data-id="cjoxiouz3003ffoqbdjvwexz9" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2018/10/08/leetcode-kth-smallest-element-in-a-BST/" data-id="cjoyy28dh002vqpqbehp8sul1" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/binary-tree/">binary tree</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-leetcode-subsets" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/09/13/leetcode-subsets/" class="article-date">
-  <time datetime="2018-09-13T15:39:00.000Z" itemprop="datePublished">2018-09-13</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/13/leetcode-subsets/">Subsets</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Subsets"><a href="#Subsets" class="headerlink" title="Subsets"></a>Subsets</h2><p><strong>Slow Version</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">subsets</span><span class="params">(self, nums)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        :type nums: List[int]</span></div><div class="line"><span class="string">        :rtype: List[List[int]]</span></div><div class="line"><span class="string">        """</span></div><div class="line">        n, res = len(nums), list()</div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> xrange(<span class="number">2</span>**n):</div><div class="line">            res.append(filter(<span class="keyword">lambda</span> x: x <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span>, map(<span class="keyword">lambda</span> x, y: y <span class="keyword">if</span> (int(x) * y <span class="keyword">or</span> y == <span class="number">0</span> <span class="keyword">and</span> int(x) != <span class="number">0</span>) <span class="keyword">else</span></div><div class="line"> <span class="keyword">None</span>, list(bin(i)[<span class="number">2</span>:].zfill(n)), nums)))</div><div class="line">        <span class="keyword">return</span> res</div></pre></td></tr></table></figure>
-<p><strong>BitwiseOperators Version</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">subsets</span><span class="params">(self, nums)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        :type nums: List[int]</span></div><div class="line"><span class="string">        :rtype: List[List[int]]</span></div><div class="line"><span class="string">        """</span></div><div class="line">        res = []</div><div class="line">        nums.sort()</div><div class="line">        STDOUT = <span class="keyword">True</span></div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> xrange(<span class="number">1</span> &lt;&lt; len(nums)):</div><div class="line">            <span class="keyword">if</span> STDOUT: <span class="keyword">print</span> <span class="string">'i ='</span>, i</div><div class="line">            tmp = []</div><div class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> xrange(len(nums)):</div><div class="line">                <span class="keyword">if</span> STDOUT: <span class="keyword">print</span> <span class="string">'&#123;0:03b&#125;'</span>.format(i), <span class="string">'&amp;'</span>, <span class="string">'&#123;0:03b&#125;'</span>.format(<span class="number">1</span> &lt;&lt; j), <span class="string">'-&gt;'</span>, i &amp; <span class="number">1</span> &lt;&lt; j</div><div class="line">                <span class="keyword">if</span> i &amp; <span class="number">1</span> &lt;&lt; j:</div><div class="line">                    <span class="keyword">if</span> STDOUT: <span class="keyword">print</span> <span class="string">'pick'</span>, <span class="string">'&#123;0:03b&#125;'</span>.format(<span class="number">1</span> &lt;&lt; j), nums, <span class="string">'j ='</span>, j, <span class="string">'target'</span>, nums[j]</div><div class="line">                    tmp.append(nums[j])</div><div class="line">            <span class="keyword">if</span> STDOUT: <span class="keyword">print</span> <span class="string">'i = &#123;0:03b&#125;'</span>.format(i), <span class="string">'tmp ='</span>, tmp</div><div class="line">            res.append(tmp)</div><div class="line">        <span class="keyword">return</span> res</div></pre></td></tr></table></figure>
-<p><em>output</em></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div></pre></td><td class="code"><pre><div class="line">In [748]: s = Solution(); print s.subsets([1, 2, 3])</div><div class="line">i = 0</div><div class="line">000 &amp; 001 -&gt; 0</div><div class="line">000 &amp; 010 -&gt; 0</div><div class="line">000 &amp; 100 -&gt; 0</div><div class="line">i = 000 tmp = []</div><div class="line">i = 1</div><div class="line">001 &amp; 001 -&gt; 1</div><div class="line">pick 001 [1, 2, 3] j = 0 target 1</div><div class="line">001 &amp; 010 -&gt; 0</div><div class="line">001 &amp; 100 -&gt; 0</div><div class="line">i = 001 tmp = [1]</div><div class="line">i = 2</div><div class="line">010 &amp; 001 -&gt; 0</div><div class="line">010 &amp; 010 -&gt; 2</div><div class="line">pick 010 [1, 2, 3] j = 1 target 2</div><div class="line">010 &amp; 100 -&gt; 0</div><div class="line">i = 010 tmp = [2]</div><div class="line">i = 3</div><div class="line">011 &amp; 001 -&gt; 1</div><div class="line">pick 001 [1, 2, 3] j = 0 target 1</div><div class="line">011 &amp; 010 -&gt; 2</div><div class="line">pick 010 [1, 2, 3] j = 1 target 2</div><div class="line">011 &amp; 100 -&gt; 0</div><div class="line">i = 011 tmp = [1, 2]</div><div class="line">i = 4</div><div class="line">100 &amp; 001 -&gt; 0</div><div class="line">100 &amp; 010 -&gt; 0</div><div class="line">100 &amp; 100 -&gt; 4</div><div class="line">pick 100 [1, 2, 3] j = 2 target 3</div><div class="line">i = 100 tmp = [3]</div><div class="line">i = 5</div><div class="line">101 &amp; 001 -&gt; 1</div><div class="line">pick 001 [1, 2, 3] j = 0 target 1</div><div class="line">101 &amp; 010 -&gt; 0</div><div class="line">101 &amp; 100 -&gt; 4</div><div class="line">pick 100 [1, 2, 3] j = 2 target 3</div><div class="line">i = 101 tmp = [1, 3]</div><div class="line">i = 6</div><div class="line">110 &amp; 001 -&gt; 0</div><div class="line">110 &amp; 010 -&gt; 2</div><div class="line">pick 010 [1, 2, 3] j = 1 target 2</div><div class="line">110 &amp; 100 -&gt; 4</div><div class="line">pick 100 [1, 2, 3] j = 2 target 3</div><div class="line">i = 110 tmp = [2, 3]</div><div class="line">i = 7</div><div class="line">111 &amp; 001 -&gt; 1</div><div class="line">pick 001 [1, 2, 3] j = 0 target 1</div><div class="line">111 &amp; 010 -&gt; 2</div><div class="line">pick 010 [1, 2, 3] j = 1 target 2</div><div class="line">111 &amp; 100 -&gt; 4</div><div class="line">pick 100 [1, 2, 3] j = 2 target 3</div><div class="line">i = 111 tmp = [1, 2, 3]</div><div class="line">[[], [1], [2], [1, 2], [3], [1, 3], [2, 3], [1, 2, 3]]</div></pre></td></tr></table></figure>
-<p><a href="https://leetcode.com/problems/subsets/description/" target="_blank" rel="external">leet code</a></p>
-<p><a href="https://wiki.python.org/moin/BitwiseOperators" target="_blank" rel="external">https://wiki.python.org/moin/BitwiseOperators</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/09/13/leetcode-subsets/" data-id="cjoxiouzv005ifoqb1jwrueu2" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
 
     </footer>
   </div>
@@ -366,6 +364,10 @@
       <ul>
         
           <li>
+            <a href="/2018/11/27/leetcode-merge-two-binary-trees/">Merge Two Binary Trees</a>
+          </li>
+        
+          <li>
             <a href="/2018/11/26/leetcode-hamming-distance/">Hamming Distance</a>
           </li>
         
@@ -379,10 +381,6 @@
         
           <li>
             <a href="/2018/11/21/leetcode-construct-binary-tree-from-preorder-and-inorder-traversal/">Construct Binary Tree from Preorder and Inorder Traversal</a>
-          </li>
-        
-          <li>
-            <a href="/2018/11/20/leetcode-set-matrix-zeroes/">Set Matrix Zeroes</a>
           </li>
         
       </ul>

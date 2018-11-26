@@ -64,6 +64,55 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-python-absolute-import" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/11/29/python-absolute-import/" class="article-date">
+  <time datetime="2017-11-29T02:35:00.000Z" itemprop="datePublished">2017-11-29</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/python/">python</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/11/29/python-absolute-import/">python from __future__ import absolute_import</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="from-future-import-absolute-import"><a href="#from-future-import-absolute-import" class="headerlink" title="from __future__ import absolute_import"></a>from __future__ import absolute_import</h2><h3 id="1-使用以上语句则启动绝对导入"><a href="#1-使用以上语句则启动绝对导入" class="headerlink" title="1.使用以上语句则启动绝对导入"></a>1.使用以上语句则启动绝对导入</h3><p>会从 <code>sys.path</code> 里寻找所有名为 <code>x</code> 的顶层模块</p>
+<h3 id="2-而相应的相对导入则采用"><a href="#2-而相应的相对导入则采用" class="headerlink" title="2.而相应的相对导入则采用."></a>2.而相应的相对导入则采用<code>.</code></h3><p>比如一个 package 下有 a.py 和 b.py 两个文件，在 a.py 里 <code>from . import b</code> 即是相对导入 b.py。</p>
+<p><a href="https://segmentfault.com/q/1010000000458562" target="_blank" rel="external">区别</a></p>
+<p><a href="http://legacy.python.org/dev/peps/pep-0328/" target="_blank" rel="external"><code>PEP 328</code></a>中：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">package/</div><div class="line">    __init__.py</div><div class="line">    subpackage1/</div><div class="line">        __init__.py</div><div class="line">        moduleX.py</div><div class="line">        moduleY.py</div><div class="line">    subpackage2/</div><div class="line">        __init__.py</div><div class="line">        moduleZ.py</div><div class="line">    moduleA.py</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">from .moduleY import spam</div><div class="line">from .moduleY import spam as ham</div><div class="line">from . import moduleY</div><div class="line">from ..subpackage1 import moduleY</div><div class="line">from ..subpackage2.moduleZ import eggs</div><div class="line">from ..moduleA import foo</div><div class="line">from ...package import bar</div><div class="line">from ...sys import path</div></pre></td></tr></table></figure>
+<p>一个<code>.</code>表示从当前目录寻找</p>
+<p>两个<code>.</code>表示从父目录寻找</p>
+<p>更多的<code>.</code>则从更高层级的目录寻找</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2017/11/29/python-absolute-import/" data-id="cjoyy28m60062qpqb7i0j1gv7" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-django-mongoengine-query-operators" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/11/27/django-mongoengine-query-operators/" class="article-date">
@@ -97,7 +146,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/11/27/django-mongoengine-query-operators/" data-id="cjoxiouwf0009foqbijmcoiog" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/11/27/django-mongoengine-query-operators/" data-id="cjoyy288z0008qpqb5fdwypzo" class="article-share-link">Share</a>
       
       
     </footer>
@@ -141,7 +190,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/11/22/python-loads-json-object-instead-of-unicode/" data-id="cjoxiov0f006vfoqblm3bjbrb" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/11/22/python-loads-json-object-instead-of-unicode/" data-id="cjoyy28mb006fqpqbmeedgvg5" class="article-share-link">Share</a>
       
       
     </footer>
@@ -186,7 +235,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/11/02/linux-grep-by-reg-content-in-file/" data-id="cjoxiov040061foqbkw5blqdq" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/11/02/linux-grep-by-reg-content-in-file/" data-id="cjoyy28jl0058qpqb8tjkwz0w" class="article-share-link">Share</a>
       
       
     </footer>
@@ -235,54 +284,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/11/02/linux-sync-folder-by-rsync/" data-id="cjoxiov050064foqb95swscy6" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-turing" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/11/01/turing/" class="article-date">
-  <time datetime="2017-11-01T06:37:00.000Z" itemprop="datePublished">2017-11-01</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/linux/">linux</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/11/01/turing/">sed replace</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="图灵"><a href="#图灵" class="headerlink" title="图灵"></a>图灵</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">sed -i <span class="string">'s/\\"//g'</span> file</div><div class="line"></div><div class="line">sed -i <span class="string">'s/\\\\\//\//g'</span> file</div><div class="line"></div><div class="line">sed -i <span class="string">'s/"\[&#123;""json"":""/\[/g'</span> file</div><div class="line"></div><div class="line">sed -i <span class="string">'s/&#123;""json"":""//g'</span> file</div><div class="line"></div><div class="line">sed -i <span class="string">'s/"",""mt"":[0-9]*&#125;\]"/\]/g'</span> file</div><div class="line"></div><div class="line">sed -i <span class="string">'s/"",""mt"":[0-9]*&#125;//g'</span> file</div></pre></td></tr></table></figure>
-<h2 id="Use-double-quotes-so-that-sed-would-expand-variables"><a href="#Use-double-quotes-so-that-sed-would-expand-variables" class="headerlink" title="Use double quotes so that sed would expand variables."></a>Use double quotes so that sed would expand variables.</h2><p><code>sed &quot;s|\$ROOT|${HOME}|&quot; abc.sh</code></p>
-<ul>
-<li>shell变量在双引号内会被解析</li>
-<li>在单引号内不会被解析</li>
-</ul>
-<p><a href="https://stackoverflow.com/questions/19151954/how-to-use-variables-in-a-command-in-sed" target="_blank" rel="external">How to use variables in a command in sed?</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/11/01/turing/" data-id="cjoxiov0q007xfoqb0xkrsz61" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/11/02/linux-sync-folder-by-rsync/" data-id="cjoyy28le005hqpqbrc3sd3f8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -348,6 +350,10 @@
       <ul>
         
           <li>
+            <a href="/2018/11/27/leetcode-merge-two-binary-trees/">Merge Two Binary Trees</a>
+          </li>
+        
+          <li>
             <a href="/2018/11/26/leetcode-hamming-distance/">Hamming Distance</a>
           </li>
         
@@ -361,10 +367,6 @@
         
           <li>
             <a href="/2018/11/21/leetcode-construct-binary-tree-from-preorder-and-inorder-traversal/">Construct Binary Tree from Preorder and Inorder Traversal</a>
-          </li>
-        
-          <li>
-            <a href="/2018/11/20/leetcode-set-matrix-zeroes/">Set Matrix Zeroes</a>
           </li>
         
       </ul>
