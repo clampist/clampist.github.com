@@ -64,14 +64,14 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-acquire-array-length-in-cpp" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-shell-sed-certain-lines" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/09/22/acquire-array-length-in-cpp/" class="article-date">
-  <time datetime="2017-09-22T06:37:00.000Z" itemprop="datePublished">2017-09-22</time>
+    <a href="/2017/10/24/shell-sed-certain-lines/" class="article-date">
+  <time datetime="2017-10-24T10:37:00.000Z" itemprop="datePublished">2017-10-24</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/cpp/">cpp</a>
+    <a class="article-category-link" href="/categories/linux/">linux</a>
   </div>
 
   </div>
@@ -82,7 +82,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/22/acquire-array-length-in-cpp/">acquire array length in cpp</a>
+      <a class="article-title" href="/2017/10/24/shell-sed-certain-lines/">use sed print certain lines</a>
     </h1>
   
 
@@ -90,19 +90,16 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="C-获取数组长度"><a href="#C-获取数组长度" class="headerlink" title="C++获取数组长度"></a>C++获取数组长度</h2><p>一、静态数组。</p>
-<p>比如 int int_ary[5] ,静态数组在编译的时候就知道了数组长度，这对编译器来说挺好实现的。</p>
-<p>用得最多的大概就是sizeof了吧：</p>
-<p><code>#define countof_macro(x) (sizeof((x)) / sizeof(x)[0])</code></p>
-<p>对于C++，可以用模板。</p>
-<p>如果将数组作为函数形参的话，它会退化成一个指针，但是引用则不会。使用引用带来的另外一个问题就是，声明参数时必须知道数组长度——我要是知道我还费这劲干啥？解决方法就是使用模板，将数组引用的数组大小声明为模板参数：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//错误的做法：这里形参已经退化为指针了</span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">countof_func_para</span><span class="params">(<span class="keyword">int</span> int_ary[<span class="number">5</span>])</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    <span class="keyword">return</span> countof_macro(int_ary);</div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="comment">//正确的做法</span></div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">size_t</span> n&gt;</div><div class="line">int countof_template(const int (&amp;int_ary)[N])</div><div class="line">&#123;</div><div class="line">    <span class="keyword">return</span> N;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><a href="http://www.cnblogs.com/h46incon/archive/2013/03/17/2965020.html" target="_blank" rel="external">参考链接</a></p>
+        <h2 id="用sed命令"><a href="#用sed命令" class="headerlink" title="用sed命令"></a>用sed命令</h2><p>sed -n ‘5,10p’ filename 这样你就可以只查看文件的第5行到第10行。</p>
+<p><a href="http://www.cnblogs.com/xianghang123/archive/2011/08/03/2125977.html" target="_blank" rel="external">linux 如何显示一个文件的某几行(中间几行)</a> </p>
+<h2 id="sed第一行、第二行至最后"><a href="#sed第一行、第二行至最后" class="headerlink" title="sed第一行、第二行至最后"></a>sed第一行、第二行至最后</h2><h2 id="最后添加一列"><a href="#最后添加一列" class="headerlink" title="最后添加一列"></a>最后添加一列</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">cmd_str = <span class="string">'sed -i "1s/$/\t%s-mirror/" %s'</span> % (str(file_col_num + <span class="number">1</span>),</div><div class="line">cmd_str = <span class="string">'sed -i "1s/$/\tmirror/" %s'</span> % local_upload_sample_file_path_name</div><div class="line">cmd_str = <span class="string">'sed -i \'2,$s/$/\t0/\' %s'</span> % local_upload_sample_file_path_name</div><div class="line">cmd_str = <span class="string">'sed -i \'1d %s\''</span> % local_upload_sample_file_path_name2</div><div class="line">cmd_str = <span class="string">'sed -i \'s/$/\t1/\' %s'</span> % local_upload_sample_file_path_name2</div></pre></td></tr></table></figure>
+<p><a href="https://unix.stackexchange.com/questions/117568/adding-a-column-of-values-in-a-tab-delimited-file" target="_blank" rel="external">Adding a Column of values in a tab delimited file</a></p>
+<p><a href="http://www.cnblogs.com/emanlee/p/3307642.html" target="_blank" rel="external">linux中sed的用法</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/09/22/acquire-array-length-in-cpp/" data-id="cjoyy28880000qpqb0uogs266" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/10/24/shell-sed-certain-lines/" data-id="cjp0djrj1007cwlqbmezqfwe8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -145,7 +142,55 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/09/22/boost-lexical-cast-cpp/" data-id="cjoyy288f0001qpqb90ytouwh" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/09/22/boost-lexical-cast-cpp/" data-id="cjp0djrer0000wlqbtuv15f17" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-acquire-array-length-in-cpp" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/09/22/acquire-array-length-in-cpp/" class="article-date">
+  <time datetime="2017-09-22T06:37:00.000Z" itemprop="datePublished">2017-09-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/cpp/">cpp</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/09/22/acquire-array-length-in-cpp/">acquire array length in cpp</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="C-获取数组长度"><a href="#C-获取数组长度" class="headerlink" title="C++获取数组长度"></a>C++获取数组长度</h2><p>一、静态数组。</p>
+<p>比如 int int_ary[5] ,静态数组在编译的时候就知道了数组长度，这对编译器来说挺好实现的。</p>
+<p>用得最多的大概就是sizeof了吧：</p>
+<p><code>#define countof_macro(x) (sizeof((x)) / sizeof(x)[0])</code></p>
+<p>对于C++，可以用模板。</p>
+<p>如果将数组作为函数形参的话，它会退化成一个指针，但是引用则不会。使用引用带来的另外一个问题就是，声明参数时必须知道数组长度——我要是知道我还费这劲干啥？解决方法就是使用模板，将数组引用的数组大小声明为模板参数：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//错误的做法：这里形参已经退化为指针了</span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">countof_func_para</span><span class="params">(<span class="keyword">int</span> int_ary[<span class="number">5</span>])</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    <span class="keyword">return</span> countof_macro(int_ary);</div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="comment">//正确的做法</span></div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">size_t</span> n&gt;</div><div class="line">int countof_template(const int (&amp;int_ary)[N])</div><div class="line">&#123;</div><div class="line">    <span class="keyword">return</span> N;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><a href="http://www.cnblogs.com/h46incon/archive/2013/03/17/2965020.html" target="_blank" rel="external">参考链接</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2017/09/22/acquire-array-length-in-cpp/" data-id="cjp0djrf60002wlqbec1dlve8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -192,7 +237,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/09/22/git-usage/" data-id="cjoyy289g000lqpqblkl5ga2y" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/09/22/git-usage/" data-id="cjp0djrfn000lwlqbx8t9bbg2" class="article-share-link">Share</a>
       
       
     </footer>
@@ -235,49 +280,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/09/22/linux-dos-to-unix/" data-id="cjoyy28je0055qpqbby3a01a1" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-python-two-or-three-continuous-items-in-list" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/09/22/python-two-or-three-continuous-items-in-list/" class="article-date">
-  <time datetime="2017-09-22T06:37:00.000Z" itemprop="datePublished">2017-09-22</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/python/">python</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/22/python-two-or-three-continuous-items-in-list/">python two or three continuous items in list</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Python-list-中连续2-3个对象"><a href="#Python-list-中连续2-3个对象" class="headerlink" title="Python list 中连续2-3个对象"></a>Python list 中连续2-3个对象</h2><h3 id="1-前后连续两天"><a href="#1-前后连续两天" class="headerlink" title="1.前后连续两天"></a>1.前后连续两天</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> date <span class="keyword">in</span> [eval_obj.date_range[i:i+<span class="number">2</span>] <span class="keyword">for</span> i <span class="keyword">in</span> range(len(eval_obj.date_range) - <span class="number">1</span>)]:</div><div class="line">    <span class="keyword">print</span> date[<span class="number">0</span>], date[<span class="number">1</span>]</div></pre></td></tr></table></figure>
-<h3 id="2-时间间隔1-3天"><a href="#2-时间间隔1-3天" class="headerlink" title="2.时间间隔1-3天"></a>2.时间间隔1-3天</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> t <span class="keyword">in</span> [time_list[i:i + <span class="number">3</span>] <span class="keyword">for</span> i <span class="keyword">in</span> range(len(time_list) - <span class="number">1</span>)]:</div><div class="line">    <span class="keyword">if</span> len(t) == <span class="number">3</span>:</div><div class="line">        print(t[<span class="number">0</span>], t[<span class="number">2</span>])</div></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/09/22/python-two-or-three-continuous-items-in-list/" data-id="cjoyy28me006mqpqb00y1y2r7" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/09/22/linux-dos-to-unix/" data-id="cjp0djrhw0059wlqbnux8nuvl" class="article-share-link">Share</a>
       
       
     </footer>
@@ -290,7 +293,7 @@
 
 
   <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/page/15/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="page-number" href="/page/15/">15</a><span class="page-number current">16</span><a class="page-number" href="/page/17/">17</a><a class="page-number" href="/page/18/">18</a><a class="extend next" rel="next" href="/page/17/">下一页&raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/15/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="page-number" href="/page/15/">15</a><span class="page-number current">16</span><a class="page-number" href="/page/17/">17</a><a class="page-number" href="/page/18/">18</a><a class="page-number" href="/page/19/">19</a><a class="extend next" rel="next" href="/page/17/">下一页&raquo;</a>
   </nav>
 
 </section>
@@ -343,6 +346,10 @@
       <ul>
         
           <li>
+            <a href="/2018/11/28/leetcode-counting-bits/">Counting Bits</a>
+          </li>
+        
+          <li>
             <a href="/2018/11/27/leetcode-merge-two-binary-trees/">Merge Two Binary Trees</a>
           </li>
         
@@ -356,10 +363,6 @@
         
           <li>
             <a href="/2018/11/22/leetcode-serialize-and-deserialize-binary-tree/">Serialize and Deserialize Binary Tree</a>
-          </li>
-        
-          <li>
-            <a href="/2018/11/21/leetcode-construct-binary-tree-from-preorder-and-inorder-traversal/">Construct Binary Tree from Preorder and Inorder Traversal</a>
           </li>
         
       </ul>
