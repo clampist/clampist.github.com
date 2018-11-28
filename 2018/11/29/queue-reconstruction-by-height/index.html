@@ -3,15 +3,20 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Tag: python3 | 记录点滴</title>
+  <title>Queue Reconstruction by Height | 记录点滴</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="记录点滴">
-<meta property="og:url" content="https://clampist.github.io/tags/python3/page/4/index.html">
+  <meta name="description" content="Queue Reconstruction by HeightSort Insert Version - 84ms 123456789101112131415class Solution(object):    def reconstructQueue(self, people):        &quot;&quot;&quot;        :type people: List[List[int]]        :rty">
+<meta name="keywords" content="leetcode,python3">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Queue Reconstruction by Height">
+<meta property="og:url" content="https://clampist.github.io/2018/11/29/queue-reconstruction-by-height/index.html">
 <meta property="og:site_name" content="记录点滴">
+<meta property="og:description" content="Queue Reconstruction by HeightSort Insert Version - 84ms 123456789101112131415class Solution(object):    def reconstructQueue(self, people):        &quot;&quot;&quot;        :type people: List[List[int]]        :rty">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-11-28T23:48:58.271Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="记录点滴">
+<meta name="twitter:title" content="Queue Reconstruction by Height">
+<meta name="twitter:description" content="Queue Reconstruction by HeightSort Insert Version - 84ms 123456789101112131415class Solution(object):    def reconstructQueue(self, people):        &quot;&quot;&quot;        :type people: List[List[int]]        :rty">
   
     <link rel="alternate" href="/atom.xml" title="记录点滴" type="application/atom+xml">
   
@@ -62,120 +67,62 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/11/06/leetcode-increasing-triplet-subsequence/" class="archive-article-date">
-  <time datetime="2018-11-05T23:27:00.000Z" itemprop="datePublished">11月 6</time>
+        <section id="main"><article id="post-queue-reconstruction-by-height" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/11/29/queue-reconstruction-by-height/" class="article-date">
+  <time datetime="2018-11-28T23:46:00.000Z" itemprop="datePublished">2018-11-29</time>
 </a>
-      
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/11/06/leetcode-increasing-triplet-subsequence/">Increasing Triplet Subsequence</a>
+    <h1 class="article-title" itemprop="name">
+      Queue Reconstruction by Height
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/11/05/leetcode-longest-increasing-subsequence/" class="archive-article-date">
-  <time datetime="2018-11-04T23:59:00.000Z" itemprop="datePublished">11月 5</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/11/05/leetcode-longest-increasing-subsequence/">Longest Increasing Subsequence</a>
-    </h1>
-  
+        <h2 id="Queue-Reconstruction-by-Height"><a href="#Queue-Reconstruction-by-Height" class="headerlink" title="Queue Reconstruction by Height"></a>Queue Reconstruction by Height</h2><p><strong>Sort Insert Version</strong> - 84ms</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">reconstructQueue</span><span class="params">(self, people)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        :type people: List[List[int]]</span></div><div class="line"><span class="string">        :rtype: List[List[int]]</span></div><div class="line"><span class="string">        """</span></div><div class="line">        <span class="keyword">if</span> <span class="keyword">not</span> people:</div><div class="line">            <span class="keyword">return</span> []</div><div class="line">        n = len(people)</div><div class="line">        people_sorted = sorted(people, key = <span class="keyword">lambda</span> x: (-x[<span class="number">0</span>],x[<span class="number">1</span>]))</div><div class="line">        res = [people_sorted[<span class="number">0</span>]]</div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,n):</div><div class="line">            hi, ki = people_sorted[i]</div><div class="line">            res.insert(ki, people_sorted[i])</div><div class="line">        <span class="keyword">return</span> res</div></pre></td></tr></table></figure>
+<p><strong>test code</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">In [161]: people = [[7,0],[4,4],[7,1],[5,0],[6,1],[5,2]]</div><div class="line"></div><div class="line">In [162]: s = Solution(); t = s.reconstructQueue(people); <span class="built_in">print</span>(t)</div><div class="line">[[5, 0], [7, 0], [5, 2], [6, 1], [4, 4], [7, 1]]</div></pre></td></tr></table></figure>
+<p><a href="https://leetcode.com/problems/queue-reconstruction-by-height/description/" target="_blank" rel="external">leet code</a></p>
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/11/02/leetcode-search-a-2d-matrix-ii/" class="archive-article-date">
-  <time datetime="2018-11-01T23:24:00.000Z" itemprop="datePublished">11月 2</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/11/02/leetcode-search-a-2d-matrix-ii/">Search a 2D Matrix II</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/11/01/leetcode-container-with-most-water/" class="archive-article-date">
-  <time datetime="2018-10-31T23:57:00.000Z" itemprop="datePublished">11月 1</time>
-</a>
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2018/11/29/queue-reconstruction-by-height/" data-id="cjp1tnktu008bk5qbir1qmy6h" class="article-share-link">Share</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/11/01/leetcode-container-with-most-water/">Container With Most Water</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/10/31/leetcode-longest-consecutive-sequence/" class="archive-article-date">
-  <time datetime="2018-10-30T23:27:00.000Z" itemprop="datePublished">10月 31</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/10/31/leetcode-longest-consecutive-sequence/">Longest Consecutive Sequence</a>
-    </h1>
-  
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python3/">python3</a></li></ul>
 
-    </header>
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/11/28/leetcode-counting-bits/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Counting Bits</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-  
-    </div></section>
-  
-
-
-  <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/tags/python3/page/3/">&laquo; 上一页</a><a class="page-number" href="/tags/python3/">1</a><a class="page-number" href="/tags/python3/page/2/">2</a><a class="page-number" href="/tags/python3/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/tags/python3/page/5/">5</a><a class="extend next" rel="next" href="/tags/python3/page/5/">下一页&raquo;</a>
-  </nav>
 
 </section>
         

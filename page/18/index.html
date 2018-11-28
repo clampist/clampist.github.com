@@ -64,6 +64,50 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-git_svn_blame" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/26/git_svn_blame/" class="article-date">
+  <time datetime="2017-04-26T08:21:00.000Z" itemprop="datePublished">2017-04-26</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/git/">git</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/26/git_svn_blame/">git blame / log</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="git常用"><a href="#git常用" class="headerlink" title="git常用"></a>git常用</h2><h3 id="blame"><a href="#blame" class="headerlink" title="blame"></a>blame</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git blame path/to/your/file</div><div class="line">svn blame path/to/your/file</div></pre></td></tr></table></figure>
+<p>只能看当前状态下，每一行的改动者</p>
+<h3 id="搜索所有的修改历史，全仓库历史-blame遇到stash冲突"><a href="#搜索所有的修改历史，全仓库历史-blame遇到stash冲突" class="headerlink" title="搜索所有的修改历史，全仓库历史 blame遇到stash冲突"></a>搜索所有的修改历史，全仓库历史 blame遇到<code>stash</code>冲突</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git <span class="built_in">log</span> -p -M --follow --<span class="built_in">stat</span> -- path/to/your/file</div></pre></td></tr></table></figure>
+<p>可以查找所有历史中，每一行的改动者</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2017/04/26/git_svn_blame/" data-id="cjp1tnkq7000jk5qbuqn74yda" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-shell-shuffle-file-lines" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/02/24/shell-shuffle-file-lines/" class="article-date">
@@ -100,7 +144,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/02/24/shell-shuffle-file-lines/" data-id="cjp0djrj4007jwlqb8n6vh79x" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/02/24/shell-shuffle-file-lines/" data-id="cjp1tnku1008yk5qblj479yam" class="article-share-link">Share</a>
       
       
     </footer>
@@ -152,7 +196,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2012/11/09/count-ip-address-appears-most-in-log-file/" data-id="cjp0djrfa0004wlqbtqmk204x" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2012/11/09/count-ip-address-appears-most-in-log-file/" data-id="cjp1tnkpw0003k5qb6q2ghhg4" class="article-share-link">Share</a>
       
       
     </footer>
@@ -202,7 +246,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2012/10/20/python-virtualenv-wrapper-and-pip/" data-id="cjp0djrir006vwlqb0aa8963p" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2012/10/20/python-virtualenv-wrapper-and-pip/" data-id="cjp1tnktt0089k5qbyde1cqyx" class="article-share-link">Share</a>
       
       
     </footer>
@@ -262,59 +306,7 @@ In [7]: cv.SaveImage(&apos;foo2.png&apos;, im2)
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2012/10/13/opencv-basis/" data-id="cjp0djric005vwlqbe2w40952" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-install-openexr-for-python" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2012/10/11/install-openexr-for-python/" class="article-date">
-  <time datetime="2012-10-11T04:50:00.000Z" itemprop="datePublished">2012-10-11</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/opencv/">opencv</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2012/10/11/install-openexr-for-python/">Install OpenEXR for Python</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Using OpenEXR’s Python bindings we can make a simple image viewer.<br>So, we should install OpenEXR first, following <a href="http://www.excamera.com/sphinx/articles-openexr.html" target="_blank" rel="external">OpenEXR bindings for Python</a><br>Make sure you have already installed OpenEXR’s Prerequisite: Python 2.5+ and the OpenEXR C++ library(openexr).</p>
-<pre><code>wget http://excamera.com/files/OpenEXR-1.2.0.tar.gz
-
-tar zxvf OpenEXR-1.2.0.tar.gz
-
-cd OpenEXR-1.2.0
-
-(sudo python2 setup.py build)
-
-sudo python2 setup.py install
-</code></pre><p>Then, we can follow <a href="http://opencv.willowgarage.com/documentation/python/cookbook.html#opencv-and-openexr" target="_blank" rel="external">OpenCV and OpenEXR</a></p>
-<p>References: <a href="http://blog.csdn.net/ponder008/article/details/6592719" target="_blank" rel="external">Python how to install setup.py</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2012/10/11/install-openexr-for-python/" data-id="cjp0djrfq000twlqbb51ru7wf" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2012/10/13/opencv-basis/" data-id="cjp1tnksm005hk5qbw4i4qfhw" class="article-share-link">Share</a>
       
       
     </footer>
@@ -380,6 +372,10 @@ sudo python2 setup.py install
       <ul>
         
           <li>
+            <a href="/2018/11/29/queue-reconstruction-by-height/">Queue Reconstruction by Height</a>
+          </li>
+        
+          <li>
             <a href="/2018/11/28/leetcode-counting-bits/">Counting Bits</a>
           </li>
         
@@ -393,10 +389,6 @@ sudo python2 setup.py install
         
           <li>
             <a href="/2018/11/23/leetcode-longest-substring-with-at-least-k-repeating-characters/">Longest Substring with At Least K Repeating Characters</a>
-          </li>
-        
-          <li>
-            <a href="/2018/11/22/leetcode-serialize-and-deserialize-binary-tree/">Serialize and Deserialize Binary Tree</a>
           </li>
         
       </ul>

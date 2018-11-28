@@ -64,6 +64,53 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-leetcode-flatten-nested-list-iterator" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/10/16/leetcode-flatten-nested-list-iterator/" class="article-date">
+  <time datetime="2018-10-15T23:40:00.000Z" itemprop="datePublished">2018-10-16</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/16/leetcode-flatten-nested-list-iterator/">Flatten Nested List Iterator</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Flatten-Nested-List-Iterator"><a href="#Flatten-Nested-List-Iterator" class="headerlink" title="Flatten Nested List Iterator"></a>Flatten Nested List Iterator</h2><p><strong>Generators Version</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># """</span></div><div class="line"><span class="comment"># This is the interface that allows for creating nested lists.</span></div><div class="line"><span class="comment"># You should not implement it, or speculate about its implementation</span></div><div class="line"><span class="comment"># """</span></div><div class="line"><span class="comment">#class NestedInteger(object):</span></div><div class="line"><span class="comment">#    def isInteger(self):</span></div><div class="line"><span class="comment">#        """</span></div><div class="line"><span class="comment">#        @return True if this NestedInteger holds a single integer, rather than a nested list.</span></div><div class="line"><span class="comment">#        :rtype bool</span></div><div class="line"><span class="comment">#        """</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment">#    def getInteger(self):</span></div><div class="line"><span class="comment">#        """</span></div><div class="line"><span class="comment">#        @return the single integer that this NestedInteger holds, if it holds a single integer</span></div><div class="line"><span class="comment">#        Return None if this NestedInteger holds a nested list</span></div><div class="line"><span class="comment">#        :rtype int</span></div><div class="line"><span class="comment">#        """</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment">#    def getList(self):</span></div><div class="line"><span class="comment">#        """</span></div><div class="line"><span class="comment">#        @return the nested list that this NestedInteger holds, if it holds a nested list</span></div><div class="line"><span class="comment">#        Return None if this NestedInteger holds a single integer</span></div><div class="line"><span class="comment">#        :rtype List[NestedInteger]</span></div><div class="line"><span class="comment">#        """</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">NestedIterator</span><span class="params">(object)</span>:</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, nestedList)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        Initialize your data structure here.</span></div><div class="line"><span class="string">        :type nestedList: List[NestedInteger]</span></div><div class="line"><span class="string">        """</span></div><div class="line">        self.ret = []</div><div class="line">        <span class="function"><span class="keyword">def</span> <span class="title">flat</span><span class="params">(List)</span>:</span></div><div class="line">            <span class="keyword">for</span> x <span class="keyword">in</span> List:</div><div class="line">                <span class="keyword">if</span> x.isInteger():</div><div class="line">                    <span class="keyword">yield</span> x.getInteger()</div><div class="line">                <span class="keyword">else</span>:</div><div class="line">                    <span class="keyword">for</span> y <span class="keyword">in</span> flat(x.getList()):</div><div class="line">                        <span class="keyword">yield</span> y</div><div class="line">        self.ret = flat(nestedList)</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">next</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        :rtype: int</span></div><div class="line"><span class="string">        """</span></div><div class="line">        <span class="keyword">return</span> self.value</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">hasNext</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        :rtype: bool</span></div><div class="line"><span class="string">        """</span></div><div class="line">        <span class="keyword">try</span>:</div><div class="line">            self.value = next(self.ret)</div><div class="line">            <span class="keyword">return</span> <span class="keyword">True</span></div><div class="line">        <span class="keyword">except</span> StopIteration:</div><div class="line">            <span class="keyword">return</span> <span class="keyword">False</span></div><div class="line"></div><div class="line"><span class="comment"># Your NestedIterator object will be instantiated and called as such:</span></div><div class="line"><span class="comment"># i, v = NestedIterator(nestedList), []</span></div><div class="line"><span class="comment"># while i.hasNext(): v.append(i.next())</span></div></pre></td></tr></table></figure>
+<p><strong>Stack Version</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># """</span></div><div class="line"><span class="comment"># This is the interface that allows for creating nested lists.</span></div><div class="line"><span class="comment"># You should not implement it, or speculate about its implementation</span></div><div class="line"><span class="comment"># """</span></div><div class="line"><span class="comment">#class NestedInteger(object):</span></div><div class="line"><span class="comment">#    def isInteger(self):</span></div><div class="line"><span class="comment">#        """</span></div><div class="line"><span class="comment">#        @return True if this NestedInteger holds a single integer, rather than a nested list.</span></div><div class="line"><span class="comment">#        :rtype bool</span></div><div class="line"><span class="comment">#        """</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment">#    def getInteger(self):</span></div><div class="line"><span class="comment">#        """</span></div><div class="line"><span class="comment">#        @return the single integer that this NestedInteger holds, if it holds a single integer</span></div><div class="line"><span class="comment">#        Return None if this NestedInteger holds a nested list</span></div><div class="line"><span class="comment">#        :rtype int</span></div><div class="line"><span class="comment">#        """</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment">#    def getList(self):</span></div><div class="line"><span class="comment">#        """</span></div><div class="line"><span class="comment">#        @return the nested list that this NestedInteger holds, if it holds a nested list</span></div><div class="line"><span class="comment">#        Return None if this NestedInteger holds a single integer</span></div><div class="line"><span class="comment">#        :rtype List[NestedInteger]</span></div><div class="line"><span class="comment">#        """</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">NestedIterator</span><span class="params">(object)</span>:</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, nestedList)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        Initialize your data structure here.</span></div><div class="line"><span class="string">        :type nestedList: List[NestedInteger]</span></div><div class="line"><span class="string">        """</span></div><div class="line">        self.stack = nestedList[::<span class="number">-1</span>]</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">next</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        :rtype: int</span></div><div class="line"><span class="string">        """</span></div><div class="line">        <span class="keyword">return</span> self.stack.pop().getInteger()</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">hasNext</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        :rtype: bool</span></div><div class="line"><span class="string">        """</span></div><div class="line">        <span class="keyword">while</span> self.stack:</div><div class="line">            top = self.stack[<span class="number">-1</span>]</div><div class="line">            <span class="keyword">if</span> top.isInteger():</div><div class="line">                <span class="keyword">return</span> <span class="keyword">True</span></div><div class="line">            self.stack = self.stack[:<span class="number">-1</span>] + top.getList()[::<span class="number">-1</span>]</div><div class="line">        <span class="keyword">return</span> <span class="keyword">False</span></div><div class="line"></div><div class="line"><span class="comment"># Your NestedIterator object will be instantiated and called as such:</span></div><div class="line"><span class="comment"># i, v = NestedIterator(nestedList), []</span></div><div class="line"><span class="comment"># while i.hasNext(): v.append(i.next())</span></div></pre></td></tr></table></figure>
+<p><a href="https://leetcode.com/problems/flatten-nested-list-iterator/description/" target="_blank" rel="external">leet code</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2018/10/16/leetcode-flatten-nested-list-iterator/" data-id="cjp1tnkqs001nk5qbqcc282fy" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-leetcode-intersection-of-two-arrays-ii" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/10/15/leetcode-intersection-of-two-arrays-ii/" class="article-date">
@@ -101,7 +148,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/10/15/leetcode-intersection-of-two-arrays-ii/" data-id="cjp0djrgp002gwlqbhlpfzx08" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2018/10/15/leetcode-intersection-of-two-arrays-ii/" data-id="cjp1tnkr7002ek5qbyjj93kfc" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
@@ -149,7 +196,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/10/12/leetcode-find-the-duplicate-number/" data-id="cjp0djrg7001lwlqb12vb7aed" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2018/10/12/leetcode-find-the-duplicate-number/" data-id="cjp1tnkqq001hk5qbv8c1hc6o" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
@@ -196,7 +243,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/10/11/leetcode-missing-number/" data-id="cjp0djrhf003zwlqb2g3xvvpv" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2018/10/11/leetcode-missing-number/" data-id="cjp1tnkrk003dk5qb3h2vctry" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
@@ -242,61 +289,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/10/10/leetcode-kth-smallest-element-in-a-sorted-matrix/" data-id="cjp0djrgw002swlqboxsi6kqr" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2018/10/10/leetcode-kth-smallest-element-in-a-sorted-matrix/" data-id="cjp1tnksz006hk5qbvmjkamjo" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-leetcode-convert-sorted-array-to-binary-search-tree" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/10/09/leetcode-convert-sorted-array-to-binary-search-tree/" class="article-date">
-  <time datetime="2018-10-09T00:40:00.000Z" itemprop="datePublished">2018-10-09</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/10/09/leetcode-convert-sorted-array-to-binary-search-tree/">Convert Sorted Array to Binary Search Tree</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Convert-Sorted-Array-to-Binary-Search-Tree"><a href="#Convert-Sorted-Array-to-Binary-Search-Tree" class="headerlink" title="Convert Sorted Array to Binary Search Tree"></a>Convert Sorted Array to Binary Search Tree</h2><p><strong>Recursive 递归版本</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Definition for a binary tree node.</span></div><div class="line"><span class="comment"># class TreeNode(object):</span></div><div class="line"><span class="comment">#     def __init__(self, x):</span></div><div class="line"><span class="comment">#         self.val = x</span></div><div class="line"><span class="comment">#         self.left = None</span></div><div class="line"><span class="comment">#         self.right = None</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">sortedArrayToBST</span><span class="params">(self, nums)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        :type nums: List[int]</span></div><div class="line"><span class="string">        :rtype: TreeNode</span></div><div class="line"><span class="string">        """</span></div><div class="line">        <span class="keyword">if</span> <span class="keyword">not</span> nums:</div><div class="line">            <span class="keyword">return</span> <span class="keyword">None</span></div><div class="line">        i = len(nums) / <span class="number">2</span></div><div class="line">        node = TreeNode(nums[i])</div><div class="line">        node.left = self.sortedArrayToBST(nums[:i])</div><div class="line">        node.right = self.sortedArrayToBST(nums[i+<span class="number">1</span>:])</div><div class="line">        <span class="keyword">return</span> node</div></pre></td></tr></table></figure>
-<p><strong>test code</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">Given the sorted array: [<span class="number">-10</span>,<span class="number">-3</span>,<span class="number">0</span>,<span class="number">5</span>,<span class="number">9</span>],</div><div class="line"></div><div class="line">One possible answer <span class="keyword">is</span>: [<span class="number">0</span>,<span class="number">-3</span>,<span class="number">9</span>,<span class="number">-10</span>,null,<span class="number">5</span>], which represents the following height balanced BST:</div><div class="line"></div><div class="line">      <span class="number">0</span></div><div class="line">     / \</div><div class="line">   <span class="number">-3</span>   <span class="number">9</span></div><div class="line">   /   /</div><div class="line"> <span class="number">-10</span>  <span class="number">5</span></div><div class="line"></div><div class="line">In [<span class="number">1</span>]: <span class="class"><span class="keyword">class</span> <span class="title">TreeNode</span><span class="params">(object)</span>:</span></div><div class="line">   ...:     <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, x)</span>:</span></div><div class="line">   ...:         self.val = x</div><div class="line">   ...:         self.left = <span class="keyword">None</span></div><div class="line">   ...:         self.right = <span class="keyword">None</span></div><div class="line">   ...:</div><div class="line"></div><div class="line">In [<span class="number">42</span>]: s = Solution(); t = s.sortedArrayToBST([<span class="number">-10</span>,<span class="number">-3</span>,<span class="number">0</span>,<span class="number">5</span>,<span class="number">9</span>])</div></pre></td></tr></table></figure>
-<p><strong>Iteratively 非递归版本</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Definition for a binary tree node.</span></div><div class="line"><span class="comment"># class TreeNode(object):</span></div><div class="line"><span class="comment">#     def __init__(self, x):</span></div><div class="line"><span class="comment">#         self.val = x</span></div><div class="line"><span class="comment">#         self.left = None</span></div><div class="line"><span class="comment">#         self.right = None</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">sortedArrayToBST</span><span class="params">(self, nums)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        :type nums: List[int]</span></div><div class="line"><span class="string">        :rtype: TreeNode</span></div><div class="line"><span class="string">        """</span></div><div class="line">        <span class="function"><span class="keyword">def</span> <span class="title">helper</span><span class="params">(left, right)</span>:</span></div><div class="line">            <span class="keyword">if</span> left &gt; right:</div><div class="line">                <span class="keyword">return</span> <span class="keyword">None</span></div><div class="line">            idx = (left + right) / <span class="number">2</span></div><div class="line">            node = TreeNode(nums[idx])</div><div class="line">            node.left = helper(left, idx - <span class="number">1</span>)</div><div class="line">            node.right = helper(idx + <span class="number">1</span>, right)</div><div class="line">            <span class="keyword">return</span> node</div><div class="line">        <span class="keyword">return</span> helper(<span class="number">0</span>, len(nums) - <span class="number">1</span>)</div></pre></td></tr></table></figure>
-<p><strong>test code</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">Given the sorted array: [<span class="number">-10</span>,<span class="number">-3</span>,<span class="number">0</span>,<span class="number">5</span>,<span class="number">9</span>],</div><div class="line"></div><div class="line">One possible answer <span class="keyword">is</span>: [<span class="number">0</span>,<span class="number">-10</span>,<span class="number">5</span>,null,<span class="number">-3</span>,null,<span class="number">9</span>]</div><div class="line"></div><div class="line">      <span class="number">0</span></div><div class="line">     / \</div><div class="line">   <span class="number">-10</span>   <span class="number">5</span></div><div class="line">      \   \</div><div class="line">      <span class="number">-3</span>    <span class="number">9</span></div><div class="line"></div><div class="line">In [<span class="number">1</span>]: <span class="class"><span class="keyword">class</span> <span class="title">TreeNode</span><span class="params">(object)</span>:</span></div><div class="line">   ...:     <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, x)</span>:</span></div><div class="line">   ...:         self.val = x</div><div class="line">   ...:         self.left = <span class="keyword">None</span></div><div class="line">   ...:         self.right = <span class="keyword">None</span></div><div class="line">   ...:</div><div class="line"></div><div class="line">In [<span class="number">58</span>]: s = Solution(); t = s.sortedArrayToBST([<span class="number">-10</span>,<span class="number">-3</span>,<span class="number">0</span>,<span class="number">5</span>,<span class="number">9</span>])</div></pre></td></tr></table></figure>
-<p><a href="https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree/description/" target="_blank" rel="external">leet code</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/10/09/leetcode-convert-sorted-array-to-binary-search-tree/" data-id="cjp0djrg1001cwlqb1xryhvbl" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/binary-tree/">binary tree</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
 
     </footer>
   </div>
@@ -361,6 +357,10 @@
       <ul>
         
           <li>
+            <a href="/2018/11/29/queue-reconstruction-by-height/">Queue Reconstruction by Height</a>
+          </li>
+        
+          <li>
             <a href="/2018/11/28/leetcode-counting-bits/">Counting Bits</a>
           </li>
         
@@ -374,10 +374,6 @@
         
           <li>
             <a href="/2018/11/23/leetcode-longest-substring-with-at-least-k-repeating-characters/">Longest Substring with At Least K Repeating Characters</a>
-          </li>
-        
-          <li>
-            <a href="/2018/11/22/leetcode-serialize-and-deserialize-binary-tree/">Serialize and Deserialize Binary Tree</a>
           </li>
         
       </ul>
