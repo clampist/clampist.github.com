@@ -64,6 +64,53 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-leetcode-perfect-squares" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/11/07/leetcode-perfect-squares/" class="article-date">
+  <time datetime="2018-11-06T23:55:00.000Z" itemprop="datePublished">2018-11-07</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/07/leetcode-perfect-squares/">Perfect Squares</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Perfect-Squares"><a href="#Perfect-Squares" class="headerlink" title="Perfect Squares"></a>Perfect Squares</h2><p><strong>Binary Search Version</strong> - 356ms</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> math</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">numSquares</span><span class="params">(self, n)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        :type n: int</span></div><div class="line"><span class="string">        :rtype: int</span></div><div class="line"><span class="string">        """</span></div><div class="line">        s = [i*i <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,int(math.sqrt(n))+<span class="number">1</span>)] <span class="comment"># Square numbers &lt;= n</span></div><div class="line">        l = <span class="number">0</span>  <span class="comment"># BFS level</span></div><div class="line">        currentLevel = [<span class="number">0</span>]  <span class="comment"># List of numbers in BFS level l</span></div><div class="line"></div><div class="line">        <span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">            nextLevel = []</div><div class="line">            <span class="keyword">for</span> a <span class="keyword">in</span> currentLevel:</div><div class="line">                <span class="keyword">for</span> b <span class="keyword">in</span> s:</div><div class="line">                    <span class="keyword">if</span> a+b == n: <span class="keyword">return</span> l+<span class="number">1</span>  <span class="comment"># Found n</span></div><div class="line">                    <span class="keyword">if</span> a+b &lt; n:  nextLevel.append(a+b)</div><div class="line">            currentLevel = list(set(nextLevel))  <span class="comment"># Remove duplicates</span></div><div class="line">            l += <span class="number">1</span></div></pre></td></tr></table></figure>
+<p><strong>test code</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">In [315]: s = Solution(); t = s.numSquares(11); <span class="built_in">print</span>(t)</div><div class="line">3</div></pre></td></tr></table></figure>
+<p><a href="https://leetcode.com/problems/perfect-squares/description/" target="_blank" rel="external">leet code</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2018/11/07/leetcode-perfect-squares/" data-id="cjp7jmf8v0056ifqbycluwg8g" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python3/">python3</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-leetcode-increasing-triplet-subsequence" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/11/06/leetcode-increasing-triplet-subsequence/" class="article-date">
@@ -99,7 +146,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/11/06/leetcode-increasing-triplet-subsequence/" data-id="cjp1tnkr40026k5qbkh1x2zzl" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2018/11/06/leetcode-increasing-triplet-subsequence/" data-id="cjp7jmf7b002cifqbskuq3ntb" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python3/">python3</a></li></ul>
@@ -149,7 +196,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/11/05/leetcode-longest-increasing-subsequence/" data-id="cjp1tnkrg0032k5qbxab918gy" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2018/11/05/leetcode-longest-increasing-subsequence/" data-id="cjp7jmf8w0059ifqbtoic2xll" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python3/">python3</a></li></ul>
@@ -198,7 +245,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/11/02/leetcode-search-a-2d-matrix-ii/" data-id="cjp1tnks1004hk5qbqfmnorxc" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2018/11/02/leetcode-search-a-2d-matrix-ii/" data-id="cjp7jmf95005uifqb3iux97i7" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python3/">python3</a></li></ul>
@@ -247,56 +294,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/11/01/leetcode-container-with-most-water/" data-id="cjp1tnkqg0010k5qb7s9vtnez" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python3/">python3</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-leetcode-longest-consecutive-sequence" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/10/31/leetcode-longest-consecutive-sequence/" class="article-date">
-  <time datetime="2018-10-30T23:27:00.000Z" itemprop="datePublished">2018-10-31</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/10/31/leetcode-longest-consecutive-sequence/">Longest Consecutive Sequence</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Longest-Consecutive-Sequence"><a href="#Longest-Consecutive-Sequence" class="headerlink" title="Longest Consecutive Sequence"></a>Longest Consecutive Sequence</h2><p><strong>O(n) Version</strong> - 40ms</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">longestConsecutive</span><span class="params">(self, nums)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        :type nums: List[int]</span></div><div class="line"><span class="string">        :rtype: int</span></div><div class="line"><span class="string">        """</span>    </div><div class="line">        nums = set(nums)</div><div class="line">        maxlen = <span class="number">0</span></div><div class="line">        <span class="keyword">while</span> nums:</div><div class="line">            first = last = nums.pop()</div><div class="line">            <span class="keyword">while</span> first - <span class="number">1</span> <span class="keyword">in</span> nums:</div><div class="line">                first -= <span class="number">1</span></div><div class="line">                nums.remove(first)</div><div class="line">            <span class="keyword">while</span> last + <span class="number">1</span> <span class="keyword">in</span> nums:</div><div class="line">                last += <span class="number">1</span></div><div class="line">                nums.remove(last)</div><div class="line">            maxlen = max(maxlen, last - first + <span class="number">1</span>)</div><div class="line">        <span class="keyword">return</span> maxlen</div></pre></td></tr></table></figure>
-<p><strong>O(n) Version</strong> - 44ms</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">longestConsecutive</span><span class="params">(self, nums)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        :type nums: List[int]</span></div><div class="line"><span class="string">        :rtype: int</span></div><div class="line"><span class="string">        """</span></div><div class="line">        nums = set(nums)</div><div class="line">        ret = <span class="number">0</span></div><div class="line">        <span class="keyword">for</span> x <span class="keyword">in</span> nums:</div><div class="line">            <span class="keyword">if</span> x - <span class="number">1</span> <span class="keyword">not</span> <span class="keyword">in</span> nums:</div><div class="line">                y = x + <span class="number">1</span></div><div class="line">                <span class="keyword">while</span> y <span class="keyword">in</span> nums:</div><div class="line">                    y += <span class="number">1</span></div><div class="line">                ret = max(ret, y - x)</div><div class="line">        <span class="keyword">return</span> ret</div></pre></td></tr></table></figure>
-<p><strong>test code</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">In [66]: s = Solution(); t = s.longestConsecutive([100, 4, 200, 3, 1, 2])</div><div class="line"></div><div class="line">In [67]: t</div><div class="line">Out[67]: 4</div></pre></td></tr></table></figure>
-<p><a href="https://leetcode.com/problems/longest-consecutive-sequence/description/" target="_blank" rel="external">leet code</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/10/31/leetcode-longest-consecutive-sequence/" data-id="cjp1tnkrd002uk5qb7czcytd8" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2018/11/01/leetcode-container-with-most-water/" data-id="cjp7jmf6p001bifqbnkyvetdz" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python3/">python3</a></li></ul>
@@ -351,7 +349,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">十一月 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/10/">十月 2012</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">十一月 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/10/">十月 2012</a></li></ul>
     </div>
   </div>
 
@@ -362,6 +360,10 @@
     <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2018/12/03/leetcode-palindromic-substrings/">Palindromic Substrings</a>
+          </li>
         
           <li>
             <a href="/2018/11/29/queue-reconstruction-by-height/">Queue Reconstruction by Height</a>
@@ -377,10 +379,6 @@
         
           <li>
             <a href="/2018/11/26/leetcode-hamming-distance/">Hamming Distance</a>
-          </li>
-        
-          <li>
-            <a href="/2018/11/23/leetcode-longest-substring-with-at-least-k-repeating-characters/">Longest Substring with At Least K Repeating Characters</a>
           </li>
         
       </ul>
