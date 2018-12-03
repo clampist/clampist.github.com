@@ -99,7 +99,52 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/10/25/django-multi-database/" data-id="cjp7jmf6e000oifqbshsksawa" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/10/25/django-multi-database/" data-id="cjp8z07db000cucqbjxws2wtl" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-django-pagination-demo" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/10/25/django-pagination-demo/" class="article-date">
+  <time datetime="2017-10-25T00:49:00.000Z" itemprop="datePublished">2017-10-25</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/django/">django</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/25/django-pagination-demo/">django pagination demo</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>1. a demo for using pagination</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> django.core.paginator <span class="keyword">import</span> Paginator, EmptyPage, PageNotAnInteger</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">listing</span><span class="params">(request)</span>:</span></div><div class="line">    contact_list = Contacts.objects.all()</div><div class="line">    paginator = Paginator(contact_list, <span class="number">25</span>) <span class="comment"># Show 25 contacts per page</span></div><div class="line"></div><div class="line">    page = request.GET.get(<span class="string">'page'</span>)</div><div class="line">    <span class="keyword">try</span>:</div><div class="line">        contacts = paginator.page(page)</div><div class="line">    <span class="keyword">except</span> PageNotAnInteger:</div><div class="line">        <span class="comment"># If page is not an integer, deliver first page.</span></div><div class="line">        contacts = paginator.page(<span class="number">1</span>)</div><div class="line">    <span class="keyword">except</span> EmptyPage:</div><div class="line">        <span class="comment"># If page is out of range (e.g. 9999), deliver last page of results.</span></div><div class="line">        contacts = paginator.page(paginator.num_pages)</div><div class="line"></div><div class="line">    <span class="keyword">return</span> render_to_response(<span class="string">'list.html'</span>, &#123;<span class="string">"contacts"</span>: contacts&#125;)</div></pre></td></tr></table></figure>
+<p><a href="http://python.usyiyi.cn/translate/django_182/topics/pagination.html" target="_blank" rel="external">django_182</a></p>
+<p><strong>2. get objects length</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cnt = contact_list.count()</div><div class="line">cnt = Contacts.objects.all().count()</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2017/10/25/django-pagination-demo/" data-id="cjp8z07dc000ducqbbms20b5q" class="article-share-link">Share</a>
       
       
     </footer>
@@ -144,7 +189,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/10/25/django-models-objects-filter-by-dict-kwargs/" data-id="cjp7jmf630005ifqb3cbjroko" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/10/25/django-models-objects-filter-by-dict-kwargs/" data-id="cjp8z07d90009ucqb6q7jsffx" class="article-share-link">Share</a>
       
       
     </footer>
@@ -189,7 +234,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/10/25/django-models-not-equal-exclude-filter/" data-id="cjp7jmf5z0002ifqbclqz4yr2" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/10/25/django-models-not-equal-exclude-filter/" data-id="cjp8z07d70006ucqb2lry2nuw" class="article-share-link">Share</a>
       
       
     </footer>
@@ -231,49 +276,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/10/25/du-find-max-dir/" data-id="cjp7jmf6a000eifqbricq3iyx" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-python-check-class-has-attribute" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/10/25/python-check-class-has-attribute/" class="article-date">
-  <time datetime="2017-10-25T00:44:00.000Z" itemprop="datePublished">2017-10-25</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/python/">python</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/25/python-check-class-has-attribute/">check class has attribute</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Python-check-Class-Object-has-attribute"><a href="#Python-check-Class-Object-has-attribute" class="headerlink" title="Python check Class/Object has attribute"></a>Python check Class/Object has attribute</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> hasattr(a, <span class="string">'property'</span>):</div><div class="line">    a.property</div></pre></td></tr></table></figure>
-<p><a href="https://stackoverflow.com/questions/610883/how-to-know-if-an-object-has-an-attribute-in-python" target="_blank" rel="external">https://stackoverflow.com/questions/610883/how-to-know-if-an-object-has-an-attribute-in-python</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/10/25/python-check-class-has-attribute/" data-id="cjp7jmfal007jifqb14az2ayd" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/10/25/du-find-max-dir/" data-id="cjp8z07de000hucqbzu1yu6id" class="article-share-link">Share</a>
       
       
     </footer>
@@ -317,7 +320,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/2d-array/" style="font-size: 12px;">2d-array</a> <a href="/tags/bigflow/" style="font-size: 10px;">bigflow</a> <a href="/tags/binary-tree/" style="font-size: 14px;">binary tree</a> <a href="/tags/hadoop/" style="font-size: 10px;">hadoop</a> <a href="/tags/lambda/" style="font-size: 10px;">lambda</a> <a href="/tags/leetcode/" style="font-size: 20px;">leetcode</a> <a href="/tags/python/" style="font-size: 18px;">python</a> <a href="/tags/python3/" style="font-size: 16px;">python3</a>
+      <a href="/tags/2d-array/" style="font-size: 12.5px;">2d-array</a> <a href="/tags/bigflow/" style="font-size: 10px;">bigflow</a> <a href="/tags/binary-tree/" style="font-size: 15px;">binary tree</a> <a href="/tags/hadoop/" style="font-size: 10px;">hadoop</a> <a href="/tags/lambda/" style="font-size: 10px;">lambda</a> <a href="/tags/leetcode/" style="font-size: 20px;">leetcode</a> <a href="/tags/python/" style="font-size: 17.5px;">python</a> <a href="/tags/python3/" style="font-size: 17.5px;">python3</a>
     </div>
   </div>
 
@@ -339,6 +342,10 @@
       <ul>
         
           <li>
+            <a href="/2018/12/04/leetcode-find-all-numbers-disappeared-in-an-array/">Find All Numbers Disappeared in an Array</a>
+          </li>
+        
+          <li>
             <a href="/2018/12/03/leetcode-palindromic-substrings/">Palindromic Substrings</a>
           </li>
         
@@ -352,10 +359,6 @@
         
           <li>
             <a href="/2018/11/27/leetcode-merge-two-binary-trees/">Merge Two Binary Trees</a>
-          </li>
-        
-          <li>
-            <a href="/2018/11/26/leetcode-hamming-distance/">Hamming Distance</a>
           </li>
         
       </ul>

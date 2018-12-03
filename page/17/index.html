@@ -64,6 +64,54 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-acquire-array-length-in-cpp" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/09/22/acquire-array-length-in-cpp/" class="article-date">
+  <time datetime="2017-09-22T06:37:00.000Z" itemprop="datePublished">2017-09-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/cpp/">cpp</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/09/22/acquire-array-length-in-cpp/">acquire array length in cpp</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="C-获取数组长度"><a href="#C-获取数组长度" class="headerlink" title="C++获取数组长度"></a>C++获取数组长度</h2><p>一、静态数组。</p>
+<p>比如 int int_ary[5] ,静态数组在编译的时候就知道了数组长度，这对编译器来说挺好实现的。</p>
+<p>用得最多的大概就是sizeof了吧：</p>
+<p><code>#define countof_macro(x) (sizeof((x)) / sizeof(x)[0])</code></p>
+<p>对于C++，可以用模板。</p>
+<p>如果将数组作为函数形参的话，它会退化成一个指针，但是引用则不会。使用引用带来的另外一个问题就是，声明参数时必须知道数组长度——我要是知道我还费这劲干啥？解决方法就是使用模板，将数组引用的数组大小声明为模板参数：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//错误的做法：这里形参已经退化为指针了</span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">countof_func_para</span><span class="params">(<span class="keyword">int</span> int_ary[<span class="number">5</span>])</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    <span class="keyword">return</span> countof_macro(int_ary);</div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="comment">//正确的做法</span></div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">size_t</span> n&gt;</div><div class="line">int countof_template(const int (&amp;int_ary)[N])</div><div class="line">&#123;</div><div class="line">    <span class="keyword">return</span> N;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><a href="http://www.cnblogs.com/h46incon/archive/2013/03/17/2965020.html" target="_blank" rel="external">参考链接</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2017/09/22/acquire-array-length-in-cpp/" data-id="cjp8z07d60004ucqbne34h06x" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-git-usage" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/09/22/git-usage/" class="article-date">
@@ -101,7 +149,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/09/22/git-usage/" data-id="cjp7jmf6b000hifqbiaqoy6hg" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/09/22/git-usage/" data-id="cjp8z07dg000lucqbqnrc236j" class="article-share-link">Share</a>
       
       
     </footer>
@@ -144,7 +192,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/09/22/linux-dos-to-unix/" data-id="cjp7jmf9v006iifqb943jkosx" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/09/22/linux-dos-to-unix/" data-id="cjp8z07fi0056ucqbksei1lp3" class="article-share-link">Share</a>
       
       
     </footer>
@@ -186,7 +234,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/09/22/python-two-or-three-continuous-items-in-list/" data-id="cjp7jmfas0080ifqbub02gibs" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/09/22/python-two-or-three-continuous-items-in-list/" data-id="cjp8z07gn008ducqbt36gszt3" class="article-share-link">Share</a>
       
       
     </footer>
@@ -229,48 +277,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/09/22/shell-last-param/" data-id="cjp7jmfax008cifqbopqq9nn9" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-shell-uniq-count" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/09/22/shell-uniq-count/" class="article-date">
-  <time datetime="2017-09-22T06:37:00.000Z" itemprop="datePublished">2017-09-22</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/linux/">linux</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/22/shell-uniq-count/">shell uniq count</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Shell中uniq去重并统计"><a href="#Shell中uniq去重并统计" class="headerlink" title="Shell中uniq去重并统计"></a>Shell中uniq去重并统计</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cat text | uniq -c</div></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/09/22/shell-uniq-count/" data-id="cjp7jmfb1008rifqb16df3mdy" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/09/22/shell-last-param/" data-id="cjp8z07gr008oucqb9xmcuca1" class="article-share-link">Share</a>
       
       
     </footer>
@@ -314,7 +321,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/2d-array/" style="font-size: 12px;">2d-array</a> <a href="/tags/bigflow/" style="font-size: 10px;">bigflow</a> <a href="/tags/binary-tree/" style="font-size: 14px;">binary tree</a> <a href="/tags/hadoop/" style="font-size: 10px;">hadoop</a> <a href="/tags/lambda/" style="font-size: 10px;">lambda</a> <a href="/tags/leetcode/" style="font-size: 20px;">leetcode</a> <a href="/tags/python/" style="font-size: 18px;">python</a> <a href="/tags/python3/" style="font-size: 16px;">python3</a>
+      <a href="/tags/2d-array/" style="font-size: 12.5px;">2d-array</a> <a href="/tags/bigflow/" style="font-size: 10px;">bigflow</a> <a href="/tags/binary-tree/" style="font-size: 15px;">binary tree</a> <a href="/tags/hadoop/" style="font-size: 10px;">hadoop</a> <a href="/tags/lambda/" style="font-size: 10px;">lambda</a> <a href="/tags/leetcode/" style="font-size: 20px;">leetcode</a> <a href="/tags/python/" style="font-size: 17.5px;">python</a> <a href="/tags/python3/" style="font-size: 17.5px;">python3</a>
     </div>
   </div>
 
@@ -336,6 +343,10 @@
       <ul>
         
           <li>
+            <a href="/2018/12/04/leetcode-find-all-numbers-disappeared-in-an-array/">Find All Numbers Disappeared in an Array</a>
+          </li>
+        
+          <li>
             <a href="/2018/12/03/leetcode-palindromic-substrings/">Palindromic Substrings</a>
           </li>
         
@@ -349,10 +360,6 @@
         
           <li>
             <a href="/2018/11/27/leetcode-merge-two-binary-trees/">Merge Two Binary Trees</a>
-          </li>
-        
-          <li>
-            <a href="/2018/11/26/leetcode-hamming-distance/">Hamming Distance</a>
           </li>
         
       </ul>

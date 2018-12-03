@@ -64,6 +64,49 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-mysql-field-length" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/02/25/mysql-field-length/" class="article-date">
+  <time datetime="2018-02-25T02:22:00.000Z" itemprop="datePublished">2018-02-25</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/mysql/">mysql</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/02/25/mysql-field-length/">mysql field length</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>LENGTH(str): 是计算字段的长度一个汉字是算三个字符,一个数字或字母算一个字符</p>
+<p>CHAR_LENGTH(str): 返回值为字符串 str 的长度，长度的单位为字符。一个多字节字符算作一个单字符</p>
+<p><a href="http://www.111cn.net/database/mysql/53993.htm" target="_blank" rel="external">mysql获取字符串长度函数(CHAR_LENGTH)</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2018/02/25/mysql-field-length/" data-id="cjp8z07gb007rucqbmiqp7krf" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-python-datetime-compare" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/02/21/python-datetime-compare/" class="article-date">
@@ -97,7 +140,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/02/21/python-datetime-compare/" data-id="cjp7jmfar007vifqbsgv6cvvn" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2018/02/21/python-datetime-compare/" data-id="cjp8z07gk0086ucqbet6pzdyw" class="article-share-link">Share</a>
       
       
     </footer>
@@ -144,7 +187,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/01/27/mongodb-compact-disk-space/" data-id="cjp7jmfa1006rifqbu6u0cs6r" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2018/01/27/mongodb-compact-disk-space/" data-id="cjp8z07fn005fucqbvk90t5n7" class="article-share-link">Share</a>
       
       
     </footer>
@@ -187,7 +230,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/01/13/python-hashlib-md5-unicodeEncodeError/" data-id="cjp7jmfao007oifqb8uq9jrm6" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2018/01/13/python-hashlib-md5-unicodeEncodeError/" data-id="cjp8z07gk0084ucqbmg2bna7i" class="article-share-link">Share</a>
       
       
     </footer>
@@ -236,50 +279,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/11/29/python-absolute-import/" data-id="cjp7jmfaj007difqbvbi17v8i" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-django-mongoengine-query-operators" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/11/27/django-mongoengine-query-operators/" class="article-date">
-  <time datetime="2017-11-27T03:37:00.000Z" itemprop="datePublished">2017-11-27</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/mongodb/">mongodb</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/11/27/django-mongoengine-query-operators/">django models mongoengine not in filter</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Django-NOT-IN-gt-exclude-a-in-b-list"><a href="#Django-NOT-IN-gt-exclude-a-in-b-list" class="headerlink" title="Django: NOT IN -&gt; exclude(a__in=b_list)"></a>Django: NOT IN -&gt; exclude(a__in=b_list)</h2><p>NOT IN: <code>nin</code></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">ne – <span class="keyword">not</span> equal to</div><div class="line">lt – less than</div><div class="line">lte – less than <span class="keyword">or</span> equal to</div><div class="line">gt – greater than</div><div class="line">gte – greater than <span class="keyword">or</span> equal to</div><div class="line"><span class="keyword">not</span> – negate a standard check, may be used before other operators (e.g. Q(age__not__mod=<span class="number">5</span>))</div><div class="line"><span class="keyword">in</span> – value <span class="keyword">is</span> <span class="keyword">in</span> list (a list of values should be provided)</div><div class="line">nin – value <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">in</span> list (a list of values should be provided)</div><div class="line">mod – value % x == y, where x <span class="keyword">and</span> y are two provided values</div><div class="line">all – every item <span class="keyword">in</span> list of values provided <span class="keyword">is</span> <span class="keyword">in</span> array</div><div class="line">size – the size of the array <span class="keyword">is</span></div><div class="line">exists – value <span class="keyword">for</span> field exists</div></pre></td></tr></table></figure>
-<p><a href="http://docs.mongoengine.org/guide/querying.html" target="_blank" rel="external">Offical Docs: Querying the database</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/11/27/django-mongoengine-query-operators/" data-id="cjp7jmf640006ifqbtbmpr38k" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/11/29/python-absolute-import/" data-id="cjp8z07gg007xucqbc1uftotv" class="article-share-link">Share</a>
       
       
     </footer>
@@ -323,7 +323,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/2d-array/" style="font-size: 12px;">2d-array</a> <a href="/tags/bigflow/" style="font-size: 10px;">bigflow</a> <a href="/tags/binary-tree/" style="font-size: 14px;">binary tree</a> <a href="/tags/hadoop/" style="font-size: 10px;">hadoop</a> <a href="/tags/lambda/" style="font-size: 10px;">lambda</a> <a href="/tags/leetcode/" style="font-size: 20px;">leetcode</a> <a href="/tags/python/" style="font-size: 18px;">python</a> <a href="/tags/python3/" style="font-size: 16px;">python3</a>
+      <a href="/tags/2d-array/" style="font-size: 12.5px;">2d-array</a> <a href="/tags/bigflow/" style="font-size: 10px;">bigflow</a> <a href="/tags/binary-tree/" style="font-size: 15px;">binary tree</a> <a href="/tags/hadoop/" style="font-size: 10px;">hadoop</a> <a href="/tags/lambda/" style="font-size: 10px;">lambda</a> <a href="/tags/leetcode/" style="font-size: 20px;">leetcode</a> <a href="/tags/python/" style="font-size: 17.5px;">python</a> <a href="/tags/python3/" style="font-size: 17.5px;">python3</a>
     </div>
   </div>
 
@@ -345,6 +345,10 @@
       <ul>
         
           <li>
+            <a href="/2018/12/04/leetcode-find-all-numbers-disappeared-in-an-array/">Find All Numbers Disappeared in an Array</a>
+          </li>
+        
+          <li>
             <a href="/2018/12/03/leetcode-palindromic-substrings/">Palindromic Substrings</a>
           </li>
         
@@ -358,10 +362,6 @@
         
           <li>
             <a href="/2018/11/27/leetcode-merge-two-binary-trees/">Merge Two Binary Trees</a>
-          </li>
-        
-          <li>
-            <a href="/2018/11/26/leetcode-hamming-distance/">Hamming Distance</a>
           </li>
         
       </ul>
