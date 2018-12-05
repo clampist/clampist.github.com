@@ -64,6 +64,51 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-leetcode-convert-bst-to-greater-tree" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/12/05/leetcode-convert-bst-to-greater-tree/" class="article-date">
+  <time datetime="2018-12-04T23:59:00.000Z" itemprop="datePublished">2018-12-05</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/05/leetcode-convert-bst-to-greater-tree/">Convert BST to Greater Tree</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Convert-BST-to-Greater-Tree"><a href="#Convert-BST-to-Greater-Tree" class="headerlink" title="Convert BST to Greater Tree"></a>Convert BST to Greater Tree</h2><p><strong>Recursive Version</strong> - 88ms</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Definition for a binary tree node.</span></div><div class="line"><span class="comment"># class TreeNode:</span></div><div class="line"><span class="comment">#     def __init__(self, x):</span></div><div class="line"><span class="comment">#         self.val = x</span></div><div class="line"><span class="comment">#         self.left = None</span></div><div class="line"><span class="comment">#         self.right = None</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">        self.lSum = <span class="number">0</span>    </div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">convertBST</span><span class="params">(self, root)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        :type root: TreeNode</span></div><div class="line"><span class="string">        :rtype: TreeNode</span></div><div class="line"><span class="string">        """</span></div><div class="line">        <span class="keyword">if</span> <span class="keyword">not</span> root:</div><div class="line">            <span class="keyword">return</span> <span class="keyword">None</span></div><div class="line">        self.convertBST(root.right)</div><div class="line">        self.lSum += root.val</div><div class="line">        root.val = self.lSum</div><div class="line">        self.convertBST(root.left)</div><div class="line">        <span class="keyword">return</span> root</div></pre></td></tr></table></figure>
+<p><a href="https://leetcode.com/problems/convert-bst-to-greater-tree/description/" target="_blank" rel="external">leet code</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2018/12/05/leetcode-convert-bst-to-greater-tree/" data-id="cjpaepqdn000zcxqbw1bk2p7m" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python3/">python3</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-leetcode-find-all-numbers-disappeared-in-an-array" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/12/04/leetcode-find-all-numbers-disappeared-in-an-array/" class="article-date">
@@ -101,7 +146,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/12/04/leetcode-find-all-numbers-disappeared-in-an-array/" data-id="cjp8z07dt0019ucqbbrvaifu3" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2018/12/04/leetcode-find-all-numbers-disappeared-in-an-array/" data-id="cjpaepqf9002rcxqb6s5s4hsg" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python3/">python3</a></li></ul>
@@ -150,7 +195,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/12/03/leetcode-palindromic-substrings/" data-id="cjp8z07f0003sucqbu7pqhyb5" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2018/12/03/leetcode-palindromic-substrings/" data-id="cjpaepqg9004rcxqbjyqfv89h" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python3/">python3</a></li></ul>
@@ -197,7 +242,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/11/29/queue-reconstruction-by-height/" data-id="cjp8z07gr008rucqbo6jpxoq9" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2018/11/29/queue-reconstruction-by-height/" data-id="cjpaepqhi007scxqby0qzajuy" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python3/">python3</a></li></ul>
@@ -244,52 +289,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/11/28/leetcode-counting-bits/" data-id="cjp8z07dw001gucqbzar7szid" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python3/">python3</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-leetcode-merge-two-binary-trees" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/11/27/leetcode-merge-two-binary-trees/" class="article-date">
-  <time datetime="2018-11-26T23:27:00.000Z" itemprop="datePublished">2018-11-27</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/27/leetcode-merge-two-binary-trees/">Merge Two Binary Trees</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Merge-Two-Binary-Trees"><a href="#Merge-Two-Binary-Trees" class="headerlink" title="Merge Two Binary Trees"></a>Merge Two Binary Trees</h2><p><strong>Clean Version</strong> - 92ms</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Definition for a binary tree node.</span></div><div class="line"><span class="comment"># class TreeNode:</span></div><div class="line"><span class="comment">#     def __init__(self, x):</span></div><div class="line"><span class="comment">#         self.val = x</span></div><div class="line"><span class="comment">#         self.left = None</span></div><div class="line"><span class="comment">#         self.right = None</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">mergeTrees</span><span class="params">(self, t1, t2)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        :type t1: TreeNode</span></div><div class="line"><span class="string">        :type t2: TreeNode</span></div><div class="line"><span class="string">        :rtype: TreeNode</span></div><div class="line"><span class="string">        """</span></div><div class="line">        <span class="keyword">if</span> t1 <span class="keyword">and</span> t2:</div><div class="line">            root = TreeNode(t1.val + t2.val)</div><div class="line">            root.left = self.mergeTrees(t1.left, t2.left)</div><div class="line">            root.right = self.mergeTrees(t1.right, t2.right)</div><div class="line">            <span class="keyword">return</span> root</div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            <span class="keyword">return</span> t1 <span class="keyword">or</span> t2</div></pre></td></tr></table></figure>
-<p><a href="https://leetcode.com/problems/merge-two-binary-trees/description/" target="_blank" rel="external">leet code</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/11/27/leetcode-merge-two-binary-trees/" data-id="cjp8z07er003iucqb3otvfigq" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2018/11/28/leetcode-counting-bits/" data-id="cjpaepqf2002lcxqbcsxdcj7t" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python3/">python3</a></li></ul>
@@ -335,7 +335,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/2d-array/" style="font-size: 12.5px;">2d-array</a> <a href="/tags/bigflow/" style="font-size: 10px;">bigflow</a> <a href="/tags/binary-tree/" style="font-size: 15px;">binary tree</a> <a href="/tags/hadoop/" style="font-size: 10px;">hadoop</a> <a href="/tags/lambda/" style="font-size: 10px;">lambda</a> <a href="/tags/leetcode/" style="font-size: 20px;">leetcode</a> <a href="/tags/python/" style="font-size: 17.5px;">python</a> <a href="/tags/python3/" style="font-size: 17.5px;">python3</a>
+      <a href="/tags/2d-array/" style="font-size: 12px;">2d-array</a> <a href="/tags/bigflow/" style="font-size: 10px;">bigflow</a> <a href="/tags/binary-tree/" style="font-size: 14px;">binary tree</a> <a href="/tags/hadoop/" style="font-size: 10px;">hadoop</a> <a href="/tags/lambda/" style="font-size: 10px;">lambda</a> <a href="/tags/leetcode/" style="font-size: 20px;">leetcode</a> <a href="/tags/python/" style="font-size: 16px;">python</a> <a href="/tags/python3/" style="font-size: 18px;">python3</a>
     </div>
   </div>
 
@@ -357,6 +357,10 @@
       <ul>
         
           <li>
+            <a href="/2018/12/05/leetcode-convert-bst-to-greater-tree/">Convert BST to Greater Tree</a>
+          </li>
+        
+          <li>
             <a href="/2018/12/04/leetcode-find-all-numbers-disappeared-in-an-array/">Find All Numbers Disappeared in an Array</a>
           </li>
         
@@ -370,10 +374,6 @@
         
           <li>
             <a href="/2018/11/28/leetcode-counting-bits/">Counting Bits</a>
-          </li>
-        
-          <li>
-            <a href="/2018/11/27/leetcode-merge-two-binary-trees/">Merge Two Binary Trees</a>
           </li>
         
       </ul>
