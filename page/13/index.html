@@ -64,6 +64,49 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-python-hashlib-md5-unicodeEncodeError" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/01/13/python-hashlib-md5-unicodeEncodeError/" class="article-date">
+  <time datetime="2018-01-13T02:35:00.000Z" itemprop="datePublished">2018-01-13</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/python/">python</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/01/13/python-hashlib-md5-unicodeEncodeError/">python hashlib md5 unicodeEncodeError</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">string = &quot;beyongjie&quot;</div><div class="line"></div><div class="line"></div><div class="line">md5 = hashlib.md5()</div><div class="line">md5.update(string.encode(&apos;utf-8&apos;))     #注意转码</div><div class="line">res = md5.hexdigest()</div><div class="line">print(&quot;md5加密结果:&quot;,res)</div></pre></td></tr></table></figure>
+<p><strong>正常直接计算Unicode就行，但如果报编码错误，可以尝试计算str</strong></p>
+<p><a href="http://www.cnblogs.com/pycode/p/hashlib.html" target="_blank" rel="external">参考</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2018/01/13/python-hashlib-md5-unicodeEncodeError/" data-id="cjpbt87s1006nefqb2d5tz0kd" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-python-absolute-import" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/11/29/python-absolute-import/" class="article-date">
@@ -103,7 +146,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/11/29/python-absolute-import/" data-id="cjpaepqh6006pcxqbdi1wrwqg" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/11/29/python-absolute-import/" data-id="cjpbt87ry0069efqbghfz4zcs" class="article-share-link">Share</a>
       
       
     </footer>
@@ -146,7 +189,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/11/27/django-mongoengine-query-operators/" data-id="cjpaepqdr0019cxqbqwx2h9xv" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/11/27/django-mongoengine-query-operators/" data-id="cjpbt87o4000defqbu08twh9s" class="article-share-link">Share</a>
       
       
     </footer>
@@ -190,7 +233,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/11/22/python-loads-json-object-instead-of-unicode/" data-id="cjpaepqhb0078cxqb66ll6opt" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/11/22/python-loads-json-object-instead-of-unicode/" data-id="cjpbt87sg0082efqbstlyzisa" class="article-share-link">Share</a>
       
       
     </footer>
@@ -235,56 +278,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/11/02/linux-grep-by-reg-content-in-file/" data-id="cjpaepqh0006ccxqbrg60gdng" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-linux-sync-folder-by-rsync" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/11/02/linux-sync-folder-by-rsync/" class="article-date">
-  <time datetime="2017-11-02T00:35:00.000Z" itemprop="datePublished">2017-11-02</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/linux/">linux</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/11/02/linux-sync-folder-by-rsync/">linux sync folder by rsync</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="rsync"><a href="#rsync" class="headerlink" title="rsync"></a>rsync</h2><p><code>rsync -avz --delete &quot;/home/user/A&quot; &quot;/home/user/B&quot;</code></p>
-<p>Explanation by SonicARG</p>
-<p><code>-a</code> Do the sync preserving all filesystem attributes</p>
-<p><code>-v</code> run verbosely</p>
-<p><code>-z</code> compress the data during the sync (transport the data in compressed mode)</p>
-<p><code>--delete</code> delete the files in target folder that do not exist in the source, /home/user/A: source folder, /home/user/B: target folder</p>
-<h2 id="exclude-git"><a href="#exclude-git" class="headerlink" title="exclude .git"></a>exclude .git</h2><p><code>--exclude=&#39;.git/&#39;</code></p>
-<p><a href="https://unix.stackexchange.com/questions/100660/how-to-use-rsync-to-backup-a-directory-without-git-subdirectory" target="_blank" rel="external">How to use rsync to backup a directory without git subdirectory</a></p>
-<p><a href="https://unix.stackexchange.com/questions/203846/how-to-sync-two-folders-with-command-line-tools" target="_blank" rel="external">How to sync two folders with command line tools?</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/11/02/linux-sync-folder-by-rsync/" data-id="cjpaepqgz0069cxqb1vv5sjb8" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/11/02/linux-grep-by-reg-content-in-file/" data-id="cjpbt87rq005jefqba8gvb3m7" class="article-share-link">Share</a>
       
       
     </footer>
@@ -297,7 +291,7 @@
 
 
   <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/page/12/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><span class="page-number current">13</span><a class="page-number" href="/page/14/">14</a><a class="page-number" href="/page/15/">15</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><a class="extend next" rel="next" href="/page/14/">下一页&raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/12/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><span class="page-number current">13</span><a class="page-number" href="/page/14/">14</a><a class="page-number" href="/page/15/">15</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" href="/page/14/">下一页&raquo;</a>
   </nav>
 
 </section>
@@ -350,6 +344,10 @@
       <ul>
         
           <li>
+            <a href="/2018/12/06/leetcode-house-robber-iii/">House Robber III</a>
+          </li>
+        
+          <li>
             <a href="/2018/12/05/leetcode-convert-bst-to-greater-tree/">Convert BST to Greater Tree</a>
           </li>
         
@@ -363,10 +361,6 @@
         
           <li>
             <a href="/2018/11/29/queue-reconstruction-by-height/">Queue Reconstruction by Height</a>
-          </li>
-        
-          <li>
-            <a href="/2018/11/28/leetcode-counting-bits/">Counting Bits</a>
           </li>
         
       </ul>
