@@ -64,6 +64,48 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-python-Chinese-punctuation-to-English-punctuation" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/10/25/python-Chinese-punctuation-to-English-punctuation/" class="article-date">
+  <time datetime="2017-10-25T00:43:00.000Z" itemprop="datePublished">2017-10-25</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/python/">python</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/25/python-Chinese-punctuation-to-English-punctuation/">Chinese punctuation to English punctuation</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Python中：中文标点转换成英文标点"><a href="#Python中：中文标点转换成英文标点" class="headerlink" title="Python中：中文标点转换成英文标点"></a>Python中：中文标点转换成英文标点</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># In Python3, use str.maketrans instead</span></div><div class="line">table = &#123;ord(f):ord(t) <span class="keyword">for</span> f,t <span class="keyword">in</span> zip(</div><div class="line">     <span class="string">u'，。！？【】（）％＃＠＆１２３４５６７８９０'</span>,</div><div class="line">     <span class="string">u',.!?[]()%#@&amp;1234567890'</span>)&#125;</div><div class="line">t = <span class="string">u'中国，中文，标点符号！你好？１２３４５＠＃【】+=-（）'</span></div><div class="line">t2 = t.translate(table)</div><div class="line"><span class="string">'''</span></div><div class="line"><span class="string"><span class="meta">&gt;&gt;&gt; </span>print t2</span></div><div class="line"><span class="string">中国,中文,标点符号!你好?12345@#[]+=-()</span></div><div class="line"><span class="string">'''</span></div><div class="line"></div><div class="line">作者：灵剑</div><div class="line">链接：https://www.zhihu.com/question/<span class="number">37720196</span>/answer/<span class="number">115870233</span></div><div class="line">来源：知乎</div><div class="line">著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</div></pre></td></tr></table></figure>
+<p><a href="https://www.zhihu.com/question/37720196" target="_blank" rel="external">链接</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2017/10/25/python-Chinese-punctuation-to-English-punctuation/" data-id="cjphjus9b007vtxqb9oylotca" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-shell-awk-filter-sort" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/10/25/shell-awk-filter-sort/" class="article-date">
@@ -104,7 +146,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/10/25/shell-awk-filter-sort/" data-id="cjpd8zgrm009gsvqb9cmim4p6" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/10/25/shell-awk-filter-sort/" data-id="cjphjus9l008vtxqb59hht5os" class="article-share-link">Share</a>
       
       
     </footer>
@@ -149,7 +191,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/10/24/shell-sed-certain-lines/" data-id="cjpd8zgrn009jsvqbm24cgwlv" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/10/24/shell-sed-certain-lines/" data-id="cjphjus9o0095txqb8rpmo0hd" class="article-share-link">Share</a>
       
       
     </footer>
@@ -197,7 +239,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/09/22/acquire-array-length-in-cpp/" data-id="cjpd8zgl40000svqb5addnqlv" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/09/22/acquire-array-length-in-cpp/" data-id="cjphjus5y0001txqbh5didgsu" class="article-share-link">Share</a>
       
       
     </footer>
@@ -240,54 +282,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/09/22/boost-lexical-cast-cpp/" data-id="cjpd8zglf0002svqbqumpz3md" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-git-usage" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/09/22/git-usage/" class="article-date">
-  <time datetime="2017-09-22T06:37:00.000Z" itemprop="datePublished">2017-09-22</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/git/">git</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/22/git-usage/">git and gerrit</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="git常用"><a href="#git常用" class="headerlink" title="git常用"></a>git常用</h2><h3 id="master开发"><a href="#master开发" class="headerlink" title="master开发"></a><code>master</code>开发</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git add    <span class="comment"># add后如果再修改，需要再add一次，否则提交add时版本</span></div><div class="line">git commit -m <span class="string">"adshow-3-6-1 feed support"</span></div><div class="line">git push origin master:refs/<span class="keyword">for</span>/master</div></pre></td></tr></table></figure>
-<h3 id="branch开发"><a href="#branch开发" class="headerlink" title="branch开发"></a><code>branch</code>开发</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git add </div><div class="line">git commit -m <span class="string">"sth"</span> </div><div class="line">git push origin master:refs/<span class="keyword">for</span>/patserver_1-0-23_BRANCH</div></pre></td></tr></table></figure>
-<h3 id="遇到stash冲突"><a href="#遇到stash冲突" class="headerlink" title="遇到stash冲突"></a>遇到<code>stash</code>冲突</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git stash    <span class="comment"># 将本地冲突改动 存入栈中</span></div><div class="line">git pull     <span class="comment"># 更新</span></div><div class="line">git stash pop    <span class="comment">#从栈中将改动拉出</span></div></pre></td></tr></table></figure>
-        
-          <p class="article-more-link">
-            <a href="/2017/09/22/git-usage/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/09/22/git-usage/" data-id="cjpd8zglu000lsvqbkek3gjo3" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/09/22/boost-lexical-cast-cpp/" data-id="cjphjus620002txqbj9bbmsrv" class="article-share-link">Share</a>
       
       
     </footer>
@@ -353,6 +348,10 @@
       <ul>
         
           <li>
+            <a href="/2018/12/10/leetcode-burst-balloons/">Burst Balloons</a>
+          </li>
+        
+          <li>
             <a href="/2018/12/07/leetcode-diameter-of-binary-tree/">Diameter of Binary Tree</a>
           </li>
         
@@ -366,10 +365,6 @@
         
           <li>
             <a href="/2018/12/04/leetcode-find-all-numbers-disappeared-in-an-array/">Find All Numbers Disappeared in an Array</a>
-          </li>
-        
-          <li>
-            <a href="/2018/12/03/leetcode-palindromic-substrings/">Palindromic Substrings</a>
           </li>
         
       </ul>

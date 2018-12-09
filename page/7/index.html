@@ -64,6 +64,51 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-leetcode-insert-delete-getrandom-o1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/10/24/leetcode-insert-delete-getrandom-o1/" class="article-date">
+  <time datetime="2018-10-23T23:33:00.000Z" itemprop="datePublished">2018-10-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/24/leetcode-insert-delete-getrandom-o1/">Insert Delete GetRandom O(1)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Insert-Delete-GetRandom-O-1"><a href="#Insert-Delete-GetRandom-O-1" class="headerlink" title="Insert Delete GetRandom O(1)"></a>Insert Delete GetRandom O(1)</h2><p><strong>dict+list Version - 80 ms</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> random</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">RandomizedSet</span><span class="params">(object)</span>:</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        Initialize your data structure here.</span></div><div class="line"><span class="string">        """</span></div><div class="line">        self.data = []</div><div class="line">        self.idxs = &#123;&#125;</div><div class="line">        self.cnt = <span class="number">0</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">insert</span><span class="params">(self, val)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        Inserts a value to the set. Returns true if the set did not already contain the specified element.</span></div><div class="line"><span class="string">        :type val: int</span></div><div class="line"><span class="string">        :rtype: bool</span></div><div class="line"><span class="string">        """</span></div><div class="line">        <span class="keyword">if</span> val <span class="keyword">in</span> self.idxs:</div><div class="line">            <span class="keyword">return</span> <span class="keyword">False</span></div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            self.data.append(val)</div><div class="line">            self.idxs[val] = self.cnt</div><div class="line">            self.cnt += <span class="number">1</span></div><div class="line">            <span class="keyword">return</span> <span class="keyword">True</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">remove</span><span class="params">(self, val)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        Removes a value from the set. Returns true if the set contained the specified element.</span></div><div class="line"><span class="string">        :type val: int</span></div><div class="line"><span class="string">        :rtype: bool</span></div><div class="line"><span class="string">        """</span></div><div class="line">        <span class="keyword">if</span> val <span class="keyword">in</span> self.idxs:</div><div class="line">            idx, value = self.idxs[val], self.data[<span class="number">-1</span>]</div><div class="line">            self.idxs[value], self.data[idx] = idx, value</div><div class="line">            self.data.pop()</div><div class="line">            self.idxs.pop(val, <span class="number">0</span>)</div><div class="line">            self.cnt -= <span class="number">1</span></div><div class="line">            <span class="keyword">return</span> <span class="keyword">True</span></div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            <span class="keyword">return</span> <span class="keyword">False</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getRandom</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        Get a random element from the set.</span></div><div class="line"><span class="string">        :rtype: int</span></div><div class="line"><span class="string">        """</span></div><div class="line">        <span class="keyword">return</span> random.choice(self.data)</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment"># Your RandomizedSet object will be instantiated and called as such:</span></div><div class="line"><span class="comment"># obj = RandomizedSet()</span></div><div class="line"><span class="comment"># param_1 = obj.insert(val)</span></div><div class="line"><span class="comment"># param_2 = obj.remove(val)</span></div><div class="line"><span class="comment"># param_3 = obj.getRandom()</span></div></pre></td></tr></table></figure>
+<p><a href="https://leetcode.com/problems/insert-delete-getrandom-o1/description/" target="_blank" rel="external">leet code</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2018/10/24/leetcode-insert-delete-getrandom-o1/" data-id="cjphjus7f002xtxqbfig6p1o3" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-leetcode-maximum-subarray" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/10/23/leetcode-maximum-subarray/" class="article-date">
@@ -101,7 +146,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/10/23/leetcode-maximum-subarray/" data-id="cjpd8zgnw003ssvqbqszllhhn" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2018/10/23/leetcode-maximum-subarray/" data-id="cjphjus7w0040txqbf9jggmxt" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
@@ -154,7 +199,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/10/22/leetcode-group-anagrams/" data-id="cjpd8zgn0002ksvqbdd66mmok" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2018/10/22/leetcode-group-anagrams/" data-id="cjphjus7e002utxqbbg3y9y31" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
@@ -206,7 +251,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/10/19/leetcode-kth-largest-element-in-an-array/" data-id="cjpd8zgn3002ssvqbff1vjadu" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2018/10/19/leetcode-kth-largest-element-in-an-array/" data-id="cjphjus7l003ctxqb3nn6mva1" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
@@ -263,57 +308,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/10/18/leetcode-rotate-image/" data-id="cjpd8zgp7006tsvqb7u563tul" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-leetcode-unique-paths" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/10/17/leetcode-unique-paths/" class="article-date">
-  <time datetime="2018-10-16T23:22:00.000Z" itemprop="datePublished">2018-10-17</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/10/17/leetcode-unique-paths/">Unique Paths</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Unique-Paths"><a href="#Unique-Paths" class="headerlink" title="Unique Paths"></a>Unique Paths</h2><p><strong>Math Method</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> math</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">uniquePaths</span><span class="params">(self, m, n)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        :type m: int</span></div><div class="line"><span class="string">        :type n: int</span></div><div class="line"><span class="string">        :rtype: int</span></div><div class="line"><span class="string">        """</span></div><div class="line">        <span class="keyword">return</span> math.factorial(m+n<span class="number">-2</span>) / math.factorial(m<span class="number">-1</span>) / math.factorial(n<span class="number">-1</span>)</div></pre></td></tr></table></figure>
-<p>Write down your command in a sequence, “right, down, down, right, …” it will always be m+n-2 slots, u just need to insert n-1 “right” commands uniquely in this sequence,and that is just binomial coefficient of m+n-2 choose n-1.</p>
-<p><strong>DP Version</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">uniquePaths</span><span class="params">(self, m, n)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        :type m: int</span></div><div class="line"><span class="string">        :type n: int</span></div><div class="line"><span class="string">        :rtype: int</span></div><div class="line"><span class="string">        """</span></div><div class="line">        aux = [[<span class="number">1</span> <span class="keyword">for</span> x <span class="keyword">in</span> xrange(n)] <span class="keyword">for</span> x <span class="keyword">in</span> xrange(m)]</div><div class="line">        <span class="comment">#print aux</span></div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, m):</div><div class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">1</span>, n):</div><div class="line">                aux[i][j] = aux[i][j<span class="number">-1</span>] + aux[i<span class="number">-1</span>][j]</div><div class="line">        <span class="comment">#print aux</span></div><div class="line">        <span class="keyword">return</span> aux[<span class="number">-1</span>][<span class="number">-1</span>]</div></pre></td></tr></table></figure>
-<p><strong>test code</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">In [329]: s = Solution(); t = s.uniquePaths(3, 2)</div><div class="line">[[1, 1], [1, 1], [1, 1]]</div><div class="line">[[1, 1], [1, 2], [1, 3]]</div><div class="line"></div><div class="line">In [330]: t</div><div class="line">Out[330]: 3</div></pre></td></tr></table></figure>
-<p><a href="https://leetcode.com/problems/unique-paths/description/" target="_blank" rel="external">leet code</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/10/17/leetcode-unique-paths/" data-id="cjpd8zgpt007esvqbmdl8tthz" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2018/10/18/leetcode-rotate-image/" data-id="cjphjus8g0067txqbg55ibdd1" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
@@ -381,6 +376,10 @@
       <ul>
         
           <li>
+            <a href="/2018/12/10/leetcode-burst-balloons/">Burst Balloons</a>
+          </li>
+        
+          <li>
             <a href="/2018/12/07/leetcode-diameter-of-binary-tree/">Diameter of Binary Tree</a>
           </li>
         
@@ -394,10 +393,6 @@
         
           <li>
             <a href="/2018/12/04/leetcode-find-all-numbers-disappeared-in-an-array/">Find All Numbers Disappeared in an Array</a>
-          </li>
-        
-          <li>
-            <a href="/2018/12/03/leetcode-palindromic-substrings/">Palindromic Substrings</a>
           </li>
         
       </ul>

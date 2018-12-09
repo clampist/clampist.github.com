@@ -64,6 +64,51 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-django-multi-database" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/10/25/django-multi-database/" class="article-date">
+  <time datetime="2017-10-25T00:49:00.000Z" itemprop="datePublished">2017-10-25</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/django/">django</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/25/django-multi-database/">django multi database</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>1. 在<code>setting.py</code>中定义</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">DATABASES = &#123;</div><div class="line">    <span class="string">'default'</span>: &#123;</div><div class="line">        <span class="string">'NAME'</span>: <span class="string">'app_data'</span>,</div><div class="line">        <span class="string">'ENGINE'</span>: <span class="string">'django.db.backends.postgresql_psycopg2'</span>,</div><div class="line">        <span class="string">'USER'</span>: <span class="string">'postgres_user'</span>,</div><div class="line">        <span class="string">'PASSWORD'</span>: <span class="string">'s3krit'</span></div><div class="line">    &#125;,</div><div class="line">    <span class="string">'users'</span>: &#123;</div><div class="line">        <span class="string">'NAME'</span>: <span class="string">'user_data'</span>,</div><div class="line">        <span class="string">'ENGINE'</span>: <span class="string">'django.db.backends.mysql'</span>,</div><div class="line">        <span class="string">'USER'</span>: <span class="string">'mysql_user'</span>,</div><div class="line">        <span class="string">'PASSWORD'</span>: <span class="string">'priv4te'</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>2. 使用<code>using</code>手动选择一个数据库</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>u = User.objects.using(<span class="string">'legacy_users'</span>).get(username=<span class="string">'fred'</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>u.delete() <span class="comment"># will delete from the `legacy_users` database</span></div></pre></td></tr></table></figure>
+<p><a href="http://python.usyiyi.cn/translate/django_182/topics/db/multi-db.html" target="_blank" rel="external">django_182</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2017/10/25/django-multi-database/" data-id="cjphjus6e000gtxqb5opj5m15" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-django-models-objects-filter-by-dict-kwargs" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/10/25/django-models-objects-filter-by-dict-kwargs/" class="article-date">
@@ -99,7 +144,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/10/25/django-models-objects-filter-by-dict-kwargs/" data-id="cjpd8zglm0008svqbexborv8u" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/10/25/django-models-objects-filter-by-dict-kwargs/" data-id="cjphjus670006txqbqsgeo2ko" class="article-share-link">Share</a>
       
       
     </footer>
@@ -144,7 +189,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/10/25/django-models-not-equal-exclude-filter/" data-id="cjpd8zglj0005svqbwf1rqx66" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/10/25/django-models-not-equal-exclude-filter/" data-id="cjphjus690008txqbdumsaqs3" class="article-share-link">Share</a>
       
       
     </footer>
@@ -186,7 +231,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/10/25/du-find-max-dir/" data-id="cjpd8zglt000ksvqba0im54yj" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/10/25/du-find-max-dir/" data-id="cjphjus6h000mtxqb6scyrxrm" class="article-share-link">Share</a>
       
       
     </footer>
@@ -228,49 +273,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/10/25/python-check-class-has-attribute/" data-id="cjpd8zgr6008isvqba3asxqkw" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-python-Chinese-punctuation-to-English-punctuation" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/10/25/python-Chinese-punctuation-to-English-punctuation/" class="article-date">
-  <time datetime="2017-10-25T00:43:00.000Z" itemprop="datePublished">2017-10-25</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/python/">python</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/25/python-Chinese-punctuation-to-English-punctuation/">Chinese punctuation to English punctuation</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Python中：中文标点转换成英文标点"><a href="#Python中：中文标点转换成英文标点" class="headerlink" title="Python中：中文标点转换成英文标点"></a>Python中：中文标点转换成英文标点</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># In Python3, use str.maketrans instead</span></div><div class="line">table = &#123;ord(f):ord(t) <span class="keyword">for</span> f,t <span class="keyword">in</span> zip(</div><div class="line">     <span class="string">u'，。！？【】（）％＃＠＆１２３４５６７８９０'</span>,</div><div class="line">     <span class="string">u',.!?[]()%#@&amp;1234567890'</span>)&#125;</div><div class="line">t = <span class="string">u'中国，中文，标点符号！你好？１２３４５＠＃【】+=-（）'</span></div><div class="line">t2 = t.translate(table)</div><div class="line"><span class="string">'''</span></div><div class="line"><span class="string"><span class="meta">&gt;&gt;&gt; </span>print t2</span></div><div class="line"><span class="string">中国,中文,标点符号!你好?12345@#[]+=-()</span></div><div class="line"><span class="string">'''</span></div><div class="line"></div><div class="line">作者：灵剑</div><div class="line">链接：https://www.zhihu.com/question/<span class="number">37720196</span>/answer/<span class="number">115870233</span></div><div class="line">来源：知乎</div><div class="line">著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</div></pre></td></tr></table></figure>
-<p><a href="https://www.zhihu.com/question/37720196" target="_blank" rel="external">链接</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/10/25/python-Chinese-punctuation-to-English-punctuation/" data-id="cjpd8zgqw0085svqbfjh1m9lq" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/10/25/python-check-class-has-attribute/" data-id="cjphjus9e0088txqb6uovnayb" class="article-share-link">Share</a>
       
       
     </footer>
@@ -336,6 +339,10 @@
       <ul>
         
           <li>
+            <a href="/2018/12/10/leetcode-burst-balloons/">Burst Balloons</a>
+          </li>
+        
+          <li>
             <a href="/2018/12/07/leetcode-diameter-of-binary-tree/">Diameter of Binary Tree</a>
           </li>
         
@@ -349,10 +356,6 @@
         
           <li>
             <a href="/2018/12/04/leetcode-find-all-numbers-disappeared-in-an-array/">Find All Numbers Disappeared in an Array</a>
-          </li>
-        
-          <li>
-            <a href="/2018/12/03/leetcode-palindromic-substrings/">Palindromic Substrings</a>
           </li>
         
       </ul>

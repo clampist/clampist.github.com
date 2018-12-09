@@ -64,6 +64,53 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-leetcode-longest-substring-with-at-least-k-repeating-characters" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/11/23/leetcode-longest-substring-with-at-least-k-repeating-characters/" class="article-date">
+  <time datetime="2018-11-22T23:32:00.000Z" itemprop="datePublished">2018-11-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/23/leetcode-longest-substring-with-at-least-k-repeating-characters/">Longest Substring with At Least K Repeating Characters</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Longest-Substring-with-At-Least-K-Repeating-Characters"><a href="#Longest-Substring-with-At-Least-K-Repeating-Characters" class="headerlink" title="Longest Substring with At Least K Repeating Characters"></a>Longest Substring with At Least K Repeating Characters</h2><p><strong>Set Version</strong> - 36ms</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">longestSubstring</span><span class="params">(self, s, k)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        :type s: str</span></div><div class="line"><span class="string">        :type k: int</span></div><div class="line"><span class="string">        :rtype: int</span></div><div class="line"><span class="string">        """</span></div><div class="line">        <span class="keyword">for</span> c <span class="keyword">in</span> set(s):</div><div class="line">            <span class="keyword">if</span> s.count(c) &lt; k:</div><div class="line">                <span class="keyword">return</span> max(self.longestSubstring(t, k) <span class="keyword">for</span> t <span class="keyword">in</span> s.split(c))</div><div class="line">        <span class="keyword">return</span> len(s)</div></pre></td></tr></table></figure>
+<p><strong>test code</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">In [87]: s = <span class="string">'aaabb'</span></div><div class="line"></div><div class="line">In [88]: s.split(<span class="string">'a'</span>)</div><div class="line">Out[88]: [<span class="string">''</span>, <span class="string">''</span>, <span class="string">''</span>, <span class="string">'bb'</span>]</div><div class="line"></div><div class="line">In [89]: k = 3</div><div class="line"></div><div class="line">In [90]: ss = Solution(); t = ss.longestSubstring(s, k); <span class="built_in">print</span>(t)</div><div class="line">3</div></pre></td></tr></table></figure>
+<p><a href="https://leetcode.com/problems/longest-substring-with-at-least-k-repeating-characters/description/" target="_blank" rel="external">leet code</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2018/11/23/leetcode-longest-substring-with-at-least-k-repeating-characters/" data-id="cjphjus7r003otxqb5p19eph8" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python3/">python3</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-leetcode-serialize-and-deserialize-binary-tree" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/11/22/leetcode-serialize-and-deserialize-binary-tree/" class="article-date">
@@ -97,7 +144,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/11/22/leetcode-serialize-and-deserialize-binary-tree/" data-id="cjpd8zgp3006nsvqbp6rzpg6r" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2018/11/22/leetcode-serialize-and-deserialize-binary-tree/" data-id="cjphjus8i006atxqb1a1y7zi1" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python3/">python3</a></li></ul>
@@ -144,7 +191,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/11/21/leetcode-construct-binary-tree-from-preorder-and-inorder-traversal/" data-id="cjpd8zgm30010svqbrvjbl05o" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2018/11/21/leetcode-construct-binary-tree-from-preorder-and-inorder-traversal/" data-id="cjphjus6w001ktxqbl8plcs6l" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python3/">python3</a></li></ul>
@@ -191,7 +238,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/11/20/leetcode-set-matrix-zeroes/" data-id="cjpd8zgpk0078svqbvr11m30i" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2018/11/20/leetcode-set-matrix-zeroes/" data-id="cjphjus8k006gtxqbnreyqq93" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python3/">python3</a></li></ul>
@@ -238,54 +285,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/11/19/leetcode-palindrome-partitioning/" data-id="cjpd8zgo20048svqbpi8503gn" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python3/">python3</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-leetcode-longest-increasing-path-in-a-matrix" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/11/16/leetcode-longest-increasing-path-in-a-matrix/" class="article-date">
-  <time datetime="2018-11-15T23:48:00.000Z" itemprop="datePublished">2018-11-16</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/16/leetcode-longest-increasing-path-in-a-matrix/">Longest Increasing Path in a Matrix</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Longest-Increasing-Path-in-a-Matrix"><a href="#Longest-Increasing-Path-in-a-Matrix" class="headerlink" title="Longest Increasing Path in a Matrix"></a>Longest Increasing Path in a Matrix</h2><p><strong>DP Version</strong> - 260ms</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">longestIncreasingPath</span><span class="params">(self, matrix)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        :type matrix: List[List[int]]</span></div><div class="line"><span class="string">        :rtype: int</span></div><div class="line"><span class="string">        """</span></div><div class="line">        <span class="function"><span class="keyword">def</span> <span class="title">dfs</span><span class="params">(i, j)</span>:</span></div><div class="line">            <span class="keyword">if</span> <span class="keyword">not</span> dp[i][j]:</div><div class="line">                val = matrix[i][j]</div><div class="line">                dp[i][j] = <span class="number">1</span> + max(dfs(i - <span class="number">1</span>, j) <span class="keyword">if</span> i <span class="keyword">and</span> val &gt; matrix[i - <span class="number">1</span>][j] <span class="keyword">else</span> <span class="number">0</span>,</div><div class="line">                    dfs(i + <span class="number">1</span>, j) <span class="keyword">if</span> i &lt; M - <span class="number">1</span> <span class="keyword">and</span> val &gt; matrix[i + <span class="number">1</span>][j] <span class="keyword">else</span> <span class="number">0</span>,</div><div class="line">                    dfs(i, j - <span class="number">1</span>) <span class="keyword">if</span> j <span class="keyword">and</span> val &gt; matrix[i][j - <span class="number">1</span>] <span class="keyword">else</span> <span class="number">0</span>,</div><div class="line">                    dfs(i, j + <span class="number">1</span>) <span class="keyword">if</span> j &lt; N - <span class="number">1</span> <span class="keyword">and</span> val &gt; matrix[i][j + <span class="number">1</span>] <span class="keyword">else</span> <span class="number">0</span>)</div><div class="line">            <span class="keyword">return</span> dp[i][j]</div><div class="line">        <span class="keyword">if</span> <span class="keyword">not</span> matrix <span class="keyword">or</span> <span class="keyword">not</span> matrix[<span class="number">0</span>]: <span class="keyword">return</span> <span class="number">0</span></div><div class="line">        M, N = len(matrix), len(matrix[<span class="number">0</span>])</div><div class="line">        dp = [[<span class="number">0</span>] * N <span class="keyword">for</span> i <span class="keyword">in</span> range(M)]</div><div class="line">        <span class="keyword">return</span> max(dfs(x, y) <span class="keyword">for</span> x <span class="keyword">in</span> range(M) <span class="keyword">for</span> y <span class="keyword">in</span> range(N))</div></pre></td></tr></table></figure>
-<p><strong>test code</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">In [7]: s = Solution(); t = s.longestIncreasingPath([[9,9,4],[6,6,8],[2,1,1]]); <span class="built_in">print</span>(t)</div><div class="line">4</div></pre></td></tr></table></figure>
-<p><a href="https://leetcode.com/problems/longest-increasing-path-in-a-matrix/description/" target="_blank" rel="external">leet code</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/11/16/leetcode-longest-increasing-path-in-a-matrix/" data-id="cjpd8zgnl003gsvqb1n60gbna" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2018/11/19/leetcode-palindrome-partitioning/" data-id="cjphjus7z0049txqbvfe4g9az" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python3/">python3</a></li></ul>
@@ -353,6 +353,10 @@
       <ul>
         
           <li>
+            <a href="/2018/12/10/leetcode-burst-balloons/">Burst Balloons</a>
+          </li>
+        
+          <li>
             <a href="/2018/12/07/leetcode-diameter-of-binary-tree/">Diameter of Binary Tree</a>
           </li>
         
@@ -366,10 +370,6 @@
         
           <li>
             <a href="/2018/12/04/leetcode-find-all-numbers-disappeared-in-an-array/">Find All Numbers Disappeared in an Array</a>
-          </li>
-        
-          <li>
-            <a href="/2018/12/03/leetcode-palindromic-substrings/">Palindromic Substrings</a>
           </li>
         
       </ul>
