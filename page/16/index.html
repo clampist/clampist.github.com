@@ -64,6 +64,51 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-django-pagination-demo" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/10/25/django-pagination-demo/" class="article-date">
+  <time datetime="2017-10-25T00:49:00.000Z" itemprop="datePublished">2017-10-25</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/django/">django</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/25/django-pagination-demo/">django pagination demo</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>1. a demo for using pagination</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> django.core.paginator <span class="keyword">import</span> Paginator, EmptyPage, PageNotAnInteger</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">listing</span><span class="params">(request)</span>:</span></div><div class="line">    contact_list = Contacts.objects.all()</div><div class="line">    paginator = Paginator(contact_list, <span class="number">25</span>) <span class="comment"># Show 25 contacts per page</span></div><div class="line"></div><div class="line">    page = request.GET.get(<span class="string">'page'</span>)</div><div class="line">    <span class="keyword">try</span>:</div><div class="line">        contacts = paginator.page(page)</div><div class="line">    <span class="keyword">except</span> PageNotAnInteger:</div><div class="line">        <span class="comment"># If page is not an integer, deliver first page.</span></div><div class="line">        contacts = paginator.page(<span class="number">1</span>)</div><div class="line">    <span class="keyword">except</span> EmptyPage:</div><div class="line">        <span class="comment"># If page is out of range (e.g. 9999), deliver last page of results.</span></div><div class="line">        contacts = paginator.page(paginator.num_pages)</div><div class="line"></div><div class="line">    <span class="keyword">return</span> render_to_response(<span class="string">'list.html'</span>, &#123;<span class="string">"contacts"</span>: contacts&#125;)</div></pre></td></tr></table></figure>
+<p><a href="http://python.usyiyi.cn/translate/django_182/topics/pagination.html" target="_blank" rel="external">django_182</a></p>
+<p><strong>2. get objects length</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cnt = contact_list.count()</div><div class="line">cnt = Contacts.objects.all().count()</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2017/10/25/django-pagination-demo/" data-id="cjpiyihqj000cwwqb9h1aaddb" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-django-multi-database" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/10/25/django-multi-database/" class="article-date">
@@ -99,7 +144,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/10/25/django-multi-database/" data-id="cjphjus6e000gtxqb5opj5m15" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/10/25/django-multi-database/" data-id="cjpiyihql000dwwqbw150616e" class="article-share-link">Share</a>
       
       
     </footer>
@@ -144,7 +189,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/10/25/django-models-objects-filter-by-dict-kwargs/" data-id="cjphjus670006txqbqsgeo2ko" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/10/25/django-models-objects-filter-by-dict-kwargs/" data-id="cjpiyihqh0009wwqbpg8rfede" class="article-share-link">Share</a>
       
       
     </footer>
@@ -189,7 +234,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/10/25/django-models-not-equal-exclude-filter/" data-id="cjphjus690008txqbdumsaqs3" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/10/25/django-models-not-equal-exclude-filter/" data-id="cjpiyihqf0006wwqb78m1k612" class="article-share-link">Share</a>
       
       
     </footer>
@@ -231,49 +276,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/10/25/du-find-max-dir/" data-id="cjphjus6h000mtxqb6scyrxrm" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-python-check-class-has-attribute" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/10/25/python-check-class-has-attribute/" class="article-date">
-  <time datetime="2017-10-25T00:44:00.000Z" itemprop="datePublished">2017-10-25</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/python/">python</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/25/python-check-class-has-attribute/">check class has attribute</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Python-check-Class-Object-has-attribute"><a href="#Python-check-Class-Object-has-attribute" class="headerlink" title="Python check Class/Object has attribute"></a>Python check Class/Object has attribute</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> hasattr(a, <span class="string">'property'</span>):</div><div class="line">    a.property</div></pre></td></tr></table></figure>
-<p><a href="https://stackoverflow.com/questions/610883/how-to-know-if-an-object-has-an-attribute-in-python" target="_blank" rel="external">https://stackoverflow.com/questions/610883/how-to-know-if-an-object-has-an-attribute-in-python</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/10/25/python-check-class-has-attribute/" data-id="cjphjus9e0088txqb6uovnayb" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/10/25/du-find-max-dir/" data-id="cjpiyihqq000hwwqbuhed0b5d" class="article-share-link">Share</a>
       
       
     </footer>
@@ -339,6 +342,10 @@
       <ul>
         
           <li>
+            <a href="/2018/12/11/leetcode-combination-sum/">Combination Sum</a>
+          </li>
+        
+          <li>
             <a href="/2018/12/10/leetcode-burst-balloons/">Burst Balloons</a>
           </li>
         
@@ -352,10 +359,6 @@
         
           <li>
             <a href="/2018/12/05/leetcode-convert-bst-to-greater-tree/">Convert BST to Greater Tree</a>
-          </li>
-        
-          <li>
-            <a href="/2018/12/04/leetcode-find-all-numbers-disappeared-in-an-array/">Find All Numbers Disappeared in an Array</a>
           </li>
         
       </ul>
