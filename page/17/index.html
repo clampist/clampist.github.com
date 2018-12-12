@@ -64,6 +64,51 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-django-models-not-equal-exclude-filter" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/10/25/django-models-not-equal-exclude-filter/" class="article-date">
+  <time datetime="2017-10-25T00:47:00.000Z" itemprop="datePublished">2017-10-25</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/django/">django</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/25/django-models-not-equal-exclude-filter/">django models not equal exclude filter</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Django-not-equal-exclude"><a href="#Django-not-equal-exclude" class="headerlink" title="Django != not equal exclude"></a>Django != not equal exclude</h2><p>not equal</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">user1_progress = models.EvaluationMaterial.objects.filter(</div><div class="line">    evaluation_task_id=evaluation_task_id).exclude(</div><div class="line">    user1=<span class="string">'-'</span>).values(<span class="string">'user1'</span>).annotate(alloced=Count(<span class="string">'user1'</span>))</div></pre></td></tr></table></figure>
+<h2 id="Django-NOT-IN-gt-exclude-a-in-b-list"><a href="#Django-NOT-IN-gt-exclude-a-in-b-list" class="headerlink" title="Django: NOT IN -&gt; exclude(a__in=b_list)"></a>Django: NOT IN -&gt; exclude(a__in=b_list)</h2><p>NOT IN</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">table1.objects.exclude(id__in = </div><div class="line">table2.objects.filter(your_condition).values_list(<span class="string">'id'</span>, flat=<span class="keyword">True</span>))</div></pre></td></tr></table></figure>
+<p>(Django in / not in query)[<a href="https://stackoverflow.com/questions/4523282/django-in-not-in-query" target="_blank" rel="external">https://stackoverflow.com/questions/4523282/django-in-not-in-query</a>]</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2017/10/25/django-models-not-equal-exclude-filter/" data-id="cjplu4kkz0004cbqbmf1v3kje" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-du-find-max-dir" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/10/25/du-find-max-dir/" class="article-date">
@@ -96,7 +141,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/10/25/du-find-max-dir/" data-id="cjpkdksqj000ku0qbehhf0xmq" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/10/25/du-find-max-dir/" data-id="cjplu4kla000lcbqbmo6ljc6p" class="article-share-link">Share</a>
       
       
     </footer>
@@ -138,7 +183,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/10/25/python-check-class-has-attribute/" data-id="cjpkdkst6006yu0qbjfqutqh9" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/10/25/python-check-class-has-attribute/" data-id="cjplu4knx006ycbqblegrtgyw" class="article-share-link">Share</a>
       
       
     </footer>
@@ -180,7 +225,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/10/25/python-Chinese-punctuation-to-English-punctuation/" data-id="cjpkdkst3006ru0qbceql1ffp" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/10/25/python-Chinese-punctuation-to-English-punctuation/" data-id="cjplu4kns006ncbqbxz33pfss" class="article-share-link">Share</a>
       
       
     </footer>
@@ -230,52 +275,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/10/25/shell-awk-filter-sort/" data-id="cjpkdkstn007wu0qbor7usb30" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-shell-sed-certain-lines" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/10/24/shell-sed-certain-lines/" class="article-date">
-  <time datetime="2017-10-24T10:37:00.000Z" itemprop="datePublished">2017-10-24</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/linux/">linux</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/24/shell-sed-certain-lines/">use sed print certain lines</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="用sed命令"><a href="#用sed命令" class="headerlink" title="用sed命令"></a>用sed命令</h2><p>sed -n ‘5,10p’ filename 这样你就可以只查看文件的第5行到第10行。</p>
-<p><a href="http://www.cnblogs.com/xianghang123/archive/2011/08/03/2125977.html" target="_blank" rel="external">linux 如何显示一个文件的某几行(中间几行)</a> </p>
-<h2 id="sed第一行、第二行至最后"><a href="#sed第一行、第二行至最后" class="headerlink" title="sed第一行、第二行至最后"></a>sed第一行、第二行至最后</h2><h2 id="最后添加一列"><a href="#最后添加一列" class="headerlink" title="最后添加一列"></a>最后添加一列</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">cmd_str = <span class="string">'sed -i "1s/$/\t%s-mirror/" %s'</span> % (str(file_col_num + <span class="number">1</span>),</div><div class="line">cmd_str = <span class="string">'sed -i "1s/$/\tmirror/" %s'</span> % local_upload_sample_file_path_name</div><div class="line">cmd_str = <span class="string">'sed -i \'2,$s/$/\t0/\' %s'</span> % local_upload_sample_file_path_name</div><div class="line">cmd_str = <span class="string">'sed -i \'1d %s\''</span> % local_upload_sample_file_path_name2</div><div class="line">cmd_str = <span class="string">'sed -i \'s/$/\t1/\' %s'</span> % local_upload_sample_file_path_name2</div></pre></td></tr></table></figure>
-<p><a href="https://unix.stackexchange.com/questions/117568/adding-a-column-of-values-in-a-tab-delimited-file" target="_blank" rel="external">Adding a Column of values in a tab delimited file</a></p>
-<p><a href="http://www.cnblogs.com/emanlee/p/3307642.html" target="_blank" rel="external">linux中sed的用法</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/10/24/shell-sed-certain-lines/" data-id="cjpkdksto0082u0qbqqlfb7zr" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/10/25/shell-awk-filter-sort/" data-id="cjplu4ko7007zcbqbvq8i0rp6" class="article-share-link">Share</a>
       
       
     </footer>
@@ -288,7 +288,7 @@
 
 
   <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/page/16/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="page-number" href="/page/16/">16</a><span class="page-number current">17</span><a class="page-number" href="/page/18/">18</a><a class="page-number" href="/page/19/">19</a><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" href="/page/18/">下一页&raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/16/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="page-number" href="/page/16/">16</a><span class="page-number current">17</span><a class="page-number" href="/page/18/">18</a><a class="page-number" href="/page/19/">19</a><span class="space">&hellip;</span><a class="page-number" href="/page/21/">21</a><a class="extend next" rel="next" href="/page/18/">下一页&raquo;</a>
   </nav>
 
 </section>
@@ -341,6 +341,10 @@
       <ul>
         
           <li>
+            <a href="/2018/12/13/leetcode-minimum-path-sum/">Minimum Path Sum</a>
+          </li>
+        
+          <li>
             <a href="/2018/12/12/leetcode-target-sum/">Target Sum</a>
           </li>
         
@@ -354,10 +358,6 @@
         
           <li>
             <a href="/2018/12/07/leetcode-diameter-of-binary-tree/">Diameter of Binary Tree</a>
-          </li>
-        
-          <li>
-            <a href="/2018/12/06/leetcode-house-robber-iii/">House Robber III</a>
           </li>
         
       </ul>

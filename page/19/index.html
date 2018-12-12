@@ -64,6 +64,48 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-python-two-or-three-continuous-items-in-list" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/09/22/python-two-or-three-continuous-items-in-list/" class="article-date">
+  <time datetime="2017-09-22T06:37:00.000Z" itemprop="datePublished">2017-09-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/python/">python</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/09/22/python-two-or-three-continuous-items-in-list/">python two or three continuous items in list</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Python-list-中连续2-3个对象"><a href="#Python-list-中连续2-3个对象" class="headerlink" title="Python list 中连续2-3个对象"></a>Python list 中连续2-3个对象</h2><h3 id="1-前后连续两天"><a href="#1-前后连续两天" class="headerlink" title="1.前后连续两天"></a>1.前后连续两天</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> date <span class="keyword">in</span> [eval_obj.date_range[i:i+<span class="number">2</span>] <span class="keyword">for</span> i <span class="keyword">in</span> range(len(eval_obj.date_range) - <span class="number">1</span>)]:</div><div class="line">    <span class="keyword">print</span> date[<span class="number">0</span>], date[<span class="number">1</span>]</div></pre></td></tr></table></figure>
+<h3 id="2-时间间隔1-3天"><a href="#2-时间间隔1-3天" class="headerlink" title="2.时间间隔1-3天"></a>2.时间间隔1-3天</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> t <span class="keyword">in</span> [time_list[i:i + <span class="number">3</span>] <span class="keyword">for</span> i <span class="keyword">in</span> range(len(time_list) - <span class="number">1</span>)]:</div><div class="line">    <span class="keyword">if</span> len(t) == <span class="number">3</span>:</div><div class="line">        print(t[<span class="number">0</span>], t[<span class="number">2</span>])</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2017/09/22/python-two-or-three-continuous-items-in-list/" data-id="cjplu4ko1007fcbqbde55pms9" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-shell-last-param" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/09/22/shell-last-param/" class="article-date">
@@ -97,7 +139,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/09/22/shell-last-param/" data-id="cjpkdkstn007zu0qbr65zaa3o" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/09/22/shell-last-param/" data-id="cjplu4ko80082cbqbguwd232w" class="article-share-link">Share</a>
       
       
     </footer>
@@ -138,7 +180,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/09/22/shell-uniq-count/" data-id="cjpkdkstq0088u0qbb2ahjy9f" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/09/22/shell-uniq-count/" data-id="cjplu4koc008ccbqb5edqwlez" class="article-share-link">Share</a>
       
       
     </footer>
@@ -183,7 +225,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/09/07/hello-world/" data-id="cjpkdksqq000qu0qb9caw81ru" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/09/07/hello-world/" data-id="cjplu4klc000qcbqbv51p2io3" class="article-share-link">Share</a>
       
       
     </footer>
@@ -227,53 +269,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/04/26/git_svn_blame/" data-id="cjpkdksql000ou0qbuvzps404" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-shell-shuffle-file-lines" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/02/24/shell-shuffle-file-lines/" class="article-date">
-  <time datetime="2017-02-24T10:37:00.000Z" itemprop="datePublished">2017-02-24</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/linux/">linux</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/24/shell-shuffle-file-lines/">shell shuffle file lines</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="高版本CentOS自带sort-R-shuf"><a href="#高版本CentOS自带sort-R-shuf" class="headerlink" title="高版本CentOS自带sort -R/ shuf"></a>高版本CentOS自带sort -R/ shuf</h2><p>用awk实现文件：行乱序</p>
-<blockquote>
-<p>1.awk</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">awk ‘BEGIN&#123;srand()&#125;&#123;b[rand()NR]=<span class="variable">$0</span>&#125;END&#123;<span class="keyword">for</span>(x <span class="keyword">in</span> b)<span class="built_in">print</span> b[x]&#125;’ data</div></pre></td></tr></table></figure>
-<p><a href="http://ju.outofmemory.cn/entry/118502" target="_blank" rel="external">Linux下实现文件洗牌效果 行乱序</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/02/24/shell-shuffle-file-lines/" data-id="cjpkdkstp0085u0qb5i5mtiil" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/04/26/git_svn_blame/" data-id="cjplu4klb000ncbqbol23f2r2" class="article-share-link">Share</a>
       
       
     </footer>
@@ -286,7 +282,7 @@
 
 
   <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/page/18/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="page-number" href="/page/18/">18</a><span class="page-number current">19</span><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" href="/page/20/">下一页&raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/18/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="page-number" href="/page/18/">18</a><span class="page-number current">19</span><a class="page-number" href="/page/20/">20</a><a class="page-number" href="/page/21/">21</a><a class="extend next" rel="next" href="/page/20/">下一页&raquo;</a>
   </nav>
 
 </section>
@@ -339,6 +335,10 @@
       <ul>
         
           <li>
+            <a href="/2018/12/13/leetcode-minimum-path-sum/">Minimum Path Sum</a>
+          </li>
+        
+          <li>
             <a href="/2018/12/12/leetcode-target-sum/">Target Sum</a>
           </li>
         
@@ -352,10 +352,6 @@
         
           <li>
             <a href="/2018/12/07/leetcode-diameter-of-binary-tree/">Diameter of Binary Tree</a>
-          </li>
-        
-          <li>
-            <a href="/2018/12/06/leetcode-house-robber-iii/">House Robber III</a>
           </li>
         
       </ul>
