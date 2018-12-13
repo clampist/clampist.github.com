@@ -64,6 +64,54 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-leetcode-unique-binary-search-trees" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/12/14/leetcode-unique-binary-search-trees/" class="article-date">
+  <time datetime="2018-12-13T23:29:00.000Z" itemprop="datePublished">2018-12-14</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/14/leetcode-unique-binary-search-trees/">Unique Binary Search Trees</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Unique-Binary-Search-Trees"><a href="#Unique-Binary-Search-Trees" class="headerlink" title="Unique Binary Search Trees"></a>Unique Binary Search Trees</h2><p><strong>Catalan number version</strong> - 32ms</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">numTrees</span><span class="params">(self, n)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        :type n: int</span></div><div class="line"><span class="string">        :rtype: int</span></div><div class="line"><span class="string">        """</span></div><div class="line">        ans = <span class="number">1</span></div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, n + <span class="number">1</span>):</div><div class="line">            ans = ans * (i + n) // i</div><div class="line">        <span class="keyword">return</span> ans // (n + <span class="number">1</span>)</div></pre></td></tr></table></figure>
+<p><strong>test code</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">In [95]: s = Solution(); t = s.numTrees(3); <span class="built_in">print</span>(t)</div><div class="line">5</div></pre></td></tr></table></figure>
+<p><a href="https://leetcode.com/problems/unique-binary-search-trees/description/" target="_blank" rel="external">leet code</a></p>
+<p><a href="https://zh.wikipedia.org/wiki/卡塔兰数" target="_blank" rel="external">卡塔兰数</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2018/12/14/leetcode-unique-binary-search-trees/" data-id="cjpn8rfed005s42qbo364jc3p" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python3/">python3</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-leetcode-minimum-path-sum" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/12/13/leetcode-minimum-path-sum/" class="article-date">
@@ -99,7 +147,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/12/13/leetcode-minimum-path-sum/" data-id="cjplu4kmr0047cbqb0qrbj7qy" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2018/12/13/leetcode-minimum-path-sum/" data-id="cjpn8rfd6004642qb3ix8xenr" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python3/">python3</a></li></ul>
@@ -146,7 +194,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/12/12/leetcode-target-sum/" data-id="cjplu4kng005jcbqbheya1ear" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2018/12/12/leetcode-target-sum/" data-id="cjpn8rfdy005m42qb1u5gi94v" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python3/">python3</a></li></ul>
@@ -191,7 +239,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/12/11/leetcode-combination-sum/" data-id="cjplu4klj0014cbqb7s7di5xb" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2018/12/11/leetcode-combination-sum/" data-id="cjpn8rfbq001842qb36x3ywbx" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python3/">python3</a></li></ul>
@@ -236,55 +284,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/12/10/leetcode-burst-balloons/" data-id="cjplu4kli0013cbqb75spvlzs" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2018/12/10/leetcode-burst-balloons/" data-id="cjpn8rfbl000z42qbi3pf76ci" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python3/">python3</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-leetcode-diameter-of-binary-tree" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/12/07/leetcode-diameter-of-binary-tree/" class="article-date">
-  <time datetime="2018-12-06T23:41:00.000Z" itemprop="datePublished">2018-12-07</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/07/leetcode-diameter-of-binary-tree/">Diameter of Binary Tree</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Diameter-of-Binary-Tree"><a href="#Diameter-of-Binary-Tree" class="headerlink" title="Diameter of Binary Tree"></a>Diameter of Binary Tree</h2><p><strong>DFS 版本</strong> - 64ms</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Definition for a binary tree node.</span></div><div class="line"><span class="comment"># class TreeNode:</span></div><div class="line"><span class="comment">#     def __init__(self, x):</span></div><div class="line"><span class="comment">#         self.val = x</span></div><div class="line"><span class="comment">#         self.left = None</span></div><div class="line"><span class="comment">#         self.right = None</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">diameterOfBinaryTree</span><span class="params">(self, root)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        :type root: TreeNode</span></div><div class="line"><span class="string">        :rtype: int</span></div><div class="line"><span class="string">        """</span></div><div class="line">        self.length = <span class="number">0</span></div><div class="line">        </div><div class="line">        <span class="function"><span class="keyword">def</span> <span class="title">depth</span><span class="params">(node)</span>:</span></div><div class="line">            <span class="keyword">if</span> <span class="keyword">not</span> node: <span class="keyword">return</span> <span class="number">0</span></div><div class="line">            left = depth(node.left)</div><div class="line">            right = depth(node.right)</div><div class="line">            self.length = max(self.length, left + right)</div><div class="line">            <span class="keyword">return</span> <span class="number">1</span> + max(left, right)</div><div class="line">        </div><div class="line">        depth(root)</div><div class="line">        <span class="keyword">return</span> self.length</div></pre></td></tr></table></figure>
-<p><a href="https://leetcode.com/problems/diameter-of-binary-tree/description/" target="_blank" rel="external">leet code</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/12/07/leetcode-diameter-of-binary-tree/" data-id="cjplu4klw001xcbqb12u16f13" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/binary-tree/">binary tree</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python3/">python3</a></li></ul>
 
     </footer>
   </div>
@@ -349,6 +352,10 @@
       <ul>
         
           <li>
+            <a href="/2018/12/14/leetcode-unique-binary-search-trees/">Unique Binary Search Trees</a>
+          </li>
+        
+          <li>
             <a href="/2018/12/13/leetcode-minimum-path-sum/">Minimum Path Sum</a>
           </li>
         
@@ -362,10 +369,6 @@
         
           <li>
             <a href="/2018/12/10/leetcode-burst-balloons/">Burst Balloons</a>
-          </li>
-        
-          <li>
-            <a href="/2018/12/07/leetcode-diameter-of-binary-tree/">Diameter of Binary Tree</a>
           </li>
         
       </ul>
