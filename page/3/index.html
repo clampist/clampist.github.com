@@ -64,6 +64,55 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-leetcode-palindromic-substrings" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/12/03/leetcode-palindromic-substrings/" class="article-date">
+  <time datetime="2018-12-02T23:49:00.000Z" itemprop="datePublished">2018-12-03</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/03/leetcode-palindromic-substrings/">Palindromic Substrings</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Palindromic-Substrings"><a href="#Palindromic-Substrings" class="headerlink" title="Palindromic Substrings"></a>Palindromic Substrings</h2><p><strong>One line Version</strong> - 924ms</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">countSubstrings</span><span class="params">(self, s)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        :type s: str</span></div><div class="line"><span class="string">        :rtype: int</span></div><div class="line"><span class="string">        """</span></div><div class="line">        <span class="keyword">return</span> sum(s[i:j] == s[i:j][::<span class="number">-1</span>] <span class="keyword">for</span> j <span class="keyword">in</span> range(len(s) + <span class="number">1</span>) <span class="keyword">for</span> i <span class="keyword">in</span> range(j))</div></pre></td></tr></table></figure>
+<p><strong>O(n) Version</strong> - 128ms</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">countSubstrings</span><span class="params">(self, S)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        :type s: str</span></div><div class="line"><span class="string">        :rtype: int</span></div><div class="line"><span class="string">        """</span></div><div class="line">        N = len(S)</div><div class="line">        ans = <span class="number">0</span></div><div class="line">        <span class="keyword">for</span> center <span class="keyword">in</span> range(<span class="number">2</span>*N - <span class="number">1</span>):</div><div class="line">            left = center // <span class="number">2</span></div><div class="line">            right = left + center % <span class="number">2</span></div><div class="line">            <span class="keyword">while</span> left &gt;= <span class="number">0</span> <span class="keyword">and</span> right &lt; N <span class="keyword">and</span> S[left] == S[right]:</div><div class="line">                ans += <span class="number">1</span></div><div class="line">                left -= <span class="number">1</span></div><div class="line">                right += <span class="number">1</span></div><div class="line">        <span class="keyword">return</span> ans</div></pre></td></tr></table></figure>
+<p><strong>test code</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">In [25]: s = Solution(); t = s.countSubstrings(<span class="string">'abc'</span>); <span class="built_in">print</span>(t)</div><div class="line">3</div></pre></td></tr></table></figure>
+<p><a href="https://leetcode.com/problems/palindromic-substrings/description/" target="_blank" rel="external">leet code</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2018/12/03/leetcode-palindromic-substrings/" data-id="cjprj8rkm005nj6qb6lu5x0wx" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python3/">python3</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-queue-reconstruction-by-height" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/11/29/queue-reconstruction-by-height/" class="article-date">
@@ -99,7 +148,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/11/29/queue-reconstruction-by-height/" data-id="cjpn8rff5007q42qbctiwkd6f" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2018/11/29/queue-reconstruction-by-height/" data-id="cjprj8rlx0090j6qbv4jjz56e" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python3/">python3</a></li></ul>
@@ -146,7 +195,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/11/28/leetcode-counting-bits/" data-id="cjpn8rfc0001o42qb8mgnk3ko" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2018/11/28/leetcode-counting-bits/" data-id="cjprj8rii001lj6qb8fxagkmr" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python3/">python3</a></li></ul>
@@ -191,7 +240,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/11/27/leetcode-merge-two-binary-trees/" data-id="cjpn8rfd9004g42qbcm9rhw5q" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2018/11/27/leetcode-merge-two-binary-trees/" data-id="cjprj8rki005bj6qb2fhvo0vr" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python3/">python3</a></li></ul>
@@ -239,54 +288,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/11/26/leetcode-hamming-distance/" data-id="cjpn8rfcd002h42qbptaxbn4s" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python3/">python3</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-leetcode-longest-substring-with-at-least-k-repeating-characters" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/11/23/leetcode-longest-substring-with-at-least-k-repeating-characters/" class="article-date">
-  <time datetime="2018-11-22T23:32:00.000Z" itemprop="datePublished">2018-11-23</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/23/leetcode-longest-substring-with-at-least-k-repeating-characters/">Longest Substring with At Least K Repeating Characters</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Longest-Substring-with-At-Least-K-Repeating-Characters"><a href="#Longest-Substring-with-At-Least-K-Repeating-Characters" class="headerlink" title="Longest Substring with At Least K Repeating Characters"></a>Longest Substring with At Least K Repeating Characters</h2><p><strong>Set Version</strong> - 36ms</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">longestSubstring</span><span class="params">(self, s, k)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        :type s: str</span></div><div class="line"><span class="string">        :type k: int</span></div><div class="line"><span class="string">        :rtype: int</span></div><div class="line"><span class="string">        """</span></div><div class="line">        <span class="keyword">for</span> c <span class="keyword">in</span> set(s):</div><div class="line">            <span class="keyword">if</span> s.count(c) &lt; k:</div><div class="line">                <span class="keyword">return</span> max(self.longestSubstring(t, k) <span class="keyword">for</span> t <span class="keyword">in</span> s.split(c))</div><div class="line">        <span class="keyword">return</span> len(s)</div></pre></td></tr></table></figure>
-<p><strong>test code</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">In [87]: s = <span class="string">'aaabb'</span></div><div class="line"></div><div class="line">In [88]: s.split(<span class="string">'a'</span>)</div><div class="line">Out[88]: [<span class="string">''</span>, <span class="string">''</span>, <span class="string">''</span>, <span class="string">'bb'</span>]</div><div class="line"></div><div class="line">In [89]: k = 3</div><div class="line"></div><div class="line">In [90]: ss = Solution(); t = ss.longestSubstring(s, k); <span class="built_in">print</span>(t)</div><div class="line">3</div></pre></td></tr></table></figure>
-<p><a href="https://leetcode.com/problems/longest-substring-with-at-least-k-repeating-characters/description/" target="_blank" rel="external">leet code</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/11/23/leetcode-longest-substring-with-at-least-k-repeating-characters/" data-id="cjpn8rfd2003w42qbjeg547km" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2018/11/26/leetcode-hamming-distance/" data-id="cjprj8rj8002vj6qb0ezhjgzl" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python3/">python3</a></li></ul>
@@ -354,6 +356,10 @@
       <ul>
         
           <li>
+            <a href="/2018/12/17/leetcode-task-scheduler/">Task Scheduler</a>
+          </li>
+        
+          <li>
             <a href="/2018/12/14/leetcode-unique-binary-search-trees/">Unique Binary Search Trees</a>
           </li>
         
@@ -367,10 +373,6 @@
         
           <li>
             <a href="/2018/12/11/leetcode-combination-sum/">Combination Sum</a>
-          </li>
-        
-          <li>
-            <a href="/2018/12/10/leetcode-burst-balloons/">Burst Balloons</a>
           </li>
         
       </ul>

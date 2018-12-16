@@ -64,6 +64,58 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-leetcode-4-sum-ii" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/09/10/leetcode-4-sum-ii/" class="article-date">
+  <time datetime="2018-09-10T00:58:00.000Z" itemprop="datePublished">2018-09-10</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/10/leetcode-4-sum-ii/">4Sum II</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="4Sum-II"><a href="#4Sum-II" class="headerlink" title="4Sum II"></a>4Sum II</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">fourSumCount</span><span class="params">(self, A, B, C, D)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        :type A: List[int]</span></div><div class="line"><span class="string">        :type B: List[int]</span></div><div class="line"><span class="string">        :type C: List[int]</span></div><div class="line"><span class="string">        :type D: List[int]</span></div><div class="line"><span class="string">        :rtype: int</span></div><div class="line"><span class="string">        """</span></div><div class="line">        hashtable = &#123;&#125;</div><div class="line">        <span class="keyword">for</span> a <span class="keyword">in</span> A:</div><div class="line">            <span class="keyword">for</span> b <span class="keyword">in</span> B:</div><div class="line">                <span class="keyword">if</span> a + b <span class="keyword">in</span> hashtable:</div><div class="line">                    hashtable[a + b] += <span class="number">1</span></div><div class="line">                <span class="keyword">else</span>:</div><div class="line">                    hashtable[a + b] = <span class="number">1</span></div><div class="line">        counter = <span class="number">0</span></div><div class="line">        <span class="keyword">for</span> c <span class="keyword">in</span> C:</div><div class="line">            <span class="keyword">for</span> d <span class="keyword">in</span> D:</div><div class="line">                <span class="keyword">if</span> -(c + d) <span class="keyword">in</span> hashtable:</div><div class="line">                    counter += hashtable[-(c + d)]</div><div class="line">        <span class="keyword">return</span> counter</div></pre></td></tr></table></figure>
+<p><strong>collections.Counter version</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">fourSumCount</span><span class="params">(self, A, B, C, D)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        :type A: List[int]</span></div><div class="line"><span class="string">        :type B: List[int]</span></div><div class="line"><span class="string">        :type C: List[int]</span></div><div class="line"><span class="string">        :type D: List[int]</span></div><div class="line"><span class="string">        :rtype: int</span></div><div class="line"><span class="string">        """</span></div><div class="line">        <span class="keyword">import</span> collections</div><div class="line">        AB = collections.Counter(a+b <span class="keyword">for</span> a <span class="keyword">in</span> A <span class="keyword">for</span> b <span class="keyword">in</span> B)</div><div class="line">        <span class="keyword">return</span> sum(AB[-c-d] <span class="keyword">for</span> c <span class="keyword">in</span> C <span class="keyword">for</span> d <span class="keyword">in</span> D)</div></pre></td></tr></table></figure>
+<p><em>output</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">In [490]: A=[1,2]</div><div class="line">     ...: B=[-2,-1]</div><div class="line">     ...: C=[-1,2]</div><div class="line">     ...: D=[0,2]</div><div class="line">     ...:</div><div class="line"></div><div class="line">In [491]: s = Solution(); print s.fourSumCount(A, B, C, D)</div><div class="line">2</div></pre></td></tr></table></figure>
+<p><a href="https://docs.python.org/2/library/collections.html" target="_blank" rel="external">8.3. collections — High-performance container datatypes</a></p>
+<p><a href="http://www.pythoner.com/205.html" target="_blank" rel="external">Python标准库——collections模块的Counter类</a></p>
+<p><a href="http://blog.51cto.com/11026142/1851791" target="_blank" rel="external">Python：使用Counter进行计数统计及collections模块</a></p>
+<p><a href="http://www.zlovezl.cn/articles/collections-in-python/" target="_blank" rel="external">不可不知的Python模块: collections</a></p>
+<p><a href="https://leetcode.com/problems/4sum-ii/description/" target="_blank" rel="external">leet code</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2018/09/10/leetcode-4-sum-ii/" data-id="cjprj8ri1000qj6qbn485of5u" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-leetcode-best-time-to-buy-and-sell-stock-ii" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/09/09/leetcode-best-time-to-buy-and-sell-stock-ii/" class="article-date">
@@ -98,7 +150,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/09/09/leetcode-best-time-to-buy-and-sell-stock-ii/" data-id="cjpn8rfbn001342qbuikt1s4p" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2018/09/09/leetcode-best-time-to-buy-and-sell-stock-ii/" data-id="cjprj8ri60010j6qbczk1098l" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
@@ -145,7 +197,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/09/08/leetcode-roman-to-integer/" data-id="cjpn8rfdo005742qbdelk2tnz" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2018/09/08/leetcode-roman-to-integer/" data-id="cjprj8rkt0065j6qb4gokoobw" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
@@ -195,7 +247,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/09/07/leetcode-permutations/" data-id="cjpn8rfdd004p42qbexwkuog2" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2018/09/07/leetcode-permutations/" data-id="cjprj8rkt0062j6qb026ihf2k" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
@@ -240,64 +292,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/09/06/leetcode-generate-parentheses/" data-id="cjpn8rfcn003042qblmusofhv" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-leetcode-top-k-frequent-elements" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/09/04/leetcode-top-k-frequent-elements/" class="article-date">
-  <time datetime="2018-09-04T01:03:00.000Z" itemprop="datePublished">2018-09-04</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/04/leetcode-top-k-frequent-elements/">Top K Frequent Elements</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Top-K-Frequent-Elements"><a href="#Top-K-Frequent-Elements" class="headerlink" title="Top K Frequent Elements"></a>Top K Frequent Elements</h2><ul>
-<li><p>You may assume k is always valid, 1 ≤ k ≤ number of unique elements.</p>
-</li>
-<li><p>Your algorithm’s time complexity must be better than O(n log n), where n is the array’s size.</p>
-</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">topKFrequent</span><span class="params">(self, nums, k)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        :type nums: List[int]</span></div><div class="line"><span class="string">        :type k: int</span></div><div class="line"><span class="string">        :rtype: List[int]</span></div><div class="line"><span class="string">        """</span></div><div class="line">        ret = &#123;&#125;</div><div class="line">        res = []</div><div class="line">        <span class="keyword">for</span> x <span class="keyword">in</span> nums:  <span class="comment"># O(n)</span></div><div class="line">            <span class="keyword">if</span> x <span class="keyword">not</span> <span class="keyword">in</span> ret:</div><div class="line">                ret[x] = <span class="number">1</span></div><div class="line">            <span class="keyword">else</span>:</div><div class="line">                ret[x] += <span class="number">1</span></div><div class="line">        <span class="keyword">for</span> key, value <span class="keyword">in</span> sorted(ret.iteritems(), key=<span class="keyword">lambda</span> (k,v): (v,k), reverse=<span class="keyword">True</span>)[:k]:  <span class="comment"># O(n log n)</span></div><div class="line">            res.append(key)</div><div class="line">        <span class="keyword">return</span> res</div></pre></td></tr></table></figure>
-<p>O(n) + O(n log n) = O(n log n)</p>
-<p><strong>result</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">In [221]: nums = [1,1,1,2,2,3]</div><div class="line"></div><div class="line">In [222]: k = 2</div><div class="line"></div><div class="line">In [241]: s = Solution()</div><div class="line"></div><div class="line">In [242]: s.topKFrequent(nums, k)</div><div class="line">Out[242]: [1, 2]</div></pre></td></tr></table></figure>
-<p><a href="https://www.saltycrane.com/blog/2007/09/how-to-sort-python-dictionary-by-keys/" target="_blank" rel="external">How to sort a Python dict (dictionary) by keys or values</a></p>
-<p><a href="https://www.cnblogs.com/hellcat/p/8571974.html" target="_blank" rel="external">『Python CoolBook：heapq』数据结构和算法_heapq堆队列算法&amp;容器排序</a></p>
-<p><a href="https://www.coder4.com/archives/3844" target="_blank" rel="external">Python使用heapq实现小顶堆（TopK大）、大顶堆（BtmK小）</a></p>
-<p><a href="https://rookiefly.cn/detail/225" target="_blank" rel="external">使用heapq构建最小堆和最大堆</a></p>
-<p><a href="https://leetcode.com/problems/top-k-frequent-elements/description/" target="_blank" rel="external">leet code</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/09/04/leetcode-top-k-frequent-elements/" data-id="cjpn8rfei006142qbfbkcbp1r" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2018/09/06/leetcode-generate-parentheses/" data-id="cjprj8rj0002fj6qb2wsexjdd" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
@@ -365,6 +360,10 @@
       <ul>
         
           <li>
+            <a href="/2018/12/17/leetcode-task-scheduler/">Task Scheduler</a>
+          </li>
+        
+          <li>
             <a href="/2018/12/14/leetcode-unique-binary-search-trees/">Unique Binary Search Trees</a>
           </li>
         
@@ -378,10 +377,6 @@
         
           <li>
             <a href="/2018/12/11/leetcode-combination-sum/">Combination Sum</a>
-          </li>
-        
-          <li>
-            <a href="/2018/12/10/leetcode-burst-balloons/">Burst Balloons</a>
           </li>
         
       </ul>

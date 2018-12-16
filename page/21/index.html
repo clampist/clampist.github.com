@@ -64,6 +64,66 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-opencv-basis" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2012/10/13/opencv-basis/" class="article-date">
+  <time datetime="2012-10-13T10:30:00.000Z" itemprop="datePublished">2012-10-13</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/opencv/">opencv</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2012/10/13/opencv-basis/">OpenCV Basis</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-Load-an-image"><a href="#1-Load-an-image" class="headerlink" title="1.Load an image"></a>1.Load an image</h2><pre><code>In [1]: import cv
+
+In [2]: im1 = cv.LoadImageM(&apos;foo.jpg&apos;)
+
+In [3]: print type(im1)
+&lt;type &apos;cv2.cv.cvmat&apos;&gt;
+
+In [4]: im2 = cv.LoadImage(&apos;foo.jpg&apos;)
+
+In [5]: print type(im2)
+&lt;type &apos;cv2.cv.iplimage&apos;&gt;
+
+In [6]: cv.SaveImage(&apos;foo1.png&apos;, im1)
+
+In [7]: cv.SaveImage(&apos;foo2.png&apos;, im2)
+</code></pre><p>可以看到<code>LoadImageM</code>得到的是一个<code>cvmat</code>图像，而<code>LoadImage</code>得到的是一个<code>iplimage</code>图像，两者均可以输出为图像</p>
+        
+          <p class="article-more-link">
+            <a href="/2012/10/13/opencv-basis/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2012/10/13/opencv-basis/" data-id="cjprj8rll007rj6qbun7baod2" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-install-openexr-for-python" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2012/10/11/install-openexr-for-python/" class="article-date">
@@ -106,7 +166,7 @@ sudo python2 setup.py install
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2012/10/11/install-openexr-for-python/" data-id="cjpn8rfbg000o42qbxyme4d8s" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2012/10/11/install-openexr-for-python/" data-id="cjprj8rhx000lj6qb4qlf7f5o" class="article-share-link">Share</a>
       
       
     </footer>
@@ -164,7 +224,7 @@ git push origin source
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2012/10/09/wonderful-octopress/" data-id="cjpn8rffh008h42qb7eskovyt" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2012/10/09/wonderful-octopress/" data-id="cjprj8rm2009lj6qbgklj4x4z" class="article-share-link">Share</a>
       
       
     </footer>
@@ -230,6 +290,10 @@ git push origin source
       <ul>
         
           <li>
+            <a href="/2018/12/17/leetcode-task-scheduler/">Task Scheduler</a>
+          </li>
+        
+          <li>
             <a href="/2018/12/14/leetcode-unique-binary-search-trees/">Unique Binary Search Trees</a>
           </li>
         
@@ -243,10 +307,6 @@ git push origin source
         
           <li>
             <a href="/2018/12/11/leetcode-combination-sum/">Combination Sum</a>
-          </li>
-        
-          <li>
-            <a href="/2018/12/10/leetcode-burst-balloons/">Burst Balloons</a>
           </li>
         
       </ul>
