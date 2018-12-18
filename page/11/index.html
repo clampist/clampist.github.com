@@ -64,6 +64,55 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-leetcode-first-unique-character-in-a-string" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/09/12/leetcode-first-unique-character-in-a-string/" class="article-date">
+  <time datetime="2018-09-12T00:32:00.000Z" itemprop="datePublished">2018-09-12</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/12/leetcode-first-unique-character-in-a-string/">First Unique Character in a String</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="First-Unique-Character-in-a-String"><a href="#First-Unique-Character-in-a-String" class="headerlink" title="First Unique Character in a String"></a>First Unique Character in a String</h2><p><strong>one line version</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">firstUniqChar</span><span class="params">(self, s)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        :type s: str</span></div><div class="line"><span class="string">        :rtype: int</span></div><div class="line"><span class="string">        """</span></div><div class="line">        <span class="keyword">return</span> min([s.find(c) <span class="keyword">for</span> c <span class="keyword">in</span> string.ascii_lowercase <span class="keyword">if</span> s.count(c)==<span class="number">1</span>] <span class="keyword">or</span> [<span class="number">-1</span>])</div></pre></td></tr></table></figure>
+<p><strong>slow version</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> OrderedDict</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">firstUniqChar</span><span class="params">(self, s)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        :type s: str</span></div><div class="line"><span class="string">        :rtype: int</span></div><div class="line"><span class="string">        """</span></div><div class="line">        res = <span class="number">-1</span></div><div class="line">        hash_dict = OrderedDict()</div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(s)):</div><div class="line">            <span class="keyword">if</span> s[i] <span class="keyword">in</span> hash_dict:</div><div class="line">                hash_dict[s[i]] = (hash_dict[s[i]][<span class="number">0</span>] + <span class="number">1</span>, i)</div><div class="line">            <span class="keyword">else</span>:</div><div class="line">                hash_dict[s[i]] = (<span class="number">0</span>, i)</div><div class="line">        <span class="keyword">for</span> v <span class="keyword">in</span> hash_dict.values():</div><div class="line">            <span class="keyword">if</span> v[<span class="number">0</span>] == <span class="number">0</span>:</div><div class="line">                res = v[<span class="number">1</span>]</div><div class="line">        <span class="keyword">return</span> res</div></pre></td></tr></table></figure>
+<p><em>output</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">In [604]: import string</div><div class="line"></div><div class="line">In [605]: s = Solution(); print s.firstUniqChar(&apos;loveleetcode&apos;)</div><div class="line">2</div></pre></td></tr></table></figure>
+<p><a href="https://leetcode.com/problems/first-unique-character-in-a-string/description/" target="_blank" rel="external">leet code</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2018/09/12/leetcode-first-unique-character-in-a-string/" data-id="cjpt0uk3y002blgqbo1cy21tx" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-leetcode-4-sum-ii" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/09/10/leetcode-4-sum-ii/" class="article-date">
@@ -104,7 +153,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/09/10/leetcode-4-sum-ii/" data-id="cjprj8ri1000qj6qbn485of5u" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2018/09/10/leetcode-4-sum-ii/" data-id="cjpt0uk370010lgqbibo9nfjr" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
@@ -150,7 +199,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/09/09/leetcode-best-time-to-buy-and-sell-stock-ii/" data-id="cjprj8ri60010j6qbczk1098l" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2018/09/09/leetcode-best-time-to-buy-and-sell-stock-ii/" data-id="cjpt0uk390014lgqbgdwkp9gf" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
@@ -197,7 +246,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/09/08/leetcode-roman-to-integer/" data-id="cjprj8rkt0065j6qb4gokoobw" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2018/09/08/leetcode-roman-to-integer/" data-id="cjpt0uk5e0055lgqbclhaxs12" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
@@ -247,52 +296,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/09/07/leetcode-permutations/" data-id="cjprj8rkt0062j6qb026ihf2k" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-leetcode-generate-parentheses" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/09/06/leetcode-generate-parentheses/" class="article-date">
-  <time datetime="2018-09-06T00:17:00.000Z" itemprop="datePublished">2018-09-06</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/06/leetcode-generate-parentheses/">Generate Parentheses</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Generate-Parentheses"><a href="#Generate-Parentheses" class="headerlink" title="Generate Parentheses"></a>Generate Parentheses</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">generateParenthesis</span><span class="params">(self, n, open=<span class="number">0</span>)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        :type n: int</span></div><div class="line"><span class="string">        :rtype: List[str]</span></div><div class="line"><span class="string">        """</span></div><div class="line">        <span class="keyword">if</span> n == <span class="number">0</span>: <span class="keyword">return</span> [<span class="string">')'</span>*open]</div><div class="line">        <span class="keyword">if</span> open == <span class="number">0</span>:</div><div class="line">            <span class="keyword">return</span> [<span class="string">'('</span> + x <span class="keyword">for</span> x <span class="keyword">in</span> self.generateParenthesis(n - <span class="number">1</span>, <span class="number">1</span>)]</div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            <span class="keyword">return</span> [<span class="string">')'</span> + x <span class="keyword">for</span> x <span class="keyword">in</span> self.generateParenthesis(n, open - <span class="number">1</span>)] + [<span class="string">'('</span> + x <span class="keyword">for</span> x <span class="keyword">in</span> self.generateParenthesis(n - <span class="number">1</span>, open + <span class="number">1</span>)]</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">example for n = 2</div><div class="line"></div><div class="line">else left branch:</div><div class="line">( -&gt; () -&gt; ()( -&gt; ()()</div><div class="line"></div><div class="line">else right branch:</div><div class="line">( -&gt; (( -&gt; (())</div></pre></td></tr></table></figure>
-<p><a href="https://leetcode.com/problems/generate-parentheses/description/" target="_blank" rel="external">leet code</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/09/06/leetcode-generate-parentheses/" data-id="cjprj8rj0002fj6qb2wsexjdd" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2018/09/07/leetcode-permutations/" data-id="cjpt0uk54004wlgqbri67i5sf" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
@@ -360,6 +364,10 @@
       <ul>
         
           <li>
+            <a href="/2018/12/18/leetcode-best-time-to-buy-and-sell-stock-with-cooldown/">Best Time to Buy and Sell Stock with Cooldown</a>
+          </li>
+        
+          <li>
             <a href="/2018/12/17/leetcode-task-scheduler/">Task Scheduler</a>
           </li>
         
@@ -373,10 +381,6 @@
         
           <li>
             <a href="/2018/12/12/leetcode-target-sum/">Target Sum</a>
-          </li>
-        
-          <li>
-            <a href="/2018/12/11/leetcode-combination-sum/">Combination Sum</a>
           </li>
         
       </ul>

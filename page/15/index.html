@@ -64,6 +64,49 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-django-mongoengine-query-operators" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/11/27/django-mongoengine-query-operators/" class="article-date">
+  <time datetime="2017-11-27T03:37:00.000Z" itemprop="datePublished">2017-11-27</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/mongodb/">mongodb</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/11/27/django-mongoengine-query-operators/">django models mongoengine not in filter</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Django-NOT-IN-gt-exclude-a-in-b-list"><a href="#Django-NOT-IN-gt-exclude-a-in-b-list" class="headerlink" title="Django: NOT IN -&gt; exclude(a__in=b_list)"></a>Django: NOT IN -&gt; exclude(a__in=b_list)</h2><p>NOT IN: <code>nin</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">ne – <span class="keyword">not</span> equal to</div><div class="line">lt – less than</div><div class="line">lte – less than <span class="keyword">or</span> equal to</div><div class="line">gt – greater than</div><div class="line">gte – greater than <span class="keyword">or</span> equal to</div><div class="line"><span class="keyword">not</span> – negate a standard check, may be used before other operators (e.g. Q(age__not__mod=<span class="number">5</span>))</div><div class="line"><span class="keyword">in</span> – value <span class="keyword">is</span> <span class="keyword">in</span> list (a list of values should be provided)</div><div class="line">nin – value <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">in</span> list (a list of values should be provided)</div><div class="line">mod – value % x == y, where x <span class="keyword">and</span> y are two provided values</div><div class="line">all – every item <span class="keyword">in</span> list of values provided <span class="keyword">is</span> <span class="keyword">in</span> array</div><div class="line">size – the size of the array <span class="keyword">is</span></div><div class="line">exists – value <span class="keyword">for</span> field exists</div></pre></td></tr></table></figure>
+<p><a href="http://docs.mongoengine.org/guide/querying.html" target="_blank" rel="external">Offical Docs: Querying the database</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2017/11/27/django-mongoengine-query-operators/" data-id="cjpt0uk2u0008lgqb48cmvuu8" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-python-loads-json-object-instead-of-unicode" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/11/22/python-loads-json-object-instead-of-unicode/" class="article-date">
@@ -98,7 +141,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/11/22/python-loads-json-object-instead-of-unicode/" data-id="cjprj8rls008jj6qbqv0f14td" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/11/22/python-loads-json-object-instead-of-unicode/" data-id="cjpt0uk8k009flgqbghax24ze" class="article-share-link">Share</a>
       
       
     </footer>
@@ -143,7 +186,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/11/02/linux-grep-by-reg-content-in-file/" data-id="cjprj8rli007ej6qb9ksdd8bx" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/11/02/linux-grep-by-reg-content-in-file/" data-id="cjpt0uk89008llgqbey04hxpo" class="article-share-link">Share</a>
       
       
     </footer>
@@ -192,7 +235,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/11/02/linux-sync-folder-by-rsync/" data-id="cjprj8rlm007tj6qbwz7a03vz" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/11/02/linux-sync-folder-by-rsync/" data-id="cjpt0uk88008ilgqb9o38xrtb" class="article-share-link">Share</a>
       
       
     </footer>
@@ -239,50 +282,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/11/01/turing/" data-id="cjprj8rm3009oj6qb4hj79hhb" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-redis-delete-all-keys" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/10/25/redis-delete-all-keys/" class="article-date">
-  <time datetime="2017-10-25T05:59:00.000Z" itemprop="datePublished">2017-10-25</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/redis/">redis</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/25/redis-delete-all-keys/">redis-delete-all-keys</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>Flushall</strong></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">redis 127.0.0.1:6379&gt; FLUSHALL</div></pre></td></tr></table></figure>
-<p><a href="http://www.runoob.com/redis/server-flushall.html" target="_blank" rel="external">Redis Flushall 命令</a><br><a href="http://www.dnsdizhi.com/post-219.html" target="_blank" rel="external">Redis常用命令集，清空redis缓存数据库</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/10/25/redis-delete-all-keys/" data-id="cjprj8rlw008xj6qbx809i082" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/11/01/turing/" data-id="cjpt0uk9200adlgqbmfd978dh" class="article-share-link">Share</a>
       
       
     </footer>
@@ -348,6 +348,10 @@
       <ul>
         
           <li>
+            <a href="/2018/12/18/leetcode-best-time-to-buy-and-sell-stock-with-cooldown/">Best Time to Buy and Sell Stock with Cooldown</a>
+          </li>
+        
+          <li>
             <a href="/2018/12/17/leetcode-task-scheduler/">Task Scheduler</a>
           </li>
         
@@ -361,10 +365,6 @@
         
           <li>
             <a href="/2018/12/12/leetcode-target-sum/">Target Sum</a>
-          </li>
-        
-          <li>
-            <a href="/2018/12/11/leetcode-combination-sum/">Combination Sum</a>
           </li>
         
       </ul>
