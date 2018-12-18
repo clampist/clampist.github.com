@@ -64,6 +64,53 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-leetcode-sort-colors" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/10/26/leetcode-sort-colors/" class="article-date">
+  <time datetime="2018-10-25T23:32:00.000Z" itemprop="datePublished">2018-10-26</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/26/leetcode-sort-colors/">Sort Colors</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Sort-Colors"><a href="#Sort-Colors" class="headerlink" title="Sort Colors"></a>Sort Colors</h2><p><strong>Nice Version</strong> - 36ms</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">sortColors</span><span class="params">(self, nums)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        :type nums: List[int]</span></div><div class="line"><span class="string">        :rtype: void Do not return anything, modify nums in-place instead.</span></div><div class="line"><span class="string">        """</span></div><div class="line">        i, j = <span class="number">0</span>, <span class="number">0</span></div><div class="line">        <span class="keyword">for</span> k <span class="keyword">in</span> range(len(nums)):</div><div class="line">            v = nums[k]</div><div class="line">            <span class="comment">#print('i=%d, j=%d, v=%d--------' % (i, j, v))</span></div><div class="line">            nums[k] = <span class="number">2</span></div><div class="line">            <span class="comment">#print(nums)</span></div><div class="line">            <span class="keyword">if</span> v &lt; <span class="number">2</span>:</div><div class="line">                nums[j] = <span class="number">1</span></div><div class="line">                j += <span class="number">1</span></div><div class="line">            <span class="comment">#print(nums)</span></div><div class="line">            <span class="keyword">if</span> v == <span class="number">0</span>:</div><div class="line">                nums[i] = <span class="number">0</span></div><div class="line">                i += <span class="number">1</span></div><div class="line">            <span class="comment">#print(nums)</span></div><div class="line">            <span class="comment">#print('i=%d, j=%d-------------\n' % (i, j))</span></div></pre></td></tr></table></figure>
+<p><strong>test code</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line">In [27]: a = [2,0,2,1,1,0]</div><div class="line"></div><div class="line">In [28]: s = Solution(); s.sortColors(a)</div><div class="line">i=0, j=0, v=2--------</div><div class="line">[2, 0, 2, 1, 1, 0]</div><div class="line">[2, 0, 2, 1, 1, 0]</div><div class="line">[2, 0, 2, 1, 1, 0]</div><div class="line">i=0, j=0-------------</div><div class="line"></div><div class="line">i=0, j=0, v=0--------</div><div class="line">[2, 2, 2, 1, 1, 0]</div><div class="line">[1, 2, 2, 1, 1, 0]</div><div class="line">[0, 2, 2, 1, 1, 0]</div><div class="line">i=1, j=1-------------</div><div class="line"></div><div class="line">i=1, j=1, v=2--------</div><div class="line">[0, 2, 2, 1, 1, 0]</div><div class="line">[0, 2, 2, 1, 1, 0]</div><div class="line">[0, 2, 2, 1, 1, 0]</div><div class="line">i=1, j=1-------------</div><div class="line"></div><div class="line">i=1, j=1, v=1--------</div><div class="line">[0, 2, 2, 2, 1, 0]</div><div class="line">[0, 1, 2, 2, 1, 0]</div><div class="line">[0, 1, 2, 2, 1, 0]</div><div class="line">i=1, j=2-------------</div><div class="line"></div><div class="line">i=1, j=2, v=1--------</div><div class="line">[0, 1, 2, 2, 2, 0]</div><div class="line">[0, 1, 1, 2, 2, 0]</div><div class="line">[0, 1, 1, 2, 2, 0]</div><div class="line">i=1, j=3-------------</div><div class="line"></div><div class="line">i=1, j=3, v=0--------</div><div class="line">[0, 1, 1, 2, 2, 2]</div><div class="line">[0, 1, 1, 1, 2, 2]</div><div class="line">[0, 0, 1, 1, 2, 2]</div><div class="line">i=2, j=4-------------</div><div class="line"></div><div class="line"></div><div class="line">In [29]: a</div><div class="line">Out[29]: [0, 0, 1, 1, 2, 2]</div></pre></td></tr></table></figure>
+<p><a href="https://leetcode.com/problems/sort-colors/description/" target="_blank" rel="external">leet code</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2018/10/26/leetcode-sort-colors/" data-id="cjpue21kt005e1hqb0e975jo1" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python3/">python3</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-leetcode-game-of-life" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/10/25/leetcode-game-of-life/" class="article-date">
@@ -100,7 +147,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/10/25/leetcode-game-of-life/" data-id="cjpt0x5f40029olqb0a12pbh8" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2018/10/25/leetcode-game-of-life/" data-id="cjpue21jm002c1hqb333b89ye" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python3/">python3</a></li></ul>
@@ -145,7 +192,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/10/24/leetcode-insert-delete-getrandom-o1/" data-id="cjpt0x5fh0033olqbxwgbe94e" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2018/10/24/leetcode-insert-delete-getrandom-o1/" data-id="cjpue21jw00361hqbqnv95sst" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
@@ -194,7 +241,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/10/23/leetcode-maximum-subarray/" data-id="cjpt0x5fv0042olqbbqg1bnse" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2018/10/23/leetcode-maximum-subarray/" data-id="cjpue21k900451hqbrekn77ms" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
@@ -247,59 +294,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/10/22/leetcode-group-anagrams/" data-id="cjpt0x5fb002rolqbz3i6889a" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-leetcode-kth-largest-element-in-an-array" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/10/19/leetcode-kth-largest-element-in-an-array/" class="article-date">
-  <time datetime="2018-10-18T23:35:00.000Z" itemprop="datePublished">2018-10-19</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/10/19/leetcode-kth-largest-element-in-an-array/">Kth Largest Element in an Array</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Kth-Largest-Element-in-an-Array"><a href="#Kth-Largest-Element-in-an-Array" class="headerlink" title="Kth Largest Element in an Array"></a>Kth Largest Element in an Array</h2><p><strong>sort solution</strong> - # O(nlgn) time 28ms</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">findKthLargest</span><span class="params">(self, nums, k)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        :type nums: List[int]</span></div><div class="line"><span class="string">        :type k: int</span></div><div class="line"><span class="string">        :rtype: int</span></div><div class="line"><span class="string">        """</span></div><div class="line">        <span class="keyword">return</span> sorted(nums, reverse=<span class="keyword">True</span>)[k<span class="number">-1</span>]</div></pre></td></tr></table></figure>
-<p><strong>heapq solution</strong> - # O(k+(n-k)lgk) time, min-heap 28ms</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> heapq</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">findKthLargest</span><span class="params">(self, nums, k)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        :type nums: List[int]</span></div><div class="line"><span class="string">        :type k: int</span></div><div class="line"><span class="string">        :rtype: int</span></div><div class="line"><span class="string">        """</span></div><div class="line">        <span class="keyword">return</span> heapq.nlargest(k, nums)[k<span class="number">-1</span>]</div></pre></td></tr></table></figure>
-<p><strong>test code</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">In [393]: nums= [3,2,3,1,2,4,5,5,6]</div><div class="line"></div><div class="line">In [394]: k = 4</div><div class="line"></div><div class="line">In [396]: s = Solution(); t = s.findKthLargest(nums, k)</div><div class="line"></div><div class="line">In [397]: t</div><div class="line">Out[397]: 4</div></pre></td></tr></table></figure>
-<p><strong>ref</strong></p>
-<p>heapq</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">In [<span class="number">405</span>]: <span class="keyword">import</span> heapq</div><div class="line"></div><div class="line">In [<span class="number">406</span>]: heapq.nlargest(k, nums)</div><div class="line">Out[<span class="number">406</span>]: [<span class="number">6</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">4</span>]</div><div class="line"></div><div class="line">In [407]: heapq.nlargest?</div><div class="line">Signature: heapq.nlargest(n, iterable, key=<span class="keyword">None</span>)</div><div class="line">Docstring:</div><div class="line">Find the n largest elements <span class="keyword">in</span> a dataset.</div><div class="line"></div><div class="line">Equivalent to:  sorted(iterable, key=key, reverse=<span class="keyword">True</span>)[:n]</div><div class="line">File:      /System/Library/Frameworks/Python.framework/Versions/<span class="number">2.7</span>/lib/python2<span class="number">.7</span>/heapq.py</div><div class="line">Type:      function</div></pre></td></tr></table></figure>
-<p><a href="https://leetcode.com/problems/kth-largest-element-in-an-array/description/" target="_blank" rel="external">leet code</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/10/19/leetcode-kth-largest-element-in-an-array/" data-id="cjpt0x5fi0036olqb3rw0w2ev" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2018/10/22/leetcode-group-anagrams/" data-id="cjpue21jr002s1hqb4wrtnqk3" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
@@ -367,6 +362,10 @@
       <ul>
         
           <li>
+            <a href="/2018/12/19/leetcode-decode-string/">Decode String</a>
+          </li>
+        
+          <li>
             <a href="/2018/12/18/leetcode-best-time-to-buy-and-sell-stock-with-cooldown/">Best Time to Buy and Sell Stock with Cooldown</a>
           </li>
         
@@ -380,10 +379,6 @@
         
           <li>
             <a href="/2018/12/13/leetcode-minimum-path-sum/">Minimum Path Sum</a>
-          </li>
-        
-          <li>
-            <a href="/2018/12/12/leetcode-target-sum/">Target Sum</a>
           </li>
         
       </ul>
