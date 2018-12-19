@@ -64,6 +64,51 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-leetcode-house-robber-iii" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/12/06/leetcode-house-robber-iii/" class="article-date">
+  <time datetime="2018-12-05T23:32:00.000Z" itemprop="datePublished">2018-12-06</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/06/leetcode-house-robber-iii/">House Robber III</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="House-Robber-III"><a href="#House-Robber-III" class="headerlink" title="House Robber III"></a>House Robber III</h2><p><strong>DFS 版本</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Definition for a binary tree node.</span></div><div class="line"><span class="comment"># class TreeNode:</span></div><div class="line"><span class="comment">#     def __init__(self, x):</span></div><div class="line"><span class="comment">#         self.val = x</span></div><div class="line"><span class="comment">#         self.left = None</span></div><div class="line"><span class="comment">#         self.right = None</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">rob</span><span class="params">(self, root)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        :type root: TreeNode</span></div><div class="line"><span class="string">        :rtype: int</span></div><div class="line"><span class="string">        """</span></div><div class="line">        <span class="function"><span class="keyword">def</span> <span class="title">dfs</span><span class="params">(node)</span>:</span></div><div class="line">            <span class="keyword">if</span> <span class="keyword">not</span> node: <span class="keyword">return</span> <span class="number">0</span>, <span class="number">0</span></div><div class="line">            l, r = dfs(node.left), dfs(node.right)</div><div class="line">            <span class="keyword">return</span> max(l) + max(r), node.val + l[<span class="number">0</span>] + r[<span class="number">0</span>]</div><div class="line">        <span class="keyword">return</span> max(dfs(root))</div></pre></td></tr></table></figure>
+<p><a href="https://leetcode.com/problems/house-robber-iii/description/" target="_blank" rel="external">leet code</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2018/12/06/leetcode-house-robber-iii/" data-id="cjpvtd8uo002w7uqb3dmr1voe" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/binary-tree/">binary tree</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python3/">python3</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-leetcode-convert-bst-to-greater-tree" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/12/05/leetcode-convert-bst-to-greater-tree/" class="article-date">
@@ -97,7 +142,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/12/05/leetcode-convert-bst-to-greater-tree/" data-id="cjpueb7vq001r6wqbpz13l5yt" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2018/12/05/leetcode-convert-bst-to-greater-tree/" data-id="cjpvtd8sz001f7uqbppt5fcsi" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python3/">python3</a></li></ul>
@@ -146,7 +191,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/12/04/leetcode-find-all-numbers-disappeared-in-an-array/" data-id="cjpueb7vs001y6wqbwtfwucff" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2018/12/04/leetcode-find-all-numbers-disappeared-in-an-array/" data-id="cjpvtd8tp001x7uqb1ebs2wgp" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python3/">python3</a></li></ul>
@@ -195,7 +240,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/12/03/leetcode-palindromic-substrings/" data-id="cjpueb7wv004m6wqbubxsl6m7" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2018/12/03/leetcode-palindromic-substrings/" data-id="cjpvtd8vn004v7uqbuglqdz79" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python3/">python3</a></li></ul>
@@ -242,54 +287,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/11/29/queue-reconstruction-by-height/" data-id="cjpueb7y400826wqbn4auohqy" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python3/">python3</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-leetcode-counting-bits" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/11/28/leetcode-counting-bits/" class="article-date">
-  <time datetime="2018-11-27T23:27:00.000Z" itemprop="datePublished">2018-11-28</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/28/leetcode-counting-bits/">Counting Bits</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Counting-Bits"><a href="#Counting-Bits" class="headerlink" title="Counting Bits"></a>Counting Bits</h2><p><strong>Bitwise Operator Version</strong> - 108ms</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">countBits</span><span class="params">(self, num)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        :type num: int</span></div><div class="line"><span class="string">        :rtype: List[int]</span></div><div class="line"><span class="string">        """</span></div><div class="line">        res = [<span class="number">0</span>]</div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, num + <span class="number">1</span>):</div><div class="line">            res.append(res[i &gt;&gt; <span class="number">1</span>] + (i &amp; <span class="number">1</span>))</div><div class="line">        <span class="keyword">return</span> res</div></pre></td></tr></table></figure>
-<p><strong>test code</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">In [147]: s = Solution(); t = s.countBits(5); <span class="built_in">print</span>(t)</div><div class="line">[0, 1, 1, 2, 1, 2]</div></pre></td></tr></table></figure>
-<p><a href="https://leetcode.com/problems/counting-bits/description/" target="_blank" rel="external">leet code</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/11/28/leetcode-counting-bits/" data-id="cjpueb7vm001h6wqbi75hyd91" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2018/11/29/queue-reconstruction-by-height/" data-id="cjpvtd8xi00a87uqbc8o7swq1" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python3/">python3</a></li></ul>
@@ -304,7 +302,7 @@
 
 
   <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/page/2/">&laquo; 上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/21/">21</a><a class="extend next" rel="next" href="/page/4/">下一页&raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/2/">&laquo; 上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/22/">22</a><a class="extend next" rel="next" href="/page/4/">下一页&raquo;</a>
   </nav>
 
 </section>
@@ -357,6 +355,10 @@
       <ul>
         
           <li>
+            <a href="/2018/12/20/leetcode-path-sum-iii/">Path Sum III</a>
+          </li>
+        
+          <li>
             <a href="/2018/12/19/leetcode-decode-string/">Decode String</a>
           </li>
         
@@ -370,10 +372,6 @@
         
           <li>
             <a href="/2018/12/14/leetcode-unique-binary-search-trees/">Unique Binary Search Trees</a>
-          </li>
-        
-          <li>
-            <a href="/2018/12/13/leetcode-minimum-path-sum/">Minimum Path Sum</a>
           </li>
         
       </ul>

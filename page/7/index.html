@@ -64,6 +64,56 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-leetcode-longest-increasing-subsequence" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/11/05/leetcode-longest-increasing-subsequence/" class="article-date">
+  <time datetime="2018-11-04T23:59:00.000Z" itemprop="datePublished">2018-11-05</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/05/leetcode-longest-increasing-subsequence/">Longest Increasing Subsequence</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Longest-Increasing-Subsequence"><a href="#Longest-Increasing-Subsequence" class="headerlink" title="Longest Increasing Subsequence"></a>Longest Increasing Subsequence</h2><p><strong>Dp Version</strong> - 1596ms O(n2)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">lengthOfLIS</span><span class="params">(self, nums)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        :type nums: List[int]</span></div><div class="line"><span class="string">        :rtype: int</span></div><div class="line"><span class="string">        """</span></div><div class="line">        <span class="keyword">if</span> <span class="keyword">not</span> nums: <span class="keyword">return</span> <span class="number">0</span></div><div class="line">        dp = [<span class="number">1</span>] * len(nums)</div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(nums)):</div><div class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(i):</div><div class="line">                <span class="keyword">if</span> nums[i] &gt; nums[j]:</div><div class="line">                    dp[i] = max(dp[i], dp[j] + <span class="number">1</span>)</div><div class="line">        <span class="keyword">return</span> max(dp)</div></pre></td></tr></table></figure>
+<p><strong>Binary Search Version</strong> - 48ms O(nlogn)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">lengthOfLIS</span><span class="params">(self, nums)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        :type nums: List[int]</span></div><div class="line"><span class="string">        :rtype: int</span></div><div class="line"><span class="string">        """</span></div><div class="line">        tails = [<span class="number">0</span>] * len(nums)</div><div class="line">        size = <span class="number">0</span></div><div class="line">        <span class="keyword">for</span> x <span class="keyword">in</span> nums:</div><div class="line">            i, j = <span class="number">0</span>, size</div><div class="line">            <span class="keyword">while</span> i != j:</div><div class="line">                m = (i + j) // <span class="number">2</span></div><div class="line">                <span class="keyword">if</span> tails[m] &lt; x:</div><div class="line">                    i = m + <span class="number">1</span></div><div class="line">                <span class="keyword">else</span>:</div><div class="line">                    j = m</div><div class="line">            print(i, j, size, x)</div><div class="line">            tails[i] = x</div><div class="line">            size = max(i + <span class="number">1</span>, size)</div><div class="line">            print(size, tails)</div><div class="line">        <span class="keyword">return</span> size</div></pre></td></tr></table></figure>
+<p><strong>test code</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">In [250]: n = [1,3,6,7,9,4,10,5,6]</div><div class="line"></div><div class="line">In [253]: s = Solution(); t = s.lengthOfLIS(n); <span class="built_in">print</span>(t)</div><div class="line">6</div><div class="line"></div><div class="line">In [264]: s = Solution(); t = s.lengthOfLIS(n); <span class="built_in">print</span>(t)</div><div class="line">0 0 0 1</div><div class="line">1 [1, 0, 0, 0, 0, 0, 0, 0, 0]</div><div class="line">1 1 1 3</div><div class="line">2 [1, 3, 0, 0, 0, 0, 0, 0, 0]</div><div class="line">2 2 2 6</div><div class="line">3 [1, 3, 6, 0, 0, 0, 0, 0, 0]</div><div class="line">3 3 3 7</div><div class="line">4 [1, 3, 6, 7, 0, 0, 0, 0, 0]</div><div class="line">4 4 4 9</div><div class="line">5 [1, 3, 6, 7, 9, 0, 0, 0, 0]</div><div class="line">2 2 5 4</div><div class="line">5 [1, 3, 4, 7, 9, 0, 0, 0, 0]</div><div class="line">5 5 5 10</div><div class="line">6 [1, 3, 4, 7, 9, 10, 0, 0, 0]</div><div class="line">3 3 6 5</div><div class="line">6 [1, 3, 4, 5, 9, 10, 0, 0, 0]</div><div class="line">4 4 6 6</div><div class="line">6 [1, 3, 4, 5, 6, 10, 0, 0, 0]</div><div class="line">6</div></pre></td></tr></table></figure>
+<p><a href="https://leetcode.com/problems/longest-increasing-subsequence/description/" target="_blank" rel="external">leet code</a></p>
+<p><a href="https://leetcode.com/problems/longest-increasing-subsequence/discuss/74824/JavaPython-Binary-search-O(nlogn" target="_blank" rel="external">Java/Python Binary search O(nlogn) time with explanation</a>-time-with-explanation)</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2018/11/05/leetcode-longest-increasing-subsequence/" data-id="cjpvtd8v800407uqbf6134b01" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python3/">python3</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-leetcode-search-a-2d-matrix-ii" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/11/02/leetcode-search-a-2d-matrix-ii/" class="article-date">
@@ -101,7 +151,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/11/02/leetcode-search-a-2d-matrix-ii/" data-id="cjpueb7x6005a6wqbjk9xipsp" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2018/11/02/leetcode-search-a-2d-matrix-ii/" data-id="cjpvtd8w3005v7uqb0ujryqkh" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python3/">python3</a></li></ul>
@@ -150,7 +200,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/11/01/leetcode-container-with-most-water/" data-id="cjpueb7vj001a6wqb0umtpbgu" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2018/11/01/leetcode-container-with-most-water/" data-id="cjpvtd8t8001n7uqbuki9prbm" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python3/">python3</a></li></ul>
@@ -199,7 +249,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/10/31/leetcode-longest-consecutive-sequence/" data-id="cjpueb7wh003p6wqb4g3atqo6" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2018/10/31/leetcode-longest-consecutive-sequence/" data-id="cjpvtd8v2003o7uqbi707gpzh" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python3/">python3</a></li></ul>
@@ -246,54 +296,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/10/30/leetcode-trapping-rain-water/" data-id="cjpueb7xe005y6wqb8i3x460r" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python3/">python3</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-leetcode-find-peak-element" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/10/29/leetcode-find-peak-element/" class="article-date">
-  <time datetime="2018-10-28T23:33:00.000Z" itemprop="datePublished">2018-10-29</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/10/29/leetcode-find-peak-element/">Find Peak Element</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Find-Peak-Element"><a href="#Find-Peak-Element" class="headerlink" title="Find Peak Element"></a>Find Peak Element</h2><p><strong>Binary Search Version</strong> - 36ms</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">findPeakElement</span><span class="params">(self, nums)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        :type nums: List[int]</span></div><div class="line"><span class="string">        :rtype: int</span></div><div class="line"><span class="string">        """</span></div><div class="line">        left = <span class="number">0</span></div><div class="line">        right = len(nums) - <span class="number">1</span></div><div class="line">        <span class="keyword">while</span> left &lt; right - <span class="number">1</span>:</div><div class="line">            mid = (left + right) // <span class="number">2</span></div><div class="line">            <span class="keyword">if</span> nums[mid - <span class="number">1</span>] &lt; nums[mid] <span class="keyword">and</span> nums[mid] &gt; nums[mid + <span class="number">1</span>]:</div><div class="line">                <span class="keyword">return</span> mid</div><div class="line">            <span class="keyword">if</span> nums[mid] &lt; nums[mid + <span class="number">1</span>]:</div><div class="line">                left = mid + <span class="number">1</span></div><div class="line">            <span class="keyword">else</span>:</div><div class="line">                right = mid - <span class="number">1</span></div><div class="line">        <span class="keyword">return</span> left <span class="keyword">if</span> nums[left] &gt;= nums[right] <span class="keyword">else</span> right</div></pre></td></tr></table></figure>
-<p><strong>test code</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">In [7]: nums = [1,2,3,1]</div><div class="line"></div><div class="line">In [17]: s = Solution(); t = s.findPeakElement(nums)</div><div class="line"></div><div class="line">In [18]: t</div><div class="line">Out[18]: 2</div><div class="line"></div><div class="line">In [19]: nums = [1,2,1,3,5,6,4]</div><div class="line"></div><div class="line">In [20]: s = Solution(); t = s.findPeakElement(nums)</div><div class="line"></div><div class="line">In [21]: t</div><div class="line">Out[21]: 5</div></pre></td></tr></table></figure>
-<p><a href="https://leetcode.com/problems/find-peak-element/description/" target="_blank" rel="external">leet code</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/10/29/leetcode-find-peak-element/" data-id="cjpueb7vt00206wqbs6to8tjp" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2018/10/30/leetcode-trapping-rain-water/" data-id="cjpvtd8w8006a7uqbxqxwm3gv" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python3/">python3</a></li></ul>
@@ -308,7 +311,7 @@
 
 
   <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/page/6/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/21/">21</a><a class="extend next" rel="next" href="/page/8/">下一页&raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/6/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/22/">22</a><a class="extend next" rel="next" href="/page/8/">下一页&raquo;</a>
   </nav>
 
 </section>
@@ -361,6 +364,10 @@
       <ul>
         
           <li>
+            <a href="/2018/12/20/leetcode-path-sum-iii/">Path Sum III</a>
+          </li>
+        
+          <li>
             <a href="/2018/12/19/leetcode-decode-string/">Decode String</a>
           </li>
         
@@ -374,10 +381,6 @@
         
           <li>
             <a href="/2018/12/14/leetcode-unique-binary-search-trees/">Unique Binary Search Trees</a>
-          </li>
-        
-          <li>
-            <a href="/2018/12/13/leetcode-minimum-path-sum/">Minimum Path Sum</a>
           </li>
         
       </ul>
