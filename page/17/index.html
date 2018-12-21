@@ -64,6 +64,52 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-django-transform-queryset-to-dict" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/10/25/django-transform-queryset-to-dict/" class="article-date">
+  <time datetime="2017-10-25T00:51:00.000Z" itemprop="datePublished">2017-10-25</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/django/">django</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/25/django-transform-queryset-to-dict/">django transform queryset to dict</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="model-to-dict方法"><a href="#model-to-dict方法" class="headerlink" title="model_to_dict方法"></a><code>model_to_dict</code>方法</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> django.forms.models <span class="keyword">import</span> model_to_dict</div><div class="line">model_to_dict(instance)</div></pre></td></tr></table></figure>
+<p><a href="https://codeday.me/bug/20170722/43534.html" target="_blank" rel="external">参考链接</a></p>
+<h2 id="toDict方法"><a href="#toDict方法" class="headerlink" title="toDict方法"></a><code>toDict</code>方法</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Category</span><span class="params">(models.Model)</span>:</span></div><div class="line">    autoid = models.AutoField(primary_key=<span class="keyword">True</span>)</div><div class="line">    email=models.CharField(max_length=<span class="number">150</span>,blank=<span class="keyword">False</span>)</div><div class="line">    comtype=models.CharField(max_length=<span class="number">20</span>,blank=<span class="keyword">False</span>)</div><div class="line">    catname=models.CharField(max_length=<span class="number">150</span>,blank=<span class="keyword">False</span>)  </div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__unicode__</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">return</span> <span class="string">'%s'</span> % (self.catname)</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">toJSON</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">import</span> json</div><div class="line">        <span class="keyword">return</span> json.dumps(dict([(attr, getattr(self, attr)) <span class="keyword">for</span> attr <span class="keyword">in</span> [f.name <span class="keyword">for</span> f <span class="keyword">in</span> self._meta.fields]]))</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">toDict</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">return</span> dict([(attr, getattr(self, attr)) <span class="keyword">for</span> attr <span class="keyword">in</span> [f.name <span class="keyword">for</span> f <span class="keyword">in</span> self._meta.fields]])</div></pre></td></tr></table></figure>
+<p>可读性更强的版本</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">toJSON</span><span class="params">(self)</span>:</span></div><div class="line">    fields = []</div><div class="line">    <span class="keyword">for</span> field <span class="keyword">in</span> self._meta.fields:</div><div class="line">        fields.append(field.name)</div><div class="line"></div><div class="line">    d = &#123;&#125;</div><div class="line">    <span class="keyword">for</span> attr <span class="keyword">in</span> fields:</div><div class="line">        d[attr] = getattr(self, attr)</div><div class="line"></div><div class="line">    <span class="keyword">import</span> json</div><div class="line">    <span class="keyword">return</span> json.dumps(d)</div><div class="line">    </div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">toDict</span><span class="params">(self)</span>:</span></div><div class="line">    fields = []</div><div class="line">    <span class="keyword">for</span> field <span class="keyword">in</span> self._meta.fields:</div><div class="line">        fields.append(field.name)</div><div class="line"></div><div class="line">    d = &#123;&#125;</div><div class="line">    <span class="keyword">for</span> attr <span class="keyword">in</span> fields:</div><div class="line">        d[attr] = getattr(self, attr)</div><div class="line"></div><div class="line">    <span class="keyword">return</span> d</div></pre></td></tr></table></figure>
+<p><a href="http://www.yihaomen.com/article/python/279.htm" target="_blank" rel="external">参考链接</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2017/10/25/django-transform-queryset-to-dict/" data-id="cjpx9t6xk000kosqbohef2x8o" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-django-redis-cache-delete-pattern" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/10/25/django-redis-cache-delete-pattern/" class="article-date">
@@ -99,7 +145,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/10/25/django-redis-cache-delete-pattern/" data-id="cjpvtd8ru000g7uqbkm0ftdy5" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/10/25/django-redis-cache-delete-pattern/" data-id="cjpx9t6xj000hosqbfq85u6al" class="article-share-link">Share</a>
       
       
     </footer>
@@ -144,7 +190,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/10/25/django-delete-multi-object/" data-id="cjpvtd8re00057uqblv00qa1y" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/10/25/django-delete-multi-object/" data-id="cjpx9t6xb0006osqbdsw1fj2e" class="article-share-link">Share</a>
       
       
     </footer>
@@ -189,7 +235,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/10/25/django-multi-database/" data-id="cjpvtd8rr000c7uqbba2590im" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/10/25/django-multi-database/" data-id="cjpx9t6xe0009osqb5morje4c" class="article-share-link">Share</a>
       
       
     </footer>
@@ -234,52 +280,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/10/25/django-pagination-demo/" data-id="cjpvtd8rs000d7uqbhqlsq6hs" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-django-models-objects-filter-by-dict-kwargs" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/10/25/django-models-objects-filter-by-dict-kwargs/" class="article-date">
-  <time datetime="2017-10-25T00:48:00.000Z" itemprop="datePublished">2017-10-25</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/django/">django</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/25/django-models-objects-filter-by-dict-kwargs/">django models objects filter by dict kwargs</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>1. 大于等于、小于等于</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Model.objects.filter(price__gte=<span class="number">10</span>, price__lte=<span class="number">15</span>)</div><div class="line"><span class="comment"># or</span></div><div class="line">kwargs = &#123;<span class="string">'price__gte'</span>: <span class="number">10</span>,</div><div class="line">          <span class="string">'price__lte'</span>: <span class="number">15</span>&#125;      </div><div class="line">Model.objects.filter(**kwargs)</div></pre></td></tr></table></figure>
-<p><strong>2. LIKE、包含</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">kwargs = &#123;filter_field + <span class="string">'__icontains'</span>: filter_content&#125;</div><div class="line">edu_mtrl_list = edu_mtrl_list.filter(**kwargs)</div></pre></td></tr></table></figure>
-<p><a href="https://stackoverflow.com/questions/1763495/adding-extra-parameters-to-a-objects-filter-via-dict" target="_blank" rel="external">https://stackoverflow.com/questions/1763495/adding-extra-parameters-to-a-objects-filter-via-dict</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2017/10/25/django-models-objects-filter-by-dict-kwargs/" data-id="cjpvtd8rf00067uqblyosl0o4" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2017/10/25/django-pagination-demo/" data-id="cjpx9t6xg000cosqb9svltylg" class="article-share-link">Share</a>
       
       
     </footer>
@@ -345,6 +346,10 @@
       <ul>
         
           <li>
+            <a href="/2018/12/21/leetcode-subarray-sum-equals-k/">Subarray Sum Equals K</a>
+          </li>
+        
+          <li>
             <a href="/2018/12/20/leetcode-path-sum-iii/">Path Sum III</a>
           </li>
         
@@ -358,10 +363,6 @@
         
           <li>
             <a href="/2018/12/17/leetcode-task-scheduler/">Task Scheduler</a>
-          </li>
-        
-          <li>
-            <a href="/2018/12/14/leetcode-unique-binary-search-trees/">Unique Binary Search Trees</a>
           </li>
         
       </ul>
