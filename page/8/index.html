@@ -64,6 +64,153 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-leetcode-search-a-2d-matrix-ii" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/11/02/leetcode-search-a-2d-matrix-ii/" class="article-date">
+  <time datetime="2018-11-01T23:24:00.000Z" itemprop="datePublished">2018-11-02</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/02/leetcode-search-a-2d-matrix-ii/">Search a 2D Matrix II</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Search-a-2D-Matrix-II"><a href="#Search-a-2D-Matrix-II" class="headerlink" title="Search a 2D Matrix II"></a>Search a 2D Matrix II</h2><p><strong>zip Version</strong> - 52ms</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">searchMatrix</span><span class="params">(self, matrix, target)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        :type matrix: List[List[int]]</span></div><div class="line"><span class="string">        :type target: int</span></div><div class="line"><span class="string">        :rtype: bool</span></div><div class="line"><span class="string">        """</span></div><div class="line">        <span class="keyword">for</span> line <span class="keyword">in</span> zip(*matrix):</div><div class="line">            <span class="keyword">if</span> target <span class="keyword">in</span> line:</div><div class="line">                <span class="keyword">return</span> <span class="keyword">True</span></div><div class="line">        <span class="keyword">return</span> <span class="keyword">False</span></div></pre></td></tr></table></figure>
+<p><strong>Another Version</strong> - 48ms</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">searchMatrix</span><span class="params">(self, matrix, target)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        :type matrix: List[List[int]]</span></div><div class="line"><span class="string">        :type target: int</span></div><div class="line"><span class="string">        :rtype: bool</span></div><div class="line"><span class="string">        """</span></div><div class="line">        <span class="keyword">if</span> <span class="keyword">not</span> matrix: <span class="keyword">return</span> <span class="keyword">False</span></div><div class="line">        m, n = len(matrix), len(matrix[<span class="number">0</span>])</div><div class="line">        row, col = <span class="number">0</span>, n - <span class="number">1</span></div><div class="line">        <span class="keyword">while</span> row &lt; m <span class="keyword">and</span> col &gt;= <span class="number">0</span>:</div><div class="line">            <span class="keyword">if</span> matrix[row][col] == target:</div><div class="line">                <span class="keyword">return</span> <span class="keyword">True</span></div><div class="line">            <span class="keyword">if</span> matrix[row][col] &gt; target:</div><div class="line">                col -= <span class="number">1</span></div><div class="line">            <span class="keyword">else</span>:</div><div class="line">                row += <span class="number">1</span></div><div class="line">        <span class="keyword">return</span> <span class="keyword">False</span></div></pre></td></tr></table></figure>
+<p><strong>test code</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">In [27]: s = Solution(); t = s.searchMatrix(m, 20)</div><div class="line"></div><div class="line">In [28]: t</div><div class="line">Out[28]: False</div><div class="line"></div><div class="line">In [29]: s = Solution(); t = s.searchMatrix(m, 5)</div><div class="line"></div><div class="line">In [30]: t</div><div class="line">Out[30]: True</div></pre></td></tr></table></figure>
+<p><a href="https://leetcode.com/problems/search-a-2d-matrix-ii/description/" target="_blank" rel="external">leet code</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2018/11/02/leetcode-search-a-2d-matrix-ii/" data-id="ck5chebc8005aqyqmdnhov9kt" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python3/">python3</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-leetcode-container-with-most-water" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/11/01/leetcode-container-with-most-water/" class="article-date">
+  <time datetime="2018-10-31T23:57:00.000Z" itemprop="datePublished">2018-11-01</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/01/leetcode-container-with-most-water/">Container With Most Water</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Container-With-Most-Water"><a href="#Container-With-Most-Water" class="headerlink" title="Container With Most Water"></a>Container With Most Water</h2><p><strong>One Version</strong> - 96ms</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">maxArea</span><span class="params">(self, height)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        :type height: List[int]</span></div><div class="line"><span class="string">        :rtype: int</span></div><div class="line"><span class="string">        """</span></div><div class="line">        i, j = <span class="number">0</span>, len(height) - <span class="number">1</span></div><div class="line">        left = right = water = <span class="number">0</span></div><div class="line">        <span class="keyword">while</span> i &lt;= j:</div><div class="line">            left, right = max(left, height[i]), max(right, height[j])</div><div class="line">            <span class="keyword">while</span> i &lt;= j <span class="keyword">and</span> height[i] &lt;= left &lt;= right:</div><div class="line">                water = max(water, (j - i) * min(left, right))</div><div class="line">                i += <span class="number">1</span></div><div class="line">            <span class="keyword">while</span> i &lt;= j <span class="keyword">and</span> height[j] &lt;= right &lt;= left:</div><div class="line">                water = max(water, (j - i) * min(left, right))</div><div class="line">                j -= <span class="number">1</span></div><div class="line">        <span class="keyword">return</span> water</div></pre></td></tr></table></figure>
+<p><strong>Another Version</strong> - 72ms</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">maxArea</span><span class="params">(self, height)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        :type height: List[int]</span></div><div class="line"><span class="string">        :rtype: int</span></div><div class="line"><span class="string">        """</span></div><div class="line">        i, j = <span class="number">0</span>, len(height) - <span class="number">1</span></div><div class="line">        water = <span class="number">0</span></div><div class="line">        <span class="keyword">while</span> i &lt;= j:</div><div class="line">            water = max(water, (j - i) * min(height[i], height[j]))</div><div class="line">            <span class="keyword">if</span> height[i] &lt; height[j]:</div><div class="line">                i += <span class="number">1</span></div><div class="line">            <span class="keyword">else</span>:</div><div class="line">                j -= <span class="number">1</span></div><div class="line">        <span class="keyword">return</span> water</div></pre></td></tr></table></figure>
+<p><strong>test code</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">In [7]: s = Solution(); t = s.maxArea([1,8,6,2,5,4,8,3,7])</div><div class="line"></div><div class="line">In [8]: t</div><div class="line">Out[8]: 49</div></pre></td></tr></table></figure>
+<p><a href="https://leetcode.com/problems/container-with-most-water/description/" target="_blank" rel="external">leet code</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2018/11/01/leetcode-container-with-most-water/" data-id="ck5cheb8t001aqyqm5mp2pi97" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python3/">python3</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-leetcode-longest-consecutive-sequence" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/10/31/leetcode-longest-consecutive-sequence/" class="article-date">
+  <time datetime="2018-10-30T23:27:00.000Z" itemprop="datePublished">2018-10-31</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/31/leetcode-longest-consecutive-sequence/">Longest Consecutive Sequence</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Longest-Consecutive-Sequence"><a href="#Longest-Consecutive-Sequence" class="headerlink" title="Longest Consecutive Sequence"></a>Longest Consecutive Sequence</h2><p><strong>O(n) Version</strong> - 40ms</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">longestConsecutive</span><span class="params">(self, nums)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        :type nums: List[int]</span></div><div class="line"><span class="string">        :rtype: int</span></div><div class="line"><span class="string">        """</span>    </div><div class="line">        nums = set(nums)</div><div class="line">        maxlen = <span class="number">0</span></div><div class="line">        <span class="keyword">while</span> nums:</div><div class="line">            first = last = nums.pop()</div><div class="line">            <span class="keyword">while</span> first - <span class="number">1</span> <span class="keyword">in</span> nums:</div><div class="line">                first -= <span class="number">1</span></div><div class="line">                nums.remove(first)</div><div class="line">            <span class="keyword">while</span> last + <span class="number">1</span> <span class="keyword">in</span> nums:</div><div class="line">                last += <span class="number">1</span></div><div class="line">                nums.remove(last)</div><div class="line">            maxlen = max(maxlen, last - first + <span class="number">1</span>)</div><div class="line">        <span class="keyword">return</span> maxlen</div></pre></td></tr></table></figure>
+<p><strong>O(n) Version</strong> - 44ms</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">longestConsecutive</span><span class="params">(self, nums)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        :type nums: List[int]</span></div><div class="line"><span class="string">        :rtype: int</span></div><div class="line"><span class="string">        """</span></div><div class="line">        nums = set(nums)</div><div class="line">        ret = <span class="number">0</span></div><div class="line">        <span class="keyword">for</span> x <span class="keyword">in</span> nums:</div><div class="line">            <span class="keyword">if</span> x - <span class="number">1</span> <span class="keyword">not</span> <span class="keyword">in</span> nums:</div><div class="line">                y = x + <span class="number">1</span></div><div class="line">                <span class="keyword">while</span> y <span class="keyword">in</span> nums:</div><div class="line">                    y += <span class="number">1</span></div><div class="line">                ret = max(ret, y - x)</div><div class="line">        <span class="keyword">return</span> ret</div></pre></td></tr></table></figure>
+<p><strong>test code</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">In [66]: s = Solution(); t = s.longestConsecutive([100, 4, 200, 3, 1, 2])</div><div class="line"></div><div class="line">In [67]: t</div><div class="line">Out[67]: 4</div></pre></td></tr></table></figure>
+<p><a href="https://leetcode.com/problems/longest-consecutive-sequence/description/" target="_blank" rel="external">leet code</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2018/10/31/leetcode-longest-consecutive-sequence/" data-id="ck5chebay003pqyqmr3k80caj" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python3/">python3</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-leetcode-trapping-rain-water" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/10/30/leetcode-trapping-rain-water/" class="article-date">
@@ -99,7 +246,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/10/30/leetcode-trapping-rain-water/" data-id="cjpx9t70i0088osqbyfjoh1xg" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2018/10/30/leetcode-trapping-rain-water/" data-id="ck5chebcm0064qyqmdsekpbvl" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python3/">python3</a></li></ul>
@@ -146,150 +293,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/10/29/leetcode-find-peak-element/" data-id="cjpx9t6y7001yosqbmvm7mxxq" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2018/10/29/leetcode-find-peak-element/" data-id="ck5cheb9f001zqyqm31hv8dck" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python3/">python3</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-leetcode-sort-colors" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/10/26/leetcode-sort-colors/" class="article-date">
-  <time datetime="2018-10-25T23:32:00.000Z" itemprop="datePublished">2018-10-26</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/10/26/leetcode-sort-colors/">Sort Colors</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Sort-Colors"><a href="#Sort-Colors" class="headerlink" title="Sort Colors"></a>Sort Colors</h2><p><strong>Nice Version</strong> - 36ms</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">sortColors</span><span class="params">(self, nums)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        :type nums: List[int]</span></div><div class="line"><span class="string">        :rtype: void Do not return anything, modify nums in-place instead.</span></div><div class="line"><span class="string">        """</span></div><div class="line">        i, j = <span class="number">0</span>, <span class="number">0</span></div><div class="line">        <span class="keyword">for</span> k <span class="keyword">in</span> range(len(nums)):</div><div class="line">            v = nums[k]</div><div class="line">            <span class="comment">#print('i=%d, j=%d, v=%d--------' % (i, j, v))</span></div><div class="line">            nums[k] = <span class="number">2</span></div><div class="line">            <span class="comment">#print(nums)</span></div><div class="line">            <span class="keyword">if</span> v &lt; <span class="number">2</span>:</div><div class="line">                nums[j] = <span class="number">1</span></div><div class="line">                j += <span class="number">1</span></div><div class="line">            <span class="comment">#print(nums)</span></div><div class="line">            <span class="keyword">if</span> v == <span class="number">0</span>:</div><div class="line">                nums[i] = <span class="number">0</span></div><div class="line">                i += <span class="number">1</span></div><div class="line">            <span class="comment">#print(nums)</span></div><div class="line">            <span class="comment">#print('i=%d, j=%d-------------\n' % (i, j))</span></div></pre></td></tr></table></figure>
-<p><strong>test code</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line">In [27]: a = [2,0,2,1,1,0]</div><div class="line"></div><div class="line">In [28]: s = Solution(); s.sortColors(a)</div><div class="line">i=0, j=0, v=2--------</div><div class="line">[2, 0, 2, 1, 1, 0]</div><div class="line">[2, 0, 2, 1, 1, 0]</div><div class="line">[2, 0, 2, 1, 1, 0]</div><div class="line">i=0, j=0-------------</div><div class="line"></div><div class="line">i=0, j=0, v=0--------</div><div class="line">[2, 2, 2, 1, 1, 0]</div><div class="line">[1, 2, 2, 1, 1, 0]</div><div class="line">[0, 2, 2, 1, 1, 0]</div><div class="line">i=1, j=1-------------</div><div class="line"></div><div class="line">i=1, j=1, v=2--------</div><div class="line">[0, 2, 2, 1, 1, 0]</div><div class="line">[0, 2, 2, 1, 1, 0]</div><div class="line">[0, 2, 2, 1, 1, 0]</div><div class="line">i=1, j=1-------------</div><div class="line"></div><div class="line">i=1, j=1, v=1--------</div><div class="line">[0, 2, 2, 2, 1, 0]</div><div class="line">[0, 1, 2, 2, 1, 0]</div><div class="line">[0, 1, 2, 2, 1, 0]</div><div class="line">i=1, j=2-------------</div><div class="line"></div><div class="line">i=1, j=2, v=1--------</div><div class="line">[0, 1, 2, 2, 2, 0]</div><div class="line">[0, 1, 1, 2, 2, 0]</div><div class="line">[0, 1, 1, 2, 2, 0]</div><div class="line">i=1, j=3-------------</div><div class="line"></div><div class="line">i=1, j=3, v=0--------</div><div class="line">[0, 1, 1, 2, 2, 2]</div><div class="line">[0, 1, 1, 1, 2, 2]</div><div class="line">[0, 0, 1, 1, 2, 2]</div><div class="line">i=2, j=4-------------</div><div class="line"></div><div class="line"></div><div class="line">In [29]: a</div><div class="line">Out[29]: [0, 0, 1, 1, 2, 2]</div></pre></td></tr></table></figure>
-<p><a href="https://leetcode.com/problems/sort-colors/description/" target="_blank" rel="external">leet code</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/10/26/leetcode-sort-colors/" data-id="cjpx9t70a007hosqbl1p6hpls" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python3/">python3</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-leetcode-game-of-life" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/10/25/leetcode-game-of-life/" class="article-date">
-  <time datetime="2018-10-25T00:04:00.000Z" itemprop="datePublished">2018-10-25</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/10/25/leetcode-game-of-life/">Game of Life</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Game-of-Life"><a href="#Game-of-Life" class="headerlink" title="Game of Life"></a>Game of Life</h2><p><strong>another solution</strong> - 36ms</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">class Solution:</div><div class="line">    def gameOfLife(self, board):</div><div class="line">        &quot;&quot;&quot;</div><div class="line">        :type board: List[List[int]]</div><div class="line">        :rtype: void Do not return anything, modify board in-place instead.</div><div class="line">        &quot;&quot;&quot;</div><div class="line">        if not board or not board[0]: return</div><div class="line">        m, n = len(board), len(board[0])</div><div class="line">        for i, row in enumerate(board):</div><div class="line">            for j, ele in enumerate(row):</div><div class="line">                count = 0</div><div class="line">                for a in range(max(0, i - 1), min(i + 2, m)):</div><div class="line">                    for b in range(max(0, j - 1), min(j + 2, n)):</div><div class="line">                        # skip i, j itself, (a, b) is (i, j)&apos;s eight neighbors</div><div class="line">                        # should count current_alive(1) and formerly_alive(2)</div><div class="line">                        if (a, b) != (i, j) and 1 &lt;= board[a][b] &lt;= 2:</div><div class="line">                            count += 1</div><div class="line">                if board[i][j] == 0:</div><div class="line">                    if count == 3:</div><div class="line">                        board[i][j] = 3</div><div class="line">                else:</div><div class="line">                    if count &lt; 2 or count &gt; 3:</div><div class="line">                        board[i][j] = 2</div><div class="line">        for i in range(m):</div><div class="line">            for j in range(n):</div><div class="line">                if board[i][j] == 2:</div><div class="line">                    board[i][j] = 0</div><div class="line">                elif board[i][j] == 3:</div><div class="line">                    board[i][j] = 1</div></pre></td></tr></table></figure>
-<p><strong>test code</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">In [16]: in_arr = [[0,1,0],[0,0,1],[1,1,1],[0,0,0]]</div><div class="line"></div><div class="line">In [17]: s = Solution(); s.gameOfLife(in_arr)</div><div class="line"></div><div class="line">In [18]: in_arr</div><div class="line">Out[18]: [[0, 0, 0], [1, 0, 1], [0, 1, 1], [0, 1, 0]]</div></pre></td></tr></table></figure>
-<p><a href="https://leetcode.com/problems/game-of-life/description/" target="_blank" rel="external">leet code</a></p>
-<p><a href="https://zh.wikipedia.org/wiki/康威生命游戏" target="_blank" rel="external">康威生命游戏</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/10/25/leetcode-game-of-life/" data-id="cjpx9t6yd002cosqbjok1b1nh" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python3/">python3</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-leetcode-insert-delete-getrandom-o1" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/10/24/leetcode-insert-delete-getrandom-o1/" class="article-date">
-  <time datetime="2018-10-23T23:33:00.000Z" itemprop="datePublished">2018-10-24</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/10/24/leetcode-insert-delete-getrandom-o1/">Insert Delete GetRandom O(1)</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Insert-Delete-GetRandom-O-1"><a href="#Insert-Delete-GetRandom-O-1" class="headerlink" title="Insert Delete GetRandom O(1)"></a>Insert Delete GetRandom O(1)</h2><p><strong>dict+list Version - 80 ms</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> random</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">RandomizedSet</span><span class="params">(object)</span>:</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        Initialize your data structure here.</span></div><div class="line"><span class="string">        """</span></div><div class="line">        self.data = []</div><div class="line">        self.idxs = &#123;&#125;</div><div class="line">        self.cnt = <span class="number">0</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">insert</span><span class="params">(self, val)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        Inserts a value to the set. Returns true if the set did not already contain the specified element.</span></div><div class="line"><span class="string">        :type val: int</span></div><div class="line"><span class="string">        :rtype: bool</span></div><div class="line"><span class="string">        """</span></div><div class="line">        <span class="keyword">if</span> val <span class="keyword">in</span> self.idxs:</div><div class="line">            <span class="keyword">return</span> <span class="keyword">False</span></div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            self.data.append(val)</div><div class="line">            self.idxs[val] = self.cnt</div><div class="line">            self.cnt += <span class="number">1</span></div><div class="line">            <span class="keyword">return</span> <span class="keyword">True</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">remove</span><span class="params">(self, val)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        Removes a value from the set. Returns true if the set contained the specified element.</span></div><div class="line"><span class="string">        :type val: int</span></div><div class="line"><span class="string">        :rtype: bool</span></div><div class="line"><span class="string">        """</span></div><div class="line">        <span class="keyword">if</span> val <span class="keyword">in</span> self.idxs:</div><div class="line">            idx, value = self.idxs[val], self.data[<span class="number">-1</span>]</div><div class="line">            self.idxs[value], self.data[idx] = idx, value</div><div class="line">            self.data.pop()</div><div class="line">            self.idxs.pop(val, <span class="number">0</span>)</div><div class="line">            self.cnt -= <span class="number">1</span></div><div class="line">            <span class="keyword">return</span> <span class="keyword">True</span></div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            <span class="keyword">return</span> <span class="keyword">False</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getRandom</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        Get a random element from the set.</span></div><div class="line"><span class="string">        :rtype: int</span></div><div class="line"><span class="string">        """</span></div><div class="line">        <span class="keyword">return</span> random.choice(self.data)</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment"># Your RandomizedSet object will be instantiated and called as such:</span></div><div class="line"><span class="comment"># obj = RandomizedSet()</span></div><div class="line"><span class="comment"># param_1 = obj.insert(val)</span></div><div class="line"><span class="comment"># param_2 = obj.remove(val)</span></div><div class="line"><span class="comment"># param_3 = obj.getRandom()</span></div></pre></td></tr></table></figure>
-<p><a href="https://leetcode.com/problems/insert-delete-getrandom-o1/description/" target="_blank" rel="external">leet code</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/10/24/leetcode-insert-delete-getrandom-o1/" data-id="cjpx9t6yj002wosqbfhmk9ou3" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
 
     </footer>
   </div>
@@ -341,7 +348,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">十一月 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/10/">十月 2012</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">十一月 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/10/">十月 2012</a></li></ul>
     </div>
   </div>
 
@@ -354,23 +361,23 @@
       <ul>
         
           <li>
+            <a href="/2020/01/06/python-requests-timeout-try-expect/">Python requests 超时 异常捕捉</a>
+          </li>
+        
+          <li>
+            <a href="/2020/01/06/mysql_distinct_count_group_by/">mysql distinct count group by</a>
+          </li>
+        
+          <li>
+            <a href="/2020/01/04/如何在 Flask 中使用 gevent (uWSGI + Gunicorn 版本) /">(no title)</a>
+          </li>
+        
+          <li>
             <a href="/2018/12/21/leetcode-subarray-sum-equals-k/">Subarray Sum Equals K</a>
           </li>
         
           <li>
             <a href="/2018/12/20/leetcode-path-sum-iii/">Path Sum III</a>
-          </li>
-        
-          <li>
-            <a href="/2018/12/19/leetcode-decode-string/">Decode String</a>
-          </li>
-        
-          <li>
-            <a href="/2018/12/18/leetcode-best-time-to-buy-and-sell-stock-with-cooldown/">Best Time to Buy and Sell Stock with Cooldown</a>
-          </li>
-        
-          <li>
-            <a href="/2018/12/17/leetcode-task-scheduler/">Task Scheduler</a>
           </li>
         
       </ul>
@@ -385,7 +392,7 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2018 Krevy Li<br>
+      &copy; 2020 Krevy Li<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>

@@ -64,6 +64,147 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-leetcode-decode-string" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/12/19/leetcode-decode-string/" class="article-date">
+  <time datetime="2018-12-18T23:35:00.000Z" itemprop="datePublished">2018-12-19</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/19/leetcode-decode-string/">Decode String</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Decode-String"><a href="#Decode-String" class="headerlink" title="Decode String"></a>Decode String</h2><p><strong>stack version</strong> - 32ms</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">decodeString</span><span class="params">(self, s)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        :type s: str</span></div><div class="line"><span class="string">        :rtype: str</span></div><div class="line"><span class="string">        """</span></div><div class="line">        stack = []</div><div class="line">        stack.append([<span class="string">""</span>, <span class="number">1</span>])</div><div class="line">        num = <span class="string">""</span></div><div class="line">        <span class="keyword">for</span> ch <span class="keyword">in</span> s:</div><div class="line">            <span class="keyword">if</span> ch.isdigit():</div><div class="line">              num += ch</div><div class="line">            <span class="keyword">elif</span> ch == <span class="string">'['</span>:</div><div class="line">                stack.append([<span class="string">""</span>, int(num)])</div><div class="line">                num = <span class="string">""</span></div><div class="line">            <span class="keyword">elif</span> ch == <span class="string">']'</span>:</div><div class="line">                st, k = stack.pop()</div><div class="line">                stack[<span class="number">-1</span>][<span class="number">0</span>] += st*k</div><div class="line">            <span class="keyword">else</span>:</div><div class="line">                stack[<span class="number">-1</span>][<span class="number">0</span>] += ch</div><div class="line">        <span class="keyword">return</span> stack[<span class="number">0</span>][<span class="number">0</span>]</div></pre></td></tr></table></figure>
+<p><strong>test code</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">In [109]: s = Solution(); t = s.decodeString(<span class="string">"3[a]2[bc]"</span>); <span class="built_in">print</span>(t)</div><div class="line">aaabcbc</div></pre></td></tr></table></figure>
+<p><a href="https://leetcode.com/problems/decode-string/description/" target="_blank" rel="external">leet code</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2018/12/19/leetcode-decode-string/" data-id="ck5cheb9d001vqyqmrslgcqso" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python3/">python3</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-leetcode-best-time-to-buy-and-sell-stock-with-cooldown" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/12/18/leetcode-best-time-to-buy-and-sell-stock-with-cooldown/" class="article-date">
+  <time datetime="2018-12-18T00:37:00.000Z" itemprop="datePublished">2018-12-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/18/leetcode-best-time-to-buy-and-sell-stock-with-cooldown/">Best Time to Buy and Sell Stock with Cooldown</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Best-Time-to-Buy-and-Sell-Stock-with-Cooldown"><a href="#Best-Time-to-Buy-and-Sell-Stock-with-Cooldown" class="headerlink" title="Best Time to Buy and Sell Stock with Cooldown"></a>Best Time to Buy and Sell Stock with Cooldown</h2><p><strong>O(n) version</strong> - 40ms</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">maxProfit</span><span class="params">(self, prices)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        :type prices: List[int]</span></div><div class="line"><span class="string">        :rtype: int</span></div><div class="line"><span class="string">        """</span></div><div class="line">        notHold, notHold_cooldown, hold = <span class="number">0</span>, float(<span class="string">'-inf'</span>), float(<span class="string">'-inf'</span>)</div><div class="line">        <span class="keyword">for</span> p <span class="keyword">in</span> prices:</div><div class="line">            hold, notHold, notHold_cooldown = max(hold, notHold - p), max(notHold, notHold_cooldown), hold + p</div><div class="line">        <span class="keyword">return</span> max(notHold, notHold_cooldown)</div></pre></td></tr></table></figure>
+<p><strong>test code</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">In [103]: s = Solution(); t = s.maxProfit([1,2,3,0,2]); <span class="built_in">print</span>(t)</div><div class="line">3</div></pre></td></tr></table></figure>
+<p><a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/description/" target="_blank" rel="external">leet code</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2018/12/18/leetcode-best-time-to-buy-and-sell-stock-with-cooldown/" data-id="ck5cheb8d000wqyqmx5k6tc0d" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python3/">python3</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-leetcode-task-scheduler" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/12/17/leetcode-task-scheduler/" class="article-date">
+  <time datetime="2018-12-16T23:36:00.000Z" itemprop="datePublished">2018-12-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/17/leetcode-task-scheduler/">Task Scheduler</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Task-Scheduler"><a href="#Task-Scheduler" class="headerlink" title="Task Scheduler"></a>Task Scheduler</h2><p><strong>collections version</strong> - 84ms</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> collections</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">leastInterval</span><span class="params">(self, tasks, n)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        :type tasks: List[str]</span></div><div class="line"><span class="string">        :type n: int</span></div><div class="line"><span class="string">        :rtype: int</span></div><div class="line"><span class="string">        """</span></div><div class="line">        d = collections.Counter(tasks)</div><div class="line">        counts = d.values()</div><div class="line">        longest = max(counts)</div><div class="line">        ans = (longest - <span class="number">1</span>) * (n + <span class="number">1</span>)</div><div class="line">        <span class="keyword">for</span> cnt <span class="keyword">in</span> counts:</div><div class="line">            ans += cnt == longest <span class="keyword">and</span> <span class="number">1</span> <span class="keyword">or</span> <span class="number">0</span></div><div class="line">        <span class="keyword">return</span> max(len(tasks), ans)</div></pre></td></tr></table></figure>
+<p><strong>test code</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">In [98]: s = Solution(); t = s.leastInterval([<span class="string">"A"</span>,<span class="string">"A"</span>,<span class="string">"A"</span>,<span class="string">"B"</span>,<span class="string">"B"</span>,<span class="string">"B"</span>], 2); <span class="built_in">print</span>(t)</div><div class="line">8</div></pre></td></tr></table></figure>
+<p><a href="https://leetcode.com/problems/task-scheduler/description/" target="_blank" rel="external">leet code</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2018/12/17/leetcode-task-scheduler/" data-id="ck5chebcl0061qyqmiknnbyj5" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python3/">python3</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-leetcode-unique-binary-search-trees" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/12/14/leetcode-unique-binary-search-trees/" class="article-date">
@@ -100,7 +241,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/12/14/leetcode-unique-binary-search-trees/" data-id="cjpx9t70h0085osqbec5366no" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2018/12/14/leetcode-unique-binary-search-trees/" data-id="ck5chebcv006aqyqmvez68qnh" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python3/">python3</a></li></ul>
@@ -147,144 +288,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/12/13/leetcode-minimum-path-sum/" data-id="cjpx9t6zj0069osqbxo0cloxa" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python3/">python3</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-leetcode-target-sum" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/12/12/leetcode-target-sum/" class="article-date">
-  <time datetime="2018-12-11T23:23:00.000Z" itemprop="datePublished">2018-12-12</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/12/leetcode-target-sum/">Target Sum</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Target-Sum"><a href="#Target-Sum" class="headerlink" title="Target Sum"></a>Target Sum</h2><p><strong>gap version</strong> - 232ms</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">findTargetSumWays</span><span class="params">(self, nums, S)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        :type nums: List[int]</span></div><div class="line"><span class="string">        :type S: int</span></div><div class="line"><span class="string">        :rtype: int</span></div><div class="line"><span class="string">        """</span></div><div class="line">        count = &#123;<span class="number">0</span>: <span class="number">1</span>&#125;</div><div class="line">        <span class="keyword">for</span> x <span class="keyword">in</span> nums:</div><div class="line">          count2 = &#123;&#125;</div><div class="line">          <span class="keyword">for</span> tmpSum <span class="keyword">in</span> count:</div><div class="line">            <span class="comment"># print(x, tmpSum)</span></div><div class="line">            count2[tmpSum + x] = count2.get(tmpSum + x, <span class="number">0</span>) + count[tmpSum]</div><div class="line">            count2[tmpSum - x] = count2.get(tmpSum - x, <span class="number">0</span>) + count[tmpSum]</div><div class="line">          count = count2</div><div class="line">        <span class="keyword">return</span> count.get(S, <span class="number">0</span>)</div></pre></td></tr></table></figure>
-<p><strong>test code</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">In [57]: s = Solution(); t = s.findTargetSumWays([1,1,1,1,1], 3); <span class="built_in">print</span>(t)</div><div class="line">5</div></pre></td></tr></table></figure>
-<p><a href="https://leetcode.com/problems/target-sum/description/" target="_blank" rel="external">leet code</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/12/12/leetcode-target-sum/" data-id="cjpx9t70d007qosqbmhgbwpm4" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python3/">python3</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-leetcode-combination-sum" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/12/11/leetcode-combination-sum/" class="article-date">
-  <time datetime="2018-12-10T23:36:00.000Z" itemprop="datePublished">2018-12-11</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/11/leetcode-combination-sum/">Combination Sum</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Combination-Sum"><a href="#Combination-Sum" class="headerlink" title="Combination Sum"></a>Combination Sum</h2><p><strong>dfs version</strong> - 112ms</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">combinationSum</span><span class="params">(self, candidates, target)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        :type candidates: List[int]</span></div><div class="line"><span class="string">        :type target: int</span></div><div class="line"><span class="string">        :rtype: List[List[int]]</span></div><div class="line"><span class="string">        """</span></div><div class="line">        res = []</div><div class="line">        candidates.sort()</div><div class="line"></div><div class="line">        <span class="function"><span class="keyword">def</span> <span class="title">dfs</span><span class="params">(target, index, path)</span>:</span></div><div class="line">            <span class="keyword">if</span> target &lt; <span class="number">0</span>:</div><div class="line">                <span class="keyword">return</span></div><div class="line">            <span class="keyword">if</span> target == <span class="number">0</span>:</div><div class="line">                res.append(path)</div><div class="line">                <span class="keyword">return</span></div><div class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(index, len(candidates)):</div><div class="line">                dfs(target - candidates[i], i, path + [candidates[i]])</div><div class="line"></div><div class="line">        dfs(target, <span class="number">0</span>, [])</div><div class="line">        <span class="keyword">return</span> res</div></pre></td></tr></table></figure>
-<p><a href="https://leetcode.com/problems/combination-sum/description/" target="_blank" rel="external">leet code</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/12/11/leetcode-combination-sum/" data-id="cjpx9t6xv0018osqb2qzj8de8" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python3/">python3</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-leetcode-burst-balloons" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/12/10/leetcode-burst-balloons/" class="article-date">
-  <time datetime="2018-12-09T23:56:00.000Z" itemprop="datePublished">2018-12-10</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/10/leetcode-burst-balloons/">Burst Balloons</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Burst-Balloons"><a href="#Burst-Balloons" class="headerlink" title="Burst Balloons"></a>Burst Balloons</h2><p><strong>gap version</strong> - 504ms</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">maxCoins</span><span class="params">(self, nums)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        :type nums: List[int]</span></div><div class="line"><span class="string">        :rtype: int</span></div><div class="line"><span class="string">        """</span></div><div class="line">        nums = [<span class="number">1</span>]+[n <span class="keyword">for</span> n <span class="keyword">in</span> nums <span class="keyword">if</span> n!=<span class="number">0</span>]+[<span class="number">1</span>]</div><div class="line">        regional_max_coins = [[<span class="number">0</span> <span class="keyword">for</span> i <span class="keyword">in</span> range(len(nums))] <span class="keyword">for</span> j <span class="keyword">in</span> range(len(nums))]</div><div class="line">        <span class="keyword">for</span> balloons_to_burst <span class="keyword">in</span> range(<span class="number">1</span>, len(nums)<span class="number">-1</span>): <span class="comment"># number of balloons in (l,r) region</span></div><div class="line">            <span class="keyword">for</span> l <span class="keyword">in</span> range(<span class="number">0</span>, len(nums)-balloons_to_burst<span class="number">-1</span>): <span class="comment"># for m and r to be assigned legally</span></div><div class="line">                r = l+balloons_to_burst+<span class="number">1</span></div><div class="line">                <span class="keyword">for</span> m <span class="keyword">in</span> range(l+<span class="number">1</span>,r):</div><div class="line">                    regional_max_coins[l][r] = max(regional_max_coins[l][r], regional_max_coins[l][m]+regional_max_coins[m][r]+nums[l]*nums[m]*nums[r])</div><div class="line">        <span class="keyword">return</span> regional_max_coins[<span class="number">0</span>][<span class="number">-1</span>]</div></pre></td></tr></table></figure>
-<p><a href="https://leetcode.com/problems/burst-balloons/description/" target="_blank" rel="external">leet code</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/12/10/leetcode-burst-balloons/" data-id="cjpx9t6xy001cosqbsate8hn2" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2018/12/13/leetcode-minimum-path-sum/" data-id="ck5chebck005yqyqm56b04j2q" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python3/">python3</a></li></ul>
@@ -339,7 +343,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">十一月 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/10/">十月 2012</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">十一月 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/10/">十月 2012</a></li></ul>
     </div>
   </div>
 
@@ -352,23 +356,23 @@
       <ul>
         
           <li>
+            <a href="/2020/01/06/python-requests-timeout-try-expect/">Python requests 超时 异常捕捉</a>
+          </li>
+        
+          <li>
+            <a href="/2020/01/06/mysql_distinct_count_group_by/">mysql distinct count group by</a>
+          </li>
+        
+          <li>
+            <a href="/2020/01/04/如何在 Flask 中使用 gevent (uWSGI + Gunicorn 版本) /">(no title)</a>
+          </li>
+        
+          <li>
             <a href="/2018/12/21/leetcode-subarray-sum-equals-k/">Subarray Sum Equals K</a>
           </li>
         
           <li>
             <a href="/2018/12/20/leetcode-path-sum-iii/">Path Sum III</a>
-          </li>
-        
-          <li>
-            <a href="/2018/12/19/leetcode-decode-string/">Decode String</a>
-          </li>
-        
-          <li>
-            <a href="/2018/12/18/leetcode-best-time-to-buy-and-sell-stock-with-cooldown/">Best Time to Buy and Sell Stock with Cooldown</a>
-          </li>
-        
-          <li>
-            <a href="/2018/12/17/leetcode-task-scheduler/">Task Scheduler</a>
           </li>
         
       </ul>
@@ -383,7 +387,7 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2018 Krevy Li<br>
+      &copy; 2020 Krevy Li<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>

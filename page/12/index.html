@@ -64,6 +64,157 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-leetcode-subsets" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/09/13/leetcode-subsets/" class="article-date">
+  <time datetime="2018-09-13T15:39:00.000Z" itemprop="datePublished">2018-09-13</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/13/leetcode-subsets/">Subsets</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Subsets"><a href="#Subsets" class="headerlink" title="Subsets"></a>Subsets</h2><p><strong>Slow Version</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">subsets</span><span class="params">(self, nums)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        :type nums: List[int]</span></div><div class="line"><span class="string">        :rtype: List[List[int]]</span></div><div class="line"><span class="string">        """</span></div><div class="line">        n, res = len(nums), list()</div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> xrange(<span class="number">2</span>**n):</div><div class="line">            res.append(filter(<span class="keyword">lambda</span> x: x <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span>, map(<span class="keyword">lambda</span> x, y: y <span class="keyword">if</span> (int(x) * y <span class="keyword">or</span> y == <span class="number">0</span> <span class="keyword">and</span> int(x) != <span class="number">0</span>) <span class="keyword">else</span></div><div class="line"> <span class="keyword">None</span>, list(bin(i)[<span class="number">2</span>:].zfill(n)), nums)))</div><div class="line">        <span class="keyword">return</span> res</div></pre></td></tr></table></figure>
+<p><strong>BitwiseOperators Version</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">subsets</span><span class="params">(self, nums)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        :type nums: List[int]</span></div><div class="line"><span class="string">        :rtype: List[List[int]]</span></div><div class="line"><span class="string">        """</span></div><div class="line">        res = []</div><div class="line">        nums.sort()</div><div class="line">        STDOUT = <span class="keyword">True</span></div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> xrange(<span class="number">1</span> &lt;&lt; len(nums)):</div><div class="line">            <span class="keyword">if</span> STDOUT: <span class="keyword">print</span> <span class="string">'i ='</span>, i</div><div class="line">            tmp = []</div><div class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> xrange(len(nums)):</div><div class="line">                <span class="keyword">if</span> STDOUT: <span class="keyword">print</span> <span class="string">'&#123;0:03b&#125;'</span>.format(i), <span class="string">'&amp;'</span>, <span class="string">'&#123;0:03b&#125;'</span>.format(<span class="number">1</span> &lt;&lt; j), <span class="string">'-&gt;'</span>, i &amp; <span class="number">1</span> &lt;&lt; j</div><div class="line">                <span class="keyword">if</span> i &amp; <span class="number">1</span> &lt;&lt; j:</div><div class="line">                    <span class="keyword">if</span> STDOUT: <span class="keyword">print</span> <span class="string">'pick'</span>, <span class="string">'&#123;0:03b&#125;'</span>.format(<span class="number">1</span> &lt;&lt; j), nums, <span class="string">'j ='</span>, j, <span class="string">'target'</span>, nums[j]</div><div class="line">                    tmp.append(nums[j])</div><div class="line">            <span class="keyword">if</span> STDOUT: <span class="keyword">print</span> <span class="string">'i = &#123;0:03b&#125;'</span>.format(i), <span class="string">'tmp ='</span>, tmp</div><div class="line">            res.append(tmp)</div><div class="line">        <span class="keyword">return</span> res</div></pre></td></tr></table></figure>
+<p><em>output</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div></pre></td><td class="code"><pre><div class="line">In [748]: s = Solution(); print s.subsets([1, 2, 3])</div><div class="line">i = 0</div><div class="line">000 &amp; 001 -&gt; 0</div><div class="line">000 &amp; 010 -&gt; 0</div><div class="line">000 &amp; 100 -&gt; 0</div><div class="line">i = 000 tmp = []</div><div class="line">i = 1</div><div class="line">001 &amp; 001 -&gt; 1</div><div class="line">pick 001 [1, 2, 3] j = 0 target 1</div><div class="line">001 &amp; 010 -&gt; 0</div><div class="line">001 &amp; 100 -&gt; 0</div><div class="line">i = 001 tmp = [1]</div><div class="line">i = 2</div><div class="line">010 &amp; 001 -&gt; 0</div><div class="line">010 &amp; 010 -&gt; 2</div><div class="line">pick 010 [1, 2, 3] j = 1 target 2</div><div class="line">010 &amp; 100 -&gt; 0</div><div class="line">i = 010 tmp = [2]</div><div class="line">i = 3</div><div class="line">011 &amp; 001 -&gt; 1</div><div class="line">pick 001 [1, 2, 3] j = 0 target 1</div><div class="line">011 &amp; 010 -&gt; 2</div><div class="line">pick 010 [1, 2, 3] j = 1 target 2</div><div class="line">011 &amp; 100 -&gt; 0</div><div class="line">i = 011 tmp = [1, 2]</div><div class="line">i = 4</div><div class="line">100 &amp; 001 -&gt; 0</div><div class="line">100 &amp; 010 -&gt; 0</div><div class="line">100 &amp; 100 -&gt; 4</div><div class="line">pick 100 [1, 2, 3] j = 2 target 3</div><div class="line">i = 100 tmp = [3]</div><div class="line">i = 5</div><div class="line">101 &amp; 001 -&gt; 1</div><div class="line">pick 001 [1, 2, 3] j = 0 target 1</div><div class="line">101 &amp; 010 -&gt; 0</div><div class="line">101 &amp; 100 -&gt; 4</div><div class="line">pick 100 [1, 2, 3] j = 2 target 3</div><div class="line">i = 101 tmp = [1, 3]</div><div class="line">i = 6</div><div class="line">110 &amp; 001 -&gt; 0</div><div class="line">110 &amp; 010 -&gt; 2</div><div class="line">pick 010 [1, 2, 3] j = 1 target 2</div><div class="line">110 &amp; 100 -&gt; 4</div><div class="line">pick 100 [1, 2, 3] j = 2 target 3</div><div class="line">i = 110 tmp = [2, 3]</div><div class="line">i = 7</div><div class="line">111 &amp; 001 -&gt; 1</div><div class="line">pick 001 [1, 2, 3] j = 0 target 1</div><div class="line">111 &amp; 010 -&gt; 2</div><div class="line">pick 010 [1, 2, 3] j = 1 target 2</div><div class="line">111 &amp; 100 -&gt; 4</div><div class="line">pick 100 [1, 2, 3] j = 2 target 3</div><div class="line">i = 111 tmp = [1, 2, 3]</div><div class="line">[[], [1], [2], [1, 2], [3], [1, 3], [2, 3], [1, 2, 3]]</div></pre></td></tr></table></figure>
+<p><a href="https://leetcode.com/problems/subsets/description/" target="_blank" rel="external">leet code</a></p>
+<p><a href="https://wiki.python.org/moin/BitwiseOperators" target="_blank" rel="external">https://wiki.python.org/moin/BitwiseOperators</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2018/09/13/leetcode-subsets/" data-id="ck5chebek009bqyqm2filbgvn" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-leetcode-first-unique-character-in-a-string" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/09/12/leetcode-first-unique-character-in-a-string/" class="article-date">
+  <time datetime="2018-09-12T00:32:00.000Z" itemprop="datePublished">2018-09-12</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/12/leetcode-first-unique-character-in-a-string/">First Unique Character in a String</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="First-Unique-Character-in-a-String"><a href="#First-Unique-Character-in-a-String" class="headerlink" title="First Unique Character in a String"></a>First Unique Character in a String</h2><p><strong>one line version</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">firstUniqChar</span><span class="params">(self, s)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        :type s: str</span></div><div class="line"><span class="string">        :rtype: int</span></div><div class="line"><span class="string">        """</span></div><div class="line">        <span class="keyword">return</span> min([s.find(c) <span class="keyword">for</span> c <span class="keyword">in</span> string.ascii_lowercase <span class="keyword">if</span> s.count(c)==<span class="number">1</span>] <span class="keyword">or</span> [<span class="number">-1</span>])</div></pre></td></tr></table></figure>
+<p><strong>slow version</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> OrderedDict</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">firstUniqChar</span><span class="params">(self, s)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        :type s: str</span></div><div class="line"><span class="string">        :rtype: int</span></div><div class="line"><span class="string">        """</span></div><div class="line">        res = <span class="number">-1</span></div><div class="line">        hash_dict = OrderedDict()</div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(s)):</div><div class="line">            <span class="keyword">if</span> s[i] <span class="keyword">in</span> hash_dict:</div><div class="line">                hash_dict[s[i]] = (hash_dict[s[i]][<span class="number">0</span>] + <span class="number">1</span>, i)</div><div class="line">            <span class="keyword">else</span>:</div><div class="line">                hash_dict[s[i]] = (<span class="number">0</span>, i)</div><div class="line">        <span class="keyword">for</span> v <span class="keyword">in</span> hash_dict.values():</div><div class="line">            <span class="keyword">if</span> v[<span class="number">0</span>] == <span class="number">0</span>:</div><div class="line">                res = v[<span class="number">1</span>]</div><div class="line">        <span class="keyword">return</span> res</div></pre></td></tr></table></figure>
+<p><em>output</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">In [604]: import string</div><div class="line"></div><div class="line">In [605]: s = Solution(); print s.firstUniqChar(&apos;loveleetcode&apos;)</div><div class="line">2</div></pre></td></tr></table></figure>
+<p><a href="https://leetcode.com/problems/first-unique-character-in-a-string/description/" target="_blank" rel="external">leet code</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2018/09/12/leetcode-first-unique-character-in-a-string/" data-id="ck5cheb9x002lqyqm9rm10ybk" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-leetcode-4-sum-ii" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/09/10/leetcode-4-sum-ii/" class="article-date">
+  <time datetime="2018-09-10T00:58:00.000Z" itemprop="datePublished">2018-09-10</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/10/leetcode-4-sum-ii/">4Sum II</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="4Sum-II"><a href="#4Sum-II" class="headerlink" title="4Sum II"></a>4Sum II</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">fourSumCount</span><span class="params">(self, A, B, C, D)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        :type A: List[int]</span></div><div class="line"><span class="string">        :type B: List[int]</span></div><div class="line"><span class="string">        :type C: List[int]</span></div><div class="line"><span class="string">        :type D: List[int]</span></div><div class="line"><span class="string">        :rtype: int</span></div><div class="line"><span class="string">        """</span></div><div class="line">        hashtable = &#123;&#125;</div><div class="line">        <span class="keyword">for</span> a <span class="keyword">in</span> A:</div><div class="line">            <span class="keyword">for</span> b <span class="keyword">in</span> B:</div><div class="line">                <span class="keyword">if</span> a + b <span class="keyword">in</span> hashtable:</div><div class="line">                    hashtable[a + b] += <span class="number">1</span></div><div class="line">                <span class="keyword">else</span>:</div><div class="line">                    hashtable[a + b] = <span class="number">1</span></div><div class="line">        counter = <span class="number">0</span></div><div class="line">        <span class="keyword">for</span> c <span class="keyword">in</span> C:</div><div class="line">            <span class="keyword">for</span> d <span class="keyword">in</span> D:</div><div class="line">                <span class="keyword">if</span> -(c + d) <span class="keyword">in</span> hashtable:</div><div class="line">                    counter += hashtable[-(c + d)]</div><div class="line">        <span class="keyword">return</span> counter</div></pre></td></tr></table></figure>
+<p><strong>collections.Counter version</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">fourSumCount</span><span class="params">(self, A, B, C, D)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        :type A: List[int]</span></div><div class="line"><span class="string">        :type B: List[int]</span></div><div class="line"><span class="string">        :type C: List[int]</span></div><div class="line"><span class="string">        :type D: List[int]</span></div><div class="line"><span class="string">        :rtype: int</span></div><div class="line"><span class="string">        """</span></div><div class="line">        <span class="keyword">import</span> collections</div><div class="line">        AB = collections.Counter(a+b <span class="keyword">for</span> a <span class="keyword">in</span> A <span class="keyword">for</span> b <span class="keyword">in</span> B)</div><div class="line">        <span class="keyword">return</span> sum(AB[-c-d] <span class="keyword">for</span> c <span class="keyword">in</span> C <span class="keyword">for</span> d <span class="keyword">in</span> D)</div></pre></td></tr></table></figure>
+<p><em>output</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">In [490]: A=[1,2]</div><div class="line">     ...: B=[-2,-1]</div><div class="line">     ...: C=[-1,2]</div><div class="line">     ...: D=[0,2]</div><div class="line">     ...:</div><div class="line"></div><div class="line">In [491]: s = Solution(); print s.fourSumCount(A, B, C, D)</div><div class="line">2</div></pre></td></tr></table></figure>
+<p><a href="https://docs.python.org/2/library/collections.html" target="_blank" rel="external">8.3. collections — High-performance container datatypes</a></p>
+<p><a href="http://www.pythoner.com/205.html" target="_blank" rel="external">Python标准库——collections模块的Counter类</a></p>
+<p><a href="http://blog.51cto.com/11026142/1851791" target="_blank" rel="external">Python：使用Counter进行计数统计及collections模块</a></p>
+<p><a href="http://www.zlovezl.cn/articles/collections-in-python/" target="_blank" rel="external">不可不知的Python模块: collections</a></p>
+<p><a href="https://leetcode.com/problems/4sum-ii/description/" target="_blank" rel="external">leet code</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2018/09/10/leetcode-4-sum-ii/" data-id="ck5cheb90001lqyqmh81zms85" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-leetcode-best-time-to-buy-and-sell-stock-ii" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/09/09/leetcode-best-time-to-buy-and-sell-stock-ii/" class="article-date">
@@ -98,7 +249,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/09/09/leetcode-best-time-to-buy-and-sell-stock-ii/" data-id="cjpx9t6xr000yosqboxixg50z" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2018/09/09/leetcode-best-time-to-buy-and-sell-stock-ii/" data-id="ck5cheb8a000tqyqmz6y0yvvu" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
@@ -145,159 +296,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/09/08/leetcode-roman-to-integer/" data-id="cjpx9t6zz0072osqby468j9tt" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-leetcode-permutations" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/09/07/leetcode-permutations/" class="article-date">
-  <time datetime="2018-09-07T01:47:00.000Z" itemprop="datePublished">2018-09-07</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/07/leetcode-permutations/">Permutations</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Permutations-排列"><a href="#Permutations-排列" class="headerlink" title="Permutations 排列"></a>Permutations 排列</h2><h3 id="DFS"><a href="#DFS" class="headerlink" title="DFS"></a>DFS</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">permute</span><span class="params">(self, nums)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        :type nums: List[int]</span></div><div class="line"><span class="string">        :rtype: List[List[int]]</span></div><div class="line"><span class="string">        """</span></div><div class="line">        res = []</div><div class="line">        self.dfs(nums, [], res)</div><div class="line">        <span class="keyword">return</span> res</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">dfs</span><span class="params">(self, nums, path, res)</span>:</span></div><div class="line">        <span class="keyword">print</span> <span class="string">'----------------BEGIN------------------'</span></div><div class="line">        <span class="keyword">print</span> <span class="string">'nums ='</span>, nums</div><div class="line">        <span class="keyword">if</span> <span class="keyword">not</span> nums:</div><div class="line">            res.append(path)</div><div class="line">            <span class="keyword">print</span> <span class="string">'res append ='</span>, res</div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> xrange(len(nums)):</div><div class="line">            <span class="keyword">print</span> <span class="string">'i = %d'</span> % i</div><div class="line">            <span class="keyword">print</span> <span class="string">'nums[:%d] ='</span> % i, nums[:i], <span class="string">'+ nums[%d:] ='</span> % (i + <span class="number">1</span>), nums[i+<span class="number">1</span>:]</div><div class="line">            <span class="keyword">print</span> <span class="string">'path ='</span>, path, <span class="string">'+ nums[%d] ='</span> % i, nums[i]</div><div class="line">            <span class="keyword">print</span> <span class="string">'res ='</span>, res</div><div class="line">            self.dfs(nums[:i] + nums[i+<span class="number">1</span>:], path+[nums[i]], res)</div><div class="line">            <span class="keyword">print</span> <span class="string">'----------------END-----------------\n'</span></div></pre></td></tr></table></figure>
-<p><em>output</em></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line">In [432]: s = Solution(); print s.permute([1, 2])</div><div class="line">----------------BEGIN------------------</div><div class="line">nums = [1, 2]</div><div class="line">i = 0</div><div class="line">nums[:0] = [] + nums[1:] = [2]</div><div class="line">path = [] + nums[0] = 1</div><div class="line">res = []</div><div class="line">----------------BEGIN------------------</div><div class="line">nums = [2]</div><div class="line">i = 0</div><div class="line">nums[:0] = [] + nums[1:] = []</div><div class="line">path = [1] + nums[0] = 2</div><div class="line">res = []</div><div class="line">----------------BEGIN------------------</div><div class="line">nums = []</div><div class="line">res append = [[1, 2]]</div><div class="line">----------------END-----------------</div><div class="line"></div><div class="line">----------------END-----------------</div><div class="line"></div><div class="line">i = 1</div><div class="line">nums[:1] = [1] + nums[2:] = []</div><div class="line">path = [] + nums[1] = 2</div><div class="line">res = [[1, 2]]</div><div class="line">----------------BEGIN------------------</div><div class="line">nums = [1]</div><div class="line">i = 0</div><div class="line">nums[:0] = [] + nums[1:] = []</div><div class="line">path = [2] + nums[0] = 1</div><div class="line">res = [[1, 2]]</div><div class="line">----------------BEGIN------------------</div><div class="line">nums = []</div><div class="line">res append = [[1, 2], [2, 1]]</div><div class="line">----------------END-----------------</div><div class="line"></div><div class="line">----------------END-----------------</div><div class="line"></div><div class="line">[[1, 2], [2, 1]]</div></pre></td></tr></table></figure>
-<h3 id="Recursive-insert-first-number-anywhere"><a href="#Recursive-insert-first-number-anywhere" class="headerlink" title="Recursive, insert first number anywhere"></a>Recursive, insert first number anywhere</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">permute</span><span class="params">(self, nums)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        :type nums: List[int]</span></div><div class="line"><span class="string">        :rtype: List[List[int]]</span></div><div class="line"><span class="string">        """</span></div><div class="line">        res = []</div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(nums)):</div><div class="line">            <span class="keyword">for</span> p <span class="keyword">in</span> self.permute(nums[<span class="number">1</span>:]):</div><div class="line">                res.append(p[:i] + [nums[<span class="number">0</span>]] + p[i:])</div><div class="line">        <span class="keyword">return</span> nums <span class="keyword">and</span> res <span class="keyword">or</span> [[]]</div></pre></td></tr></table></figure>
-<h3 id="Recursive-take-any-number-as-first"><a href="#Recursive-take-any-number-as-first" class="headerlink" title="Recursive, take any number as first"></a>Recursive, take any number as first</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">permute</span><span class="params">(self, nums)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        :type nums: List[int]</span></div><div class="line"><span class="string">        :rtype: List[List[int]]</span></div><div class="line"><span class="string">        """</span></div><div class="line">        res = []</div><div class="line">        <span class="keyword">for</span> i, n <span class="keyword">in</span> enumerate(nums):</div><div class="line">            <span class="keyword">for</span> p <span class="keyword">in</span> self.permute(nums[:i] + nums[i+<span class="number">1</span>:]):</div><div class="line">                res.append([n] + p)</div><div class="line">        <span class="keyword">return</span> res <span class="keyword">or</span> [[]]</div></pre></td></tr></table></figure>
-<h3 id="Reduce-insert-next-number-anywhere"><a href="#Reduce-insert-next-number-anywhere" class="headerlink" title="Reduce, insert next number anywhere"></a>Reduce, insert next number anywhere</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">permute</span><span class="params">(self, nums)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        :type nums: List[int]</span></div><div class="line"><span class="string">        :rtype: List[List[int]]</span></div><div class="line"><span class="string">        """</span></div><div class="line">        <span class="keyword">return</span> reduce(<span class="keyword">lambda</span> P, n: [p[:i] + [n] + p[i:]</div><div class="line">                                <span class="keyword">for</span> p <span class="keyword">in</span> P <span class="keyword">for</span> i <span class="keyword">in</span> range(len(p)+<span class="number">1</span>)],</div><div class="line">                  nums, [[]])</div></pre></td></tr></table></figure>
-<p><a href="https://leetcode.com/problems/permutations/discuss/18241/One-Liners-in-Python" target="_blank" rel="external">One-Liners in Python</a></p>
-<p><a href="https://leetcode.com/problems/permutations/description/" target="_blank" rel="external">leet code</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/09/07/leetcode-permutations/" data-id="cjpx9t6zw006wosqbu10bf41g" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-leetcode-generate-parentheses" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/09/06/leetcode-generate-parentheses/" class="article-date">
-  <time datetime="2018-09-06T00:17:00.000Z" itemprop="datePublished">2018-09-06</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/06/leetcode-generate-parentheses/">Generate Parentheses</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Generate-Parentheses"><a href="#Generate-Parentheses" class="headerlink" title="Generate Parentheses"></a>Generate Parentheses</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">generateParenthesis</span><span class="params">(self, n, open=<span class="number">0</span>)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        :type n: int</span></div><div class="line"><span class="string">        :rtype: List[str]</span></div><div class="line"><span class="string">        """</span></div><div class="line">        <span class="keyword">if</span> n == <span class="number">0</span>: <span class="keyword">return</span> [<span class="string">')'</span>*open]</div><div class="line">        <span class="keyword">if</span> open == <span class="number">0</span>:</div><div class="line">            <span class="keyword">return</span> [<span class="string">'('</span> + x <span class="keyword">for</span> x <span class="keyword">in</span> self.generateParenthesis(n - <span class="number">1</span>, <span class="number">1</span>)]</div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            <span class="keyword">return</span> [<span class="string">')'</span> + x <span class="keyword">for</span> x <span class="keyword">in</span> self.generateParenthesis(n, open - <span class="number">1</span>)] + [<span class="string">'('</span> + x <span class="keyword">for</span> x <span class="keyword">in</span> self.generateParenthesis(n - <span class="number">1</span>, open + <span class="number">1</span>)]</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">example for n = 2</div><div class="line"></div><div class="line">else left branch:</div><div class="line">( -&gt; () -&gt; ()( -&gt; ()()</div><div class="line"></div><div class="line">else right branch:</div><div class="line">( -&gt; (( -&gt; (())</div></pre></td></tr></table></figure>
-<p><a href="https://leetcode.com/problems/generate-parentheses/description/" target="_blank" rel="external">leet code</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/09/06/leetcode-generate-parentheses/" data-id="cjpx9t6ye002gosqb0w3tfqvs" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-leetcode-top-k-frequent-elements" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/09/04/leetcode-top-k-frequent-elements/" class="article-date">
-  <time datetime="2018-09-04T01:03:00.000Z" itemprop="datePublished">2018-09-04</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/04/leetcode-top-k-frequent-elements/">Top K Frequent Elements</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Top-K-Frequent-Elements"><a href="#Top-K-Frequent-Elements" class="headerlink" title="Top K Frequent Elements"></a>Top K Frequent Elements</h2><ul>
-<li><p>You may assume k is always valid, 1 ≤ k ≤ number of unique elements.</p>
-</li>
-<li><p>Your algorithm’s time complexity must be better than O(n log n), where n is the array’s size.</p>
-</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">topKFrequent</span><span class="params">(self, nums, k)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        :type nums: List[int]</span></div><div class="line"><span class="string">        :type k: int</span></div><div class="line"><span class="string">        :rtype: List[int]</span></div><div class="line"><span class="string">        """</span></div><div class="line">        ret = &#123;&#125;</div><div class="line">        res = []</div><div class="line">        <span class="keyword">for</span> x <span class="keyword">in</span> nums:  <span class="comment"># O(n)</span></div><div class="line">            <span class="keyword">if</span> x <span class="keyword">not</span> <span class="keyword">in</span> ret:</div><div class="line">                ret[x] = <span class="number">1</span></div><div class="line">            <span class="keyword">else</span>:</div><div class="line">                ret[x] += <span class="number">1</span></div><div class="line">        <span class="keyword">for</span> key, value <span class="keyword">in</span> sorted(ret.iteritems(), key=<span class="keyword">lambda</span> (k,v): (v,k), reverse=<span class="keyword">True</span>)[:k]:  <span class="comment"># O(n log n)</span></div><div class="line">            res.append(key)</div><div class="line">        <span class="keyword">return</span> res</div></pre></td></tr></table></figure>
-<p>O(n) + O(n log n) = O(n log n)</p>
-<p><strong>result</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">In [221]: nums = [1,1,1,2,2,3]</div><div class="line"></div><div class="line">In [222]: k = 2</div><div class="line"></div><div class="line">In [241]: s = Solution()</div><div class="line"></div><div class="line">In [242]: s.topKFrequent(nums, k)</div><div class="line">Out[242]: [1, 2]</div></pre></td></tr></table></figure>
-<p><a href="https://www.saltycrane.com/blog/2007/09/how-to-sort-python-dictionary-by-keys/" target="_blank" rel="external">How to sort a Python dict (dictionary) by keys or values</a></p>
-<p><a href="https://www.cnblogs.com/hellcat/p/8571974.html" target="_blank" rel="external">『Python CoolBook：heapq』数据结构和算法_heapq堆队列算法&amp;容器排序</a></p>
-<p><a href="https://www.coder4.com/archives/3844" target="_blank" rel="external">Python使用heapq实现小顶堆（TopK大）、大顶堆（BtmK小）</a></p>
-<p><a href="https://rookiefly.cn/detail/225" target="_blank" rel="external">使用heapq构建最小堆和最大堆</a></p>
-<p><a href="https://leetcode.com/problems/top-k-frequent-elements/description/" target="_blank" rel="external">leet code</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/09/04/leetcode-top-k-frequent-elements/" data-id="cjpx9t70g0082osqbsmdihymr" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2018/09/08/leetcode-roman-to-integer/" data-id="ck5chebc60057qyqmy7u9jzo6" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
@@ -352,7 +351,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">十一月 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/10/">十月 2012</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">十一月 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/10/">十月 2012</a></li></ul>
     </div>
   </div>
 
@@ -365,23 +364,23 @@
       <ul>
         
           <li>
+            <a href="/2020/01/06/python-requests-timeout-try-expect/">Python requests 超时 异常捕捉</a>
+          </li>
+        
+          <li>
+            <a href="/2020/01/06/mysql_distinct_count_group_by/">mysql distinct count group by</a>
+          </li>
+        
+          <li>
+            <a href="/2020/01/04/如何在 Flask 中使用 gevent (uWSGI + Gunicorn 版本) /">(no title)</a>
+          </li>
+        
+          <li>
             <a href="/2018/12/21/leetcode-subarray-sum-equals-k/">Subarray Sum Equals K</a>
           </li>
         
           <li>
             <a href="/2018/12/20/leetcode-path-sum-iii/">Path Sum III</a>
-          </li>
-        
-          <li>
-            <a href="/2018/12/19/leetcode-decode-string/">Decode String</a>
-          </li>
-        
-          <li>
-            <a href="/2018/12/18/leetcode-best-time-to-buy-and-sell-stock-with-cooldown/">Best Time to Buy and Sell Stock with Cooldown</a>
-          </li>
-        
-          <li>
-            <a href="/2018/12/17/leetcode-task-scheduler/">Task Scheduler</a>
           </li>
         
       </ul>
@@ -396,7 +395,7 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2018 Krevy Li<br>
+      &copy; 2020 Krevy Li<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>

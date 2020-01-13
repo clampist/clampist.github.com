@@ -64,6 +64,381 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-python-requests-timeout-try-expect" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/01/06/python-requests-timeout-try-expect/" class="article-date">
+  <time datetime="2020-01-06T13:49:00.000Z" itemprop="datePublished">2020-01-06</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/python/">python</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/01/06/python-requests-timeout-try-expect/">Python requests 超时 异常捕捉</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="requests-request-超时异常捕捉"><a href="#requests-request-超时异常捕捉" class="headerlink" title="requests.request 超时异常捕捉"></a>requests.request 超时异常捕捉</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">response = requests.request(</div><div class="line">                        method,</div><div class="line">                        url,</div><div class="line">                        data,</div><div class="line">                        headers,</div><div class="line">                        (connect_timeout, read_timeout)</div><div class="line">                    )</div></pre></td></tr></table></figure>
+<p>requests.request 请求超时时，可能抛出多层异常</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">Traceback (most recent call last):</div><div class="line">...</div><div class="line">socket.timeout: timed out</div><div class="line"></div><div class="line">During handling of the above exception, another exception occurred:</div><div class="line"></div><div class="line">Traceback (most recent call last):</div><div class="line">...</div><div class="line">urllib3.exceptions.ReadTimeoutError: HTTPConnectionPool(host=&apos;xxx&apos;, port=80): Read timed out. (read timeout=3)</div><div class="line"></div><div class="line">During handling of the above exception, another exception occurred:</div><div class="line"></div><div class="line">Traceback (most recent call last):</div><div class="line">...</div><div class="line">requests.exceptions.ReadTimeout: HTTPConnectionPool(host=&apos;xxx&apos;, port=80): Read timed out. (read timeout=3)</div></pre></td></tr></table></figure>
+<p>异常不用捕获多个，如 <code>urllib3.exceptions.ReadTimeoutError</code> <code>requests.exceptions.ReadTimeout</code>，只要捕获 <code>requests.exceptions.Timeout</code> 即可</p>
+<p>带重试的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">def request_with_retry(url, payload, method=&apos;POST&apos;, timeout=(1, 3), retry_times=3):</div><div class="line">    resp = None</div><div class="line">    cnt = 0</div><div class="line">    while cnt &lt; retry_times:</div><div class="line">        try:</div><div class="line">            if method in (&apos;get&apos;, &apos;GET&apos;):</div><div class="line">                response = requests.request(</div><div class="line">                    method,</div><div class="line">                    url,</div><div class="line">                    timeout=timeout,</div><div class="line">                )</div><div class="line">            elif method in (&apos;post&apos;, &apos;POST&apos;):</div><div class="line">                response = requests.request(</div><div class="line">                    method,</div><div class="line">                    url,</div><div class="line">                    data=payload,</div><div class="line">                    timeout=timeout,</div><div class="line">                )</div><div class="line">            else:</div><div class="line">                raise Exception(&apos;Unsupported request method: &#123;&#125;&apos;.format(method))</div><div class="line">            resp = response.json()</div><div class="line"></div><div class="line">            break</div><div class="line">        # 只捕捉 超时异常，其他异常如 json 解析失败等往外抛</div><div class="line">        except requests.exceptions.Timeout as e:</div><div class="line">            logger.error(e)</div><div class="line">            if retry_times - 1 == cnt:</div><div class="line">                raise Exception(&apos;接口 &#123;&#125; 请求超时 &#123;&#125; &#123;&#125; 次&apos;.format(url, timeout, retry_times))</div><div class="line">        cnt += 1</div><div class="line"></div><div class="line">    return resp</div></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2020/01/06/python-requests-timeout-try-expect/" data-id="ck5chebdz0081qyqmpoo266sj" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-mysql_distinct_count_group_by" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/01/06/mysql_distinct_count_group_by/" class="article-date">
+  <time datetime="2020-01-06T13:42:00.000Z" itemprop="datePublished">2020-01-06</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/mysql/">mysql</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/01/06/mysql_distinct_count_group_by/">mysql distinct count group by</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>count distinct 的字段</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SELECT COUNT(DISTINCT productId) <span class="keyword">from</span> table_name WHERE keyword=<span class="string">'$keyword'</span></div></pre></td></tr></table></figure>
+<p>(Using DISTINCT and COUNT together in a MySQL Queryy)[<a href="https://stackoverflow.com/questions/1002349/using-distinct-and-count-together-in-a-mysql-query/17887836" target="_blank" rel="external">https://stackoverflow.com/questions/1002349/using-distinct-and-count-together-in-a-mysql-query/17887836</a>]</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2020/01/06/mysql_distinct_count_group_by/" data-id="ck5chebda0075qyqmfmwcmpau" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-如何在 Flask 中使用 gevent (uWSGI + Gunicorn 版本) " class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/01/04/如何在 Flask 中使用 gevent (uWSGI + Gunicorn 版本) /" class="article-date">
+  <time datetime="2020-01-04T14:48:26.750Z" itemprop="datePublished">2020-01-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>How to use Flask with gevent (uWSGI and Gunicorn editions)</p>
+<p>如何在 Flask 中使用 gevent (uWSGI + Gunicorn 版本)</p>
+<p>December 27, 2019 at 12:00 AM Asynchronous I/O</p>
+<p>2019/12/27 12:00 异步 IO</p>
+<p>Disclaimer: I wrote this tutorial because gevent saved our project a few years ago and I still see steady gevent-related search traffic on my blog. So, the way gevent helped us may be useful for somebody else as well. Since I still have some handy knowledge I decided to make this note on how to set up things. However, I’d not advise starting a new project in 2020 using this technology. IMHO, it’s aging and losing the traction.</p>
+<p>免责声明：我当时写这篇教程是因为几年前 gevent 拯救了我们的项目，并且在我的博客上仍能看到有关 gevent 的稳定搜索流量。所以 gevent 帮助我们的方式可能对其他人也有用，因此我决定来记录下其实用的设置。然而，我不建议在2020年有新项目还使用这项技术，依本人愚见，它正在老化，失去了吸引力。</p>
+<p>TL;DR: check out code samples on GitHub.</p>
+<p>太长不看：在 Github 上查看代码示例</p>
+<p>Python is booming and Flask is a pretty popular web-framework nowadays. Probably, quite some new projects are being started in Flask. But people should be aware, it’s synchronous by design and ASGI is not a thing yet. So, if someday you realize that your project really needs asynchronous I/O but you already have a considerable codebase on top of Flask, this tutorial is for you. The charming gevent library will enable you to keep using Flask while start benefiting from all the I/O being asynchronous. In the tutorial we will see:</p>
+<p>如今 Python 爆炸式增长，Flask 作为一个相当受欢迎的 Web 框架，或许，许多新项目都采用了 Flask。但是人们应该知晓，同步设计和 ASGI 还不成气候。因此如果某天你意识到你的项目确实需要异步 I/O，并且你已经在 Flask 有最多的代码基准，看这篇教程就对了。明星库 gevent 将让你在持续使用Flask时从全异步 I/O 受益。在这篇教程中可以看到：</p>
+<ul>
+<li>How to monkey patch a Flask app to make it asynchronous w/o changing its code.</li>
+<li>How to run the patched application using gevent.pywsgi application server.</li>
+<li>How to run the patched application using Gunicorn application server.</li>
+<li>How to run the patched application using uWSGI application server.</li>
+<li>How to configure Nginx proxy in front of the application server.</li>
+<li><p>[Bonus] How to use psycopg2 with psycogreen to make PostgreSQL access non-blocking.</p>
+</li>
+<li><p>如何修改代码给 Flask 应用打 猴子补丁 来让它支持异步 I/O</p>
+</li>
+<li>如何运行打过补丁使用 gevent.pywsgi 应用服务器的应用</li>
+<li>如何运行打过补丁使用 Gunicorn 应用服务器的应用</li>
+<li>如何运行打过补丁使用 uWSGI 应用服务器的应用</li>
+<li>如何配置应用服务器前的 Nginx 代理</li>
+<li>[福利] 如何将 psycopg2 与 psycogreen 一起使用，来非阻塞访问 PostgreSQL</li>
+</ul>
+<h1 id="1-When-do-I-need-asynchronous-I-O"><a href="#1-When-do-I-need-asynchronous-I-O" class="headerlink" title="1. When do I need asynchronous I/O"></a>1. When do I need asynchronous I/O</h1><p>The answer is somewhat naive - you need it when the application’s workload is I/O bound, i.e. it maxes out on latency SLI due to over-communicating to external services. It’s a pretty common situation nowadays due to the enormous spread of microservice architectures and various 3rd-party APIs. If an average HTTP handler in your application needs to make 10+ network requests to build a response, it’s highly likely that you will benefit from asynchronous I/O. On the other hand, if your application consumes 100% of CPU or RAM handling requests, migrating to asynchronous I/O probably will not help.</p>
+<h1 id="1-什么时候需求异步-I-O"><a href="#1-什么时候需求异步-I-O" class="headerlink" title="1. 什么时候需求异步 I/O"></a>1. 什么时候需求异步 I/O</h1><p>答案有些幼稚 — 当应用的工作负载受 I/O 限制时就需要它，即由于与外部服务的过度通信，它最大程度地增加了延迟 SLI (service level indicators，即服务水平指标)。由于微服务架构和各种第三方API的广泛传播，如今这是一种非常普遍的情况。如果你的应用中平均每个 HTTP Handler 需要调用 10 次以上的网络请求来生成响应，那么你就很有可能将从异步 I/O 中受益。换句话说，如果你的应用消耗 100％ 的 CPU 或 RAM 来处理请求，那么迁移到异步 I/O 可能无济于事。</p>
+<h1 id="2-What-is-gevent"><a href="#2-What-is-gevent" class="headerlink" title="2. What is gevent"></a>2. What is gevent</h1><h1 id="2-gevent-是什么"><a href="#2-gevent-是什么" class="headerlink" title="2. gevent 是什么"></a>2. gevent 是什么</h1><p>From the official site description:</p>
+<p>来自官方站点的描述：</p>
+<p>gevent is a coroutine-based Python networking library that uses greenlet to provide a high-level synchronous API on top of the libev or libuv event loop.</p>
+<p>gevent 是一个基于协程的 Python 网络库，它使用 greenlet 在 libev 或 libuv 事件循环的顶层提供高级同步 API。</p>
+<p>The description is rather obscure for those who are unfamiliar with the mentioned dependencies like greenlet, libev, or libuv. You can check out my previous attempt to briefly explain the nature of this library, but among other things it allows you to monkey patch normal-looking Python code and make the underlying I/O happening asynchronously. The patching introduces what’s called cooperative multitasking into the Python standard library and some 3rd-party modules but the change stays almost completely hidden from the application and the existing code keeps its synchronous-alike outlook while gains the ability to serve requests asynchronously. There is an obvious downside of this approach - the patching doesn’t change the way every single HTTP request is being served, i.e. the I/O within each HTTP handler still happens sequentially, even though it becomes asynchronous. Well, we can start using something similar to asyncio.gather() and parallelize some requests to external resources, but it would require the modification of the existing application code. However, now we can easily scale up the limit of concurrent HTTP requests for our application. After the patching, we don’t need a dedicated thread (or process) per request anymore. Instead, each request handling now happens in a lightweight green thread. Thus, the application can serve tens of thousands of concurrent requests, probably increasing this number by 1-2 orders of magnitude from the previous limit.</p>
+<p>对于那些不熟悉所提及依赖项（例如greenlet，libev或libuv）的人来说，这个描述是相当晦涩的。你可以查看我先前的简要解释，但除此之外，通过打 猴子补丁 能让看上去很普通的 Python 代码在底层实现异步 I/O。补丁程序 将所谓的协作式多任务处理引入了 Python 标准库和一些第三方模块中，但是几乎完全隐藏应用程序中的改动，现有代码保持类似同步的外观，同时具有异步处理请求的能力。这种方法有一个明显的缺点 — 补丁不会改变每个 HTTP 请求被提供服务的方式，即每个 HTTP Handler 中的 I/O 仍然是顺序执行，即使它变成了异步。好了，我们可以开始使用类似于 asyncio.gather() 的东西，并将一些请求并行化到外部资源，但这将需要修改现有的应用程序代码。然而，现在我们可以轻松扩展应用的 HTTP 并发请求的限制。打完补丁后，我们不再需要每个请求一个专用线程（或进程）。相反，现在每个请求处理都在轻量级绿色线程中进行。因此，该应用程序可以处理成千上万的并发请求，可能让并发数限制比之前增加1-2个数量级。</p>
+<p>However, while the description sounds extremely promising (at least to me), the project and the surrounding eco-system is steadily losing traction (in favor of asyncio and aiohttp?):</p>
+<p>但是，尽管这个描述听起来非常有前途（至少对我来说），但是这个项目和它周围的生态系统正在逐渐失去吸引力（赞成使用 asyncio 和 aiohttp？）：</p>
+<p><img src="https://iximiuz.com/flask-gevent-tutorial/gevent-vs-asyncio-google-trends.png" alt="gevent vs asyncio google trends"></p>
+<h1 id="3-Create-simple-Flask-application"><a href="#3-Create-simple-Flask-application" class="headerlink" title="3. Create simple Flask application"></a>3. Create simple Flask application</h1><h1 id="3-创建-Flask-单应用"><a href="#3-创建-Flask-单应用" class="headerlink" title="3. 创建 Flask 单应用"></a>3. 创建 Flask 单应用</h1><p>The standard tutorial format always seemed boring to me. Instead, we will try to make a tiny playground here. We will try to create a simple Flask application dependant on a sleepy 3rd party API endpoint. The only route of our application will be responding with some hard-coded string concatenated with the API response text. Having such a workload, we will play with different methods of achieving high concurrency in the Flask’s handling of HTTP requests.</p>
+<p>对我来说格式化的标准教程总是很无聊。相反，我们将尝试在此建立一个小型游乐场。我们将尝试创建一个基于第三方 API 端点的简单 Flask 睡眠应用。我们应用的唯一途径是将 API 响应文本与硬编码字符串连接起来作为响应。基于此，我们将使用不同的方法来实现 Flask 处理 HTTP 请求的高并发性。</p>
+<p>First, we need to emulate a slow 3rd party API. We will use aiohttp to implement it because it’s based on the asyncio library and provides high concurrency for I/O-bound HTTP requests handling out of the box:</p>
+<p>首先，我们需要模拟一个慢的第三方 API。我们将使用 aiohttp 来实现它，因为它基于asyncio库，并且开箱即用地为 I/O 绑定 HTTP请求 提供了高并发性：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"># ./slow_api/api.py</div><div class="line">import os</div><div class="line">import asyncio</div><div class="line">from aiohttp import web</div><div class="line"></div><div class="line">async def handle(request):</div><div class="line">    delay = float(request.query.get(&apos;delay&apos;) or 1)</div><div class="line">    await asyncio.sleep(delay)</div><div class="line">    return web.Response(text=&apos;slow api response&apos;)</div><div class="line"></div><div class="line">app = web.Application()</div><div class="line">app.add_routes([web.get(&apos;/&apos;, handle)])</div><div class="line"></div><div class="line">if __name__ == &apos;__main__&apos;:</div><div class="line">    web.run_app(app, port=os.environ[&apos;PORT&apos;])</div></pre></td></tr></table></figure>
+<p>We can launch it in the following Docker container:</p>
+<p>我们可以在以下 Docker 容器中启动它：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"># ./slow_api/Dockerfile</div><div class="line">FROM python:3.8</div><div class="line"></div><div class="line">RUN pip install aiohttp</div><div class="line"></div><div class="line">COPY api.py /api.py</div><div class="line"></div><div class="line">CMD [&quot;python&quot;, &quot;/api.py&quot;]</div></pre></td></tr></table></figure>
+<p>Now, it’s time to create the target Flask application:</p>
+<p>现在，是时候创建目标 Flask 应用了：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line"># ./flask_app/app.py</div><div class="line">import os</div><div class="line">import requests</div><div class="line">from flask import Flask, request</div><div class="line"></div><div class="line">api_port = os.environ[&apos;PORT_API&apos;]</div><div class="line">api_url = f&apos;http://slow_api:&#123;api_port&#125;/&apos;</div><div class="line"></div><div class="line">app = Flask(__name__)</div><div class="line"></div><div class="line">@app.route(&apos;/&apos;)</div><div class="line">def index():</div><div class="line">    delay = float(request.args.get(&apos;delay&apos;) or 1)</div><div class="line">    resp = requests.get(f&apos;&#123;api_url&#125;?delay=&#123;delay&#125;&apos;)</div><div class="line">    return &apos;Hi there! &apos; + resp.text</div><div class="line">```    </div><div class="line"></div><div class="line">As promised, it&apos;s fairly simple.</div><div class="line"></div><div class="line">如所承诺的，这非常简单。</div><div class="line"></div><div class="line"># 4. Deploy Flask application using Flask dev server</div><div class="line"></div><div class="line"># 4. 使用 Flask 开发服务器部署 Flask 应用</div><div class="line"></div><div class="line">The easiest way to run a Flask application is to use a built-in development server. But even this beast supports two modes of request handling.</div><div class="line"></div><div class="line">运行 Flask 应用程序的最简单方法是使用内置的开发服务器。 但是，即使这种最原始的方式也支持两种请求处理模式。</div><div class="line"></div><div class="line">In the single-threaded mode, a Flask application can handle no more than one HTTP request at a time. I.e. the request handling becomes sequential.</div><div class="line"></div><div class="line">在单线程模式下，Flask 应用程序一次只能处理一个 HTTP 请求。 即请求处理是顺序的。</div><div class="line"></div><div class="line">Experience 🤦</div><div class="line">In the multi-threaded mode, Flask spawns a thread for every incoming HTTP request. The maximal concurrency, i.e. the highest possible number of simultaneous threads doesn&apos;t seem configurable though.</div><div class="line"></div><div class="line">体验🤦</div><div class="line">在多线程模式下，Flask 为每个传入的 HTTP 请求生成一个线程。 不过，最大并发性（即并发线程的最大数量）似乎是不可配置的。</div><div class="line"></div><div class="line">We will use the following Dockerfile to run the Flask dev server:</div><div class="line"></div><div class="line">我们将使用以下 Dockerfile 运行 Flask 开发服务器：</div></pre></td></tr></table></figure>
+<h1 id="flask-app-Dockerfile-devserver"><a href="#flask-app-Dockerfile-devserver" class="headerlink" title="./flask_app/Dockerfile-devserver"></a>./flask_app/Dockerfile-devserver</h1><p>FROM python:3.8</p>
+<p>RUN pip install Flask requests</p>
+<p>COPY app.py /app.py</p>
+<p>ENV FLASK_APP=app</p>
+<p>CMD flask run –no-reload \<br>  –$THREADS-threads \<br>  –host 0.0.0.0 –port $PORT_APP<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">  </div><div class="line">Let&apos;s spin up the first playground using handy Docker Compose:</div><div class="line"></div><div class="line">让我们使用方便的 Docker Compose 打造第一个游乐场：</div></pre></td></tr></table></figure></p>
+<h1 id="sync-devserver-yml"><a href="#sync-devserver-yml" class="headerlink" title="./sync-devserver.yml"></a>./sync-devserver.yml</h1><p>version: “3.7”<br>services:<br>  flask_app:<br>    init: true<br>    build:<br>      context: ./flask_app<br>      dockerfile: Dockerfile-devserver<br>    environment:</p>
+<pre><code>  - PORT_APP=3000
+  - PORT_API=4000
+  - THREADS=without
+ports:
+  - &quot;127.0.0.1:3000:3000&quot;
+depends_on:
+  - slow_api
+</code></pre><p>  flask_app_threaded: # extends: flask_app<br>    init: true<br>    build:<br>      context: ./flask_app<br>      dockerfile: Dockerfile-devserver<br>    environment:</p>
+<pre><code>  - PORT_APP=3001
+  - PORT_API=4000
+  - THREADS=with
+ports:
+  - &quot;127.0.0.1:3001:3001&quot;
+depends_on:
+  - slow_api
+</code></pre><p>  slow_api:<br>    init: true<br>    build: ./slow_api<br>    environment:</p>
+<pre><code>  - PORT=4000
+expose:
+  - &quot;4000&quot;
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">After running docker-compose build and docker-compose up we will have two instances of our application running. The single-threaded version is bound to the host&apos;s 127.0.0.1:3000, the multi-threaded - to 127.0.0.1:3001.</div><div class="line"></div><div class="line">在运行 docker-compose build 和 docker-compose up 之后，我们的应用将有两个实例在运行。单线程版本绑定在 127.0.0.1:3000，多线程绑定在 127.0.0.1:3001。</div></pre></td></tr></table></figure>
+<h1 id="Build-and-start-app-served-by-Flask-dev-server"><a href="#Build-and-start-app-served-by-Flask-dev-server" class="headerlink" title="Build and start app served by Flask dev server"></a>Build and start app served by Flask dev server</h1><p>$ docker-compose -f sync-devserver.yml build<br>$ docker-compose -f sync-devserver.yml up<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">It&apos;s time to serve the first portion of HTTP requests (using lovely ApacheBench). We will start from the single-threaded version and only 10 requests:</div><div class="line"></div><div class="line">现在该为 HTTP 第一部分的请求提供服务了（使用可爱的ApacheBench）。我们将从单线程版本开始，只有10个请求：</div></pre></td></tr></table></figure></p>
+<h1 id="Test-single-threaded-deployment"><a href="#Test-single-threaded-deployment" class="headerlink" title="Test single-threaded deployment"></a>Test single-threaded deployment</h1><p>$ ab -r -n 10 -c 5 <a href="http://127.0.0.1:3000/?delay=1" target="_blank" rel="external">http://127.0.0.1:3000/?delay=1</a></p>
+<blockquote>
+<p>Concurrency Level:      5<br>Time taken for tests:   10.139 seconds<br>Complete requests:      10<br>Failed requests:        0<br>Requests per second:    0.99 [#/sec] (mean)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">As expected, we observed no concurrency. Even though we asked ab to simulate 5 simultaneous clients using -c 5, it took ~10 seconds to finish the scenario with an effective request rate close to 1 per second.</div><div class="line"></div><div class="line">如预期的那样，我们没有发现并发。 即使我们使用ab -c 5 模拟 5 个并发客户端，但它还是花费了大约 10 秒钟才以 1秒1个 的效率完成该场景。</div><div class="line"></div><div class="line">If you execute top -H in the server container to check the number of running threads, the picture will be similar to this:</div><div class="line"></div><div class="line">如果在服务器容器中执行top -H来检查正在运行的线程数，则图片将类似于以下内容：</div><div class="line"></div><div class="line">![deploy-devserver](https://iximiuz.com/flask-gevent-tutorial/deploy-devserver.png)</div><div class="line"></div><div class="line">`docker exec -it flask-gevent-tutorial_flask_app_1 top -H`</div><div class="line"></div><div class="line">Let&apos;s proceed to the multi-threaded version alongside with increasing the payload up to 2000 requests being produced by 200 simultaneous clients:</div><div class="line"></div><div class="line">让我们继续进行多线程版本，同时将有效负载增加到200个并发客户端，并产生的2000个请求：</div></pre></td></tr></table></figure></p>
+</blockquote>
+<h1 id="Test-multi-threaded-deployment"><a href="#Test-multi-threaded-deployment" class="headerlink" title="Test multi-threaded deployment"></a>Test multi-threaded deployment</h1><p>$ ab -r -n 2000 -c 200 <a href="http://127.0.0.1:3001/?delay=1" target="_blank" rel="external">http://127.0.0.1:3001/?delay=1</a></p>
+<blockquote>
+<p>Concurrency Level:      200<br>Time taken for tests:   16.040 seconds<br>Complete requests:      2000<br>Failed requests:        0<br>Requests per second:    124.69 [#/sec] (mean)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">The effective concurrency grew to the mean of 124 requests per second, but a sample from top -H shows, that at some point of time we had 192 threads and 190 of them were sleeping:</div><div class="line"></div><div class="line">有效并发增长到平均每秒124个请求，但是top -H的样本显示，在某个时间点，我们有192个线程，其中190个正在休眠：</div><div class="line"></div><div class="line">![deploy-devserver-threaded](https://iximiuz.com/flask-gevent-tutorial/deploy-devserver-threaded.png)</div><div class="line"></div><div class="line">`docker exec -it flask-gevent-tutorial_flask_app_threaded_1 top -H`</div><div class="line"></div><div class="line"># 5. Deploy Flask application using gevent.pywsgi</div><div class="line"></div><div class="line"># 5. 使用 gevent.pywsgi 部署 Flask 应用</div><div class="line"></div><div class="line">The fastest way to unleash the power of gevent is to use its built-in WSGI-server called gevent.pywsgi.</div><div class="line"></div><div class="line">释放 gevent 威力的最快方法是使用其内置的 WSGI 服务器 gevent.pywsgi。</div><div class="line"></div><div class="line">We need to create an entrypoint:</div><div class="line"></div><div class="line">我们需要创建一个入口：</div></pre></td></tr></table></figure></p>
+</blockquote>
+<h1 id="flask-app-pywsgi-py"><a href="#flask-app-pywsgi-py" class="headerlink" title="./flask_app/pywsgi.py"></a>./flask_app/pywsgi.py</h1><p>from gevent import monkey<br>monkey.patch_all()</p>
+<p>import os<br>from gevent.pywsgi import WSGIServer<br>from app import app</p>
+<p>http_server = WSGIServer((‘0.0.0.0’, int(os.environ[‘PORT_APP’])), app)<br>http_server.serve_forever()<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">Notice, how it patches our Flask application. Without monkey.patch_all() there would be no benefit from using gevent here because all the I/O in the application stayed synchronous.</div><div class="line"></div><div class="line">注意，它是如何给我们的 Flask 应用打补丁的。 如果没有 monkey.patch_all()，在这里使用gevent将无济于事，因为应用中的所有 I/O 仍然是同步的。</div><div class="line"></div><div class="line">The following Dockerfile can be used to run the pywsgi server:</div><div class="line"></div><div class="line">以下 Dockerfile 可用于运行 pywsgi 服务器：</div></pre></td></tr></table></figure></p>
+<h1 id="flask-app-Dockerfile-gevent-pywsgi"><a href="#flask-app-Dockerfile-gevent-pywsgi" class="headerlink" title="./flask_app/Dockerfile-gevent-pywsgi"></a>./flask_app/Dockerfile-gevent-pywsgi</h1><p>FROM python:3.8</p>
+<p>RUN pip install Flask requests gevent</p>
+<p>COPY app.py /app.py<br>COPY pywsgi.py /pywsgi.py</p>
+<p>CMD python /pywsgi.py<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">Finally, let&apos;s prepare the following playground:</div><div class="line"></div><div class="line">最后，让我们准备如下的游乐场：</div></pre></td></tr></table></figure></p>
+<h1 id="async-gevent-pywsgi-yml"><a href="#async-gevent-pywsgi-yml" class="headerlink" title="./async-gevent-pywsgi.yml"></a>./async-gevent-pywsgi.yml</h1><p>version: “3.7”<br>services:<br>  flask_app:<br>    init: true<br>    build:<br>      context: ./flask_app<br>      dockerfile: Dockerfile-gevent-pywsgi<br>    environment:</p>
+<pre><code>  - PORT_APP=3000
+  - PORT_API=4000
+  - THREADS=without
+ports:
+  - &quot;127.0.0.1:3000:3000&quot;
+depends_on:
+  - slow_api
+</code></pre><p>  slow_api:<br>    init: true<br>    build: ./slow_api<br>    environment:</p>
+<pre><code>  - PORT=4000
+expose:
+  - &quot;4000&quot;
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">And launch it using:</div><div class="line"></div><div class="line">用下面的命令启动：</div></pre></td></tr></table></figure>
+<h1 id="Build-and-start-app-served-by-gevent-pywsgi"><a href="#Build-and-start-app-served-by-gevent-pywsgi" class="headerlink" title="Build and start app served by gevent.pywsgi"></a>Build and start app served by gevent.pywsgi</h1><p>$ docker-compose -f async-gevent-pywsgi.yml build<br>$ docker-compose -f async-gevent-pywsgi.yml up<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">We expect a decent concurrency level with very few threads (if any) in the server container:</div><div class="line"></div><div class="line">我们希望让服务器容器中线程尽可能少，从而使并发级别尽可能高。</div></pre></td></tr></table></figure></p>
+<p>$ ab -r -n 2000 -c 200 <a href="http://127.0.0.1:3000/?delay=1" target="_blank" rel="external">http://127.0.0.1:3000/?delay=1</a></p>
+<blockquote>
+<p>Concurrency Level:      200<br>Time taken for tests:   17.536 seconds<br>Complete requests:      2000<br>Failed requests:        0<br>Requests per second:    114.05 [#/sec] (mean)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">Executing top -H shows that we DO have some python threads (around 10). Seems like gevent employs a thread pool to implement the asynchronous I/O:</div><div class="line"></div><div class="line">执行`top -H`表明我们确实有一些 python 线程（大约10个）。似乎 gevent 使用线程池来实现异步 I/O：</div><div class="line"></div><div class="line">![deploy-pywsgi](https://iximiuz.com/flask-gevent-tutorial/deploy-pywsgi.png)</div><div class="line"></div><div class="line">`docker exec -it flask-gevent-tutorial_flask_app_1 top -H`</div><div class="line"></div><div class="line"># 6. Deploy Flask application using Gunicorn</div><div class="line"></div><div class="line"># 6. 使用 Gunicorn 部署 Flask 应用</div><div class="line"></div><div class="line">Gunicorn is one of the recommended ways to run Flask applications. We will start from Gunicorn because it has slightly fewer parameters to configure before going than uWSGI.</div><div class="line"></div><div class="line">Gunicorn 是运行 Flask 应用的推荐方法之一。我们使用 Gunicorn 是因为与 uWSGI 相比，它在运行之前需要的配置参数少一些。</div><div class="line"></div><div class="line">Gunicorn uses the worker process model to serve HTTP requests. But there are multiple types of workers: synchronous, asynchronous, tornado workers, and asyncio workers.</div><div class="line"></div><div class="line">Gunicorn 使用 worker 进程模型来为 HTTP 请求提供服务。但它有多种 worker 类型：同步 workers，异步 workers，tornado workers 和 asyncio workers。</div><div class="line"></div><div class="line">In this tutorial, we will cover only the first two types - synchronous and gevent-based asynchronous workers. Let&apos;s start from the synchronous model:</div><div class="line"></div><div class="line">在本教程中，我们将仅介绍前两种类型 — 同步和基于 gevent 的异步 workers。让我们从同步 workers 模型开始：</div></pre></td></tr></table></figure></p>
+</blockquote>
+<h1 id="flask-app-Dockerfile-gunicorn"><a href="#flask-app-Dockerfile-gunicorn" class="headerlink" title="./flask_app/Dockerfile-gunicorn"></a>./flask_app/Dockerfile-gunicorn</h1><p>FROM python:3.8</p>
+<p>RUN pip install Flask requests gunicorn</p>
+<p>COPY app.py /app.py</p>
+<p>CMD gunicorn –workers $WORKERS \<br>  –threads $THREADS \<br>  –bind 0.0.0.0:$PORT_APP \<br>  app:app<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">Notice that we reuse the original app.py entrypoint without any changes. The synchronous Gunicorn playground looks as follows:</div><div class="line"></div><div class="line">注意，我们没有任何更改而重用了原始的 app.py 入口。同步的 Gunicorn 游乐场如下：</div></pre></td></tr></table></figure></p>
+<h1 id="sync-gunicorn-yml"><a href="#sync-gunicorn-yml" class="headerlink" title="./sync-gunicorn.yml"></a>./sync-gunicorn.yml</h1><p>version: “3.7”<br>services:<br>  flask_app_gunicorn:<br>    init: true<br>    build:<br>      context: ./flask_app<br>      dockerfile: Dockerfile-gunicorn<br>    environment:</p>
+<pre><code>  - PORT_APP=3000
+  - PORT_API=4000
+  - WORKERS=4
+  - THREADS=50
+ports:
+  - &quot;127.0.0.1:3000:3000&quot;
+depends_on:
+  - slow_api
+</code></pre><p>  slow_api:<br>    init: true<br>    build: ./slow_api<br>    environment:</p>
+<pre><code>  - PORT=4000
+expose:
+  - &quot;4000&quot;
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">Let&apos;s build and start the server using 4 workers x 50 threads each (i.e. 200 threads in total):</div><div class="line"></div><div class="line">让我们使用 4 个 workers x 50 个线程（即总共200个线程）来构建和启动服务器：</div></pre></td></tr></table></figure>
+<h1 id="Build-and-start-app-served-by-Gunicorn"><a href="#Build-and-start-app-served-by-Gunicorn" class="headerlink" title="Build and start app served by Gunicorn"></a>Build and start app served by Gunicorn</h1><p>$ docker-compose -f sync-gunicorn.yml build<br>$ docker-compose -f sync-gunicorn.yml up<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">Obviously, we expect a high number of requests being served concurrently:</div><div class="line"></div><div class="line">显然，我们希望同时处理大量请求：</div></pre></td></tr></table></figure></p>
+<p>$ ab -r -n 2000 -c 200 <a href="http://127.0.0.1:3000/?delay=1" target="_blank" rel="external">http://127.0.0.1:3000/?delay=1</a></p>
+<blockquote>
+<p>Concurrency Level:      200<br>Time taken for tests:   13.427 seconds<br>Complete requests:      2000<br>Failed requests:        0<br>Requests per second:    148.95 [#/sec] (mean)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">But if we compare the samples from top -H before and after the test, we can notice an interesting detail:</div><div class="line"></div><div class="line">但是，如果我们在测试前后比较 `top -H` 的样本，我们会注意到一个有趣的细节：</div><div class="line"></div><div class="line">![deploy-gunicorn-before](https://iximiuz.com/flask-gevent-tutorial/deploy-gunicorn-before.png)</div><div class="line"></div><div class="line">`docker exec -it flask-gevent-tutorial_flask_app_gunicorn_1 top -H(before test)`</div><div class="line"></div><div class="line">Gunicorn starts workers on the startup, but the workers spawn the threads on-demand:</div><div class="line"></div><div class="line">Gunicorn 在启动时启动了 workers，但是 workers 按需生成线程：</div><div class="line"></div><div class="line">![deploy-gunicorn-during](https://iximiuz.com/flask-gevent-tutorial/deploy-gunicorn-during.png)</div><div class="line"></div><div class="line">`docker exec -it flask-gevent-tutorial_flask_app_gunicorn_1 top -H (during test)`</div><div class="line"></div><div class="line">Now, let&apos;s switch to gevent workers. For this setup we need to make a new entrypoint to apply the monkey patching:</div><div class="line"></div><div class="line">现在，让我们切换到 gevent workers。这种设置情况下，我们需要创建一个新的入口以应用猴子补丁：</div></pre></td></tr></table></figure></p>
+</blockquote>
+<h1 id="flask-app-patched-py"><a href="#flask-app-patched-py" class="headerlink" title="./flask_app/patched.py"></a>./flask_app/patched.py</h1><p>from gevent import monkey<br>monkey.patch_all() # we need to patch very early</p>
+<p>from app import app  # re-export<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">The Dockerfile to run Gunicorn + gevent:</div><div class="line"></div><div class="line">运行 Gunicorn + gevent 的 Dockerfile：</div></pre></td></tr></table></figure></p>
+<h1 id="flask-app-Dockerfile-gevent-gunicorn"><a href="#flask-app-Dockerfile-gevent-gunicorn" class="headerlink" title="./flask_app/Dockerfile-gevent-gunicorn"></a>./flask_app/Dockerfile-gevent-gunicorn</h1><p>FROM python:3.8</p>
+<p>RUN pip install Flask requests gunicorn gevent</p>
+<p>COPY app.py /app.py<br>COPY patched.py /patched.py</p>
+<p>CMD gunicorn –worker-class gevent \<br>  –workers $WORKERS \<br>  –bind 0.0.0.0:$PORT_APP \<br>  patched:app<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">The playground:</div><div class="line"></div><div class="line">游乐场：</div></pre></td></tr></table></figure></p>
+<h1 id="async-gevent-gunicorn-yml"><a href="#async-gevent-gunicorn-yml" class="headerlink" title="./async-gevent-gunicorn.yml"></a>./async-gevent-gunicorn.yml</h1><p>version: “3.7”<br>services:<br>  flask_app:<br>    init: true<br>    build:<br>      context: ./flask_app<br>      dockerfile: Dockerfile-gevent-gunicorn<br>    environment:</p>
+<pre><code>  - PORT_APP=3000
+  - PORT_API=4000
+  - WORKERS=1
+ports:
+  - &quot;127.0.0.1:3000:3000&quot;
+depends_on:
+  - slow_api
+</code></pre><p>  slow_api:<br>    init: true<br>    build: ./slow_api<br>    environment:</p>
+<pre><code>  - PORT=4000
+expose:
+  - &quot;4000&quot;
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">Let&apos;s start it:</div><div class="line"></div><div class="line">开始运行：</div></pre></td></tr></table></figure>
+<h1 id="Build-and-start-app-served-by-Gunicorn-gevent"><a href="#Build-and-start-app-served-by-Gunicorn-gevent" class="headerlink" title="Build and start app served by Gunicorn + gevent"></a>Build and start app served by Gunicorn + gevent</h1><p>$ docker-compose -f async-gevent-gunicorn.yml build<br>$ docker-compose -f async-gevent-gunicorn.yml up<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">And conduct the test:</div><div class="line"></div><div class="line">并进行测试：</div></pre></td></tr></table></figure></p>
+<p>$ ab -r -n 2000 -c 200 <a href="http://127.0.0.1:3000/?delay=1" target="_blank" rel="external">http://127.0.0.1:3000/?delay=1</a></p>
+<blockquote>
+<p>Concurrency Level:      200<br>Time taken for tests:   17.839 seconds<br>Complete requests:      2000<br>Failed requests:        0<br>Requests per second:    112.11 [#/sec] (mean)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">We observe similar behavior - only worker processes are alive before the test:</div><div class="line"></div><div class="line">我们观察到类似的行为 —— worker 进程只有在测试之前是可用的：</div><div class="line"></div><div class="line">![deploy-gunicorn-gevent-before](https://iximiuz.com/flask-gevent-tutorial/deploy-gunicorn-gevent-before.png)</div><div class="line"></div><div class="line">`docker exec -it flask-gevent-tutorial_flask_app_gunicorn_1 top -H (before test)`</div><div class="line"></div><div class="line">But during the test, we see 10 new threads spawned. Notice, how it resembles the number of threads used by pywsgi:</div><div class="line"></div><div class="line">但是在测试过程中，我们看到产生了10个新线程。注意，它与使用 pywsgi 时的线程数很相似。</div><div class="line"></div><div class="line">![deploy-gunicorn-gevent-during](https://iximiuz.com/flask-gevent-tutorial/deploy-gunicorn-gevent-during.png)</div><div class="line"></div><div class="line">`docker exec -it flask-gevent-tutorial_flask_app_gunicorn_1 top -H (during test)`</div><div class="line"></div><div class="line"># 7. Deploy Flask application using uWSGI</div><div class="line"></div><div class="line"># 7. 使用 uWSGI 部署 Flask 应用</div><div class="line"></div><div class="line">uWSGI is a production-grade application server written in C. It&apos;s very fast and supports different execution models. Here we will again compare only two modes: synchronous (N worker processes x K threads each) and gevent-based (N worker processes x M async cores each).</div><div class="line"></div><div class="line">uWSGI 是用 C 编写的生产级应用服务器。它非常快速，并支持不同的执行模型。 这里我们将再次仅比较两种模式：同步（N worker 进程 x K个线程）和基于 gevent 的模式（N worker进程 x M个异步内核）。</div><div class="line"></div><div class="line">First, the synchronous setup:</div><div class="line"></div><div class="line">首先，同步配置：</div></pre></td></tr></table></figure></p>
+</blockquote>
+<h1 id="flask-app-Dockerfile-uwsgi"><a href="#flask-app-Dockerfile-uwsgi" class="headerlink" title="./flask_app/Dockerfile-uwsgi"></a>./flask_app/Dockerfile-uwsgi</h1><p>FROM python:3.8</p>
+<p>RUN pip install Flask requests uwsgi</p>
+<p>COPY app.py /app.py</p>
+<p>CMD uwsgi –master \<br>  –workers $WORKERS \<br>  –threads $THREADS \<br>  –protocol $PROTOCOL \<br>  –socket 0.0.0.0:$PORT_APP \<br>  –module app:app<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">We use an extra parameters --protocol and the playground sets it to http:</div><div class="line"></div><div class="line">我们使用额外的参数`--protocol`，并且将游乐场设定为`http:`</div></pre></td></tr></table></figure></p>
+<h1 id="sync-uwsgi-yml"><a href="#sync-uwsgi-yml" class="headerlink" title="./sync-uwsgi.yml"></a>./sync-uwsgi.yml</h1><p>version: “3.7”<br>services:<br>  flask_app_uwsgi:<br>    init: true<br>    build:<br>      context: ./flask_app<br>      dockerfile: Dockerfile-uwsgi<br>    environment:</p>
+<pre><code>  - PORT_APP=3000
+  - PORT_API=4000
+  - WORKERS=4
+  - THREADS=50
+  - PROTOCOL=http
+ports:
+  - &quot;127.0.0.1:3000:3000&quot;
+depends_on:
+  - slow_api
+</code></pre><p>  slow_api:<br>    init: true<br>    build: ./slow_api<br>    environment:</p>
+<pre><code>  - PORT=4000
+expose:
+  - &quot;4000&quot;
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">We again limit the concurrency by 200 simultaneous HTTP requests (4 workers x 50 threads each):</div><div class="line"></div><div class="line">我们再次将并发限制到同时发送 200 个 HTTP 请求（4 workers x 50个线程）：</div></pre></td></tr></table></figure>
+<h1 id="Build-and-start-app-served-by-uWSGI"><a href="#Build-and-start-app-served-by-uWSGI" class="headerlink" title="Build and start app served by uWSGI"></a>Build and start app served by uWSGI</h1><p>$ docker-compose -f sync-uwsgi.yml build<br>$ docker-compose -f sync-uwsgi.yml up<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">Let&apos;s send a bunch of HTTP requests:</div><div class="line"></div><div class="line">让我们发送一堆HTTP请求：</div></pre></td></tr></table></figure></p>
+<p>$ ab -r -n 2000 -c 200 <a href="http://127.0.0.1:3000/?delay=1" target="_blank" rel="external">http://127.0.0.1:3000/?delay=1</a></p>
+<blockquote>
+<p>Concurrency Level:      200<br>Time taken for tests:   12.685 seconds<br>Complete requests:      2000<br>Failed requests:        0<br>Requests per second:    157.67 [#/sec] (mean)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">uWSGI spaws workers and threads beforehand:</div><div class="line"></div><div class="line">uWSGI 提前创建了 workers 和线程：</div><div class="line"></div><div class="line">![deploy-uwsgi-before](https://iximiuz.com/flask-gevent-tutorial/deploy-uwsgi-before.png)</div><div class="line"></div><div class="line">`docker exec -it flask-gevent-tutorial_flask_app_uwsgi_1 top -H (before test)`</div><div class="line"></div><div class="line">So, only the load changes during the test:</div><div class="line"></div><div class="line">因此，只有负载在测试期间发生变化：</div><div class="line"></div><div class="line">![deploy-uwsgi-during](https://iximiuz.com/flask-gevent-tutorial/deploy-uwsgi-during.png)</div><div class="line"></div><div class="line">`docker exec -it flask-gevent-tutorial_flask_app_uwsgi_1 top -H (during test)`</div><div class="line"></div><div class="line">Let&apos;s proceed to the gevent mode. We can reuse the patched.py entrypoint from the Gunicorn+gevent scenario:</div><div class="line"></div><div class="line">让我们进入 geven t模式。 我们可以重用在 Gunicorn + gevent 场景中使用过的patched.py 入口：</div></pre></td></tr></table></figure></p>
+</blockquote>
+<h1 id="flask-app-Dockerfile-gevent-uwsgi"><a href="#flask-app-Dockerfile-gevent-uwsgi" class="headerlink" title="./flask_app/Dockerfile-gevent-uwsgi"></a>./flask_app/Dockerfile-gevent-uwsgi</h1><p>FROM python:3.8</p>
+<p>RUN pip install Flask requests uwsgi gevent</p>
+<p>COPY app.py /app.py<br>COPY patched.py /patched.py</p>
+<p>CMD uwsgi –master \<br>  –single-interpreter \<br>  –workers $WORKERS \<br>  –gevent $ASYNC_CORES \<br>  –protocol $PROTOCOL \<br>  –socket 0.0.0.0:$PORT_APP \<br>  –module patched:app<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">One extra parameter the playground sets here is the number of async cores used by gevent:</div><div class="line"></div><div class="line">在这里游乐场设置的一个额外参数是 gevent 使用的异步核心数：</div></pre></td></tr></table></figure></p>
+<h1 id="async-gevent-uwsgi-yml"><a href="#async-gevent-uwsgi-yml" class="headerlink" title="./async-gevent-uwsgi.yml"></a>./async-gevent-uwsgi.yml</h1><p>version: “3.7”<br>services:<br>  flask_app:<br>    init: true<br>    build:<br>      context: ./flask_app<br>      dockerfile: Dockerfile-gevent-uwsgi<br>    environment:</p>
+<pre><code>  - PORT_APP=3000
+  - PORT_API=4000
+  - WORKERS=2
+  - ASYNC_CORES=2000
+  - PROTOCOL=http
+ports:
+  - &quot;127.0.0.1:3000:3000&quot;
+depends_on:
+  - slow_api
+</code></pre><p>  slow_api:<br>    init: true<br>    build: ./slow_api<br>    environment:</p>
+<pre><code>  - PORT=4000
+expose:
+  - &quot;4000&quot;
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">Let&apos;s start the uWSGI+gevent server:</div><div class="line"></div><div class="line">让我们启动 uWSGI + gevent 服务器：</div><div class="line"></div><div class="line">```# Build and start app served by uWSGI + gevent</div><div class="line">$ docker-compose -f async-gevent-uwsgi.yml build</div><div class="line">$ docker-compose -f async-gevent-uwsgi.yml up</div></pre></td></tr></table></figure>
+<p>And do the test:</p>
+<p>并且进行测试：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ ab -r -n 2000 -c 200 http://127.0.0.1:3000/?delay=1</div><div class="line">&gt; Time taken for tests:   13.164 seconds</div><div class="line">&gt; Complete requests:      2000</div><div class="line">&gt; Failed requests:        0</div><div class="line">&gt; Requests per second:    151.93 [#/sec] (mean)</div></pre></td></tr></table></figure>
+<p>However, if we check the number of workers before and during the test we will notice a discrepancy with the previous method:</p>
+<p>然而，如果我们检查在测试之前和测试期间的 workers 数量，我们会发现与之前的方法存在差异：</p>
+<p><img src="https://iximiuz.com/flask-gevent-tutorial/deploy-uwsgi-gevent-before.png" alt="deploy-uwsgi-gevent-before"></p>
+<p><code>docker exec -it flask-gevent-tutorial_flask_app_1 top -H (before test)</code></p>
+<p>Before the test, uWSGI had the master and worker processes only, but during the test, threads were started, somewhat around 10 threads per worker process. This number resembles the numbers from gevent.pywsgi and Gunicorn+gevent cases:</p>
+<p>在测试之前，uWSGI只具有主进程和 worker 进程，但是在测试过程中，线程被启动了，每个 worker 进程大约有10个线程。这个数目与 gevent.pywsgi 和 Gunicorn + gevent 案例中的数目类似：</p>
+<p><img src="https://iximiuz.com/flask-gevent-tutorial/deploy-uwsgi-gevent-during.png" alt="deploy-uwsgi-gevent-during"></p>
+<p><code>docker exec -it flask-gevent-tutorial_flask_app_1 top -H (during test)</code></p>
+<h1 id="8-Use-Nginx-reverse-proxy-in-front-of-application-server"><a href="#8-Use-Nginx-reverse-proxy-in-front-of-application-server" class="headerlink" title="8. Use Nginx reverse proxy in front of application server"></a>8. Use Nginx reverse proxy in front of application server</h1><h1 id="8-在应用服务器前使用-Nginx-反向代理"><a href="#8-在应用服务器前使用-Nginx-反向代理" class="headerlink" title="8. 在应用服务器前使用 Nginx 反向代理"></a>8. 在应用服务器前使用 Nginx 反向代理</h1><p>Usually, uWSGI and Gunicorn servers reside behind a load balancer and one of the most popular choices is Nginx.</p>
+<p>通常，uWSGI 和 Gunicorn 服务器位于负载均衡器后面，最受欢迎的选择之一是 Nginx。</p>
+<h2 id="8-1-Nginx-Gunicorn-gevent"><a href="#8-1-Nginx-Gunicorn-gevent" class="headerlink" title="8.1 Nginx + Gunicorn + gevent"></a>8.1 Nginx + Gunicorn + gevent</h2><p>Nginx configuration for Gunicorn upstream is just a standard proxy setup:</p>
+<p>Gunicorn 上游的 Nginx 配置只是一个标准的代理设置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"># ./flask_app/nginx-gunicorn.conf</div><div class="line"></div><div class="line">server &#123;</div><div class="line">    listen 80;</div><div class="line"></div><div class="line">    location / &#123;</div><div class="line">        proxy_set_header Host $http_host;</div><div class="line">        proxy_set_header X-Real-IP $remote_addr;</div><div class="line">        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</div><div class="line">        proxy_set_header X-Forwarded-Proto $scheme;</div><div class="line"></div><div class="line">        proxy_pass http://flask_app:3000;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>We can try it out using the following playground:</p>
+<p>我们可以用下面的游乐场进行尝试：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"># ./nginx-gunicorn.yml</div><div class="line">version: &quot;3.7&quot;</div><div class="line">services:</div><div class="line">  ingress:</div><div class="line">    image: nginx:1.17.6</div><div class="line">    ports:</div><div class="line">      - &quot;127.0.0.1:8080:80&quot;</div><div class="line">    volumes:</div><div class="line">      - ./flask_app/nginx-gunicorn.conf:/etc/nginx/conf.d/default.conf</div><div class="line">    depends_on:</div><div class="line">      - flask_app</div><div class="line"></div><div class="line">  flask_app:</div><div class="line">    init: true</div><div class="line">    build:</div><div class="line">      context: ./flask_app</div><div class="line">      dockerfile: Dockerfile-gevent-gunicorn</div><div class="line">    environment:</div><div class="line">      - PORT_APP=3000</div><div class="line">      - PORT_API=4000</div><div class="line">      - WORKERS=1</div><div class="line">    expose:</div><div class="line">      - &quot;3000&quot;</div><div class="line">    depends_on:</div><div class="line">      - slow_api</div><div class="line"></div><div class="line">  slow_api:</div><div class="line">    init: true</div><div class="line">    build: ./slow_api</div><div class="line">    environment:</div><div class="line">      - PORT=4000</div><div class="line">    expose:</div><div class="line">      - &quot;4000&quot;</div></pre></td></tr></table></figure>
+<p>And then:</p>
+<p>然后：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ docker-compose -f nginx-gunicorn.yml build</div><div class="line">$ docker-compose -f nginx-gunicorn.yml up</div><div class="line"></div><div class="line">$ ab -r -n 2000 -c 200 http://127.0.0.1:8080/?delay=1</div><div class="line">&gt; ...</div></pre></td></tr></table></figure>
+<h2 id="8-2-Nginx-uWSGI-gevent"><a href="#8-2-Nginx-uWSGI-gevent" class="headerlink" title="8.2 Nginx + uWSGI + gevent"></a>8.2 Nginx + uWSGI + gevent</h2><p>uWSGI setup is very similar, but there is a subtle improvement. uWSGI provides a special binary protocol (called uWSGI) to communicate with the reverse proxy in front of it. This makes the joint slightly more efficient. And Nginx kindly supports it:</p>
+<p>uWSGI 的设置非常相似，但是有细微的改进。uWSGI 提供了一种特殊的二进制协议（称为uWSGI）与它前面的反向代理进行通信。这使得关节更加有效。Nginx对它的支持友好：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"># ./flask_app/nginx-uwsgi.conf</div><div class="line"></div><div class="line">server &#123;</div><div class="line">    listen 80;</div><div class="line"></div><div class="line">    location / &#123;</div><div class="line">        include uwsgi_params;</div><div class="line">        uwsgi_pass uwsgi://flask_app:3000;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Notice the environment variable PROTOCOL=uwsgi in the following playground:</p>
+<p>请注意下面游乐场中的环境变量 <code>PROTOCOL = uwsgi</code>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"># ./nginx-uwsgi.yml</div><div class="line">version: &quot;3.7&quot;</div><div class="line">services:</div><div class="line">  ingress:</div><div class="line">    image: nginx:1.17.6</div><div class="line">    ports:</div><div class="line">      - &quot;127.0.0.1:8080:80&quot;</div><div class="line">    volumes:</div><div class="line">      - ./flask_app/nginx-uwsgi.conf:/etc/nginx/conf.d/default.conf</div><div class="line">    depends_on:</div><div class="line">      - flask_app</div><div class="line"></div><div class="line">  flask_app:</div><div class="line">    init: true</div><div class="line">    build:</div><div class="line">      context: ./flask_app</div><div class="line">      dockerfile: Dockerfile-gevent-uwsgi</div><div class="line">    environment:</div><div class="line">      - PORT_APP=3000</div><div class="line">      - PORT_API=4000</div><div class="line">      - WORKERS=1</div><div class="line">      - ASYNC_CORES=2000</div><div class="line">      - PROTOCOL=uwsgi</div><div class="line">    expose:</div><div class="line">      - &quot;3000&quot;</div><div class="line">    depends_on:</div><div class="line">      - slow_api</div><div class="line"></div><div class="line">  slow_api:</div><div class="line">    init: true</div><div class="line">    build: ./slow_api</div><div class="line">    environment:</div><div class="line">      - PORT=4000</div><div class="line">    expose:</div><div class="line">      - &quot;4000&quot;</div></pre></td></tr></table></figure>
+<p>We can test the playground using:</p>
+<p>我们可以使用以下方法测试游乐场：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ docker-compose -f nginx-uwsgi.yml build</div><div class="line">$ docker-compose -f nginx-uwsgi.yml up</div><div class="line"></div><div class="line">$ ab -r -n 2000 -c 200 http://127.0.0.1:8080/?delay=1</div><div class="line">&gt; ...</div></pre></td></tr></table></figure>
+<h1 id="9-Bonus-make-psycopg2-gevent-friendly-with-psycogreen"><a href="#9-Bonus-make-psycopg2-gevent-friendly-with-psycogreen" class="headerlink" title="9. Bonus: make psycopg2 gevent-friendly with psycogreen"></a>9. Bonus: make psycopg2 gevent-friendly with psycogreen</h1><h1 id="9-福利：使用-psycogreen-让-psycopg2-变得-gevent-友好"><a href="#9-福利：使用-psycogreen-让-psycopg2-变得-gevent-友好" class="headerlink" title="9. 福利：使用 psycogreen 让 psycopg2 变得 gevent 友好"></a>9. 福利：使用 psycogreen 让 psycopg2 变得 gevent 友好</h1><p>When asked, gevent patches only modules from the Python standard library. If we use 3rd party modules, like psycopg2, corresponding IO will remain blocking. Let’s consider the following application:</p>
+<p>gevent 仅支持对 Python 标准库中的模块打补丁。如果我们使用第三方模块（例如psycopg2），则相应的IO将保持阻塞状态。 让我们考虑以下应用：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"># ./psycopg2/app.py</div><div class="line"></div><div class="line">from gevent import monkey</div><div class="line">monkey.patch_all()</div><div class="line"></div><div class="line">import os</div><div class="line"></div><div class="line">import psycopg2</div><div class="line">import requests</div><div class="line">from flask import Flask, request</div><div class="line"></div><div class="line">api_port = os.environ[&apos;PORT_API&apos;]</div><div class="line">api_url = f&apos;http://slow_api:&#123;api_port&#125;/&apos;</div><div class="line"></div><div class="line">app = Flask(__name__)</div><div class="line"></div><div class="line">@app.route(&apos;/&apos;)</div><div class="line">def index():</div><div class="line">    conn = psycopg2.connect(user=&quot;example&quot;, password=&quot;example&quot;, host=&quot;postgres&quot;)</div><div class="line">    delay = float(request.args.get(&apos;delay&apos;) or 1)</div><div class="line">    resp = requests.get(f&apos;&#123;api_url&#125;?delay=&#123;delay/2&#125;&apos;)</div><div class="line"></div><div class="line">    cur = conn.cursor()</div><div class="line">    cur.execute(&quot;SELECT NOW(), pg_sleep(%s)&quot;, (delay/2,))</div><div class="line"></div><div class="line">    return &apos;Hi there! &#123;&#125; &#123;&#125;&apos;.format(resp.text, cur.fetchall()[0])</div></pre></td></tr></table></figure>
+<p>We extended the workload by adding intentionally slow database access. Let’s prepare the Dockerfile:</p>
+<p>通过有意地添加数据库慢访问，我们增加了工作负载。让我们准备 Dockerfile：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"># ./psycopg2/Dockerfile</div><div class="line">FROM python:3.8</div><div class="line"></div><div class="line">RUN pip install Flask requests psycopg2 psycogreen uwsgi gevent</div><div class="line"></div><div class="line">COPY app.py /app.py</div><div class="line">COPY patched.py /patched.py</div><div class="line"></div><div class="line">CMD uwsgi --master \</div><div class="line">  --single-interpreter \</div><div class="line">  --workers $WORKERS \</div><div class="line">  --gevent $ASYNC_CORES \</div><div class="line">  --protocol http \</div><div class="line">  --socket 0.0.0.0:$PORT_APP \</div><div class="line">  --module $MODULE:app</div></pre></td></tr></table></figure>
+<p>And the playground:</p>
+<p>游乐场：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"># ./bonus-psycopg2-gevent.yml</div><div class="line">version: &quot;3.7&quot;</div><div class="line">services:</div><div class="line">  flask_app:</div><div class="line">    init: true</div><div class="line">    build:</div><div class="line">      context: ./psycopg2</div><div class="line">      dockerfile: Dockerfile</div><div class="line">    environment:</div><div class="line">      - PORT_APP=3000</div><div class="line">      - PORT_API=4000</div><div class="line">      - WORKERS=1</div><div class="line">      - ASYNC_CORES=2000</div><div class="line">      - MODULE=app</div><div class="line">    ports:</div><div class="line">      - &quot;127.0.0.1:3000:3000&quot;</div><div class="line">    depends_on:</div><div class="line">      - slow_api</div><div class="line">      - postgres</div><div class="line"></div><div class="line">  slow_api:</div><div class="line">    init: true</div><div class="line">    build: ./slow_api</div><div class="line">    environment:</div><div class="line">      - PORT=4000</div><div class="line">    expose:</div><div class="line">      - &quot;4000&quot;</div><div class="line"></div><div class="line">  postgres:</div><div class="line">    image: postgres</div><div class="line">    environment:</div><div class="line">      POSTGRES_USER: example</div><div class="line">      POSTGRES_PASSWORD: example</div><div class="line">    expose:</div><div class="line">      - &quot;5432&quot;</div></pre></td></tr></table></figure>
+<p>Ideally, we expect ~2 seconds to perform 10 one-second-long HTTP requests with concurrency 5. But the test shows more than 6 seconds due to the blocking behavior of psycopg2 calls:</p>
+<p>理想情况下，在并发为5时，我们期望使用约2秒的时间来执行10个一秒长的HTTP请求。但是由于 psycopg2 调用的阻塞行为，该测试显示了超过6秒的时间：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">$ docker-compose -f bonus-psycopg2-gevent.yml build</div><div class="line">$ docker-compose -f bonus-psycopg2-gevent.yml up</div><div class="line"></div><div class="line">$ ab -r -n 10 -c 5 http://127.0.0.1:3000/?delay=1</div><div class="line">&gt; Concurrency Level:      5</div><div class="line">&gt; Time taken for tests:   6.670 seconds</div><div class="line">&gt; Complete requests:      10</div><div class="line">&gt; Failed requests:        0</div><div class="line">&gt; Requests per second:    1.50 [#/sec] (mean)</div></pre></td></tr></table></figure>
+<p>To bypass this limitation, we need to use psycogreen module to patch psycopg2:</p>
+<p>要绕过此限制，我们需要使用 psycogreen 模块来给 psycopg2 打补丁：</p>
+<p>The psycogreen package enables psycopg2 to work with coroutine libraries, using asynchronous calls internally but offering a blocking interface so that regular code can run unmodified. Psycopg offers coroutines support since release 2.2. Because the main module is a C extension it cannot be monkey-patched to become coroutine-friendly. Instead it exposes a hook that coroutine libraries can use to install a function integrating with their event scheduler. Psycopg will call the function whenever it executes a libpq call that may block. psycogreen is a collection of “wait callbacks” useful to integrate Psycopg with different coroutine libraries.</p>
+<p>psycogreen 软件包使 psycopg2 能够与协程库一起使用，在内部使用异步调用，但提供了阻塞接口，因此常规代码可以在未修改的情况下运行。自版本 2.2 起，Psycopg 提供协程支持。 由于主模块是 C 扩展，因此无法对其打猴子补丁来成为协程友好的。相反，它暴露了一个钩子，协程库可使用该钩子来安装与其事件调度程序集成的函数。只要 Psycopg 执行可能阻塞的libpq 调用，它将调用该函数。psycogreen 是“等待回调”的集合，可用于将 Psycopg 与不同的协程库集成在一起。</p>
+<p>Let’s create an entrypoint:</p>
+<p>让我们创建一个入口：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"># ./psycopg2/patched.py</div><div class="line">from psycogreen.gevent import patch_psycopg</div><div class="line">patch_psycopg()</div><div class="line"></div><div class="line">from app import app  # re-export</div></pre></td></tr></table></figure>
+<p>And extend the playground:</p>
+<p>扩展游乐场：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"># ./bonus-psycopg2-gevent.yml</div><div class="line"></div><div class="line">services:</div><div class="line">  # ...</div><div class="line"></div><div class="line">  flask_app_2:</div><div class="line">    init: true</div><div class="line">    build:</div><div class="line">      context: ./psycopg2</div><div class="line">      dockerfile: Dockerfile</div><div class="line">    environment:</div><div class="line">      - PORT_APP=3001</div><div class="line">      - PORT_API=4000</div><div class="line">      - WORKERS=1</div><div class="line">      - ASYNC_CORES=2000</div><div class="line">      - MODULE=patched</div><div class="line">    ports:</div><div class="line">      - &quot;127.0.0.1:3001:3001&quot;</div><div class="line">    depends_on:</div><div class="line">      - slow_api</div><div class="line">      - postgres</div></pre></td></tr></table></figure>
+<p>If we test the new instance of the application with ab -n 10 -c 5, the observed performance will be much close to the theoretical one:</p>
+<p>如果我们使用 <code>ab -n 10 -c 5</code> 测试应用的新实例，可以观察到其性能将非常接近理论值：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">$ docker-compose -f bonus-psycopg2-gevent.yml build</div><div class="line">$ docker-compose -f bonus-psycopg2-gevent.yml up</div><div class="line"></div><div class="line">$ ab -r -n 10 -c 5 http://127.0.0.1:3001/?delay=1</div><div class="line">&gt; Concurrency Level:      5</div><div class="line">&gt; Time taken for tests:   3.148 seconds</div><div class="line">&gt; Complete requests:      10</div><div class="line">&gt; Failed requests:        0</div><div class="line">&gt; Requests per second:    3.18 [#/sec] (mean)</div></pre></td></tr></table></figure>
+<h1 id="10-Instead-of-conclusion"><a href="#10-Instead-of-conclusion" class="headerlink" title="10. Instead of conclusion"></a>10. Instead of conclusion</h1><h1 id="10-不是结论的结论"><a href="#10-不是结论的结论" class="headerlink" title="10. 不是结论的结论"></a>10. 不是结论的结论</h1><p>Make code, not war!</p>
+<p>编写代码，而不是战争！</p>
+<h1 id="11-Related-articles"><a href="#11-Related-articles" class="headerlink" title="11. Related articles"></a>11. Related articles</h1><h1 id="11-相关文章"><a href="#11-相关文章" class="headerlink" title="11. 相关文章"></a>11. 相关文章</h1><p>Save the day with gevent</p>
+<p>那天 gevent 拯救了我们</p>
+<p>python,flask,gevent,asyncio,uwsgi,gunicorn,nginx</p>
+<p>Written by Ivan Velichko</p>
+<p>Follow me on twitter @iximiuz</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://clampist.github.io/2020/01/04/如何在 Flask 中使用 gevent (uWSGI + Gunicorn 版本) /" data-id="ck5chebey00bfqyqma29zwat0" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-leetcode-subarray-sum-equals-k" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/12/21/leetcode-subarray-sum-equals-k/" class="article-date">
@@ -99,7 +474,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/12/21/leetcode-subarray-sum-equals-k/" data-id="cjpx9t706007bosqbapa98el0" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2018/12/21/leetcode-subarray-sum-equals-k/" data-id="ck5chebch005pqyqmcampy919" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python3/">python3</a></li></ul>
@@ -144,148 +519,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/12/20/leetcode-path-sum-iii/" data-id="cjpx9t6zu006qosqb8paj8c6s" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python3/">python3</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-leetcode-decode-string" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/12/19/leetcode-decode-string/" class="article-date">
-  <time datetime="2018-12-18T23:35:00.000Z" itemprop="datePublished">2018-12-19</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/19/leetcode-decode-string/">Decode String</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Decode-String"><a href="#Decode-String" class="headerlink" title="Decode String"></a>Decode String</h2><p><strong>stack version</strong> - 32ms</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">decodeString</span><span class="params">(self, s)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        :type s: str</span></div><div class="line"><span class="string">        :rtype: str</span></div><div class="line"><span class="string">        """</span></div><div class="line">        stack = []</div><div class="line">        stack.append([<span class="string">""</span>, <span class="number">1</span>])</div><div class="line">        num = <span class="string">""</span></div><div class="line">        <span class="keyword">for</span> ch <span class="keyword">in</span> s:</div><div class="line">            <span class="keyword">if</span> ch.isdigit():</div><div class="line">              num += ch</div><div class="line">            <span class="keyword">elif</span> ch == <span class="string">'['</span>:</div><div class="line">                stack.append([<span class="string">""</span>, int(num)])</div><div class="line">                num = <span class="string">""</span></div><div class="line">            <span class="keyword">elif</span> ch == <span class="string">']'</span>:</div><div class="line">                st, k = stack.pop()</div><div class="line">                stack[<span class="number">-1</span>][<span class="number">0</span>] += st*k</div><div class="line">            <span class="keyword">else</span>:</div><div class="line">                stack[<span class="number">-1</span>][<span class="number">0</span>] += ch</div><div class="line">        <span class="keyword">return</span> stack[<span class="number">0</span>][<span class="number">0</span>]</div></pre></td></tr></table></figure>
-<p><strong>test code</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">In [109]: s = Solution(); t = s.decodeString(<span class="string">"3[a]2[bc]"</span>); <span class="built_in">print</span>(t)</div><div class="line">aaabcbc</div></pre></td></tr></table></figure>
-<p><a href="https://leetcode.com/problems/decode-string/description/" target="_blank" rel="external">leet code</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/12/19/leetcode-decode-string/" data-id="cjpx9t6yc0028osqbk74qsg3e" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python3/">python3</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-leetcode-best-time-to-buy-and-sell-stock-with-cooldown" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/12/18/leetcode-best-time-to-buy-and-sell-stock-with-cooldown/" class="article-date">
-  <time datetime="2018-12-18T00:37:00.000Z" itemprop="datePublished">2018-12-18</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/18/leetcode-best-time-to-buy-and-sell-stock-with-cooldown/">Best Time to Buy and Sell Stock with Cooldown</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Best-Time-to-Buy-and-Sell-Stock-with-Cooldown"><a href="#Best-Time-to-Buy-and-Sell-Stock-with-Cooldown" class="headerlink" title="Best Time to Buy and Sell Stock with Cooldown"></a>Best Time to Buy and Sell Stock with Cooldown</h2><p><strong>O(n) version</strong> - 40ms</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">maxProfit</span><span class="params">(self, prices)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        :type prices: List[int]</span></div><div class="line"><span class="string">        :rtype: int</span></div><div class="line"><span class="string">        """</span></div><div class="line">        notHold, notHold_cooldown, hold = <span class="number">0</span>, float(<span class="string">'-inf'</span>), float(<span class="string">'-inf'</span>)</div><div class="line">        <span class="keyword">for</span> p <span class="keyword">in</span> prices:</div><div class="line">            hold, notHold, notHold_cooldown = max(hold, notHold - p), max(notHold, notHold_cooldown), hold + p</div><div class="line">        <span class="keyword">return</span> max(notHold, notHold_cooldown)</div></pre></td></tr></table></figure>
-<p><strong>test code</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">In [103]: s = Solution(); t = s.maxProfit([1,2,3,0,2]); <span class="built_in">print</span>(t)</div><div class="line">3</div></pre></td></tr></table></figure>
-<p><a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/description/" target="_blank" rel="external">leet code</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/12/18/leetcode-best-time-to-buy-and-sell-stock-with-cooldown/" data-id="cjpx9t6xs0010osqbn8793k36" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python3/">python3</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-leetcode-task-scheduler" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/12/17/leetcode-task-scheduler/" class="article-date">
-  <time datetime="2018-12-16T23:36:00.000Z" itemprop="datePublished">2018-12-17</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/17/leetcode-task-scheduler/">Task Scheduler</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Task-Scheduler"><a href="#Task-Scheduler" class="headerlink" title="Task Scheduler"></a>Task Scheduler</h2><p><strong>collections version</strong> - 84ms</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> collections</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">leastInterval</span><span class="params">(self, tasks, n)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line"><span class="string">        :type tasks: List[str]</span></div><div class="line"><span class="string">        :type n: int</span></div><div class="line"><span class="string">        :rtype: int</span></div><div class="line"><span class="string">        """</span></div><div class="line">        d = collections.Counter(tasks)</div><div class="line">        counts = d.values()</div><div class="line">        longest = max(counts)</div><div class="line">        ans = (longest - <span class="number">1</span>) * (n + <span class="number">1</span>)</div><div class="line">        <span class="keyword">for</span> cnt <span class="keyword">in</span> counts:</div><div class="line">            ans += cnt == longest <span class="keyword">and</span> <span class="number">1</span> <span class="keyword">or</span> <span class="number">0</span></div><div class="line">        <span class="keyword">return</span> max(len(tasks), ans)</div></pre></td></tr></table></figure>
-<p><strong>test code</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">In [98]: s = Solution(); t = s.leastInterval([<span class="string">"A"</span>,<span class="string">"A"</span>,<span class="string">"A"</span>,<span class="string">"B"</span>,<span class="string">"B"</span>,<span class="string">"B"</span>], 2); <span class="built_in">print</span>(t)</div><div class="line">8</div></pre></td></tr></table></figure>
-<p><a href="https://leetcode.com/problems/task-scheduler/description/" target="_blank" rel="external">leet code</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://clampist.github.io/2018/12/17/leetcode-task-scheduler/" data-id="cjpx9t70f007wosqbs2f2frbq" class="article-share-link">Share</a>
+      <a data-url="https://clampist.github.io/2018/12/20/leetcode-path-sum-iii/" data-id="ck5chebc1004vqyqmg6ac20rm" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python3/">python3</a></li></ul>
@@ -340,7 +574,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">十一月 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/10/">十月 2012</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/11/">十一月 2012</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/10/">十月 2012</a></li></ul>
     </div>
   </div>
 
@@ -353,23 +587,23 @@
       <ul>
         
           <li>
+            <a href="/2020/01/06/python-requests-timeout-try-expect/">Python requests 超时 异常捕捉</a>
+          </li>
+        
+          <li>
+            <a href="/2020/01/06/mysql_distinct_count_group_by/">mysql distinct count group by</a>
+          </li>
+        
+          <li>
+            <a href="/2020/01/04/如何在 Flask 中使用 gevent (uWSGI + Gunicorn 版本) /">(no title)</a>
+          </li>
+        
+          <li>
             <a href="/2018/12/21/leetcode-subarray-sum-equals-k/">Subarray Sum Equals K</a>
           </li>
         
           <li>
             <a href="/2018/12/20/leetcode-path-sum-iii/">Path Sum III</a>
-          </li>
-        
-          <li>
-            <a href="/2018/12/19/leetcode-decode-string/">Decode String</a>
-          </li>
-        
-          <li>
-            <a href="/2018/12/18/leetcode-best-time-to-buy-and-sell-stock-with-cooldown/">Best Time to Buy and Sell Stock with Cooldown</a>
-          </li>
-        
-          <li>
-            <a href="/2018/12/17/leetcode-task-scheduler/">Task Scheduler</a>
           </li>
         
       </ul>
@@ -384,7 +618,7 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2018 Krevy Li<br>
+      &copy; 2020 Krevy Li<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
